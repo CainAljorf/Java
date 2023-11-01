@@ -10,10 +10,14 @@ public class smartphone extends product {
 	private String brand;
 	private String OS;
 	private String camera;
+	private String f_promo;
+	private String n_dias_promo;
+	private String price_promo;
+	
 	public smartphone(String ID_product, float price, float peso, int stock, String color, float dimension,
 			String f_compra, String f_entrega, int n_dias_entrega, String f_devolucion, String f_recogida,
 			int n_dias_recogida, int n_dias_devolucion, String screen, String screen_inches, String RAM, String storage,
-			String CPU, String NFC, String graphics, String brand, String OS, String camera) {
+			String CPU, String NFC, String graphics, String brand, String OS, String camera,String f_promo,String n_dias_promo,String price_promo) {
 		super(ID_product, price, peso, stock, color, dimension, f_compra, f_entrega, n_dias_entrega, f_devolucion,
 				f_recogida, n_dias_recogida, n_dias_devolucion);
 		this.screen = screen;
@@ -26,6 +30,29 @@ public class smartphone extends product {
 		this.brand = brand;
 		this.OS = OS;
 		this.camera = camera;
+		this.f_promo = f_promo;
+		this.n_dias_promo = n_dias_promo;
+		this.price_promo = price_promo;
+		
+	}
+
+	public String getF_promo() {
+		return f_promo;
+	}
+	public void setF_promo(String f_promo) {
+		this.f_promo = f_promo;
+	}
+	public String getN_dias_promo() {
+		return n_dias_promo;
+	}
+	public void setN_dias_promo(String n_dias_promo) {
+		this.n_dias_promo = n_dias_promo;
+	}
+	public String getPrice_promo() {
+		return price_promo;
+	}
+	public void setPrice_promo(String price_promo) {
+		this.price_promo = price_promo;
 	}
 	public String getScreen() {
 		return screen;
@@ -113,6 +140,9 @@ public class smartphone extends product {
 		str += ("Procesador: " + this.getCPU()+ ".\n");
 		str += ("Sistema Operativo: " + this.getOS()+ ".\n");
 		str += ("Tipo de gráficos " + this.getGraphics()+ ".\n");
+		str += ("Fecha de la promoción: "+ this.getF_promo()+"\n");
+		str += ("Número de días de la promoción: "+ this.getN_dias_promo());
+		str += ("Precio con la promoción: "+this.getPrice_promo()+"\n");
 		return str;
 	}
 }

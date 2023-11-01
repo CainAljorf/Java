@@ -112,32 +112,4 @@ public class validators {
 		}while(convert==false);
 		return character;
 	}//end validator_char
-	public static String create_ID() {
-		boolean res = false;
-		String ID = "";
-		do {
-			ID = validator_string("Ingresa un ID alfanúmerico (A-Z/0-9).", "Ingresar ID");
-			res = validators_patterns.validateProductID(ID);
-			if (res == false) {
-				JOptionPane.showMessageDialog(null, "ID ingresado incorrecto. ", "Error", JOptionPane.ERROR_MESSAGE);
-			} else {
-				res = true;
-			}
-		} while (res == false);
-		return ID;
-	}//end create_ID
-	public static float create_price() {
-		boolean res = false;
-		float price = 0.0f;
-		do {
-			price = validator_float("Ingresa un número decimal (9.5f/9).", "Ingresar Precio");
-			res = validators_patterns.validatePrice(price);
-			if (res == false) {
-				JOptionPane.showMessageDialog(null, "ID ingresado incorrecto. ", "Error", JOptionPane.ERROR_MESSAGE);
-			} else {
-				res = true;
-			}
-		} while (res == false);
-		return price;
-	}//end create_ID
 }//end class validators
