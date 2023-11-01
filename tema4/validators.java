@@ -56,7 +56,7 @@ public class validators {
 				str=JOptionPane.showInputDialog(null, message,title,JOptionPane.QUESTION_MESSAGE);
 				convert=true;
 				if (str==null){
-					JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.ERROR_MESSAGE);
 					System.exit(0);
 				}//end if
 				if(str.equals("")){
