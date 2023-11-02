@@ -1,4 +1,4 @@
-package tema4.class_products;
+package tema4.classes;
 public abstract class product {
 	private String ID_product;
 	private float price;

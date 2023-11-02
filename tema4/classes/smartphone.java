@@ -1,4 +1,4 @@
-package tema4.class_products;
+package tema4.classes;
 public class smartphone extends product {
 	private String screen;
 	private String screen_inches;

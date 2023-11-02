@@ -1,9 +1,9 @@
  package tema4;
 import javax.swing.JOptionPane;
 
-import tema4.class_products.accessory;
-import tema4.class_products.laptop;
-import tema4.class_products.smartphone;
+import tema4.classes.accessory;
+import tema4.classes.laptop;
+import tema4.classes.smartphone;
 import tema4.functions.CRUD;
 public class menu {
 	public static void menu_main() {

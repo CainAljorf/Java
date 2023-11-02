@@ -1,4 +1,4 @@
-package tema4.class_products;
+package tema4.classes;
 public class accessory extends product {
 	private String type;
 	private String connectivity;

@@ -1,9 +1,9 @@
 package tema4.functions;
 import javax.swing.JOptionPane;
-import tema4.class_products.accessory;
-import tema4.class_products.laptop;
-import tema4.class_products.product;
-import tema4.class_products.smartphone;
+import tema4.classes.accessory;
+import tema4.classes.laptop;
+import tema4.classes.product;
+import tema4.classes.smartphone;
 public class CRUD {
 	public static product create(int opt) {// with dummies
 		product P = null;
