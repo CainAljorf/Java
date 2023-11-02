@@ -1,22 +1,26 @@
-package tema4;
+package tema4.functions;
 import javax.swing.JOptionPane;
+import tema4.class_products.accessory;
+import tema4.class_products.laptop;
+import tema4.class_products.product;
+import tema4.class_products.smartphone;
 public class CRUD {
 	public static product create(int opt) {// with dummies
 		product P = null;
-		switch(opt) { // with dummies
+		switch(opt) {
 			case 0:
-				P=new laptop("GG",5,1,1,"red",5,"5/04/2012","15/04/2012",10,"30/04/2012","20/04/2012",10,15,"IPS","15.1",
-							"QUERTY","16 GB","1 TB","Ryzen 7 5700X","240W","1650M","HP Omen","LED RED","Sony XM 1.8f","23/02/1990","23/03/1990","26/07/1990");
+				P=new laptop("ASD-123",5,1,1,"Rojo",5,"5/04/2012","15/04/2012",10,"30/04/2012","20/04/2012",10,15,"IPS","15.1",
+							"QWERTY","16 GB","1 TB","Ryzen 7 5700X","80 Plus Silver","AMD Radeon","HP Omen","Sony XM 1.8f","23/02/1990","15","26/07/1990");
 				JOptionPane.showMessageDialog(null, "Laptop creado correctamenmte.","Felicidades", JOptionPane.INFORMATION_MESSAGE);
 				break;
 			case 1:
 				P=new smartphone("1",1,1,1,"red",5,"5/04/2012","15/04/2012",10,
-						"30/04/2012","20/04/2012",10,15,"IPS","15.1","QUERTY","16 GB","1 TB","Ryzen 7 5700X","240W","1650M","HP Omen","23/02/1990","23/03/1990","26/07/1990");
+						"30/04/2012","20/04/2012",10,15,"IPS","6.8","6GB","1 TB","Snapdragon","Oppo","Android","Leica 1.5f","23/02/1990","15","26/07/1990");
 				JOptionPane.showMessageDialog(null, "Smartphone creado correctamenmte.","Felicidades", JOptionPane.INFORMATION_MESSAGE);
 				break;
 			case 2:
 				P=new accessory("1",1,1,1,"red",5,"5/04/2012","15/04/2012",10,
-						"30/04/2012","20/04/2012",10,15,"IPS","15.1","16 GB","1 TB","23/02/1990","23/03/1990","26/07/1990");
+						"30/04/2012","20/04/2012",10,15,"Cargador","Cableado","5 años","Polvo","23/02/1990","15","26/07/1990");
 				JOptionPane.showMessageDialog(null, "Accessorio creado correctamenmte.","Felicidades", JOptionPane.INFORMATION_MESSAGE);
 				break;
 		}//end switch
@@ -45,7 +49,7 @@ public class CRUD {
 								"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
 								"Número días de recogida","Número de días de devolución", "Pantalla", "Pulgadas de pantalla",
 								"Tipo de teclado","Memoria RAM","Almacenamiento",
-								"Procesador","Fuente de Alimentación", "Gráficos","Marca", "LED Teclado Retroiluminado",
+								"Procesador","Fuente de Alimentación", "Gráficos","Marca", 
 								"Cámara", "Fecha de Rebajas","Número de días de Rebajas","Precio de Rebajas"},
 					   "ID");
 			if (opt==null) {
@@ -71,7 +75,7 @@ public class CRUD {
 				case "Dimensión":
 					str="Dimensión: "+((laptop)P).getDimension();
 					break;
-				case "Fecha de Compra":
+				case "Fecha de compra":
 					str="Fecha de Compra: "+((laptop)P).getF_compra();
 					break;
 				case "Fecha de entrega":
@@ -116,9 +120,6 @@ public class CRUD {
 				case "Gráficos":
 					str= "Gráficos: "+((laptop)P).getGraphics();
 					break;
-				case "LED Teclado Retroiluminado":
-					str= "LED Teclado Retroiluminado: "+((laptop)P).getLED_backlit_keyboard();
-					break;
 				case "Cámara":
 					str= "Cámara: "+((laptop)P).getCamera();
 					break;
@@ -147,7 +148,7 @@ public class CRUD {
 								"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
 								"Número días de recogida","Número de días de devolución", "Pantalla", "Pulgadas de pantalla",
 								"Memoria RAM","Almacenamiento",
-								"Procesador","Sistema Operativo", "Gráficos","Marca", "Fecha de promoción",
+								"Procesador","Sistema Operativo","Marca", "Fecha de promoción",
 								"Cámara", "Número de días de promoción","Precio de promoción"},
 					   "ID");
 			if (opt==null) {
@@ -173,7 +174,7 @@ public class CRUD {
 				case "Dimensión":
 					str="Dimensión: "+((smartphone)P).getDimension();
 					break;
-				case "Fecha de Compra":
+				case "Fecha de compra":
 					str="Fecha de Compra: "+((smartphone)P).getF_compra();
 					break;
 				case "Fecha de entrega":
@@ -212,14 +213,14 @@ public class CRUD {
 				case "Sistema Operativo":
 					str= "Sistema Operativo: "+ ((smartphone)P).getOS();
 					break;
-				case "Gráficos":
-					str= "Gráficos: "+((smartphone)P).getGraphics();
-					break;
 				case "Precio de promoción":
 					str= "Precio de promoción: "+((smartphone)P).getPrice_promo();
 					break;
 				case "Cámara":
 					str= "Cámara: "+((smartphone)P).getCamera();
+					break;
+				case "Marca":
+					str= "Marca: "+((smartphone)P).getBrand();
 					break;
 				case "Fecha de promoción":
 					str= "Fecha de promoción: "+((smartphone)P).getF_promo();
@@ -265,7 +266,7 @@ public class CRUD {
 				case "Dimensión":
 					str="Dimensión: "+((accessory)P).getDimension();
 					break;
-				case "Fecha de Compra":
+				case "Fecha de compra":
 					str="Fecha de Compra: "+((accessory)P).getF_compra();
 					break;
 				case "Fecha de entrega":
@@ -325,7 +326,7 @@ public class CRUD {
 								"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
 								"Número días de recogida","Número de días de devolución", "Pantalla", "Pulgadas de pantalla",
 								"Tipo de teclado","Memoria RAM","Almacenamiento",
-								"Procesador","Fuente de Alimentación", "Gráficos","Marca", "LED Teclado Retroiluminado",
+								"Procesador","Fuente de Alimentación", "Gráficos","Marca", 
 								"Cámara", "Fecha de Rebajas","Número de días de Rebajas","Precio de Rebajas"},
 					   "ID");
 			if (opt==null) {
@@ -374,7 +375,7 @@ public class CRUD {
 						str="Fecha de devolución de laptop actualizado correctamente.";
 						break;
 					case "Fecha de recogida":
-						((laptop)P).setF_devolucion(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
+						((laptop)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
 						str="Fecha de devolución de laptop actualizado correctamente.";
 						break;
 					case "Número días de recogida":
@@ -390,39 +391,35 @@ public class CRUD {
 						str="Pantalla de laptop actualizado correctamente.";
 						break;
 					case "Pulgadas de pantalla":
-						((laptop)P).setScreen_inches(insert_data.insert_screen_inches());
+						((laptop)P).setScreen_inches(insert_data.insert_screen_inches("laptop"));
 						str="Pulgadas de pantalla del laptop actualizadas correctamente.";
 						break;
 					case "Tipo de teclado":
-						((laptop)P).setKeyboard(validators.validator_string("Ingresa el tipo de teclado.", "Teclado"));
+						((laptop)P).setKeyboard(insert_data.insert_keyboard());
 						str="Tipo de teclado de laptop actualizado correctamente.";
 						break;
 					case "Memoria RAM":
-						((laptop)P).setRAM(validators.validator_string("Ingresa la memoria RAM.", "Ingresar RAM"));
+						((laptop)P).setRAM(insert_data.insert_RAM("laptop"));
 						str="Memoria RAM de laptop actualizada correctamente.";
 						break;
 					case "Almacenamiento":
-						((laptop)P).setStorage(validators.validator_string("Ingresa el almacenamiento del disco duro.", "Ingresar Disco Duro"));
+						((laptop)P).setStorage(insert_data.insert_storage());
 						str="Almacenamiento de laptop actualizado correctamente.";
 						break;
 					case "Procesador":
-						((laptop)P).setCPU(validators.validator_string("Ingresa procesador.", "Ingresar CPU"));
+						((laptop)P).setCPU(insert_data.insert_CPU("laptop"));
 						str="Procesador del laptop actualizado correctamente.";
 						break;
 					case "Fuente de Alimentación":
-						((laptop)P).setPower_supply(validators.validator_string("Ingresa la fuente de alimentación.", "Fuente de Alimentación"));
+						((laptop)P).setPower_supply(insert_data.insert_power_supply());
 						str="Fuente de alimentación de laptop actualizada correctamente.";
 						break;
 					case "Gráficos":
-						((laptop)P).setGraphics(validators.validator_string("Ingresa los gráficos del laptop.", "Ingresar gráficos"));
+						((laptop)P).setGraphics(insert_data.insert_graphics());
 						str="Gráficos del laptop actualizados correctamente.";
 						break;
-					case "LED Teclado Retroiluminado":
-						((laptop)P).setLED_backlit_keyboard(validators.validator_string("Ingresa el color del LED del teclado retroiluminado.", "Ingresar LED"));
-						str="El color del LED del teclado retroiluminado se ha actualizado correctamente.";
-						break;
 					case "Cámara":
-						((laptop)P).setCamera(validators.validator_string("Ingresa la cámara del laptop.", "Ingresar cámara"));
+						((laptop)P).setCamera(insert_data.insert_camera());
 						str="Cámara del laptop actualizada correctamente.";
 						break;
 					case "Fecha de Rebajas":
@@ -434,7 +431,7 @@ public class CRUD {
 						str="Los días de rebajas de laptop han sido actualizados con éxito.";
 						break;
 					case "Marca":
-						((laptop)P).setBrand(validators.validator_string("Ingresa la marca del laptop.", "Ingresar marca"));
+						((laptop)P).setBrand(insert_data.insert_brand("laptop"));
 						str="Marca del laptop actualizada correctamente.";
 						break;
 					case "Precio de Rebajas":
@@ -454,7 +451,7 @@ public class CRUD {
 								"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
 								"Número días de recogida","Número de días de devolución", "Pantalla", "Pulgadas de pantalla",
 								"Memoria RAM","Almacenamiento",
-								"Procesador","Sistema Operativo", "Gráficos","Marca", "Fecha de promoción",
+								"Procesador","Sistema Operativo", "Marca", "Fecha de promoción",
 								"Cámara", "Número de días de promoción","Precio de promoción"},
 					   "ID");
 			if (opt==null) {
@@ -503,7 +500,7 @@ public class CRUD {
 					str="Fecha de devolución de smartphone actualizado correctamente.";
 					break;
 				case "Fecha de recogida":
-					((smartphone)P).setF_devolucion(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
+					((smartphone)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
 					str="Fecha de devolución de smartphone actualizado correctamente.";
 					break;
 				case "Número días de recogida":
@@ -515,40 +512,40 @@ public class CRUD {
 					str="Número de días de devolución smartphone actualizado correctamente.";
 					break;
 				case "Pantalla":
-					((smartphone)P).setScreen(validators.validator_string("Ingresa el tipo de pantalla.", "Ingresar pantalla"));
+					((smartphone)P).setScreen(insert_data.insert_screen());
 					str="Tipo de pantalla de smartphone actualizado correctamente.";
 					break;
 				case "Pulgadas de pantalla":
-					((smartphone)P).setScreen_inches(validators.validator_string("Ingresa las pulgadas de la pantalla.", "Ingresar pulgadas"));
+					((smartphone)P).setScreen_inches(insert_data.insert_screen_inches("smartphone"));
 					str="Pulgadas de la pantalla de smartphone actualizado correctamente.";
 					break;
 				case "Memoria RAM":
-					((smartphone)P).setRAM(validators.validator_string("Ingresa la memoria RAM.", "Ingresar RAM"));
+					((smartphone)P).setRAM(insert_data.insert_RAM("smartphone"));
 					str= "Memoria RAM de smartphone actualizada correctamente.";
 					break;
 				case "Almacenamiento":
-					((smartphone)P).setStorage(validators.validator_string("Ingresa el almacenamiento del dispositivo.", "Ingresar almacenamiento"));
+					((smartphone)P).setStorage(insert_data.insert_storage());
 					str= "Almacenamiento del smartphone actualizado correctamente.";
 					break;
 				case "Procesador":					
-					((smartphone)P).setCPU(validators.validator_string("Ingresa el procesador del dispositivo.", "Ingresar CPU"));
+					((smartphone)P).setCPU(insert_data.insert_CPU("smartphone"));
 					str= "Procesador del smartphone actualizado.";
 					break;
 				case "Sistema Operativo":
-					((smartphone)P).setOS(validators.validator_string("Ingresa el sistema operativo del dispositivo.", "Ingresar Sistema Operativo"));
+					((smartphone)P).setOS(insert_data.insert_OS());
 					str= "Sistema Operativo del smartphone actualizado correctamente.";
-					break;
-				case "Gráficos":
-					((smartphone)P).setGraphics(validators.validator_string("Ingresa los gráficos del dispositivo.", "Ingresar Gráficos"));
-					str= "Gráficos del smartphone actualizados correctamente.";
 					break;
 				case "Precio de promoción":
 					((smartphone)P).setPrice_promo(validators.validator_string("Ingresa el precio de la promoción.", "Ingresar Promoción"));
 					str= "Precio de promoción del smartphone actualizada correctamente.";
 					break;
 				case "Cámara":
-					((smartphone)P).setCamera(validators.validator_string("Ingresa las cámara del dispositivo.", "Ingresar Cámara"));
+					((smartphone)P).setCamera(insert_data.insert_camera());
 					str= "Cámara del smartphone actualizado correctamente.";
+					break;
+				case "Marca":
+					((smartphone)P).setBrand(insert_data.insert_brand("smartphone"));
+					str= "Marca del smartphone actualizado correctamente.";
 					break;
 				case "Fecha de promoción":
 					((smartphone)P).setF_promo(insert_data.insert_date("Ingresa la fecha de promoción.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha promoción"));
@@ -619,7 +616,7 @@ public class CRUD {
 					str="Fecha de devolución de accessorio actualizado correctamente.";
 					break;
 				case "Fecha de recogida":
-					((accessory)P).setF_devolucion(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
+					((accessory)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
 					str="Fecha de devolución de accessorio actualizado correctamente.";
 					break;
 				case "Número días de recogida":

@@ -1,5 +1,4 @@
-package tema4;
-
+package tema4.class_products;
 public class accessory extends product {
 	private String type;
 	private String connectivity;
@@ -21,7 +20,7 @@ public class accessory extends product {
 		this.f_ultimas_unit = f_ultimas_unit;
 		this.num_dias_unit = num_dias_unit;
 		this.price_ult_unit = price_ult_unit;
-	}
+	}//end constructor
 	public String getF_ultimas_unit() {
 		return f_ultimas_unit;
 	}
@@ -63,7 +62,7 @@ public class accessory extends product {
 	}
 	public void setProtection(String protection) {
 		this.protection = protection;
-	}
+	}//end getters and setters
 	@Override
 	public String toString() {
 		String str="";
@@ -88,5 +87,5 @@ public class accessory extends product {
 		str += ("Número de días de últimas unidades: "+ this.getNum_dias_unit()+"\n");
 		str += ("Precio de últimas unidades: "+ this.getPrice_ult_unit()+"\n");
 		return str;
-	}
-}
+	}//end toString
+}//end class accessory

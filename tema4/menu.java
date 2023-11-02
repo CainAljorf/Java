@@ -1,5 +1,10 @@
  package tema4;
 import javax.swing.JOptionPane;
+
+import tema4.class_products.accessory;
+import tema4.class_products.laptop;
+import tema4.class_products.smartphone;
+import tema4.functions.CRUD;
 public class menu {
 	public static void menu_main() {
 		int menu_main;
@@ -149,6 +154,7 @@ public class menu {
 							default:
 								validator2=false;
 								JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
+								System.exit(0);
 								break;
 						}//end switch
 					}while(validator2==true);
@@ -209,6 +215,7 @@ public class menu {
 							default:
 								validator2=false;
 								JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
+								System.exit(0);
 								break;
 						}//end switch
 					}while(validator2==true);

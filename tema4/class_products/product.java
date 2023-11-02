@@ -1,4 +1,4 @@
-package tema4;
+package tema4.class_products;
 public abstract class product {
 	private String ID_product;
 	private float price;
@@ -30,7 +30,7 @@ public abstract class product {
 		this.f_recogida = f_recogida;
 		this.n_dias_recogida = n_dias_recogida;
 		this.n_dias_devolucion = n_dias_devolucion;
-	}
+	}//end constructor
 	public String getID_product() {
 		return ID_product;
 	}
@@ -108,7 +108,8 @@ public abstract class product {
 	}
 	public void setN_dias_devolucion(int n_dias_devolucion) {
 		this.n_dias_devolucion = n_dias_devolucion;
-	}
+	}//end getters and setters
 	@Override
 	public abstract String toString();
-}
+	//toString abstract to inherit
+}//end class product

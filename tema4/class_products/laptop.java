@@ -1,4 +1,4 @@
-package tema4;
+package tema4.class_products;
 public class laptop extends product {
 	private String screen;
 	private String screen_inches;
@@ -9,16 +9,14 @@ public class laptop extends product {
 	private String power_supply;
 	private String graphics;
 	private String brand;
-	private String LED_backlit_keyboard;
 	private String camera;
 	private String f_sales;
 	private String num_dias_sales;
 	private String price_sales;
-	
 	public laptop(String ID_product, float price, float peso, int stock, String color, float dimension, String f_compra,
 			String f_entrega, int n_dias_entrega, String f_devolucion, String f_recogida, int n_dias_recogida,
 			int n_dias_devolucion, String screen, String screen_inches, String keyboard, String RAM, String storage,
-			String CPU, String power_supply, String graphics, String brand, String LED_backlit_keyboard,
+			String CPU, String power_supply, String graphics, String brand, 
 			String camera, String f_sales,String num_dias_sales,String price_sales) {
 		super(ID_product, price, peso, stock, color, dimension, f_compra, f_entrega, n_dias_entrega, f_devolucion,
 				f_recogida, n_dias_recogida, n_dias_devolucion);
@@ -31,12 +29,11 @@ public class laptop extends product {
 		this.power_supply = power_supply;
 		this.graphics = graphics;
 		this.brand = brand;
-		this.LED_backlit_keyboard = LED_backlit_keyboard;
 		this.camera = camera;
 		this.f_sales = f_sales;
 		this.num_dias_sales = num_dias_sales;
 		this.price_sales = price_sales;
-	}
+	}//end constructor
 	public String getScreen() {
 		return screen;
 	}
@@ -91,12 +88,6 @@ public class laptop extends product {
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-	public String getLED_backlit_keyboard() {
-		return LED_backlit_keyboard;
-	}
-	public void setLED_backlit_keyboard(String LED_backlit_keyboard) {
-		this.LED_backlit_keyboard = LED_backlit_keyboard;
-	}
 	public String getCamera() {
 		return camera;
 	}
@@ -120,7 +111,7 @@ public class laptop extends product {
 	}
 	public void setPrice_sales(String price_sales) {
 		this.price_sales = price_sales;
-	}
+	}//end getters and setters
 	@Override
 	public String toString() {
 		String str="";
@@ -140,7 +131,6 @@ public class laptop extends product {
 		str += ("Tipo de pantalla: " + this.getScreen() + ".\n");
 		str += ("Pulgadas de pantalla: " + this.getScreen_inches() + ".\n");
 		str += ("Idioma del teclado: " + this.getKeyboard() + ".\n");
-		str += ("Color de la retroiluminación del teclado: " + this.getLED_backlit_keyboard()+ ".\n");
 		str += ("Sensor de la cámara: " + this.getCamera() + ".\n");
 		str += ("Marca: " + this.getBrand() + ".\n");
 		str += ("Memoria Principal (RAM): " + this.getRAM() + ".\n");
@@ -152,5 +142,5 @@ public class laptop extends product {
 		str += ("Número de días de rebajas: " + this.getNum_dias_sales() + ".\n");
 		str += ("Precio de rebajas: " + this.getPrice_sales() + ".\n");
 	return str;
-	}
-}
+	}//end toString
+}//end class laptop

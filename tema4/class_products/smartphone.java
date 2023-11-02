@@ -1,22 +1,20 @@
-package tema4;
+package tema4.class_products;
 public class smartphone extends product {
 	private String screen;
 	private String screen_inches;
 	private String RAM;
 	private String storage;
 	private String CPU;
-	private String graphics;
 	private String brand;
 	private String OS;
 	private String camera;
 	private String f_promo;
 	private String n_dias_promo;
 	private String price_promo;
-	
 	public smartphone(String ID_product, float price, float peso, int stock, String color, float dimension,
 			String f_compra, String f_entrega, int n_dias_entrega, String f_devolucion, String f_recogida,
 			int n_dias_recogida, int n_dias_devolucion, String screen, String screen_inches, String RAM, String storage,
-			String CPU, String graphics, String brand, String OS, String camera,String f_promo,String n_dias_promo,String price_promo) {
+			String CPU, String brand, String OS, String camera,String f_promo,String n_dias_promo,String price_promo) {
 		super(ID_product, price, peso, stock, color, dimension, f_compra, f_entrega, n_dias_entrega, f_devolucion,
 				f_recogida, n_dias_recogida, n_dias_devolucion);
 		this.screen = screen;
@@ -24,16 +22,13 @@ public class smartphone extends product {
 		this.RAM = RAM;
 		this.storage = storage;
 		this.CPU = CPU;
-		this.graphics = graphics;
 		this.brand = brand;
 		this.OS = OS;
 		this.camera = camera;
 		this.f_promo = f_promo;
 		this.n_dias_promo = n_dias_promo;
 		this.price_promo = price_promo;
-		
-	}
-
+	}//end constructor
 	public String getF_promo() {
 		return f_promo;
 	}
@@ -82,12 +77,6 @@ public class smartphone extends product {
 	public void setCPU(String CPU) {
 		this.CPU = CPU;
 	}
-	public String getGraphics() {
-		return graphics;
-	}
-	public void setGraphics(String graphics) {
-		this.graphics = graphics;
-	}
 	public String getBrand() {
 		return brand;
 	}
@@ -105,7 +94,7 @@ public class smartphone extends product {
 	}
 	public void setCamera(String camera) {
 		this.camera = camera;
-	}
+	}//end getters and setters
 	@Override
 	public String toString() {
 		String str="";
@@ -130,10 +119,9 @@ public class smartphone extends product {
 		str += ("Almacenamiento: " + this.getStorage()+ ".\n");
 		str += ("Procesador: " + this.getCPU()+ ".\n");
 		str += ("Sistema Operativo: " + this.getOS()+ ".\n");
-		str += ("Tipo de gráficos " + this.getGraphics()+ ".\n");
 		str += ("Fecha de la promoción: "+ this.getF_promo()+"\n");
-		str += ("Número de días de la promoción: "+ this.getN_dias_promo());
+		str += ("Número de días de la promoción: "+ this.getN_dias_promo())+"\n";
 		str += ("Precio con la promoción: "+this.getPrice_promo()+"\n");
 		return str;
-	}
-}
+	}//end toString
+}//end class smartphone

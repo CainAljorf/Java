@@ -1,4 +1,4 @@
-package tema4;
+package tema4.functions;
 import javax.swing.JOptionPane;
 public class validators {
 	public static int validator_int (String message,String title) {
