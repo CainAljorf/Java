@@ -7,51 +7,55 @@ import tema4.classes.smartphone;
 public class CRUD {
 	public static product create(int opt) {// with dummies
 		product P = null;
+		String str="";
 		switch(opt) {
 			case 0:
 				P=new laptop("ASD-123",5,1,1,"Rojo",5,"5/04/2012","15/04/2012",10,"30/04/2012","20/04/2012",10,15,"IPS","15.1",
 							"QWERTY","16 GB","1 TB","Ryzen 7 5700X","80 Plus Silver","AMD Radeon","HP Omen","Sony XM 1.8f","23/02/1990","15","26/07/1990");
-				JOptionPane.showMessageDialog(null, "Laptop creado correctamenmte.","Felicidades", JOptionPane.INFORMATION_MESSAGE);
+				str="Laptop creado correctamente.";
 				break;
 			case 1:
 				P=new smartphone("1",1,1,1,"red",5,"5/04/2012","15/04/2012",10,
 						"30/04/2012","20/04/2012",10,15,"IPS","6.8","6GB","1 TB","Snapdragon","Oppo","Android","Leica 1.5f","23/02/1990","15","26/07/1990");
-				JOptionPane.showMessageDialog(null, "Smartphone creado correctamenmte.","Felicidades", JOptionPane.INFORMATION_MESSAGE);
+				str="Smartphone creado correctamente.";
 				break;
 			case 2:
 				P=new accessory("1",1,1,1,"red",5,"5/04/2012","15/04/2012",10,
 						"30/04/2012","20/04/2012",10,15,"Cargador","Cableado","5 años","Polvo","23/02/1990","15","26/07/1990");
-				JOptionPane.showMessageDialog(null, "Accessorio creado correctamenmte.","Felicidades", JOptionPane.INFORMATION_MESSAGE);
+				str="Accessorio creado correctamente.";
 				break;
 		}//end switch
-		return P;
+		JOptionPane.showMessageDialog(null,str,"Información", JOptionPane.INFORMATION_MESSAGE);
+	return P;
 	}//end create
 	public static void read_all(product P) {
+		String str="";
 		if (P instanceof laptop) {
-			JOptionPane.showMessageDialog(null,((laptop)P).toString(),"Información",JOptionPane.INFORMATION_MESSAGE);
+			str=((laptop)P).toString();
 		}else if(P instanceof smartphone) {
-			JOptionPane.showMessageDialog(null,((smartphone)P).toString(),"Información",JOptionPane.INFORMATION_MESSAGE);
+			str=((smartphone)P).toString();
 		}else if(P instanceof accessory) {
-			JOptionPane.showMessageDialog(null,((accessory)P).toString(),"Información",JOptionPane.INFORMATION_MESSAGE);
+			str=((accessory)P).toString();
 		}//end if
+		JOptionPane.showMessageDialog(null,str,"Información", JOptionPane.INFORMATION_MESSAGE);
 	}//end read
 	public static void read(product P) {
 		Object opt = null;
 		String str ="";
 		if (P instanceof laptop) {
 			opt= JOptionPane.showInputDialog(
-					   null,
-					   "Seleccione un atributo para ver:",
-					   "Selector de opciones",
-					   JOptionPane.QUESTION_MESSAGE,
-					   null,
-					   new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
-								"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
-								"Número días de recogida","Número de días de devolución", "Pantalla", "Pulgadas de pantalla",
-								"Tipo de teclado","Memoria RAM","Almacenamiento",
-								"Procesador","Fuente de Alimentación", "Gráficos","Marca", 
-								"Cámara", "Fecha de Rebajas","Número de días de Rebajas","Precio de Rebajas"},
-					   "ID");
+					null,
+					"Seleccione un atributo para ver:",
+					"Selector de opciones",
+					JOptionPane.QUESTION_MESSAGE,
+					null,
+					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
+							"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
+							"Número días de recogida","Número de días de devolución", "Pantalla", "Pulgadas de pantalla",
+							"Tipo de teclado","Memoria RAM","Almacenamiento",
+							"Procesador","Fuente de Alimentación", "Gráficos","Marca", 
+							"Cámara", "Fecha de Rebajas","Número de días de Rebajas","Precio de Rebajas"},
+					"ID");
 			if (opt==null) {
 				JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.ERROR_MESSAGE);
 				System.exit(0);
@@ -139,18 +143,18 @@ public class CRUD {
 			JOptionPane.showMessageDialog(null,str,"Información",JOptionPane.INFORMATION_MESSAGE);
 		}else if(P instanceof smartphone) {
 			opt= JOptionPane.showInputDialog(
-					   null,
-					   "Seleccione un atributo para ver:",
-					   "Selector de opciones",
-					   JOptionPane.QUESTION_MESSAGE,
-					   null,
-					   new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
-								"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
-								"Número días de recogida","Número de días de devolución", "Pantalla", "Pulgadas de pantalla",
-								"Memoria RAM","Almacenamiento",
-								"Procesador","Sistema Operativo","Marca", "Fecha de promoción",
-								"Cámara", "Número de días de promoción","Precio de promoción"},
-					   "ID");
+					null,
+					"Seleccione un atributo para ver:",
+					"Selector de opciones",
+					JOptionPane.QUESTION_MESSAGE,
+					null,
+					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
+							"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
+							"Número días de recogida","Número de días de devolución", "Pantalla", "Pulgadas de pantalla",
+							"Memoria RAM","Almacenamiento",
+							"Procesador","Sistema Operativo","Marca", "Fecha de promoción",
+							"Cámara", "Número de días de promoción","Precio de promoción"},
+					"ID");
 			if (opt==null) {
 				JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.ERROR_MESSAGE);
 				System.exit(0);
@@ -232,17 +236,17 @@ public class CRUD {
 			JOptionPane.showMessageDialog(null,str,"Información",JOptionPane.INFORMATION_MESSAGE);
 		}else if(P instanceof accessory) {
 			opt= JOptionPane.showInputDialog(
-					   null,
-					   "Seleccione un atributo para ver:",
-					   "Selector de opciones",
-					   JOptionPane.QUESTION_MESSAGE,
-					   null,
-					   new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
-								"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
-								"Número días de recogida","Número de días de devolución", "Tipo de accesorio", 
-								"Garantía","Protección","Conectividad",
-								"Fecha últimas unidades","Número de días de últimas unidades","Precio de últimas unidades"},
-					   "ID");
+					null,
+					"Seleccione un atributo para ver:",
+					"Selector de opciones",
+					JOptionPane.QUESTION_MESSAGE,
+					null,
+					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
+							"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
+							"Número días de recogida","Número de días de devolución", "Tipo de accesorio", 
+							"Garantía","Protección","Conectividad",
+							"Fecha últimas unidades","Número de días de últimas unidades","Precio de últimas unidades"},
+					"ID");
 			if (opt==null) {
 				JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.ERROR_MESSAGE);
 				System.exit(0);
@@ -317,18 +321,18 @@ public class CRUD {
 		Object opt=null;
 		if (P instanceof laptop){
 			opt= JOptionPane.showInputDialog(
-					   null,
-					   "Seleccione un atributo para ver:",
-					   "Selector de opciones",
-					   JOptionPane.QUESTION_MESSAGE,
-					   null,
-					   new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
-								"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
-								"Número días de recogida","Número de días de devolución", "Pantalla", "Pulgadas de pantalla",
-								"Tipo de teclado","Memoria RAM","Almacenamiento",
-								"Procesador","Fuente de Alimentación", "Gráficos","Marca", 
-								"Cámara", "Fecha de Rebajas","Número de días de Rebajas","Precio de Rebajas"},
-					   "ID");
+					null,
+					"Seleccione un atributo para ver:",
+					"Selector de opciones",
+					JOptionPane.QUESTION_MESSAGE,
+					null,
+					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
+							"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
+							"Número días de recogida","Número de días de devolución", "Pantalla", "Pulgadas de pantalla",
+							"Tipo de teclado","Memoria RAM","Almacenamiento",
+							"Procesador","Fuente de Alimentación", "Gráficos","Marca", 
+							"Cámara", "Fecha de Rebajas","Número de días de Rebajas","Precio de Rebajas"},
+					"ID");
 			if (opt==null) {
 				JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.ERROR_MESSAGE);
 				System.exit(0);
@@ -442,18 +446,18 @@ public class CRUD {
 				JOptionPane.showMessageDialog(null,str,"Información",JOptionPane.INFORMATION_MESSAGE);
 		}else if(P instanceof smartphone){
 			opt= JOptionPane.showInputDialog(
-					   null,
-					   "Seleccione un atributo para ver:",
-					   "Selector de opciones",
-					   JOptionPane.QUESTION_MESSAGE,
-					   null,
-					   new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
-								"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
-								"Número días de recogida","Número de días de devolución", "Pantalla", "Pulgadas de pantalla",
-								"Memoria RAM","Almacenamiento",
-								"Procesador","Sistema Operativo", "Marca", "Fecha de promoción",
-								"Cámara", "Número de días de promoción","Precio de promoción"},
-					   "ID");
+					null,
+					"Seleccione un atributo para ver:",
+					"Selector de opciones",
+					JOptionPane.QUESTION_MESSAGE,
+					null,
+					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
+							"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
+							"Número días de recogida","Número de días de devolución", "Pantalla", "Pulgadas de pantalla",
+							"Memoria RAM","Almacenamiento",
+							"Procesador","Sistema Operativo", "Marca", "Fecha de promoción",
+							"Cámara", "Número de días de promoción","Precio de promoción"},
+					"ID");
 			if (opt==null) {
 				JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.ERROR_MESSAGE);
 				System.exit(0);
@@ -559,17 +563,17 @@ public class CRUD {
 			JOptionPane.showMessageDialog(null,str,"Información",JOptionPane.INFORMATION_MESSAGE);
 		}else if(P instanceof accessory){
 			opt= JOptionPane.showInputDialog(
-					   null,
-					   "Seleccione un atributo para ver:",
-					   "Selector de opciones",
-					   JOptionPane.QUESTION_MESSAGE,
-					   null,
-					   new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
-								"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
-								"Número días de recogida","Número de días de devolución", "Tipo de accesorio", 
-								"Garantía","Protección","Conectividad",
-								"Fecha últimas unidades","Número de días de últimas unidades","Precio de últimas unidades"},
-					   "ID");
+					null,
+					"Seleccione un atributo para ver:",
+					"Selector de opciones",
+					JOptionPane.QUESTION_MESSAGE,
+					null,
+					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
+							"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
+							"Número días de recogida","Número de días de devolución", "Tipo de accesorio", 
+							"Garantía","Protección","Conectividad",
+							"Fecha últimas unidades","Número de días de últimas unidades","Precio de últimas unidades"},
+					"ID");
 			if (opt==null) {
 				JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.ERROR_MESSAGE);
 				System.exit(0);
