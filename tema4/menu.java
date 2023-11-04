@@ -1,5 +1,10 @@
  package tema4;
 import javax.swing.JOptionPane;
+
+import tema4.classes.accessory;
+import tema4.classes.laptop;
+import tema4.classes.smartphone;
+import tema4.functions.CRUD;
 public class menu {
 	public static void menu_main() {
 		int menu_main;
@@ -20,7 +25,7 @@ public class menu {
 				"Read One",
 				"Update",
 				"Delete",
-				"Salir"};
+				"Atrás"};
 		do {
 			menu_main=JOptionPane.showOptionDialog(
 					null,
@@ -83,11 +88,12 @@ public class menu {
 								break;
 							case 5:
 								validator2=false;
-								JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(null, "Volviendo al menú principal.","Información",JOptionPane.INFORMATION_MESSAGE);
 								break;
 							default:
 								validator2=false;
-								JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.ERROR_MESSAGE);
+								System.exit(0);
 								break;
 						}//end switch
 					}while(validator2==true);
@@ -143,11 +149,12 @@ public class menu {
 								break;
 							case 5:
 								validator2=false;
-								JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(null, "Volviendo al menú principal.","Información",JOptionPane.INFORMATION_MESSAGE);
 								break;
 							default:
 								validator2=false;
 								JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
+								System.exit(0);
 								break;
 						}//end switch
 					}while(validator2==true);
@@ -203,11 +210,12 @@ public class menu {
 								break;
 							case 5:
 								validator2=false;
-								JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(null, "Volviendo al menú principal.","Información",JOptionPane.INFORMATION_MESSAGE);
 								break;
 							default:
 								validator2=false;
 								JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
+								System.exit(0);
 								break;
 						}//end switch
 					}while(validator2==true);
@@ -223,6 +231,6 @@ public class menu {
 					JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
 					break;
 			}//end switch
-		}while(validator==true && validator2==true);
+		}while(validator==true);
 	}//end menu_main
 }//end class menu
