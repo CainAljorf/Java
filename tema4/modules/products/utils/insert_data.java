@@ -1,5 +1,7 @@
-package tema4.functions;
+package tema4.modules.products.utils;
 import javax.swing.JOptionPane;
+
+import tema4.utils.validators;
 public class insert_data {
 	public static String insert_ID() {
 		boolean res = false;

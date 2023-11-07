@@ -1,4 +1,6 @@
-package tema4.classes;
+package tema4.modules.products.classes;
+import tema4.classes.date;
+
 public abstract class product {
 	private String ID_product;
 	private float price;
@@ -6,7 +8,7 @@ public abstract class product {
 	private int stock;
 	private String color;
 	private float dimension;
-	private String f_compra;
+	private date f_compra;
 	private String f_entrega;
 	private int n_dias_entrega;
 	private String f_devolucion;
@@ -14,7 +16,7 @@ public abstract class product {
 	private int n_dias_recogida;
 	private int n_dias_devolucion;
 	public product(String ID_product, float price, float peso, int stock, String color, float dimension,
-			String f_compra, String f_entrega, int n_dias_entrega, String f_devolucion, String f_recogida,
+			date f_compra, String f_entrega, int n_dias_entrega, String f_devolucion, String f_recogida,
 			int n_dias_recogida, int n_dias_devolucion) {
 		super();
 		this.ID_product = ID_product;
@@ -67,10 +69,10 @@ public abstract class product {
 	public void setDimension(float dimension) {
 		this.dimension = dimension;
 	}
-	public String getF_compra() {
+	public date getF_compra() {
 		return f_compra;
 	}
-	public void setF_compra(String f_compra) {
+	public void setF_compra(date f_compra) {
 		this.f_compra = f_compra;
 	}
 	public String getF_entrega() {

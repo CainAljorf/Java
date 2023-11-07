@@ -11,19 +11,19 @@ public class date {
 	private int month;
 	private int year;
 	private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-	private Calendar date = Calendar.getInstance();
+	private Calendar dates = Calendar.getInstance();
 	
 	public date(int day,int month,int year)throws ParseException {
 		this.month = month;
 		this.year = year;
 		this.day = day;
-		this.date.setTime(this.format.parse(this.day+"/"+this.month+"/"+this.year));
+		this.dates.setTime(this.format.parse(this.day+"/"+this.month+"/"+this.year));
 	}//end date_format
 	public date(String date)throws ParseException {
-		this.date.setTime(this.format.parse(date));	
-		this.day=this.date.get(Calendar.DATE);
-		this.month=this.date.get(Calendar.MONTH)+1;
-		this.year=this.date.get(Calendar.YEAR);
+		this.dates.setTime(this.format.parse(date));	
+		this.day=this.dates.get(Calendar.DATE);
+		this.month=this.dates.get(Calendar.MONTH)+1;
+		this.year=this.dates.get(Calendar.YEAR);
 	}//end divide_date
     public Date to_date(){
         GregorianCalendar date1 = new GregorianCalendar(year, month-1, day);
@@ -58,17 +58,17 @@ public class date {
 		}//end if
 	}//end check_year
     public boolean check_date(){
-        boolean good = true;
+        boolean correct = true;
         if(!this.check_day()){
-            good = false;
+        	correct = false;
         }//end if
         if(!this.check_month()){
-            good = false;
+        	correct = false;
         }//end if
         if(!this.check_year()){
-            good = false;
+        	correct = false;
         }//end if
-        return good;
+        return correct;
     }//end 
 	public int compare_dates(date date2){
 		int value = 0;

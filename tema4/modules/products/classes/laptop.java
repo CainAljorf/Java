@@ -1,4 +1,7 @@
-package tema4.classes;
+package tema4.modules.products.classes;
+
+import tema4.classes.date;
+
 public class laptop extends product {
 	private String screen;
 	private String screen_inches;
@@ -13,11 +16,12 @@ public class laptop extends product {
 	private String f_sales;
 	private String num_dias_sales;
 	private String price_sales;
-	public laptop(String ID_product, float price, float peso, int stock, String color, float dimension, String f_compra,
+	private float price_final;
+	public laptop(String ID_product, float price, float peso, int stock, String color, float dimension, date f_compra,
 			String f_entrega, int n_dias_entrega, String f_devolucion, String f_recogida, int n_dias_recogida,
 			int n_dias_devolucion, String screen, String screen_inches, String keyboard, String RAM, String storage,
 			String CPU, String power_supply, String graphics, String brand, 
-			String camera, String f_sales,String num_dias_sales,String price_sales) {
+			String camera, String f_sales,String num_dias_sales,String price_sales, float price_final) {
 		super(ID_product, price, peso, stock, color, dimension, f_compra, f_entrega, n_dias_entrega, f_devolucion,
 				f_recogida, n_dias_recogida, n_dias_devolucion);
 		this.screen = screen;
@@ -33,7 +37,14 @@ public class laptop extends product {
 		this.f_sales = f_sales;
 		this.num_dias_sales = num_dias_sales;
 		this.price_sales = price_sales;
+		this.price_final = price_final;
 	}//end constructor
+	public float getPrice_final() {
+		return price_final;
+	}
+	public void setPrice_final(float price_final) {
+		this.price_final = price_final;
+	}
 	public String getScreen() {
 		return screen;
 	}
@@ -141,6 +152,7 @@ public class laptop extends product {
 		str += ("Rebajas: " + this.getF_sales() + ".\n");
 		str += ("Número de días de rebajas: " + this.getNum_dias_sales() + ".\n");
 		str += ("Precio de rebajas: " + this.getPrice_sales() + ".\n");
+		str += ("Precio final " + this.getPrice_final() + ".\n");
 	return str;
 	}//end toString
 }//end class laptop

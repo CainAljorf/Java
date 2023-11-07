@@ -1,28 +1,33 @@
-package tema4.functions;
+package tema4.modules.products.utils;
+
 import javax.swing.JOptionPane;
-import tema4.classes.accessory;
-import tema4.classes.laptop;
-import tema4.classes.product;
-import tema4.classes.smartphone;
+
+import tema4.classes.date;
+import tema4.modules.products.classes.accessory;
+import tema4.modules.products.classes.laptop;
+import tema4.modules.products.classes.product;
+import tema4.modules.products.classes.smartphone;
+import tema4.utils.validators;
 public class CRUD {
-	public static product create(int opt) {// with dummies
+	public static product create(int opt){// with dummies
 		product P = null;
 		String str="";
+		date D=null;
 		switch(opt) {
 			case 0:
-				P=new laptop("ASD-123",5,1,1,"Rojo",5,"5/04/2012","15/04/2012",10,"30/04/2012","20/04/2012",10,15,"IPS","15.1",
-							"QWERTY","16 GB","1 TB","Ryzen 7 5700X","80 Plus Silver","AMD Radeon","HP Omen","Sony XM 1.8f","23/02/1990","15","26/07/1990");
+				P=new laptop("ASD-123",5,1,1,"Rojo",5,D,"15/04/2012",10,"30/04/2012","20/04/2012",10,15,"IPS","15.1",
+							"QWERTY","16 GB","1 TB","Ryzen 7 5700X","80 Plus Silver","AMD Radeon","HP Omen","Sony XM 1.8f","23/02/1990","15","26/07/1990",54.95f);
 				str="Laptop creado correctamente.";
 				break;
 			case 1:
-				P=new smartphone("1",1,1,1,"red",5,"5/04/2012","15/04/2012",10,
-						"30/04/2012","20/04/2012",10,15,"IPS","6.8","6GB","1 TB","Snapdragon","Oppo","Android","Leica 1.5f","23/02/1990","15","26/07/1990");
-				str="Smartphone creado correctamente.";
+//				P=new smartphone("1",1,1,1,"red",5,D= new date("20/02/2022"),"15/04/2012",10,
+//						"30/04/2012","20/04/2012",10,15,"IPS","6.8","6GB","1 TB","Snapdragon","Oppo","Android","Leica 1.5f","23/02/1990","15","26/07/1990");
+//				str="Smartphone creado correctamente.";
 				break;
 			case 2:
-				P=new accessory("1",1,1,1,"red",5,"5/04/2012","15/04/2012",10,
-						"30/04/2012","20/04/2012",10,15,"Cargador","Cableado","5 años","Polvo","23/02/1990","15","26/07/1990");
-				str="Accessorio creado correctamente.";
+//				P=new accessory("1",1,1,1,"red",5,D= new date("20/02/2022"),"15/04/2012",10,
+//						"30/04/2012","20/04/2012",10,15,"Cargador","Cableado","5 años","Polvo","23/02/1990","15","26/07/1990");
+//				str="Accessorio creado correctamente.";
 				break;
 		}//end switch
 		JOptionPane.showMessageDialog(null,str,"Información", JOptionPane.INFORMATION_MESSAGE);
@@ -363,11 +368,11 @@ public class CRUD {
 						str="Dimensión de laptop actualizado correctamente.";
 						break;
 					case "Fecha de compra":
-						((laptop)P).setF_compra(insert_data.insert_date("Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha compra"));
+						((laptop)P).setF_compra(date_product.insert_date_purchase("Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha compra"));
 						str="Fecha de compra de laptop actualizado correctamente.";
 						break;
 					case "Fecha de entrega":
-						((laptop)P).setF_entrega(insert_data.insert_date("Ingresa la fecha de entrega del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha entrega"));
+//						((laptop)P).setF_entrega(insert_data.insert_date("Ingresa la fecha de entrega del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha entrega"));
 						str="Fecha de entrega de laptop actualizado correctamente.";
 						break;
 					case "Número de días de entrega":
@@ -375,11 +380,11 @@ public class CRUD {
 						str="Número de días de entrega laptop actualizado correctamente.";
 						break;
 					case "Fecha de devolución":
-						((laptop)P).setF_devolucion(insert_data.insert_date("Ingresa la fecha de devolución.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha devolución"));
+//						((laptop)P).setF_devolucion(insert_data.insert_date("Ingresa la fecha de devolución.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha devolución"));
 						str="Fecha de devolución de laptop actualizado correctamente.";
 						break;
 					case "Fecha de recogida":
-						((laptop)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
+//						((laptop)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
 						str="Fecha de devolución de laptop actualizado correctamente.";
 						break;
 					case "Número días de recogida":
@@ -427,7 +432,7 @@ public class CRUD {
 						str="Cámara del laptop actualizada correctamente.";
 						break;
 					case "Fecha de Rebajas":
-						((laptop)P).setF_sales(insert_data.insert_date("Ingresa la fecha de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha rebajas"));
+//						((laptop)P).setF_sales(insert_data.insert_date("Ingresa la fecha de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha rebajas"));
 						str="La fecha de rebajas ha sido actualizada correctamente.";
 						break;
 					case "Número de días de Rebajas":
@@ -488,11 +493,11 @@ public class CRUD {
 					str="Dimensión de smartphone actualizado correctamente.";
 					break;
 				case "Fecha de compra":
-					((smartphone)P).setF_compra(insert_data.insert_date("Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha compra"));
+//					((smartphone)P).setF_compra(insert_data.insert_date("Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha compra"));
 					str="Fecha de compra de smartphone actualizado correctamente.";
 					break;
 				case "Fecha de entrega":
-					((smartphone)P).setF_entrega(insert_data.insert_date("Ingresa la fecha de entrega del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha entrega"));
+//					((smartphone)P).setF_entrega(insert_data.insert_date("Ingresa la fecha de entrega del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha entrega"));
 					str="Fecha de entrega de smartphone actualizado correctamente.";
 					break;
 				case "Número de días de entrega":
@@ -500,11 +505,11 @@ public class CRUD {
 					str="Número de días de entrega smartphone actualizado correctamente.";
 					break;
 				case "Fecha de devolución":
-					((smartphone)P).setF_devolucion(insert_data.insert_date("Ingresa la fecha de devolución.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha devolución"));
+//					((smartphone)P).setF_devolucion(insert_data.insert_date("Ingresa la fecha de devolución.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha devolución"));
 					str="Fecha de devolución de smartphone actualizado correctamente.";
 					break;
 				case "Fecha de recogida":
-					((smartphone)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
+//					((smartphone)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
 					str="Fecha de devolución de smartphone actualizado correctamente.";
 					break;
 				case "Número días de recogida":
@@ -552,7 +557,7 @@ public class CRUD {
 					str= "Marca del smartphone actualizado correctamente.";
 					break;
 				case "Fecha de promoción":
-					((smartphone)P).setF_promo(insert_data.insert_date("Ingresa la fecha de promoción.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha promoción"));
+//					((smartphone)P).setF_promo(insert_data.insert_date("Ingresa la fecha de promoción.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha promoción"));
 					str= "Fecha de promoción del smartphone actualizado correctamente.";
 					break;
 				case "Número de días de promoción":
@@ -604,11 +609,11 @@ public class CRUD {
 					str="Dimensión de accessorio actualizado correctamente.";
 					break;
 				case "Fecha de compra":
-					((accessory)P).setF_compra(insert_data.insert_date("Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha compra"));
+//					((accessory)P).setF_compra(insert_data.insert_date("Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha compra"));
 					str="Fecha de compra de accessorio actualizado correctamente.";
 					break;
 				case "Fecha de entrega":
-					((accessory)P).setF_entrega(insert_data.insert_date("Ingresa la fecha de entrega del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha entrega"));
+//					((accessory)P).setF_entrega(insert_data.insert_date("Ingresa la fecha de entrega del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha entrega"));
 					str="Fecha de entrega de accessorio actualizado correctamente.";
 					break;
 				case "Número de días de entrega":
@@ -616,11 +621,11 @@ public class CRUD {
 					str="Número de días de entrega accessorio actualizado correctamente.";
 					break;
 				case "Fecha de devolución":
-					((accessory)P).setF_devolucion(insert_data.insert_date("Ingresa la fecha de devolución.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha devolución"));
+//					((accessory)P).setF_devolucion(insert_data.insert_date("Ingresa la fecha de devolución.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha devolución"));
 					str="Fecha de devolución de accessorio actualizado correctamente.";
 					break;
 				case "Fecha de recogida":
-					((accessory)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
+//					((accessory)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
 					str="Fecha de devolución de accessorio actualizado correctamente.";
 					break;
 				case "Número días de recogida":
@@ -648,7 +653,7 @@ public class CRUD {
 					str= "Conectividad de accesorio actualizado correctamente.";
 					break;
 				case "Fecha últimas unidades":
-					((accessory)P).setF_ultimas_unit(insert_data.insert_date("Ingresa la fecha de las últimas unidades.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha"));
+//					((accessory)P).setF_ultimas_unit(insert_data.insert_date("Ingresa la fecha de las últimas unidades.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha"));
 					str= "Fecha últimas unidades de accesorio actualizado correctamente.";
 					break;
 				case "Número de días de últimas unidades":

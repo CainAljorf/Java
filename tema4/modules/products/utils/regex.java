@@ -1,4 +1,4 @@
-package tema4.functions;
+package tema4.modules.products.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class regex {
