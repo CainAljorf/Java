@@ -15,20 +15,6 @@ public class insert_data {
 		} while (res == false);
 		return ID;
 	}//end insert_ID
-	public static String insert_date(String message, String title) {
-		boolean res = false;
-		String date = "";
-		do {
-			date = validators.validator_string(message,title);
-			res = regex.validateDate(date);
-			if (res == false) {
-				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Error", JOptionPane.ERROR_MESSAGE);
-			} else {
-				res = true;
-			}//end if
-		} while (res == false);
-		return date;
-	}//end insert_date
 	public static String insert_color() {
 		String str="";
 		int type=0;
