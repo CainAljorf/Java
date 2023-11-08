@@ -7,11 +7,11 @@ import java.util.GregorianCalendar;
 
 public class dates {
 	private String date_purchase;
+	private String date_delivery;
 	private int day;
 	private int month;
 	private int year;
 	private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-	private Calendar C = null;
 	
 	public dates(String insert_date) {
 		String[] SplitArray = null;
@@ -20,7 +20,8 @@ public class dates {
 		this.month = Integer.parseInt(SplitArray[1]);
 		this.year = Integer.parseInt(SplitArray[2]);
 		this.date_purchase = insert_date;
-	}//end constructor
+		System.out.println(SplitArray);
+		}//end constructor
 	public Calendar string_to_calendar(String insert_date) {
 		Date D = new Date();
 		Calendar C = new GregorianCalendar();
@@ -33,7 +34,7 @@ public class dates {
 		return C;
 	}//end string_to_calendar
 	public String calendar_to_string() {
-		C = Calendar.getInstance();
+		Calendar C = Calendar.getInstance();
 		return (C.getTime().toString());
 	}//end calendar_to_string
     public boolean check_date() {
@@ -126,14 +127,20 @@ public class dates {
 		}//end if
 		return value;
 	}//end compare_dates
-	public int restarFechaSistema() {
-		int anyo1;
-		int anyo2;
-		C = Calendar.getInstance();
-		Calendar C2 = this.string_to_calendar(date_purchase);
-		anyo1 = C.get(Calendar.YEAR);
-		anyo2 = C2.get(Calendar.YEAR);
-		return (anyo1 - anyo2);
+//	public int compare_dates() {
+//		int day_purchase;
+//		int day_delivery;
+//		Calendar C1 = Calendar.getInstance();
+//		Calendar C2 = this.string_to_calendar(date_purchase);
+//		day_purchase = C1.get(Calendar.DAY_OF_MONTH);
+//		day_delivery = C2.get(Calendar.DAY_OF_MONTH);
+//		return (day_purchase - day_delivery);
+//	}
+	public String getDate_delivery() {
+		return date_delivery;
+	}
+	public void setDate_delivery(String date_delivery) {
+		this.date_delivery = date_delivery;
 	}
 	public int getDay() {
 		return day;
