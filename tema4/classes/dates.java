@@ -5,92 +5,158 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class date {
-
+public class dates {
+	private String date_purchase;
 	private int day;
 	private int month;
 	private int year;
 	private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-	private Calendar dates = Calendar.getInstance();
+	private Calendar C = null;
 	
-	public date(int day,int month,int year)throws ParseException {
-		this.month = month;
-		this.year = year;
-		this.day = day;
-		this.dates.setTime(this.format.parse(this.day+"/"+this.month+"/"+this.year));
-	}//end date_format
-	public date(String date)throws ParseException {
-		this.dates.setTime(this.format.parse(date));	
-		this.day=this.dates.get(Calendar.DATE);
-		this.month=this.dates.get(Calendar.MONTH)+1;
-		this.year=this.dates.get(Calendar.YEAR);
-	}//end divide_date
-    public Date to_date(){
-        GregorianCalendar date1 = new GregorianCalendar(year, month-1, day);
-        this.month++;
-        Date date = date1.getTime();
-        return date; 
-    }//end to_date
-	public boolean check_day(){
-		GregorianCalendar calendar = new GregorianCalendar();
-		int days[]={0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-		if (calendar.isLeapYear(this.year)){
-			days[2]	= 29;
+	public dates(String insert_date) {
+		String[] SplitArray = null;
+		SplitArray = insert_date.split("/");
+		this.day = Integer.parseInt(SplitArray[0]);
+		this.month = Integer.parseInt(SplitArray[1]);
+		this.year = Integer.parseInt(SplitArray[2]);
+		this.date_purchase = insert_date;
+	}//end constructor
+	public Calendar string_to_calendar(String insert_date) {
+		Date D = new Date();
+		Calendar C = new GregorianCalendar();
+		try {
+			D = format.parse(insert_date);
+			C.setTime(D);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return C;
+	}//end string_to_calendar
+	public String calendar_to_string() {
+		C = Calendar.getInstance();
+		return (C.getTime().toString());
+	}//end calendar_to_string
+    public boolean check_date() {
+		boolean correct = false;
+		if ((year > 1930) && (year < 2090)) {
+			if ((month >= 1) && (month <= 12)) {
+				switch (month) {
+					case 1: 
+						if ((day > 0) && (day <= 31))
+							correct = true;
+						break;
+					case 2: 
+						if ((((year % 100 == 0) && (year % 400 == 0)) || ((year % 100 != 0) && (year % 4 == 0)))
+								&& (day > 0) && (day <= 29))
+							correct = true; 
+						else if ((day > 0) && (day <= 28))
+							correct = true;
+						break;
+					case 3: 
+						if ((day > 0) && (day <= 31))
+							correct = true;
+						break;
+					case 4:
+						if ((day > 0) && (day <= 30))
+							correct = true;
+						break;
+					case 5: 
+						if ((day > 0) && (day <= 31))
+							correct = true;
+						break;
+					case 6: 
+						if ((day > 0) && (day <= 30))
+							correct = true;
+						break;
+					case 7: 
+						if ((day > 0) && (day <= 31))
+							correct = true;
+						break;
+					case 8: 
+						if ((day > 0) && (day <= 31))
+							correct = true;
+						break;
+					case 9: 
+						if ((day > 0) && (day <= 30))
+							correct = true;
+						break;
+					case 10: 
+						if ((day > 0) && (day <= 31))
+							correct = true;
+						break;
+					case 11: 
+						if ((day > 0) && (day <= 30))
+							correct = true;
+						break;
+					case 12:
+						if ((day > 0) && (day <= 31))
+							correct = true;
+						break;
+					default:
+						correct = false;
+				}//end switch
+			} else {
+				correct = false;
+			}//end if
+		} else{
+			correct = false;
 		}//end if
-		if((this.day >= 1) && (this.day <= days[this.month])){
-			return true;
-		}else{
-			return false;
-		}//end if
-	}//end check_day
-	public boolean check_month(){
-		if((this.month >= 1) && (this.month <= 12)){
-			return true;
-		}else{
-			return false;
-		}//end if
-	}//end check_month
-	public boolean check_year(){
-		if((this.year >= 1900) && (this.year <= 2100)){
-			return true;
-		}else{
-			return false;
-		}//end if
-	}//end check_year
-    public boolean check_date(){
-        boolean correct = true;
-        if(!this.check_day()){
-        	correct = false;
-        }//end if
-        if(!this.check_month()){
-        	correct = false;
-        }//end if
-        if(!this.check_year()){
-        	correct = false;
-        }//end if
-        return correct;
-    }//end 
-	public int compare_dates(date date2){
+		return correct;
+	}
+	public int compare_dates(dates date_insert){
 		int value = 0;
-		if(this.year == date2.year){
-			if(this.month == date2.month){
-				if(this.day > date2.day){
+		if(this.year == date_insert.year){
+			if(this.month == date_insert.month){
+				if(this.day > date_insert.day){
 					value = 1;
-				}else if(this.day == date2.day){
+				}else if(this.day == date_insert.day){
 					value = 0; 
 				}else{
                     value = -1;  
                 }//end if
-			}else if(this.month < date2.month){
+			}else if(this.month < date_insert.month){
 				value = -1;
             }else{
             	value = 1;
             }//end if
-		}else if(this.year > date2.year){
+		}else if(this.year > date_insert.year){
 			value = 1; 
         }else{
         	value = -1;
 		}//end if
 		return value;
 	}//end compare_dates
+	public int restarFechaSistema() {
+		int anyo1;
+		int anyo2;
+		C = Calendar.getInstance();
+		Calendar C2 = this.string_to_calendar(date_purchase);
+		anyo1 = C.get(Calendar.YEAR);
+		anyo2 = C2.get(Calendar.YEAR);
+		return (anyo1 - anyo2);
+	}
+	public int getDay() {
+		return day;
+	}
+	public void setDay(int day) {
+		this.day = day;
+	}
+	public int getMonth() {
+		return month;
+	}
+	public void setMonth(int month) {
+		this.month = month;
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public String getDate_purchase() {
+		return date_purchase;
+	}
+	public void setDate_purchase(String date_purchase) {
+		this.date_purchase = date_purchase;
+	}
 }//end class date

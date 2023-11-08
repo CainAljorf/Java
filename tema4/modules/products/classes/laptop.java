@@ -1,6 +1,6 @@
 package tema4.modules.products.classes;
 
-import tema4.classes.date;
+import tema4.classes.dates;
 
 public class laptop extends product {
 	private String screen;
@@ -17,7 +17,7 @@ public class laptop extends product {
 	private String num_dias_sales;
 	private String price_sales;
 	private float price_final;
-	public laptop(String ID_product, float price, float peso, int stock, String color, float dimension, date f_compra,
+	public laptop(String ID_product, float price, float peso, int stock, String color, float dimension, dates f_compra,
 			String f_entrega, int n_dias_entrega, String f_devolucion, String f_recogida, int n_dias_recogida,
 			int n_dias_devolucion, String screen, String screen_inches, String keyboard, String RAM, String storage,
 			String CPU, String power_supply, String graphics, String brand, 
