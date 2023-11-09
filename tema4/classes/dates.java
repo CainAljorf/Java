@@ -104,7 +104,7 @@ public class dates {
 		return correct;
 	}
     public int compare_dates(dates date_insert) {
-		Calendar C1 = this.string_to_calendar(date_purchase);
+		Calendar C1 = this.string_to_calendar(this.date_purchase);
 		Calendar C2 = this.string_to_calendar(date_insert.toString());
 		if (C1.before(C2))
 			return 2;
