@@ -9,14 +9,14 @@ public abstract class product {
 	private String color;
 	private float dimension;
 	private dates f_compra;
-	private String f_entrega;
+	private dates f_entrega;
 	private int n_dias_entrega;
 	private String f_devolucion;
 	private String f_recogida;
 	private int n_dias_recogida;
 	private int n_dias_devolucion;
 	public product(String ID_product, float price, float peso, int stock, String color, float dimension,
-			dates f_compra, String f_entrega, int n_dias_entrega, String f_devolucion, String f_recogida,
+			dates f_compra, dates f_entrega, int n_dias_entrega, String f_devolucion, String f_recogida,
 			int n_dias_recogida, int n_dias_devolucion) {
 		super();
 		this.ID_product = ID_product;
@@ -72,14 +72,14 @@ public abstract class product {
 	public dates getF_compra() {
 		return f_compra;
 	}
-	public void setF_compra(dates f_compra) {
-		this.f_compra = f_compra;
+	public dates setF_compra(dates f_compra) {
+		return this.f_compra = f_compra;
 	}
-	public String getF_entrega() {
+	public dates getF_entrega() {
 		return f_entrega;
 	}
-	public void setF_entrega(String f_entrega) {
-		this.f_entrega = f_entrega;
+	public void setF_entrega(dates date_delivery) {
+		this.f_entrega = date_delivery;
 	}
 	public int getN_dias_entrega() {
 		return n_dias_entrega;

@@ -14,17 +14,17 @@ public class CRUD {
 		String str="";
 		switch(opt) {
 			case 0:
-				P=new laptop("ASD-123",5,1,1,"Rojo",5,new dates("20/12/1999"),"15/04/2012",10,"30/04/2012","20/04/2012",10,15,"IPS","15.1",
+				P=new laptop("ASD-123",5,1,1,"Rojo",5,new dates("20/12/1999"),new dates("21/12/1999"),10,"30/04/2012","20/04/2012",10,15,"IPS","15.1",
 							"QWERTY","16 GB","1 TB","Ryzen 7 5700X","80 Plus Silver","AMD Radeon","HP Omen","Sony XM 1.8f","23/02/1990","15","26/07/1990",54.95f);
 				str="Laptop creado correctamente.";
 				break;
 			case 1:
-//				P=new smartphone("1",1,1,1,"red",5,new dates("20/02/2022"),"15/04/2012",10,
+//				P=new smartphone("1",1,1,1,"red",5,new dates("20/02/2022"),new dates("21/12/1999"),10,
 //						"30/04/2012","20/04/2012",10,15,"IPS","6.8","6GB","1 TB","Snapdragon","Oppo","Android","Leica 1.5f","23/02/1990","15","26/07/1990");
 //				str="Smartphone creado correctamente.";
 				break;
 			case 2:
-//				P=new accessory("1",1,1,1,"red",5,new dates("20/02/2022"),"15/04/2012",10,
+//				P=new accessory("1",1,1,1,"red",5,new dates("20/02/2022"),new dates("21/12/1999"),10,
 //						"30/04/2012","20/04/2012",10,15,"Cargador","Cableado","5 años","Polvo","23/02/1990","15","26/07/1990");
 //				str="Accessorio creado correctamente.";
 				break;
@@ -322,6 +322,7 @@ public class CRUD {
 	}//end read
 	public static product update(product P) {
 		String str="";
+		String date_purchase="";
 		Object opt=null;
 		if (P instanceof laptop){
 			opt= JOptionPane.showInputDialog(
@@ -371,7 +372,8 @@ public class CRUD {
 						str="Fecha de compra de laptop actualizado correctamente.";
 						break;
 					case "Fecha de entrega":
-//						((laptop)P).setF_entrega(insert_data.insert_date("Ingresa la fecha de entrega del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha entrega"));
+						((laptop)P).setF_entrega(date_product.insert_date_delivery("Ingresa fecha de entrega,con este formato: Día/Mes/Año XX/XX/XXXX debe ser un día mayor a la fecha de compra.\n"
+								+ "Fecha de compra: "+date_purchase,"Ingresa fecha",((laptop)P).getF_compra()));
 						str="Fecha de entrega de laptop actualizado correctamente.";
 						break;
 					case "Número de días de entrega":

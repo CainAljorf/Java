@@ -1,6 +1,7 @@
 package tema4.modules.products.utils;
 import javax.swing.JOptionPane;
 import tema4.classes.dates;
+import tema4.utils.regex_date;
 import tema4.utils.validators;
 
 public class date_product {
@@ -10,19 +11,15 @@ public class date_product {
 		String date_purchase = "";
 		dates D = null;
 		do {
-			date_purchase = validators.validator_string("Ingresa la de fecha compra.","Ingresa fecha");
-			res = regex.validateDate(date_purchase);
-			if (res == false) {
+			date_purchase = validators.validator_string(message,title);
+			res = regex_date.validateDate(date_purchase);
+			if (!res) {
 				res = false;
 				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
 			} else {
 				D = new dates(date_purchase);
-				if (D.check_date()) {
-					res = true;
-				}else {
-					res = false;
-				}
-				if (res == false) {
+				res = D.check_date();
+				if (!res) {
 					res = false;
 					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
@@ -32,4 +29,44 @@ public class date_product {
 		} while ((res == false));
 		return D;
 	}//end insert_date_purchase
+	public static dates insert_date_delivery(String message,String title,dates P) {
+		dates D = null;
+		String date_delivery = "";
+		String str;
+		boolean res = false;
+		int num;
+		do {
+			date_delivery = validators.validator_string("Ingresa fecha de entrega, debe ser un día mayor a la fecha de compra."
+					+ "\nFecha de compra: "+P.getDate_purchase(),"Ingresa fecha");
+			res = regex_date.validateDate(date_delivery);
+			if (res == false) {
+				res = false;
+				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
+			} else {
+				D = new dates(date_delivery);
+				res = D.check_date();
+				if (res == false) {
+					res = false;
+					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+					res = true;
+				} // end if
+			} // end if
+		} while ((res == false));
+		num=P.compare_dates(D);
+		switch (num) {
+			case 1:
+				str="La fecha de entrega no es correcta,"+ D.getDate_delivery() + " ya que es de anterior respecto a la "
+						+ "fecha de compra.\n"+ P.getDate_purchase();
+			case 2:
+				str="La fecha de entrega es correcta, "+ D.getDate_delivery() + " ya que es 1 día posterior respecto a la "
+						+ "fecha de compra.\n"+ P.getDate_purchase();
+			default:
+				str="La fecha debe ser de 1 día posterior a la fecha de compra.\n"+ P.getDate_purchase();
+		}
+		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
+		System.out.println(num);
+		return D;
+	}//end insert_date_delivery
+	
 }

@@ -15,7 +15,7 @@ public class smartphone extends product {
 	private String n_dias_promo;
 	private String price_promo;
 	public smartphone(String ID_product, float price, float peso, int stock, String color, float dimension,
-			dates f_compra, String f_entrega, int n_dias_entrega, String f_devolucion, String f_recogida,
+			dates f_compra, dates f_entrega, int n_dias_entrega, String f_devolucion, String f_recogida,
 			int n_dias_recogida, int n_dias_devolucion, String screen, String screen_inches, String RAM, String storage,
 			String CPU, String brand, String OS, String camera,String f_promo,String n_dias_promo,String price_promo) {
 		super(ID_product, price, peso, stock, color, dimension, f_compra, f_entrega, n_dias_entrega, f_devolucion,

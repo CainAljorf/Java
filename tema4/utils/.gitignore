@@ -1,3 +1,6 @@
 /menu.class
 /validators.class
 /CRUD.class
+/regex.class
+/regex_date.class
+/regex_product.class

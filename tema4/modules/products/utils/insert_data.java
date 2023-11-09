@@ -8,7 +8,7 @@ public class insert_data {
 		String ID = "";
 		do {
 			ID = validators.validator_string("Ingresa un ID alfanúmerico como el siguiente ejemplo.\nABC-123", "Ingresar ID");
-			res = regex.validateProductID(ID);
+			res = regex_product.validateProductID(ID);
 			if (res == false) {
 				JOptionPane.showMessageDialog(null, "ID ingresado incorrecto. ", "Error", JOptionPane.ERROR_MESSAGE);
 			} else {

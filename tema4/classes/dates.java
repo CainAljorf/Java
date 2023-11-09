@@ -20,7 +20,6 @@ public class dates {
 		this.month = Integer.parseInt(SplitArray[1]);
 		this.year = Integer.parseInt(SplitArray[2]);
 		this.date_purchase = insert_date;
-		System.out.println(SplitArray);
 		}//end constructor
 	public Calendar string_to_calendar(String insert_date) {
 		Date D = new Date();
@@ -104,38 +103,25 @@ public class dates {
 		}//end if
 		return correct;
 	}
-	public int compare_dates(dates date_insert){
-		int value = 0;
-		if(this.year == date_insert.year){
-			if(this.month == date_insert.month){
-				if(this.day > date_insert.day){
-					value = 1;
-				}else if(this.day == date_insert.day){
-					value = 0; 
-				}else{
-                    value = -1;  
-                }//end if
-			}else if(this.month < date_insert.month){
-				value = -1;
-            }else{
-            	value = 1;
-            }//end if
-		}else if(this.year > date_insert.year){
-			value = 1; 
-        }else{
-        	value = -1;
-		}//end if
-		return value;
-	}//end compare_dates
-//	public int compare_dates() {
-//		int day_purchase;
-//		int day_delivery;
-//		Calendar C1 = Calendar.getInstance();
-//		Calendar C2 = this.string_to_calendar(date_purchase);
-//		day_purchase = C1.get(Calendar.DAY_OF_MONTH);
-//		day_delivery = C2.get(Calendar.DAY_OF_MONTH);
-//		return (day_purchase - day_delivery);
-//	}
+    public int compare_dates(dates date_insert) {
+		Calendar C1 = this.string_to_calendar(date_purchase);
+		Calendar C2 = this.string_to_calendar(date_insert.toString());
+		if (C1.before(C2))
+			return 2;
+		else if (C1.after(C2))
+			return 1;
+		else
+			return 3;
+	}
+    public int subtract_dates(dates insert_date) {
+		int day_purchase;
+		int day_delivery;
+		Calendar fecha1 = this.string_to_calendar(date_purchase);
+		Calendar fecha2Calen = insert_date.string_to_calendar(insert_date.toString());
+		day_purchase = fecha1.get(Calendar.YEAR);
+		day_delivery = fecha2Calen.get(Calendar.YEAR);
+		return (day_delivery - day_purchase);
+	}
 	public String getDate_delivery() {
 		return date_delivery;
 	}
