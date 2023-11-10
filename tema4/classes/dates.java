@@ -8,6 +8,7 @@ import java.util.GregorianCalendar;
 public class dates {
 	private String date_purchase;
 	private String date_delivery;
+	private String date_return;
 	private int day;
 	private int month;
 	private int year;
@@ -20,6 +21,9 @@ public class dates {
 		this.month = Integer.parseInt(SplitArray[1]);
 		this.year = Integer.parseInt(SplitArray[2]);
 		this.date_purchase = insert_date;
+		this.date_delivery = insert_date;
+		this.date_return = insert_date;
+		
 
 		System.out.print("constructor "+insert_date+"\n");
 		}//end constructor
@@ -33,6 +37,7 @@ public class dates {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		System.out.println();
 		return C;
 	}//end string_to_calendar
 	public String calendar_to_string() {
@@ -135,13 +140,11 @@ public class dates {
 		year_delivery = C2.get(Calendar.YEAR);
 		month_purchase = C1.get(Calendar.MONTH);
 		month_delivery = C2.get(Calendar.MONTH);
+		
 		if (year_purchase > year_delivery || (year_purchase == year_delivery && month_purchase > month_delivery) || (year_purchase == year_delivery && month_purchase == month_delivery && day_purchase > day_delivery)) {
-	        res = 2; 
-	    } else { 
-	    	res = day_delivery - day_purchase;
-	    	if(month_purchase == 12 && month_delivery == 1) {
-	            System.out.print("Mes de compra 12");
-	    	}
+	        res = 2;
+    	}else {
+    		res = day_delivery - day_purchase;
         }
 		return res;
 	}

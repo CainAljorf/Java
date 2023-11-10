@@ -13,17 +13,14 @@ public class laptop extends product {
 	private String graphics;
 	private String brand;
 	private String camera;
-	private dates date_sales_init;
-	private dates date_sales_end;
-	private float discont;
-	private float price_final;
+	
 	public laptop(String ID_product, float price, float peso, int stock, String color, float dimension, dates f_compra,
-			dates f_entrega, int n_dias_entrega, dates f_devolucion, dates f_recogida, int n_dias_recogida,
-			int n_dias_devolucion, String screen, String screen_inches, String keyboard, String RAM, String storage,
-			String CPU, String power_supply, String graphics, String brand, 
-			String camera, dates date_sales_init,dates date_sales_end,float discont, float price_final) {
-		super(ID_product, price, peso, stock, color, dimension, f_compra, f_entrega, n_dias_entrega, f_devolucion,
-				f_recogida, n_dias_recogida, n_dias_devolucion);
+			dates f_entrega, dates f_devolucion, dates f_recogida, 
+			dates date_sales_init, dates date_sales_end, float discont, float price_final,
+			String screen, String screen_inches, String keyboard, String RAM, String storage, String CPU,
+			String power_supply, String graphics, String brand, String camera) {
+		super(ID_product, price, peso, stock, color, dimension, f_compra, f_entrega, f_devolucion,
+				f_recogida, date_sales_init, date_sales_end, discont, price_final);
 		this.screen = screen;
 		this.screen_inches = screen_inches;
 		this.keyboard = keyboard;
@@ -34,16 +31,6 @@ public class laptop extends product {
 		this.graphics = graphics;
 		this.brand = brand;
 		this.camera = camera;
-		this.date_sales_init = date_sales_init;
-		this.date_sales_end = date_sales_end;
-		this.discont = discont;
-		this.price_final = price_final;
-	}//end constructor
-	public float getPrice_final() {
-		return price_final;
-	}
-	public void setPrice_final(float price_final) {
-		this.price_final = price_final;
 	}
 	public String getScreen() {
 		return screen;
@@ -105,24 +92,6 @@ public class laptop extends product {
 	public void setCamera(String camera) {
 		this.camera = camera;
 	}
-	public dates getDate_sales_init() {
-		return date_sales_init;
-	}
-	public void setDate_sales_init(dates date_sales_init) {
-		this.date_sales_init = date_sales_init;
-	}
-	public dates getDate_sales_end() {
-		return date_sales_end;
-	}
-	public void setDate_sales_end(dates date_sales_end) {
-		this.date_sales_end = date_sales_end;
-	}
-	public float getDiscont() {
-		return discont;
-	}
-	public void setDiscont(float discont) {
-		this.discont = discont;
-	}
 	//end getters and setters
 	@Override
 	public String toString() {
@@ -135,11 +104,12 @@ public class laptop extends product {
 		str += ("Dimensiones: " + super.getDimension() + ".\n");
 		str += ("Fecha de compra: " + super.getF_compra() + ".\n");
 		str += ("Fecha de entrega: " + super.getF_entrega() + ".\n");
-		str += ("Número de días de entrega: " + super.getN_dias_entrega() + ".\n");
 		str += ("Fecha de devolución: " + super.getF_devolucion() + ".\n");
 		str += ("Fecha de recogida: " + super.getF_recogida() + ".\n");
-		str += ("Número de días de recogida: " + super.getN_dias_recogida() + ".\n");
-		str += ("Número de días de devolución: " + super.getN_dias_devolucion() + ".\n");
+		str += ("Descuento: " + super.getDiscont() + ".\n");
+		str += ("Precio final: " + super.getPrice_final() + ".\n");
+		str += ("Fecha de inicio de promoción: " + super.getDate_sales_init() + ".\n");
+		str += ("Fecha de fin: " + super.getDate_sales_end() + ".\n");
 		str += ("Tipo de pantalla: " + this.getScreen() + ".\n");
 		str += ("Pulgadas de pantalla: " + this.getScreen_inches() + ".\n");
 		str += ("Idioma del teclado: " + this.getKeyboard() + ".\n");

@@ -93,4 +93,55 @@ public class date_product {
 		} while ((!res));
 		return D;
 	}//end insert_date_delivery
+	public static dates insert_date_return(dates P) {
+		dates D = null;
+		String date_return= "";
+		String str;
+		boolean res = false;
+		int compare;
+		int sub;
+		do {
+			date_return = validators.validator_string("Ingresa fecha de de devolución.\nTienes 15 días para devolverlo a partir del:"
+					+ "\n "+P.getDate_delivery(),"Ingresa fecha");
+			res = regex_date.validateDate(date_return);
+			if (!res) {
+				res = false;
+				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
+			} else {
+				D = new dates(date_return);
+				if (!res) {
+					res = false;
+					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+					compare=P.compare_dates(D);
+					switch (compare) {
+						case 1:
+							str = "La fecha de entrega no es correcta, "+ date_return + "\nEs anterior respecto a la "
+									+ "fecha de entrega.\n"+ P.getDate_delivery();
+							res = false;
+							break;
+						case 2:
+							sub=P.subtract_days(D);
+							System.out.println(sub);
+							if(sub >= 0 && sub <=15) {
+								res = D.check_date();
+								str = "Fecha de entrega correcta: "+ date_return + ".\nEstá entre 1 y 15 días respecto a la "
+										+ "fecha de entrega.\n"+ P.getDate_delivery();
+							}else {
+								str = "Fecha de entrega incorrecta: "+ date_return + ".\nDebe estar entre 1 y 15 días respecto a la "
+										+ "fecha de entrega.\n"+ P.getDate_delivery()+"\n";
+								res=false;
+							}
+							break;
+						default:
+							str = "La fecha debe estar entre 1 y 15 días respecto a la fecha de entrega.\n"+ P.getDate_delivery();
+							res = false;
+							break;
+					} // end switch
+					JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
+				}//end if
+			}//end if
+		} while ((!res));
+		return D;
+	}
 }

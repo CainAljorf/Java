@@ -10,14 +10,15 @@ public abstract class product {
 	private float dimension;
 	private dates f_compra;
 	private dates f_entrega;
-	private int n_dias_entrega;
 	private dates f_devolucion;
 	private dates f_recogida;
-	private int n_dias_recogida;
-	private int n_dias_devolucion;
+	private dates date_sales_init;
+	private dates date_sales_end;
+	private float discont;
+	private float price_final;
 	public product(String ID_product, float price, float peso, int stock, String color, float dimension,
-			dates f_compra, dates f_entrega, int n_dias_entrega, dates f_devolucion, dates f_recogida,
-			int n_dias_recogida, int n_dias_devolucion) {
+			dates f_compra, dates f_entrega,  dates f_devolucion, dates f_recogida,
+			dates date_sales_init,dates date_sales_end,float discont,float price_final) {
 		super();
 		this.ID_product = ID_product;
 		this.price = price;
@@ -27,11 +28,13 @@ public abstract class product {
 		this.dimension = dimension;
 		this.f_compra = f_compra;
 		this.f_entrega = f_entrega;
-		this.n_dias_entrega = n_dias_entrega;
 		this.f_devolucion = f_devolucion;
 		this.f_recogida = f_recogida;
-		this.n_dias_recogida = n_dias_recogida;
-		this.n_dias_devolucion = n_dias_devolucion;
+		this.date_sales_init =  date_sales_init;
+		this.date_sales_end = date_sales_end;
+		this.discont = discont;
+		this.price_final = price_final;
+		 
 	}//end constructor
 	public String getID_product() {
 		return ID_product;
@@ -81,12 +84,6 @@ public abstract class product {
 	public void setF_entrega(dates date_delivery) {
 		this.f_entrega = date_delivery;
 	}
-	public int getN_dias_entrega() {
-		return n_dias_entrega;
-	}
-	public void setN_dias_entrega(int n_dias_entrega) {
-		this.n_dias_entrega = n_dias_entrega;
-	}
 	public dates getF_devolucion() {
 		return f_devolucion;
 	}
@@ -99,18 +96,31 @@ public abstract class product {
 	public void setF_recogida(dates f_recogida) {
 		this.f_recogida = f_recogida;
 	}
-	public int getN_dias_recogida() {
-		return n_dias_recogida;
+	public dates getDate_sales_init() {
+		return date_sales_init;
 	}
-	public void setN_dias_recogida(int n_dias_recogida) {
-		this.n_dias_recogida = n_dias_recogida;
+	public void setDate_sales_init(dates date_sales_init) {
+		this.date_sales_init = date_sales_init;
 	}
-	public int getN_dias_devolucion() {
-		return n_dias_devolucion;
+	public dates getDate_sales_end() {
+		return date_sales_end;
 	}
-	public void setN_dias_devolucion(int n_dias_devolucion) {
-		this.n_dias_devolucion = n_dias_devolucion;
-	}//end getters and setters
+	public void setDate_sales_end(dates date_sales_end) {
+		this.date_sales_end = date_sales_end;
+	}
+	public float getDiscont() {
+		return discont;
+	}
+	public void setDiscont(float discont) {
+		this.discont = discont;
+	}
+	public float getPrice_final() {
+		return price_final;
+	}
+	public void setPrice_final(float price_final) {
+		this.price_final = price_final;
+	}
+	//end getters and setters
 	@Override
 	public abstract String toString();
 	//toString abstract to inherit
