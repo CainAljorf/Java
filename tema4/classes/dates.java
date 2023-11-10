@@ -20,10 +20,13 @@ public class dates {
 		this.month = Integer.parseInt(SplitArray[1]);
 		this.year = Integer.parseInt(SplitArray[2]);
 		this.date_purchase = insert_date;
+
+		System.out.print("constructor "+insert_date+"\n");
 		}//end constructor
 	public Calendar string_to_calendar(String insert_date) {
 		Date D = new Date();
 		Calendar C = new GregorianCalendar();
+		System.out.print("string to calendar "+insert_date+"\n");
 		try {
 			D = format.parse(insert_date);
 			C.setTime(D);
@@ -106,21 +109,41 @@ public class dates {
     public int compare_dates(dates date_insert) {
 		Calendar C1 = this.string_to_calendar(this.date_purchase);
 		Calendar C2 = this.string_to_calendar(date_insert.toString());
-		if (C1.before(C2))
-			return 2;
-		else if (C1.after(C2))
+		System.out.print("Compare dates "+date_insert+"\n");
+		if (C1.after(C2)) {
 			return 1;
-		else
+		}else if (C1.before(C2)) {
+			return 2;
+    	}else {
 			return 3;
+    	}//end if
 	}
-    public int subtract_dates(dates insert_date) {
+    public int subtract_days(dates insert_date) {
 		int day_purchase;
 		int day_delivery;
-		Calendar fecha1 = this.string_to_calendar(date_purchase);
-		Calendar fecha2Calen = insert_date.string_to_calendar(insert_date.toString());
-		day_purchase = fecha1.get(Calendar.YEAR);
-		day_delivery = fecha2Calen.get(Calendar.YEAR);
-		return (day_delivery - day_purchase);
+		int year_purchase;
+		int year_delivery;
+		int month_purchase;
+		int month_delivery;
+		int res=0;
+		System.out.print("restar dates "+insert_date+"\n");
+		Calendar C1 = this.string_to_calendar(date_purchase);
+		Calendar C2 = insert_date.string_to_calendar(insert_date.toString());
+		day_purchase = C1.get(Calendar.DAY_OF_YEAR);
+		day_delivery = C2.get(Calendar.DAY_OF_YEAR);
+		year_purchase = C1.get(Calendar.YEAR);
+		year_delivery = C2.get(Calendar.YEAR);
+		month_purchase = C1.get(Calendar.MONTH);
+		month_delivery = C2.get(Calendar.MONTH);
+		if (year_purchase > year_delivery || (year_purchase == year_delivery && month_purchase > month_delivery) || (year_purchase == year_delivery && month_purchase == month_delivery && day_purchase > day_delivery)) {
+	        res = 2; 
+	    } else { 
+	    	res = day_delivery - day_purchase;
+	    	if(month_purchase == 12 && month_delivery == 1) {
+	            System.out.print("Mes de compra 12");
+	    	}
+        }
+		return res;
 	}
 	public String getDate_delivery() {
 		return date_delivery;
@@ -148,6 +171,12 @@ public class dates {
 	}
 	public String getDate_purchase() {
 		return date_purchase;
+	}
+	@Override
+	public String toString() {
+		String str = "";
+		str = this.day + "/" + this.month + "/" + this.year;
+		return str;
 	}
 	public void setDate_purchase(String date_purchase) {
 		this.date_purchase = date_purchase;

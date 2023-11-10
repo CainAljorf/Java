@@ -12,7 +12,7 @@ public class date_product {
 		dates D = null;
 		do {
 			date_purchase = validators.validator_string(message,title);
-			res = regex_date.validateDate(date_purchase);
+	    	res = regex_date.validateDate(date_purchase);
 			if (!res) {
 				res = false;
 				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
@@ -29,12 +29,14 @@ public class date_product {
 		} while ((res == false));
 		return D;
 	}//end insert_date_purchase
-	public static dates insert_date_delivery(String message,String title,dates P) {
+	public static dates insert_date_delivery(dates P) {
 		dates D = null;
 		String date_delivery = "";
 		String str;
+		String day="";
 		boolean res = false;
-		int num;
+		int compare;
+		int sub;
 		do {
 			date_delivery = validators.validator_string("Ingresa fecha de entrega, debe ser un día mayor a la fecha de compra."
 					+ "\nFecha de compra: "+P.getDate_purchase(),"Ingresa fecha");
@@ -48,22 +50,44 @@ public class date_product {
 					res = false;
 					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
-					num=P.compare_dates(D);
-					switch (num) {
+					compare=P.compare_dates(D);
+					switch (compare) {
 						case 1:
-							str="La fecha de entrega no es correcta,"+ D.getDate_delivery() + " ya que es de anterior respecto a la "
+							str = "La fecha de entrega no es correcta, "+ date_delivery + "\nEs anterior respecto a la "
 									+ "fecha de compra.\n"+ P.getDate_purchase();
+							res = false;
 							break;
 						case 2:
-							str="La fecha de entrega es correcta, "+ D.getDate_delivery() + " ya que es 1 día posterior respecto a la "
-									+ "fecha de compra.\n"+ P.getDate_purchase();
+							sub=P.subtract_days(D);
+							if(sub==1) {
+								day="día";
+							}else {
+								day="días";
+							}
+							switch(sub) {
+								case 1:
+									res = D.check_date();
+									str = "Fecha de entrega correcta: "+ date_delivery + ".\nDebe ser "+sub+" "+day+" más respecto a la "
+											+ "fecha de compra.\n"+ P.getDate_purchase();
+									break;
+								case 2:
+									str = "Fecha de entrega incorrecta: "+ date_delivery + ".\nEs "+sub+" "+day+" más respecto a la "
+											+ "fecha de compra.\n"+ P.getDate_purchase()+"\nIngresa una fecha 1 día posterior a la fecha de compra.";
+									res=false;
+									break;
+								default:
+									str = "Fecha de entrega incorrecta: "+ date_delivery + ".\nEs "+sub+" "+day+" más respecto a la "
+											+ "fecha de compra.\n"+ P.getDate_purchase()+"\nIngresa una fecha 1 día posterior a la fecha de compra.";
+									res=false;
+									break;
+							}
 							break;
 						default:
-							str="La fecha debe ser de 1 día posterior a la fecha de compra.\n"+ P.getDate_purchase();
+							str = "La fecha debe ser de 1 día posterior a la fecha de compra.\n"+ P.getDate_purchase();
+							res = false;
 							break;
 					} // end switch
 					JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
-					res = D.check_date();
 				}//end if
 			}//end if
 		} while ((!res));

@@ -11,7 +11,7 @@ public class accessory extends product {
 	private String num_dias_unit;
 	private String price_ult_unit;
 	public accessory(String ID_product, float price, float peso, int stock, String color, float dimension,
-			dates f_compra, dates f_entrega, int n_dias_entrega, String f_devolucion, String f_recogida,
+			dates f_compra, dates f_entrega, int n_dias_entrega, dates f_devolucion, dates f_recogida,
 			int n_dias_recogida, int n_dias_devolucion, String type, String connectivity,
 			String warranty, String protection,String f_ultimas_unit, String num_dias_unit, String price_ult_unit) {
 		super(ID_product, price, peso, stock, color, dimension, f_compra, f_entrega, n_dias_entrega, f_devolucion,

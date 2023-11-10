@@ -13,15 +13,15 @@ public class laptop extends product {
 	private String graphics;
 	private String brand;
 	private String camera;
-	private String f_sales;
-	private String num_dias_sales;
-	private String price_sales;
+	private dates date_sales_init;
+	private dates date_sales_end;
+	private float discont;
 	private float price_final;
 	public laptop(String ID_product, float price, float peso, int stock, String color, float dimension, dates f_compra,
-			dates f_entrega, int n_dias_entrega, String f_devolucion, String f_recogida, int n_dias_recogida,
+			dates f_entrega, int n_dias_entrega, dates f_devolucion, dates f_recogida, int n_dias_recogida,
 			int n_dias_devolucion, String screen, String screen_inches, String keyboard, String RAM, String storage,
 			String CPU, String power_supply, String graphics, String brand, 
-			String camera, String f_sales,String num_dias_sales,String price_sales, float price_final) {
+			String camera, dates date_sales_init,dates date_sales_end,float discont, float price_final) {
 		super(ID_product, price, peso, stock, color, dimension, f_compra, f_entrega, n_dias_entrega, f_devolucion,
 				f_recogida, n_dias_recogida, n_dias_devolucion);
 		this.screen = screen;
@@ -34,9 +34,9 @@ public class laptop extends product {
 		this.graphics = graphics;
 		this.brand = brand;
 		this.camera = camera;
-		this.f_sales = f_sales;
-		this.num_dias_sales = num_dias_sales;
-		this.price_sales = price_sales;
+		this.date_sales_init = date_sales_init;
+		this.date_sales_end = date_sales_end;
+		this.discont = discont;
 		this.price_final = price_final;
 	}//end constructor
 	public float getPrice_final() {
@@ -105,24 +105,25 @@ public class laptop extends product {
 	public void setCamera(String camera) {
 		this.camera = camera;
 	}
-	public String getF_sales() {
-		return f_sales;
+	public dates getDate_sales_init() {
+		return date_sales_init;
 	}
-	public void setF_sales(String f_sales) {
-		this.f_sales = f_sales;
+	public void setDate_sales_init(dates date_sales_init) {
+		this.date_sales_init = date_sales_init;
 	}
-	public String getNum_dias_sales() {
-		return num_dias_sales;
+	public dates getDate_sales_end() {
+		return date_sales_end;
 	}
-	public void setNum_dias_sales(String num_dias_sales) {
-		this.num_dias_sales = num_dias_sales;
+	public void setDate_sales_end(dates date_sales_end) {
+		this.date_sales_end = date_sales_end;
 	}
-	public String getPrice_sales() {
-		return price_sales;
+	public float getDiscont() {
+		return discont;
 	}
-	public void setPrice_sales(String price_sales) {
-		this.price_sales = price_sales;
-	}//end getters and setters
+	public void setDiscont(float discont) {
+		this.discont = discont;
+	}
+	//end getters and setters
 	@Override
 	public String toString() {
 		String str="";
@@ -149,9 +150,9 @@ public class laptop extends product {
 		str += ("Procesador: " + this.getCPU()+ ".\n");
 		str += ("Fuente de alimentación: " + this.getPower_supply() + ".\n");
 		str += ("Tipo de gráficos " + this.getGraphics() + ".\n");
-		str += ("Rebajas: " + this.getF_sales() + ".\n");
-		str += ("Número de días de rebajas: " + this.getNum_dias_sales() + ".\n");
-		str += ("Precio de rebajas: " + this.getPrice_sales() + ".\n");
+		str += ("Inicio de rebajas: " + this.getDate_sales_init() + ".\n");
+		str += ("Fin de rebajas: " + this.getDate_sales_end() + ".\n");
+		str += ("Descuento del producto: " + this.getDiscont() + ".\n");
 		str += ("Precio final " + this.getPrice_final() + ".\n");
 	return str;
 	}//end toString
