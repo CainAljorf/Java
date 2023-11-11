@@ -11,6 +11,7 @@ public class dates {
 	private String date_purchase;
 	private String date_delivery;
 	private String date_return;
+	private String date_sales;
 	private int day;
 	private int month;
 	private int year;
@@ -25,6 +26,7 @@ public class dates {
 		this.date_purchase = insert_date;
 		this.date_delivery = insert_date;
 		this.date_return = insert_date;
+		this.date_sales = insert_date;
 
 		System.out.print("constructor "+insert_date+"\n");
 		}//end constructor
@@ -169,6 +171,12 @@ public class dates {
         }
         return cont;
     }
+    public String getDate_sales() {
+		return date_sales;
+	}
+	public void setDate_sales(String date_sales) {
+		this.date_sales = date_sales;
+	}
     private boolean leap_year(int year) {
         return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
     }

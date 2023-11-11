@@ -12,10 +12,9 @@ public class smartphone extends product {
 	private String OS;
 	private String camera;
 
-	public smartphone(String ID_product, float price, float peso, int stock, String color, float dimension,
-			dates f_compra, dates f_entrega, int n_dias_entrega, dates f_devolucion, dates f_recogida,
-			int n_dias_recogida, int n_dias_devolucion, dates date_sales_init, dates date_sales_end, float discont,
-			float price_final, String screen, String screen_inches, String RAM, String storage, String CPU,
+	public smartphone(String ID_product, float price, float peso, int stock, String color, float dimension,dates f_compra, 
+			dates f_entrega, dates f_devolucion, dates f_recogida,dates date_sales_init, dates date_sales_end, 
+			float discont,	float price_final, String screen, String screen_inches, String RAM, String storage, String CPU,
 			String brand, String OS, String camera) {
 		super(ID_product, price, peso, stock, color, dimension, f_compra, f_entrega, f_devolucion,
 				f_recogida, date_sales_init, date_sales_end, discont, price_final);

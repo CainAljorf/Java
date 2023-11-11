@@ -1,7 +1,5 @@
 package tema4.modules.products.utils;
-
 import javax.swing.JOptionPane;
-
 import tema4.classes.dates;
 import tema4.modules.products.classes.accessory;
 import tema4.modules.products.classes.laptop;
@@ -15,26 +13,26 @@ public class CRUD {
 		String str = "";
 		switch (opt) {
 		case 0:
-			P = new laptop("ASD-123", 5, 1, 1, "Rojo", 5, new dates("19/12/1999"), new dates("21/12/1999"),
-					new dates("21/12/1999"), new dates("21/12/1999"),new dates("21/12/1999"), new dates("21/12/1999"),0.7f, 15, "IPS", "15.1", "QWERTY", "16 GB", "1 TB",
-					"Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
+			P = new laptop("ASD-123", 10, 150, 30, "Rojo", 5, new dates("19/12/1999"), new dates("21/12/1999"),
+					new dates("21/12/1999"), new dates("21/12/1999"),new dates("21/12/1999"), new dates("21/12/1999"),0.7f, 7,
+					"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
 			str = "Laptop creado correctamente.";
 			break;
 		case 1:
-//				P=new smartphone("1",1,1,1,"red",5,new dates("20/02/2022"),new dates("21/12/1999"),10,
-//						new dates("21/12/1999"),new dates("21/12/1999"),10,15,"IPS","6.8","6GB","1 TB","Snapdragon","Oppo","Android","Leica 1.5f","23/02/1990","15","26/07/1990");
-//				str="Smartphone creado correctamente.";
+			P=new smartphone("BDA-453",10,30,100,"Negro",5,new dates("20/02/2022"),new dates("21/12/1999"),
+					new dates("21/12/1999"),new dates("21/12/1999"),new dates("21/12/1999"),new dates("21/12/1999"),
+					0.5f,5,"IPS","6.8","6GB","1 TB","Snapdragon","Oppo","Android","Leica 1.5f");
+			str="Smartphone creado correctamente.";
 			break;
 		case 2:
-//				P=new accessory("1",1,1,1,"red",5,new dates("20/02/2022"),new dates("21/12/1999"),10,
-//						new dates("21/12/1999"),new dates("21/12/1999"),10,15,"Cargador","Cableado","5 años","Polvo","23/02/1990","15","26/07/1990");
-//				str="Accessorio creado correctamente.";
+			P=new accessory("GJR-564",100,50,90,"Azul",5,new dates("20/02/2022"),new dates("21/12/1999"),new dates("21/12/1999"),
+					new dates("21/12/1999"),new dates("21/12/1999"),new dates("21/12/1999"),0.3f,70,"Cargador","Cableado","5 años","Polvo");
+			str="Accessorio creado correctamente.";
 			break;
 		}// end switch
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		return P;
 	}// end create
-
 	public static void read_all(product P) {
 		String str = "";
 		if (P instanceof laptop) {
@@ -46,7 +44,6 @@ public class CRUD {
 		} // end if
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 	}// end read
-
 	public static void read(product P) {
 		Object opt = null;
 		String str = "";
@@ -290,7 +287,6 @@ public class CRUD {
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		} // end if
 	}// end read
-
 	public static product update(product P) {
 		String str = "";
 		Object opt = null;
@@ -395,13 +391,13 @@ public class CRUD {
 				((laptop) P).setDate_sales_init(date_product.insert_date_sales_init(
 						"Ingresa la fecha de compra del inicio de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX",
 						"Ingresar inicio de rebajas"));
-				str = "Fecha de inicio de rebajas actualizado a: "+ ((laptop) P).getDate_sales_init();;
+				str = "Fecha de inicio de rebajas actualizado a: "+ ((laptop) P).getDate_sales_init();
 				break;
 			case "Fin de Rebajas":
 				((laptop) P).setDate_sales_end(date_product.insert_date_sales_end(
 						"Ingresa la fecha de compra del fin de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX",
 						"Ingresar final de rebajas"));
-				str = "Fecha de fin de rebajas actualizado a: "+ ((laptop) P).getDate_sales_end();;
+				str = "Fecha de fin de rebajas actualizado a: "+ ((laptop) P).getDate_sales_end();
 				break;
 			case "Descuento":
 				((laptop) P).setDiscont(validators.validator_float("Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
@@ -427,89 +423,97 @@ public class CRUD {
 			switch (opt.toString()) {
 			case "ID":
 				((smartphone) P).setID_product(insert_data.insert_ID());
-				str = "ID de smartphone actualizado correctamente";
+				str = "ID de smartphone actualizado a: " + ((smartphone) P).getID_product();
 				break;
 			case "Precio":
-				((smartphone) P)
-						.setPrice(validators.validator_float("Ingresa el precio del producto.", "Ingresar precio"));
-				str = "Precio de smartphone actualizado correctamente.";
+				((smartphone) P).setPrice(validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));
+				str = "Precio de smartphone actualizado a: " + ((smartphone) P).getPrice();
 				break;
 			case "Peso":
 				((smartphone) P).setPeso(validators.validator_float("Ingresa el peso del producto.", "Ingresar peso"));
-				str = "Peso de smartphone actualizado correctamente.";
+				str = "Peso de smartphone actualizado a: " + ((smartphone) P).getPeso();
 				break;
 			case "Stock":
 				((smartphone) P).setStock(validators.validator_int("Ingresa el stock del producto.", "Ingresar stock"));
-				str = "Stock de smartphone actualizado correctamente.";
+				str = "Stock de smartphone actualizado a: " + ((smartphone) P).getStock();
 				break;
 			case "Color":
 				((smartphone) P).setColor(insert_data.insert_color());
-				str = "Color de smartphone actualizado correctamente.";
+				str = "Color de smartphone actualizado a: " + ((smartphone) P).getColor();
 				break;
 			case "Dimensión":
 				((smartphone) P).setDimension(
 						validators.validator_float("Ingresa la dimension del producto.", "Ingresar dimension"));
-				str = "Dimensión de smartphone actualizado correctamente.";
+				str = "Dimensión de smartphone actualizado a: " + ((smartphone) P).getDimension();
 				break;
 			case "Fecha de compra":
-//					((smartphone)P).setF_compra(insert_data.insert_date("Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha compra"));
-				str = "Fecha de compra de smartphone actualizado correctamente.";
+				((smartphone) P).setF_compra(date_product.insert_date_purchase(
+						"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
+						"Ingresar fecha compra"));
+				str = "Fecha de compra de smartphone actualizado a: " + ((smartphone) P).getF_compra();
 				break;
 			case "Fecha de entrega":
-//					((smartphone)P).setF_entrega(insert_data.insert_date("Ingresa la fecha de entrega del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha entrega"));
-				str = "Fecha de entrega de smartphone actualizado correctamente.";
+				((smartphone) P).setF_entrega(date_product.insert_date_delivery(((smartphone) P).getF_compra()));
+				str = "Fecha de entrega de smartphone actualizado a: " + ((smartphone) P).getF_entrega();
 				break;
 			case "Fecha de devolución":
-//					((smartphone)P).setF_devolucion(insert_data.insert_date("Ingresa la fecha de devolución.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha devolución"));
-				str = "Fecha de devolución de smartphone actualizado correctamente.";
+				((smartphone)P).setF_devolucion(date_product.insert_date_return(((smartphone) P).getF_entrega()));
+				str = "Fecha de devolución de smartphone actualizado a: " + ((smartphone) P).getF_devolucion();
 				break;
 			case "Fecha de recogida":
-//					((smartphone)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
-				str = "Fecha de devolución de smartphone actualizado correctamente.";
+				((smartphone)P).setF_recogida(date_product.insert_collection_date(((smartphone) P).getF_devolucion()));
+				str = "Fecha de devolución de smartphone actualizado a: " + ((smartphone) P).getF_recogida();
 				break;
 			case "Pantalla": 
 				((smartphone) P).setScreen(insert_data.insert_screen());
-				str = "Tipo de pantalla de smartphone actualizado correctamente.";
+				str = "Tipo de pantalla de smartphone actualizado a: " + ((smartphone) P).getScreen();
 				break;
 			case "Pulgadas de pantalla":
 				((smartphone) P).setScreen_inches(insert_data.insert_screen_inches("smartphone"));
-				str = "Pulgadas de la pantalla de smartphone actualizado correctamente.";
+				str = "Pulgadas de la pantalla de smartphone actualizado a: " + ((smartphone) P).getScreen_inches();
 				break;
 			case "Memoria RAM":
 				((smartphone) P).setRAM(insert_data.insert_RAM("smartphone"));
-				str = "Memoria RAM de smartphone actualizada correctamente.";
+				str = "Memoria RAM de smartphone actualizada a: " + ((smartphone) P).getRAM();
 				break;
 			case "Almacenamiento":
 				((smartphone) P).setStorage(insert_data.insert_storage());
-				str = "Almacenamiento del smartphone actualizado correctamente.";
+				str = "Almacenamiento del smartphone actualizado a: " + ((smartphone) P).getStorage();
 				break;
 			case "Procesador":
 				((smartphone) P).setCPU(insert_data.insert_CPU("smartphone"));
-				str = "Procesador del smartphone actualizado.";
+				str = "Procesador del smartphone actualizado a: " + ((smartphone) P).getCPU();
 				break;
 			case "Sistema Operativo":
 				((smartphone) P).setOS(insert_data.insert_OS());
-				str = "Sistema Operativo del smartphone actualizado correctamente.";
+				str = "Sistema Operativo del smartphone actualizado a: " + ((smartphone) P).getOS();
 				break;
 			case "Cámara":
 				((smartphone) P).setCamera(insert_data.insert_camera());
-				str = "Cámara del smartphone actualizado correctamente.";
+				str = "Cámara del smartphone actualizado a: " + ((smartphone) P).getCamera();
 				break;
 			case "Marca":
 				((smartphone) P).setBrand(insert_data.insert_brand("smartphone"));
-				str = "Marca del smartphone actualizado correctamente.";
+				str = "Marca del smartphone actualizado a: " + ((smartphone) P).getBrand();
 				break;
 			case "Inicio de Rebajas":
-				str = "Inicio de rebajas: " + ((laptop) P).getDate_sales_init();
+				((smartphone) P).setDate_sales_init(date_product.insert_date_sales_init(
+						"Ingresa la fecha de compra del inicio de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX",
+						"Ingresar inicio de rebajas"));
+				str = "Fecha de inicio de rebajas actualizado a: "+ ((smartphone) P).getDate_sales_init();
 				break;
 			case "Fin de Rebajas":
-				str = "Número de días de Rebajas: " + ((laptop) P).getDate_sales_end();
+				((smartphone) P).setDate_sales_end(date_product.insert_date_sales_end(
+						"Ingresa la fecha de compra del fin de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX",
+						"Ingresar final de rebajas"));
+				str = "Fecha de fin de rebajas actualizado a: "+ ((smartphone) P).getDate_sales_end();
 				break;
 			case "Descuento":
-				str = "Descuento de Rebajas: " + ((laptop) P).getDiscont();
+				((smartphone) P).setDiscont(validators.validator_float("Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
+				str = "Descuento de Rebajas actualizado a: " + ((smartphone) P).getDiscont();
 				break;
 			case "Precio final":
-				str = "Precio final: " + ((laptop) P).getPrice_final();
+				str = "El precio final del producto es "+((smartphone) P).getPrice_final()+" y se calcula automáticamente, por lo que no se puede modificar.";
 				break;
 			}// end switch
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -527,66 +531,81 @@ public class CRUD {
 			switch (opt.toString()) {
 			case "ID":
 				((accessory) P).setID_product(insert_data.insert_ID());
-				str = "ID de accessorio actualizado correctamente";
+				str = "ID de accesorio actualizado a: " + ((accessory) P).getID_product();
 				break;
 			case "Precio":
-				((accessory) P)
-						.setPrice(validators.validator_float("Ingresa el precio del producto.", "Ingresar precio"));
-				str = "Precio de accessorio actualizado correctamente.";
+				((accessory) P).setPrice(validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));
+				str = "Precio de accessorio actualizado a: " + ((accessory) P).getPrice();
 				break;
 			case "Peso":
 				((accessory) P).setPeso(validators.validator_float("Ingresa el peso del producto.", "Ingresar peso"));
-				str = "Peso de accessorio actualizado correctamente.";
+				str = "Peso de accessorio actualizado a: " + ((accessory) P).getPeso();
 				break;
 			case "Stock":
 				((accessory) P).setStock(validators.validator_int("Ingresa el stock del producto.", "Ingresar stock"));
-				str = "Stock de accessorio actualizado correctamente.";
+				str = "Stock de accessorio actualizado a: " + ((accessory) P).getStock();
 				break;
 			case "Color":
 				((accessory) P).setColor(insert_data.insert_color());
-				str = "Color de accessorio actualizado correctamente.";
+				str = "Color de accessorio actualizado a: " + ((accessory) P).getColor();
 				break;
 			case "Dimensión":
 				((accessory) P).setDimension(
 						validators.validator_float("Ingresa la dimension del producto.", "Ingresar dimension"));
-				str = "Dimensión de accessorio actualizado correctamente.";
+				str = "Dimensión de accesorio actualizado a: " + ((accessory) P).getDimension();
 				break;
 			case "Fecha de compra":
-//					((accessory)P).setF_compra(insert_data.insert_date("Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha compra"));
-				str = "Fecha de compra de accessorio actualizado correctamente.";
+				((accessory) P).setF_compra(date_product.insert_date_purchase(
+						"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
+						"Ingresar fecha compra"));
+				str = "Fecha de compra de accesorio actualizado a: " + ((accessory) P).getF_compra();
 				break;
 			case "Fecha de entrega":
-//					((accessory)P).setF_entrega(insert_data.insert_date("Ingresa la fecha de entrega del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha entrega"));
-				str = "Fecha de entrega de accessorio actualizado correctamente.";
+				((accessory) P).setF_entrega(date_product.insert_date_delivery(((accessory) P).getF_compra()));
+				str = "Fecha de entrega de accesorio actualizado a: " + ((accessory) P).getF_entrega();
 				break;
 			case "Fecha de devolución":
-//					((accessory)P).setF_devolucion(insert_data.insert_date("Ingresa la fecha de devolución.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha devolución"));
-				str = "Fecha de devolución de accessorio actualizado correctamente.";
+				((accessory)P).setF_devolucion(date_product.insert_date_return(((accessory) P).getF_entrega()));
+				str = "Fecha de devolución de accesorio actualizado a: " + ((accessory) P).getF_devolucion();
 				break;
 			case "Fecha de recogida":
-//					((accessory)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
-				str = "Fecha de devolución de accessorio actualizado correctamente.";
+				((accessory)P).setF_recogida(date_product.insert_collection_date(((accessory) P).getF_devolucion()));
+				str = "Fecha de devolución de accesorio actualizado a: " + ((accessory) P).getF_recogida();
 				break;
 			case "Tipo de accesorio":
 				((accessory) P).setType(insert_data.insert_type_accessory());
-				str = "Tipo de accesorio actualizado correctamente.";
+				str = "Tipo de accesorio actualizado a: "+ ((accessory) P).getType();
 				break;
 			case "Garantía":
-				((accessory) P)
-						.setWarranty(validators.validator_string("Ingresa la garantía producto.", "Ingresar Garantía"));
-				str = "Garantía del producto actualizada correctamente.";
+				((accessory) P).setWarranty(validators.validator_string("Ingresa la garantía producto.", "Ingresar Garantía"));
+				str = "Garantía del producto actualizada a: "+ ((accessory) P).getWarranty();
 				break;
 			case "Protección":
 				((accessory) P).setProtection(insert_data.insert_protection());
-				str = "Tipo de protección del producto actualizado correctamente.";
+				str = "Tipo de protección del producto actualizado a: "+ ((accessory) P).getProtection();
 				break;
 			case "Conectividad":
 				((accessory) P).setConnectivity(insert_data.insert_connectivity());
-				str = "Conectividad de accesorio actualizado correctamente.";
+				str = "Conectividad de accesorio actualizado a: "+ ((accessory) P).getConnectivity();
 				break;
-			case "Fecha últimas unidades":
-//					((accessory)P).setF_ultimas_unit(insert_data.insert_date("Ingresa la fecha de las últimas unidades.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha"));
-				str = "Fecha últimas unidades de accesorio actualizado correctamente.";
+			case "Inicio de Rebajas":
+				((accessory) P).setDate_sales_init(date_product.insert_date_sales_init(
+						"Ingresa la fecha de compra del inicio de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX",
+						"Ingresar inicio de rebajas"));
+				str = "Fecha de inicio de rebajas actualizado a: "+ ((accessory) P).getDate_sales_init();
+				break;
+			case "Fin de Rebajas":
+				((accessory) P).setDate_sales_end(date_product.insert_date_sales_end(
+						"Ingresa la fecha de compra del fin de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX",
+						"Ingresar final de rebajas"));
+				str = "Fecha de fin de rebajas actualizado a: "+ ((accessory) P).getDate_sales_end();
+				break;
+			case "Descuento":
+				((accessory) P).setDiscont(validators.validator_float("Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
+				str = "Descuento de Rebajas actualizado a: " + ((accessory) P).getDiscont();
+				break;
+			case "Precio final":
+				str = "El precio final del producto es "+((accessory) P).getPrice_final()+" y se calcula automáticamente, por lo que no se puede modificar.";
 				break;
 			}// end switch
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
