@@ -121,14 +121,14 @@ public class CRUD {
 			case "Cámara":
 				str = "Cámara: " + ((laptop) P).getCamera();
 				break;
+			case "Marca":
+				str = "Marca: " + ((laptop) P).getBrand();
+				break;
 			case "Inicio de Rebajas":
 				str = "Inicio de rebajas: " + ((laptop) P).getDate_sales_init();
 				break;
 			case "Fin de Rebajas":
-				str = "Número de días de Rebajas: " + ((laptop) P).getDate_sales_end();
-				break;
-			case "Marca":
-				str = "Marca: " + ((laptop) P).getBrand();
+				str = "Fin de Rebajas: " + ((laptop) P).getDate_sales_end();
 				break;
 			case "Descuento":
 				str = "Descuento de Rebajas: " + ((laptop) P).getDiscont();
@@ -144,8 +144,7 @@ public class CRUD {
 					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
 							"Fecha de entrega", "Fecha de devolución", "Fecha de recogida","Pantalla",
 							"Pulgadas de pantalla", "Memoria RAM", "Almacenamiento", "Procesador", "Sistema Operativo",
-							"Marca","Cámara",
-						},
+							"Marca","Cámara","Inicio de Rebajas","Fin de Rebajas", "Descuento", "Precio final"},
 					"ID");
 			if (opt == null) {
 				JOptionPane.showMessageDialog(null, "Cerrando el programa.", "Cerrar", JOptionPane.ERROR_MESSAGE);
@@ -206,16 +205,27 @@ public class CRUD {
 			case "Marca":
 				str = "Marca: " + ((smartphone) P).getBrand();
 				break;
+			case "Inicio de Rebajas":
+				str = "Inicio de rebajas: " + ((smartphone) P).getDate_sales_init();
+				break;
+			case "Fin de Rebajas":
+				str = "Fin de Rebajas: " + ((smartphone) P).getDate_sales_end();
+				break;
+			case "Descuento":
+				str = "Descuento de Rebajas: " + ((smartphone) P).getDiscont();
+				break;
+			case "Precio final":
+				str = "Precio final: " + ((smartphone) P).getPrice_final();
+				break;
 			}// end_switch
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		} else if (P instanceof accessory) {
 			opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para ver:", "Selector de opciones",
 					JOptionPane.QUESTION_MESSAGE, null,
 					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
-							"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
-							"Número días de recogida", "Número de días de devolución", "Tipo de accesorio", "Garantía",
-							"Protección", "Conectividad", "Fecha últimas unidades",
-							"Número de días de últimas unidades", "Precio de últimas unidades" },
+							"Fecha de entrega", "Fecha de devolución", "Fecha de recogida","Tipo de accesorio",
+							"Garantía", "Inicio de Rebajas","Fin de Rebajas", "Descuento", "Precio final",
+							"Protección", "Conectividad"},
 					"ID");
 			if (opt == null) {
 				JOptionPane.showMessageDialog(null, "Cerrando el programa.", "Cerrar", JOptionPane.ERROR_MESSAGE);
@@ -265,19 +275,16 @@ public class CRUD {
 				str = "Conectividad: " + ((accessory) P).getConnectivity();
 				break;
 			case "Inicio de Rebajas":
-				str = "Inicio de rebajas: " + ((laptop) P).getDate_sales_init();
+				str = "Inicio de rebajas: " + ((accessory) P).getDate_sales_init();
 				break;
 			case "Fin de Rebajas":
-				str = "Número de días de Rebajas: " + ((laptop) P).getDate_sales_end();
-				break;
-			case "Marca":
-				str = "Marca: " + ((laptop) P).getBrand();
+				str = "Número de días de Rebajas: " + ((accessory) P).getDate_sales_end();
 				break;
 			case "Descuento":
-				str = "Descuento de Rebajas: " + ((laptop) P).getDiscont();
+				str = "Descuento de Rebajas: " + ((accessory) P).getDiscont();
 				break;
 			case "Precio final":
-				str = "Precio final: " + ((laptop) P).getPrice_final();
+				str = "Precio final: " + ((accessory) P).getPrice_final();
 				break;
 			}// end_switch
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -291,11 +298,10 @@ public class CRUD {
 			opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para ver:", "Selector de opciones",
 					JOptionPane.QUESTION_MESSAGE, null,
 					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
-							"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
-							"Número días de recogida", "Número de días de devolución", "Pantalla",
+							"Fecha de entrega", "Fecha de devolución", "Fecha de recogida", "Pantalla",
 							"Pulgadas de pantalla", "Tipo de teclado", "Memoria RAM", "Almacenamiento", "Procesador",
-							"Fuente de Alimentación", "Gráficos", "Marca", "Cámara", "Fecha de Rebajas",
-							"Número de días de Rebajas", "Precio de Rebajas" },
+							"Fuente de Alimentación", "Gráficos", "Marca", "Cámara", "Inicio de Rebajas",
+							"Fin de Rebajas", "Descuento", "Precio final"},
 					"ID");
 			if (opt == null) {
 				JOptionPane.showMessageDialog(null, "Cerrando el programa.", "Cerrar", JOptionPane.ERROR_MESSAGE);
@@ -304,110 +310,115 @@ public class CRUD {
 			switch (opt.toString()) {
 			case "ID":
 				((laptop) P).setID_product(insert_data.insert_ID());
-				str = "ID de laptop actualizado correctamente.";
+				str = "ID de laptop actualizado a: " + ((laptop) P).getID_product();
 				break;
 			case "Precio":
-				((laptop) P).setPrice(validators.validator_float("Ingresa el precio del producto.", "Ingresar precio"));
-				str = "Precio de laptop actualizado correctamente.";
+				((laptop) P).setPrice(validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));
+				str = "Precio de laptop actualizado a: " + ((laptop) P).getPrice();
 				break;
 			case "Peso":
 				((laptop) P).setPeso(validators.validator_float("Ingresa el peso del producto.", "Ingresar peso"));
-				str = "Peso de laptop actualizado correctamente.";
+				str = "Peso de laptop actualizado a: " + ((laptop) P).getPeso();
 				break;
 			case "Stock":
 				((laptop) P).setStock(validators.validator_int("Ingresa el stock del producto.", "Ingresar stock"));
-				str = "Stock de laptop actualizado correctamente.";
+				str = "Stock de laptop actualizado a: " + ((laptop) P).getStock();
 				break;
 			case "Color":
 				((laptop) P).setColor(insert_data.insert_color());
-				str = "Color de laptop actualizado correctamente.";
+				str = "Color de laptop actualizado a: " + ((laptop) P).getColor();
 				break;
 			case "Dimensión":
 				((laptop) P).setDimension(
 						validators.validator_float("Ingresa la dimension del producto.", "Ingresar dimension"));
-				str = "Dimensión de laptop actualizado correctamente.";
+				str = "Dimensión de laptop actualizado a: " + ((laptop) P).getDimension();
 				break;
 			case "Fecha de compra":
 				((laptop) P).setF_compra(date_product.insert_date_purchase(
 						"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
 						"Ingresar fecha compra"));
-				str = "Fecha de compra de laptop actualizado correctamente.";
+				str = "Fecha de compra de laptop actualizado a: " + ((laptop) P).getF_compra();
 				break;
 			case "Fecha de entrega":
 				((laptop) P).setF_entrega(date_product.insert_date_delivery(((laptop) P).getF_compra()));
-				str = "Fecha de entrega de laptop actualizado correctamente.";
+				str = "Fecha de entrega de laptop actualizado a: " + ((laptop) P).getF_entrega();
 				break;
 			case "Fecha de devolución":
-						((laptop)P).setF_devolucion(date_product.insert_date_return(((laptop) P).getF_entrega()));
-				str = "Fecha de devolución de laptop actualizado correctamente.";
+				((laptop)P).setF_devolucion(date_product.insert_date_return(((laptop) P).getF_entrega()));
+				str = "Fecha de devolución de laptop actualizado a: " + ((laptop) P).getF_devolucion();
 				break;
 			case "Fecha de recogida":
-//						((laptop)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
-				str = "Fecha de devolución de laptop actualizado correctamente.";
+				((laptop)P).setF_recogida(date_product.insert_collection_date(((laptop) P).getF_devolucion()));
+				str = "Fecha de devolución de laptop actualizado a: " + ((laptop) P).getF_recogida();
 				break;
 			case "Pantalla":
 				((laptop) P).setScreen(insert_data.insert_screen());
-				str = "Pantalla de laptop actualizado correctamente.";
+				str = "Pantalla de laptop actualizado a: " + ((laptop) P).getScreen();
 				break;
 			case "Pulgadas de pantalla":
 				((laptop) P).setScreen_inches(insert_data.insert_screen_inches("laptop"));
-				str = "Pulgadas de pantalla del laptop actualizadas correctamente.";
+				str = "Pulgadas de pantalla del laptop actualizadas a: " + ((laptop) P).getScreen_inches();
 				break;
 			case "Tipo de teclado":
 				((laptop) P).setKeyboard(insert_data.insert_keyboard());
-				str = "Tipo de teclado de laptop actualizado correctamente.";
+				str = "Tipo de teclado de laptop actualizado a: " + ((laptop) P).getKeyboard();
 				break;
 			case "Memoria RAM":
 				((laptop) P).setRAM(insert_data.insert_RAM("laptop"));
-				str = "Memoria RAM de laptop actualizada correctamente.";
+				str = "Memoria RAM de laptop actualizada a: " + ((laptop) P).getRAM();
 				break;
 			case "Almacenamiento":
 				((laptop) P).setStorage(insert_data.insert_storage());
-				str = "Almacenamiento de laptop actualizado correctamente.";
+				str = "Almacenamiento de laptop actualizado a: " + ((laptop) P).getStorage();
 				break;
 			case "Procesador":
 				((laptop) P).setCPU(insert_data.insert_CPU("laptop"));
-				str = "Procesador del laptop actualizado correctamente.";
+				str = "Procesador del laptop actualizado a: " + ((laptop) P).getCPU();
 				break;
 			case "Fuente de Alimentación":
 				((laptop) P).setPower_supply(insert_data.insert_power_supply());
-				str = "Fuente de alimentación de laptop actualizada correctamente.";
+				str = "Fuente de alimentación de laptop actualizada a: " + ((laptop) P).getPower_supply();
 				break;
 			case "Gráficos":
 				((laptop) P).setGraphics(insert_data.insert_graphics());
-				str = "Gráficos del laptop actualizados correctamente.";
+				str = "Gráficos del laptop actualizados a: " + ((laptop) P).getGraphics();
 				break;
 			case "Cámara":
 				((laptop) P).setCamera(insert_data.insert_camera());
-				str = "Cámara del laptop actualizada correctamente.";
+				str = "Cámara del laptop actualizada a: " + ((laptop) P).getCamera();
 				break;
 			case "Marca":
 				((laptop) P).setBrand(insert_data.insert_brand("laptop"));
-				str = "Marca del laptop actualizada correctamente.";
+				str = "Marca del laptop actualizada a: " + ((laptop) P).getBrand();
 				break;
 			case "Inicio de Rebajas":
-				str = "Inicio de rebajas: " + ((laptop) P).getDate_sales_init();
+				((laptop) P).setDate_sales_init(date_product.insert_date_sales_init(
+						"Ingresa la fecha de compra del inicio de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX",
+						"Ingresar inicio de rebajas"));
+				str = "Fecha de inicio de rebajas actualizado a: "+ ((laptop) P).getDate_sales_init();;
 				break;
 			case "Fin de Rebajas":
-				str = "Número de días de Rebajas: " + ((laptop) P).getDate_sales_end();
+				((laptop) P).setDate_sales_end(date_product.insert_date_sales_end(
+						"Ingresa la fecha de compra del fin de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX",
+						"Ingresar final de rebajas"));
+				str = "Fecha de fin de rebajas actualizado a: "+ ((laptop) P).getDate_sales_end();;
 				break;
 			case "Descuento":
-				str = "Descuento de Rebajas: " + ((laptop) P).getDiscont();
+				((laptop) P).setDiscont(validators.validator_float("Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
+				str = "Descuento de Rebajas actualizado a: " + ((laptop) P).getDiscont();
 				break;
 			case "Precio final":
-				str = "Precio final: " + ((laptop) P).getPrice_final();
+				str = "El precio final del producto es "+((laptop) P).getPrice_final()+" y se calcula automáticamente, por lo que no se puede modificar.";
 				break;
 			}// end switch
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		} else if (P instanceof smartphone) {
 			opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para ver:", "Selector de opciones",
 					JOptionPane.QUESTION_MESSAGE, null,
-					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
-							"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
-							"Número días de recogida", "Número de días de devolución", "Pantalla",
-							"Pulgadas de pantalla", "Memoria RAM", "Almacenamiento", "Procesador", "Sistema Operativo",
-							"Marca", "Fecha de promoción", "Cámara", "Número de días de promoción",
-							"Precio de promoción" },
+					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra","Fecha de entrega",
+							"Fecha de devolución", "Fecha de recogida","Pantalla","Pulgadas de pantalla", "Memoria RAM", 
+							"Almacenamiento", "Procesador", "Sistema Operativo","Marca","Cámara","Inicio de Rebajas",
+							"Fin de Rebajas", "Descuento", "Precio final"},
 					"ID");
 			if (opt == null) {
 				JOptionPane.showMessageDialog(null, "Cerrando el programa.", "Cerrar", JOptionPane.ERROR_MESSAGE);
@@ -456,7 +467,7 @@ public class CRUD {
 //					((smartphone)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
 				str = "Fecha de devolución de smartphone actualizado correctamente.";
 				break;
-			case "Pantalla": lo
+			case "Pantalla": 
 				((smartphone) P).setScreen(insert_data.insert_screen());
 				str = "Tipo de pantalla de smartphone actualizado correctamente.";
 				break;
@@ -505,11 +516,9 @@ public class CRUD {
 		} else if (P instanceof accessory) {
 			opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para ver:", "Selector de opciones",
 					JOptionPane.QUESTION_MESSAGE, null,
-					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
-							"Fecha de entrega", "Número de días de entrega", "Fecha de devolución", "Fecha de recogida",
-							"Número días de recogida", "Número de días de devolución", "Tipo de accesorio", "Garantía",
-							"Protección", "Conectividad", "Fecha últimas unidades",
-							"Número de días de últimas unidades", "Precio de últimas unidades" },
+					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra","Fecha de entrega",
+							"Fecha de devolución", "Fecha de recogida","Tipo de accesorio",	"Garantía", "Inicio de Rebajas",
+							"Fin de Rebajas", "Descuento", "Precio final","Protección", "Conectividad" },
 					"ID");
 			if (opt == null) {
 				JOptionPane.showMessageDialog(null, "Cerrando el programa.", "Cerrar", JOptionPane.ERROR_MESSAGE);
@@ -550,11 +559,6 @@ public class CRUD {
 //					((accessory)P).setF_entrega(insert_data.insert_date("Ingresa la fecha de entrega del producto.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha entrega"));
 				str = "Fecha de entrega de accessorio actualizado correctamente.";
 				break;
-			case "Número de días de entrega":
-				((accessory) P).setN_dias_entrega(validators
-						.validator_int("Ingresa el número de días que tardará en entregarse.", "Ingresar los días"));
-				str = "Número de días de entrega accessorio actualizado correctamente.";
-				break;
 			case "Fecha de devolución":
 //					((accessory)P).setF_devolucion(insert_data.insert_date("Ingresa la fecha de devolución.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha devolución"));
 				str = "Fecha de devolución de accessorio actualizado correctamente.";
@@ -562,16 +566,6 @@ public class CRUD {
 			case "Fecha de recogida":
 //					((accessory)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
 				str = "Fecha de devolución de accessorio actualizado correctamente.";
-				break;
-			case "Número días de recogida":
-				((accessory) P).setN_dias_recogida(validators
-						.validator_int("Ingresa el número de días que tardará en recogerse.", "Ingresar recogida"));
-				str = "Número de días de recogida de accessorio actualizado correctamente.";
-				break;
-			case "Número de días de devolución":
-				((accessory) P).setN_dias_devolucion(validators.validator_int(
-						"Ingresa el número de días que quedan para la devolución.", "Ingresar devolución"));
-				str = "Número de días de devolución accessorio actualizado correctamente.";
 				break;
 			case "Tipo de accesorio":
 				((accessory) P).setType(insert_data.insert_type_accessory());
@@ -593,16 +587,6 @@ public class CRUD {
 			case "Fecha últimas unidades":
 //					((accessory)P).setF_ultimas_unit(insert_data.insert_date("Ingresa la fecha de las últimas unidades.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha"));
 				str = "Fecha últimas unidades de accesorio actualizado correctamente.";
-				break;
-			case "Número de días de últimas unidades":
-				((accessory) P).setNum_dias_unit(validators.validator_string(
-						"Ingresa el número de días de últimas unidades de accesorio.", "Ingresar Días"));
-				str = "Número de días de últimas unidades de accesorio actualizado correctamente.";
-				break;
-			case "Precio de últimas unidades":
-				((accessory) P).setPrice_ult_unit(validators.validator_string(
-						"Ingresa el precio de las últimas unidades del producto.", "Ingresar Precio"));
-				str = "Precio de últimas unidades de accesorio actualizado correctamente.";
 				break;
 			}// end switch
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);

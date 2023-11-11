@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import javax.swing.JOptionPane;
+
 public class dates {
 	private String date_purchase;
 	private String date_delivery;
@@ -23,7 +25,6 @@ public class dates {
 		this.date_purchase = insert_date;
 		this.date_delivery = insert_date;
 		this.date_return = insert_date;
-		
 
 		System.out.print("constructor "+insert_date+"\n");
 		}//end constructor
@@ -124,30 +125,53 @@ public class dates {
     	}//end if
 	}
     public int subtract_days(dates insert_date) {
-		int day_purchase;
-		int day_delivery;
-		int year_purchase;
-		int year_delivery;
-		int month_purchase;
-		int month_delivery;
+		int day_1;
+		int day_2;
+		int year_1;
+		int year_2;
+		int month_1;
+		int month_2;
+		int year_difference;
+		int leap_years;
+		int non_leap_years;
 		int res=0;
 		System.out.print("restar dates "+insert_date+"\n");
 		Calendar C1 = this.string_to_calendar(date_purchase);
 		Calendar C2 = insert_date.string_to_calendar(insert_date.toString());
-		day_purchase = C1.get(Calendar.DAY_OF_YEAR);
-		day_delivery = C2.get(Calendar.DAY_OF_YEAR);
-		year_purchase = C1.get(Calendar.YEAR);
-		year_delivery = C2.get(Calendar.YEAR);
-		month_purchase = C1.get(Calendar.MONTH);
-		month_delivery = C2.get(Calendar.MONTH);
+		day_1 = C1.get(Calendar.DAY_OF_YEAR);
+		day_2 = C2.get(Calendar.DAY_OF_YEAR);
+		year_1 = C1.get(Calendar.YEAR);
+		year_2 = C2.get(Calendar.YEAR);
+		month_1 = C1.get(Calendar.MONTH);
+		month_2 = C2.get(Calendar.MONTH);
 		
-		if (year_purchase > year_delivery || (year_purchase == year_delivery && month_purchase > month_delivery) || (year_purchase == year_delivery && month_purchase == month_delivery && day_purchase > day_delivery)) {
-	        res = 2;
-    	}else {
-    		res = day_delivery - day_purchase;
-        }
-		return res;
+		if (year_1 > year_2 || (year_1 == year_2 && month_1 > month_2) || (year_1 == year_2 && month_1 == month_2 && day_1 > day_2)) {
+	        JOptionPane.showConfirmDialog(null, "La fecha no es correcta, sigue las siguientes instrucciones:","Error",JOptionPane.ERROR_MESSAGE);
+    	} else {
+    			if(month_2==1 && month_1==12) {
+    				year_difference = year_2 - year_1;
+		    	    leap_years = count_leap_years(year_1, year_2);
+		    	    res += leap_years;
+		    	    non_leap_years = year_difference - leap_years;
+		    	    res += non_leap_years * 365;
+    			}else {
+    	    	    res = day_2 - day_1;
+    			}
+    	}
+    	return res;
 	}
+    private int count_leap_years(int year_init, int year_end) {
+        int cont = 0;
+        for (int year = year_init; year <= year_end; year++) {
+            if (leap_year(year)) {
+                cont++;
+            }
+        }
+        return cont;
+    }
+    private boolean leap_year(int year) {
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    }
 	public String getDate_delivery() {
 		return date_delivery;
 	}
@@ -174,6 +198,12 @@ public class dates {
 	}
 	public String getDate_purchase() {
 		return date_purchase;
+	}
+	public String getDate_return() {
+		return date_return;
+	}
+	public void setDate_return(String date_return) {
+		this.date_return = date_return;
 	}
 	@Override
 	public String toString() {

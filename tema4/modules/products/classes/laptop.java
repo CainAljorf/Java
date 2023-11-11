@@ -120,10 +120,6 @@ public class laptop extends product {
 		str += ("Procesador: " + this.getCPU()+ ".\n");
 		str += ("Fuente de alimentación: " + this.getPower_supply() + ".\n");
 		str += ("Tipo de gráficos " + this.getGraphics() + ".\n");
-		str += ("Inicio de rebajas: " + this.getDate_sales_init() + ".\n");
-		str += ("Fin de rebajas: " + this.getDate_sales_end() + ".\n");
-		str += ("Descuento del producto: " + this.getDiscont() + ".\n");
-		str += ("Precio final " + this.getPrice_final() + ".\n");
 	return str;
 	}//end toString
 }//end class laptop

@@ -29,11 +29,58 @@ public class date_product {
 		} while ((res == false));
 		return D;
 	}//end insert_date_purchase
+	public static dates insert_date_sales_init(String message, String title){
+		//funcion para crear fecha compra
+		boolean res = false;
+		String date_sales_init = "";
+		dates D = null;
+		do {
+			date_sales_init = validators.validator_string(message,title);
+	    	res = regex_date.validateDate(date_sales_init);
+			if (!res) {
+				res = false;
+				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
+			} else {
+				D = new dates(date_sales_init);
+				res = D.check_date();
+				if (!res) {
+					res = false;
+					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+					res = true;
+				} // end if
+			} // end if
+		} while ((res == false));
+		return D;
+	}//end insert_date_sales_init
+	public static dates insert_date_sales_end(String message, String title){
+		//funcion para crear fecha compra
+		boolean res = false;
+		String date_sales_end = "";
+		dates D = null;
+		do {
+			date_sales_end = validators.validator_string(message,title);
+	    	res = regex_date.validateDate(date_sales_end);
+			if (!res) {
+				res = false;
+				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
+			} else {
+				D = new dates(date_sales_end);
+				res = D.check_date();
+				if (!res) {
+					res = false;
+					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+					res = true;
+				} // end if
+			} // end if
+		} while ((res == false));
+		return D;
+	}//end insert_date_sales_init
 	public static dates insert_date_delivery(dates P) {
 		dates D = null;
 		String date_delivery = "";
 		String str;
-		String day="";
 		boolean res = false;
 		int compare;
 		int sub;
@@ -59,27 +106,14 @@ public class date_product {
 							break;
 						case 2:
 							sub=P.subtract_days(D);
-							if(sub==1) {
-								day="día";
+							if(sub == 1) {
+								res = D.check_date();
+								str = "Fecha de entrega correcta: "+ date_delivery + ".\nEs "+sub+" día más respecto a la "
+										+ "fecha de compra.\n"+ P.getDate_purchase();
 							}else {
-								day="días";
-							}
-							switch(sub) {
-								case 1:
-									res = D.check_date();
-									str = "Fecha de entrega correcta: "+ date_delivery + ".\nDebe ser "+sub+" "+day+" más respecto a la "
-											+ "fecha de compra.\n"+ P.getDate_purchase();
-									break;
-								case 2:
-									str = "Fecha de entrega incorrecta: "+ date_delivery + ".\nEs "+sub+" "+day+" más respecto a la "
-											+ "fecha de compra.\n"+ P.getDate_purchase()+"\nIngresa una fecha 1 día posterior a la fecha de compra.";
-									res=false;
-									break;
-								default:
-									str = "Fecha de entrega incorrecta: "+ date_delivery + ".\nEs "+sub+" "+day+" más respecto a la "
-											+ "fecha de compra.\n"+ P.getDate_purchase()+"\nIngresa una fecha 1 día posterior a la fecha de compra.";
-									res=false;
-									break;
+								str = "Fecha de entrega incorrecta: "+ date_delivery + ".\nEs "+sub+" días más respecto a la "
+										+ "fecha de compra.\n"+ P.getDate_purchase()+"\nIngresa una fecha 1 día posterior a la fecha de compra.";
+								res=false;
 							}
 							break;
 						default:
@@ -101,7 +135,7 @@ public class date_product {
 		int compare;
 		int sub;
 		do {
-			date_return = validators.validator_string("Ingresa fecha de de devolución.\nTienes 15 días para devolverlo a partir del:"
+			date_return = validators.validator_string("Ingresa fecha de devolución.\nTienes 15 días para devolverlo a partir del:"
 					+ "\n "+P.getDate_delivery(),"Ingresa fecha");
 			res = regex_date.validateDate(date_return);
 			if (!res) {
@@ -135,6 +169,57 @@ public class date_product {
 							break;
 						default:
 							str = "La fecha debe estar entre 1 y 15 días respecto a la fecha de entrega.\n"+ P.getDate_delivery();
+							res = false;
+							break;
+					} // end switch
+					JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
+				}//end if
+			}//end if
+		} while ((!res));
+		return D;
+	}
+	public static dates insert_collection_date(dates P) {
+		dates D = null;
+		String collection_date= "";
+		String str;
+		boolean res = false;
+		int compare;
+		int sub;
+		do {
+			collection_date = validators.validator_string("Ingresa fecha de recogida.\nTiene que ser 2 días posterior a la fecha de devolución:"
+					+ "\n "+P.getDate_return(),"Ingresa fecha");
+			res = regex_date.validateDate(collection_date);
+			if (!res) {
+				res = false;
+				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
+			} else {
+				D = new dates(collection_date);
+				if (!res) {
+					res = false;
+					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+					compare=P.compare_dates(D);
+					switch (compare) {
+						case 1:
+							str = "La fecha de recogida no es correcta, "+ collection_date + "\nEs anterior respecto a la "
+									+ "fecha de devolución.\n"+ P.getDate_return();
+							res = false;
+							break;
+						case 2:
+							sub=P.subtract_days(D);
+							System.out.println(sub);
+							if(sub == 2) {
+								res = D.check_date();
+								str = "Fecha de recogida correcta: "+ collection_date + ".\nEs 2 días posterior respecto a la "
+										+ "fecha de devolución.\n"+ P.getDate_return();
+							}else {
+								str = "Fecha de recogida incorrecta: "+ collection_date + ".\nDebe ser 2 días posterior respecto a la "
+										+ "fecha de devolución.\n"+ P.getDate_return()+"\n";
+								res=false;
+							}
+							break;
+						default:
+							str = "La fecha debe ser 2 días posterior respecto a la fecha de devolución.\n"+ P.getDate_return();
 							res = false;
 							break;
 					} // end switch
