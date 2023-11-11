@@ -144,8 +144,8 @@ public class CRUD {
 					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
 							"Fecha de entrega", "Fecha de devolución", "Fecha de recogida","Pantalla",
 							"Pulgadas de pantalla", "Memoria RAM", "Almacenamiento", "Procesador", "Sistema Operativo",
-							"Marca", "Fecha de promoción", "Cámara", "Número de días de promoción",
-							"Precio de promoción" },
+							"Marca","Cámara",
+						},
 					"ID");
 			if (opt == null) {
 				JOptionPane.showMessageDialog(null, "Cerrando el programa.", "Cerrar", JOptionPane.ERROR_MESSAGE);
@@ -154,7 +154,7 @@ public class CRUD {
 			switch (opt.toString()) {
 			case "ID":
 				str = "ID: " + ((smartphone) P).getID_product();
-				break;
+				break; 
 			case "Precio":
 				str = "Precio: " + ((smartphone) P).getPrice();
 				break;
@@ -456,7 +456,7 @@ public class CRUD {
 //					((smartphone)P).setF_recogida(insert_data.insert_date("Ingresa la fecha de recogida.\nFormato: Día/Mes/Año XX/XX/XXXX", "Ingresar fecha recogida"));
 				str = "Fecha de devolución de smartphone actualizado correctamente.";
 				break;
-			case "Pantalla":
+			case "Pantalla": lo
 				((smartphone) P).setScreen(insert_data.insert_screen());
 				str = "Tipo de pantalla de smartphone actualizado correctamente.";
 				break;
