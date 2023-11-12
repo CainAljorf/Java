@@ -15,6 +15,8 @@ public class dates {
 	private int day;
 	private int month;
 	private int year;
+	private boolean is_promo;
+	private boolean is_return;
 	private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public dates(String insert_date) {
@@ -117,7 +119,6 @@ public class dates {
     public int compare_dates(dates date_insert) {
 		Calendar C1 = this.string_to_calendar(this.date_purchase);
 		Calendar C2 = this.string_to_calendar(date_insert.toString());
-		System.out.print("Compare dates "+date_insert+"\n");
 		if (C1.after(C2)) {
 			return 1;
 		}else if (C1.before(C2)) {
@@ -125,6 +126,17 @@ public class dates {
     	}else {
 			return 3;
     	}//end if
+	}
+    public boolean compare_dates_sales(dates date_sales_end) {
+		Calendar C1 = this.string_to_calendar(this.date_purchase);
+		Calendar C2 = this.string_to_calendar(this.date_sales);
+		Calendar C3 = this.string_to_calendar(date_sales_end.toString());
+		boolean res = false;
+		if (C1.after(C2) && C1.before(C3)) {
+			this.is_promo = true;
+	        res = true;;
+    	}//end if
+		return res;
 	}
     public int subtract_days(dates insert_date) {
 		int day_1;
@@ -137,7 +149,6 @@ public class dates {
 		int leap_years;
 		int non_leap_years;
 		int res=0;
-		System.out.print("restar dates "+insert_date+"\n");
 		Calendar C1 = this.string_to_calendar(date_purchase);
 		Calendar C2 = insert_date.string_to_calendar(insert_date.toString());
 		day_1 = C1.get(Calendar.DAY_OF_YEAR);
@@ -150,7 +161,7 @@ public class dates {
 		if (year_1 > year_2 || (year_1 == year_2 && month_1 > month_2) || (year_1 == year_2 && month_1 == month_2 && day_1 > day_2)) {
 	        JOptionPane.showConfirmDialog(null, "La fecha no es correcta, sigue las siguientes instrucciones:","Error",JOptionPane.ERROR_MESSAGE);
     	} else {
-    			if(month_2==1 && month_1==12) {
+    			if(month_2==0 && month_1==11) {
     				year_difference = year_2 - year_1;
 		    	    leap_years = count_leap_years(year_1, year_2);
 		    	    res += leap_years;
@@ -171,7 +182,25 @@ public class dates {
         }
         return cont;
     }
-    public String getDate_sales() {
+    public boolean isIs_promo() {
+		return is_promo;
+	}
+	public void setIs_promo(boolean is_promo) {
+		this.is_promo = is_promo;
+	}
+	public boolean isIs_return() {
+		return is_return;
+	}
+	public void setIs_return(boolean is_return) {
+		this.is_return = is_return;
+	}
+	public SimpleDateFormat getFormat() {
+		return format;
+	}
+	public void setFormat(SimpleDateFormat format) {
+		this.format = format;
+	}
+	public String getDate_sales() {
 		return date_sales;
 	}
 	public void setDate_sales(String date_sales) {

@@ -1,6 +1,7 @@
 package tema4.modules.products.classes;
 
 import tema4.classes.dates;
+import tema4.modules.products.utils.date_product;
 
 public class laptop extends product {
 	private String screen;
@@ -31,6 +32,8 @@ public class laptop extends product {
 		this.graphics = graphics;
 		this.brand = brand;
 		this.camera = camera;
+//		Asignar el precio total comprobando is_promo/is_return.
+//		this.getPrice_final(date_product.compare_dates_sales);
 	}
 	public String getScreen() {
 		return screen;
