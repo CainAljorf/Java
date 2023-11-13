@@ -3,6 +3,7 @@ import javax.swing.JOptionPane;
 import tema4.classes.dates;
 import tema4.utils.regex_date;
 import tema4.utils.validators;
+import java.text.SimpleDateFormat;
 
 public class date_product {
 	public static dates insert_date_purchase(String message, String title){
@@ -95,6 +96,11 @@ public class date_product {
 		} while ((!res));
 		return D;
 	}//end insert_date_sales_end
+	public static String date_to_string(dates insert_date) {
+	        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+	        String date_string = format.format(insert_date);
+	    return date_string;
+	}
 	public static dates insert_date_delivery(dates P) {
 		dates D = null;
 		String date_delivery = "";
@@ -149,6 +155,7 @@ public class date_product {
 		dates D = null;
 		String date_return= "";
 		String str;
+		String cancel = "00/00/0000";
 		boolean res = false;
 		int compare;
 		int sub;
@@ -160,37 +167,43 @@ public class date_product {
 				res = false;
 				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
 			} else {
-				D = new dates(date_return);
-				if (!res) {
-					res = false;
-					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
-				} else {
-					compare=P.compare_dates(D);
-					switch (compare) {
-						case 1:
-							str = "La fecha de entrega no es correcta, "+ date_return + "\nEs anterior respecto a la "
-									+ "fecha de entrega.\n"+ P.getDate_delivery();
-							res = false;
-							break;
-						case 2:
-							sub=P.subtract_days(D);
-							System.out.println(sub);
-							if(sub >= 0 && sub <=15) {
-								res = D.check_date();
-								str = "Fecha de entrega correcta: "+ date_return + ".\nEstá entre 1 y 15 días respecto a la "
+				if(date_return.equals(cancel)){
+					JOptionPane.showMessageDialog(null, "La devolución ha sido cancelada. ", "Devolución", JOptionPane.INFORMATION_MESSAGE);
+					res = true;
+					D = new dates(cancel);
+				}else {
+					D = new dates(date_return);
+					if (!res) {
+						res = false;
+						JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
+					} else {
+						compare=P.compare_dates(D);
+						switch (compare) {
+							case 1:
+								str = "La fecha de entrega no es correcta, "+ date_return + "\nEs anterior respecto a la "
 										+ "fecha de entrega.\n"+ P.getDate_delivery();
-							}else {
-								str = "Fecha de entrega incorrecta: "+ date_return + ".\nDebe estar entre 1 y 15 días respecto a la "
-										+ "fecha de entrega.\n"+ P.getDate_delivery()+"\n";
-								res=false;
-							}
-							break;
-						default:
-							str = "La fecha debe estar entre 1 y 15 días respecto a la fecha de entrega.\n"+ P.getDate_delivery();
-							res = false;
-							break;
-					} // end switch
-					JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
+								res = false;
+								break;
+							case 2:
+								sub=P.subtract_days(D);
+								System.out.println(sub);
+								if(sub >= 0 && sub <=15) {
+									res = D.check_date();
+									str = "Fecha de entrega correcta: "+ date_return + ".\nEstá entre 1 y 15 días respecto a la "
+											+ "fecha de entrega.\n"+ P.getDate_delivery();
+								}else {
+									str = "Fecha de entrega incorrecta: "+ date_return + ".\nDebe estar entre 1 y 15 días respecto a la "
+											+ "fecha de entrega.\n"+ P.getDate_delivery()+"\n";
+									res=false;
+								}
+								break;
+							default:
+								str = "La fecha debe estar entre 1 y 15 días respecto a la fecha de entrega.\n"+ P.getDate_delivery();
+								res = false;
+								break;
+						} // end switch
+						JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
+					}
 				}//end if
 			}//end if
 		} while ((!res));
@@ -203,48 +216,53 @@ public class date_product {
 		boolean res = false;
 		int compare;
 		int sub;
-		do {
-			collection_date = validators.validator_string("Ingresa fecha de recogida.\nTiene que ser 2 días posterior a la fecha de devolución:"
-					+ "\n "+P.getDate_return(),"Ingresa fecha");
-			res = regex_date.validateDate(collection_date);
-			if (!res) {
-				res = false;
-				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
-			} else {
-				D = new dates(collection_date);
+		String cancel = "00/00/0000";
+		if( P.getDate_return().equals(cancel)) {
+			JOptionPane.showMessageDialog(null, "Fecha de recogida no disponible, no se ha iniciado ninguna devolución.", "Información", JOptionPane.INFORMATION_MESSAGE);
+		}else {
+			do {
+				collection_date = validators.validator_string("Ingresa fecha de recogida.\nTiene que ser 2 días posterior a la fecha de devolución:"
+						+ "\n "+P.getDate_return(),"Ingresa fecha");
+				res = regex_date.validateDate(collection_date);
 				if (!res) {
 					res = false;
-					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
 				} else {
-					compare=P.compare_dates(D);
-					switch (compare) {
-						case 1:
-							str = "La fecha de recogida no es correcta, "+ collection_date + "\nEs anterior respecto a la "
-									+ "fecha de devolución.\n"+ P.getDate_return();
-							res = false;
-							break;
-						case 2:
-							sub=P.subtract_days(D);
-							System.out.println(sub);
-							if(sub == 2) {
-								res = D.check_date();
-								str = "Fecha de recogida correcta: "+ collection_date + ".\nEs 2 días posterior respecto a la "
+					D = new dates(collection_date);
+					if (!res) {
+						res = false;
+						JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
+					} else {
+						compare=P.compare_dates(D);
+						switch (compare) {
+							case 1:
+								str = "La fecha de recogida no es correcta, "+ collection_date + "\nEs anterior respecto a la "
 										+ "fecha de devolución.\n"+ P.getDate_return();
-							}else {
-								str = "Fecha de recogida incorrecta: "+ collection_date + ".\nDebe ser 2 días posterior respecto a la "
-										+ "fecha de devolución.\n"+ P.getDate_return()+"\n";
-								res=false;
-							}
-							break;
-						default:
-							str = "La fecha debe ser 2 días posterior respecto a la fecha de devolución.\n"+ P.getDate_return();
-							res = false;
-							break;
-					} // end switch
-					JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
+								res = false;
+								break;
+							case 2:
+								sub=P.subtract_days(D);
+								System.out.println(sub);
+								if(sub == 2) {
+									res = D.check_date();
+									str = "Fecha de recogida correcta: "+ collection_date + ".\nEs 2 días posterior respecto a la "
+											+ "fecha de devolución.\n"+ P.getDate_return();
+								}else {
+									str = "Fecha de recogida incorrecta: "+ collection_date + ".\nDebe ser 2 días posterior respecto a la "
+											+ "fecha de devolución.\n"+ P.getDate_return()+"\n";
+									res=false;
+								}
+								break;
+							default:
+								str = "La fecha debe ser 2 días posterior respecto a la fecha de devolución.\n"+ P.getDate_return();
+								res = false;
+								break;
+						} // end switch
+						JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
+					}//end if
 				}//end if
-			}//end if
-		} while ((!res));
+			} while ((!res));
+		}
 		return D;
 	}
 }

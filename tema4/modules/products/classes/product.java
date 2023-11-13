@@ -1,5 +1,6 @@
 package tema4.modules.products.classes;
 import tema4.classes.dates;
+import tema4.modules.products.utils.date_product;
 
 public abstract class product {
 	private String ID_product;
@@ -16,6 +17,9 @@ public abstract class product {
 	private dates date_sales_end;
 	private float discont;
 	private float price_final;
+	private boolean is_promo;
+	private boolean is_return;
+	
 	public product(String ID_product, float price, float peso, int stock, String color, float dimension,
 			dates f_compra, dates f_entrega,  dates f_devolucion, dates f_recogida,
 			dates date_sales_init,dates date_sales_end,float discont,float price_final) {
@@ -33,7 +37,6 @@ public abstract class product {
 		this.date_sales_init =  date_sales_init;
 		this.date_sales_end = date_sales_end;
 		this.discont = discont;
-		this.price_final = price_final;
 		 
 	}//end constructor
 	public String getID_product() {
@@ -88,6 +91,11 @@ public abstract class product {
 		return f_devolucion;
 	}
 	public void setF_devolucion(dates f_devolucion) {
+		if(f_devolucion == new dates("00/00/0000")) {
+			this.is_return = true;
+		}else {
+			this.is_return = false;
+		}
 		this.f_devolucion = f_devolucion;
 	}
 	public dates getF_recogida() {
@@ -117,8 +125,32 @@ public abstract class product {
 	public float getPrice_final() {
 		return price_final;
 	}
-	public void setPrice_final(float price_final) {
-		this.price_final = price_final;
+    public boolean isIs_promo() {
+		return is_promo;
+	}
+    public boolean isIs_return() {
+		return is_return;
+	}
+	public void setIs_return(boolean is_return) {
+		this.is_return = is_return;
+	}	
+	public void setIs_promo() {
+		String str_date_end = date_product.date_to_string(this.date_sales_end);
+		dates D = new dates(str_date_end);
+		this.is_promo=D.compare_dates_sales(D);
+	}
+	public void setPrice_final(float price) {
+		if(this.is_promo) {
+			if(this.is_return) {
+				price = price * this.discont;
+				price *= -1;
+			}else {
+				price = price * this.discont;
+			}
+		}else {
+			price = this.price;	
+		}
+		this.price_final = price;
 	}
 	//end getters and setters
 	@Override

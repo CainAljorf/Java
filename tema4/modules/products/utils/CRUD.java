@@ -8,88 +8,39 @@ import tema4.modules.products.classes.smartphone;
 import tema4.utils.validators;
 
 public class CRUD {
-	public static product create(product P) {// with dummies
+	public static product create(int opt) {// with dummies
 		String str = "";
-		if(P instanceof laptop) {
-			((laptop) P)..P.(validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));
-			float price= ((laptop) P).getPrice();
-			((laptop) P).setF_compra(date_product.insert_date_purchase(
-									"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
-									"Ingresar fecha compra"));
-			dates date_purchase = ((laptop) P).getF_compra();
-			((laptop)P).setF_entrega(date_product.insert_date_delivery(((laptop) P).getF_compra()));
-			dates date_delivery = ((laptop) P).getF_entrega();
-			((laptop)P).setF_devolucion(date_product.insert_date_return(((laptop) P).getF_entrega()));
-			dates date_return = ((laptop) P).getF_devolucion();
-			((laptop)P).setF_recogida(date_product.insert_collection_date(((laptop) P).getF_devolucion()));
-			dates collection_date = ((laptop)P).getF_recogida();
-			((laptop)P).setDate_sales_init(date_product.insert_date_sales_init(
-									"Ingresa la fecha de compra del inicio de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX",
-									"Ingresar inicio de rebajas"));
-			dates date_sales_init = ((laptop)P).getDate_sales_init();
-			((laptop)P).setDate_sales_end(date_product.insert_date_sales_end(((laptop) P).getDate_sales_init()));
-			dates date_sales_end = ((laptop)P).getDate_sales_end();
-			((laptop)P).setDiscont(validators.validator_float("Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
-			float discont = ((laptop)P).getDiscont();
-			P = new laptop("ASD-123", price, 150, 30, "Rojo", 5, date_purchase, date_delivery,
-					date_return, collection_date,date_sales_init, date_sales_end,discont, 7,
-					"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
-			str = "Laptop creado correctamente.";
-		}
-		if(P instanceof smartphone) {
-			((smartphone) P).setPrice(validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));
-			float price= ((smartphone) P).getPrice();
-			((smartphone) P).setF_compra(date_product.insert_date_purchase(
-									"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
-									"Ingresar fecha compra"));
-			dates date_p..P. = ((smartphone) P).getF_compra();
-			((smartphone)P).setF_entrega(date_product.insert_date_delivery(((smartphone) P).getF_compra()));
-			dates date_delivery = ((smartphone) P).getF_entrega();
-			((smartphone)P).setF_devolucion(date_product.insert_date_return(((smartphone) P).getF_entrega()));
-			dates date_return = ((smartphone) P).getF_devolucion();
-			((smartphone)P).setF_recogida(date_product.insert_collection_date(((smartphone) P).getF_devolucion()));
-			dates collection_date = ((smartphone)P).getF_recogida();
-			((smartphone)P).setDate_sales_init(date_product.insert_date_sales_init(
-									"Ingresa la fecha de compra del inicio de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX",
-									"Ingresar inicio de rebajas"));
-			dates date_sales_init = ((smartphone)P).getDate_sales_init();
-			((smartphone)P).setDate_sales_end(date_product.insert_date_sales_end(((smartphone) P).getDate_sales_init()));
-			dates date_sales_end = ((smartphone)P).getDate_sales_end();
-			((smartphone)P).setDiscont(validators.validator_float("Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
-			float discont = ((smartphone)P).getDiscont();
-			P=new smartphone("BDA-453",price,30,100,"Negro",5,date_purchase,date_delivery,
-					date_return,collection_date,date_sales_init,date_sales_end,discont,5,"IPS","6.8","6GB","1 TB","Snapdragon",
-					"Oppo","Android","Leica 1.5f");
-			str="Smartphone creado correctamente.";
-		}
-		if(P instanceof accessory) {
-			((accessory) P).setPrice(validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));
-			float price= ((accessory) P).getPrice();
-			((accessory) P).setF_complklra(date_product.insert_date_purchase(
-									"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
-									"Ingresar fecha compra"));
-			dates date_purchase = ((accessory) P).getF_compra();
-			((accessory)P).setF_entrega(date_product.insert_date_delivery(((accessory) P).getF_compra()));
-			dates date_delivery = ((accessory) P).getF_entrega();
-			((accessory)P).setF_devolucion(date_product.insert_date_return(((accessory) P).getF_entrega()));
-			dates date_return = ((accessory) P).getF_devolucion();
-			((accessory)P).setF_recogida(date_product.insert_collection_date(((accessory) P).getF_devolucion()));
-			dates collection_date = ((accessory)P).getF_recogida();
-			((accessory)P).setDate_sales_init(date_product.insert_date_sales_init(
-									"Ingresa la fecha de compra del inicio de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX",
-									"Ingresar inicio de rebajas"));
-			dates date_sales_init = ((accessory)P).getDate_sales_init();
-			((accessory)P).setDate_sales_end(date_product.insert_date_sales_end(((accessory) P).getDate_sales_init()));
-			dates date_sales_end = ((accessory)P).getDate_sales_end();
-			((accessory)P).setDiscont(validators.validator_float("Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
-			float discont = ((accessory)P).getDiscont();
-			P=new smartphone("BDA-453",price,30,100,"Negro",5,date_purchase,date_delivery,
-					date_return,collection_date,date_sales_init,date_sales_end,discont,5,"IPS","6.8","6GB","1 TB","Snapdragon",
-					"Oppo","Android","Leica 1.5f");
-			str="Smartphone creado correctamente.";
-			P=new accessory("GJR-564",price,50,90,"Azul",5,date_purchase,date_delivery,date_return,collection_date,
-					date_sales_init,date_sales_end,discont,70,"Cargador","Cableado","5 años","Polvo");
-			str="Accessorio creado correctamente.";
+		product P = null;
+		dates date_purchase = date_product.insert_date_purchase(
+				"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
+				"Ingresar fecha compra");
+		dates date_delivery = date_product.insert_date_delivery(date_purchase);
+		dates date_return = date_product.insert_date_return(date_delivery);
+		dates collection_date = date_product.insert_collection_date(date_return);
+		dates date_sales_init = date_product.insert_date_sales_init(
+				"Ingresa la fecha de compra del inicio de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX\nRecuerda que has comprado el producto en esta fecha: "+date_purchase,
+				"Ingresar inicio de rebajas");
+		dates date_sales_end = date_product.insert_date_sales_end(date_sales_init);
+		float price = validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio");
+		float discont = validators.validator_float("Ingresa el descuento del producto.", "Ingresar descuento");
+		switch(opt) {
+			case 0:
+				P = new laptop("ASD-123", price, 150, 30, "Rojo", 5, date_purchase, date_delivery,
+						date_return, collection_date,date_sales_init, date_sales_end,discont, 7,
+						"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
+				str = "Laptop creado correctamente.";
+			break;
+			case 1:
+				P=new smartphone("BDA-453",price,30,100,"Negro",5,date_purchase,date_delivery,
+						date_return,collection_date,date_sales_init,date_sales_end,discont,5,"IPS","6.8","6GB","1 TB","Snapdragon",
+						"Oppo","Android","Leica 1.5f");
+				str="Smartphone creado correctamente.";
+				break;
+			case 2:
+				P=new accessory("GJR-564",price,50,90,"Azul",5,date_purchase,date_delivery,date_return,collection_date,
+						date_sales_init,date_sales_end,discont,70,"Cargador","Cableado","5 años","Polvo");
+				str="Accessorio creado correctamente.";
+				break;
 		}
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		return P;

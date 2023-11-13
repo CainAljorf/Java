@@ -15,8 +15,6 @@ public class dates {
 	private int day;
 	private int month;
 	private int year;
-	private boolean is_promo;
-	private boolean is_return;
 	private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public dates(String insert_date) {
@@ -30,19 +28,16 @@ public class dates {
 		this.date_return = insert_date;
 		this.date_sales = insert_date;
 
-		System.out.print("constructor "+insert_date+"\n");
 		}//end constructor
 	public Calendar string_to_calendar(String insert_date) {
 		Date D = new Date();
 		Calendar C = new GregorianCalendar();
-		System.out.print("string to calendar "+insert_date+"\n");
 		try {
 			D = format.parse(insert_date);
 			C.setTime(D);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		System.out.println();
 		return C;
 	}//end string_to_calendar
 	public String calendar_to_string() {
@@ -133,7 +128,6 @@ public class dates {
 		Calendar C3 = this.string_to_calendar(date_sales_end.toString());
 		boolean res = false;
 		if (C1.after(C2) && C1.before(C3)) {
-			this.is_promo = true;
 	        res = true;;
     	}//end if
 		return res;
@@ -182,18 +176,6 @@ public class dates {
         }
         return cont;
     }
-    public boolean isIs_promo() {
-		return is_promo;
-	}
-	public void setIs_promo(boolean is_promo) {
-		this.is_promo = is_promo;
-	}
-	public boolean isIs_return() {
-		return is_return;
-	}
-	public void setIs_return(boolean is_return) {
-		this.is_return = is_return;
-	}
 	public SimpleDateFormat getFormat() {
 		return format;
 	}
@@ -236,6 +218,9 @@ public class dates {
 	public String getDate_purchase() {
 		return date_purchase;
 	}
+	public void setDate_purchase(String date_purchase) {
+		this.date_purchase = date_purchase;
+	}
 	public String getDate_return() {
 		return date_return;
 	}
@@ -247,8 +232,5 @@ public class dates {
 		String str = "";
 		str = this.day + "/" + this.month + "/" + this.year;
 		return str;
-	}
-	public void setDate_purchase(String date_purchase) {
-		this.date_purchase = date_purchase;
 	}
 }//end class date

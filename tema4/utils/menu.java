@@ -50,7 +50,7 @@ public class menu {
 								buttons_sec[0]);
 						switch(menu_sec) {
 							case 0:
-								L=(laptop)CRUD.create(L);
+								L=(laptop)CRUD.create(menu_main);
 								validator2=true;
 								break;
 							case 1:
@@ -111,7 +111,7 @@ public class menu {
 								buttons_sec[0]);
 						switch(menu_sec) {
 							case 0:
-								S=(smartphone)CRUD.create(S);
+								S=(smartphone)CRUD.create(menu_main);
 								validator2=true;
 								break;
 							case 1:
@@ -172,7 +172,7 @@ public class menu {
 								buttons_sec[0]);
 						switch(menu_sec) {
 							case 0:
-								A=(accessory)CRUD.create(S);
+								A=(accessory)CRUD.create(menu_main);
 								validator2=true;
 								break;
 							case 1:

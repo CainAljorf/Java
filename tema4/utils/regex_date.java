@@ -8,4 +8,4 @@ public class regex_date {
         Matcher matcher = pattern.matcher(date);
         return matcher.matches();
     }//end validateDate
-}//end regex
+}//end regex_date

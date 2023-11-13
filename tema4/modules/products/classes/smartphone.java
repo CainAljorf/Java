@@ -26,6 +26,7 @@ public class smartphone extends product {
 		this.brand = brand;
 		this.OS = OS;
 		this.camera = camera;
+		super.setPrice_final(price);
 	}
 	public String getScreen() {
 		return screen;
