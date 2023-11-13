@@ -96,11 +96,6 @@ public class date_product {
 		} while ((!res));
 		return D;
 	}//end insert_date_sales_end
-	public static String date_to_string(dates insert_date) {
-	        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-	        String date_string = format.format(insert_date);
-	    return date_string;
-	}
 	public static dates insert_date_delivery(dates P) {
 		dates D = null;
 		String date_delivery = "";
@@ -161,7 +156,7 @@ public class date_product {
 		int sub;
 		do {
 			date_return = validators.validator_string("Ingresa fecha de devolución.\nTienes 15 días para devolverlo a partir del:"
-					+ "\n "+P.getDate_delivery(),"Ingresa fecha");
+					+ "\n "+P.getDate_delivery()+"\nSi no quieres devolver el producto introduce esta fecha: '00/00/0000'.","Ingresa fecha");
 			res = regex_date.validateDate(date_return);
 			if (!res) {
 				res = false;

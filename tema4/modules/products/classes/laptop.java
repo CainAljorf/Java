@@ -31,6 +31,8 @@ public class laptop extends product {
 		this.graphics = graphics;
 		this.brand = brand;
 		this.camera = camera;
+		super.setIs_promo(date_sales_end);
+		super.setF_devolucion(f_devolucion);
 		super.setPrice_final(price);
 	}
 	public String getScreen() {

@@ -1,6 +1,7 @@
 package tema4.modules.products.classes;
 import tema4.classes.dates;
 import tema4.modules.products.utils.date_product;
+import tema4.utils.menu;
 
 public abstract class product {
 	private String ID_product;
@@ -90,14 +91,6 @@ public abstract class product {
 	public dates getF_devolucion() {
 		return f_devolucion;
 	}
-	public void setF_devolucion(dates f_devolucion) {
-		if(f_devolucion == new dates("00/00/0000")) {
-			this.is_return = true;
-		}else {
-			this.is_return = false;
-		}
-		this.f_devolucion = f_devolucion;
-	}
 	public dates getF_recogida() {
 		return f_recogida;
 	}
@@ -128,16 +121,20 @@ public abstract class product {
     public boolean isIs_promo() {
 		return is_promo;
 	}
-    public boolean isIs_return() {
-		return is_return;
+	public void setF_devolucion(dates f_devolucion) {
+		dates cancel =new dates("00/00/0000");
+		if(f_devolucion.equals(cancel)) {
+			this.is_return = true;
+		}else {
+			this.is_return = false;
+		}
+		this.f_devolucion = f_devolucion;
+		System.out.println("Devolución "+this.is_return);
 	}
-	public void setIs_return(boolean is_return) {
-		this.is_return = is_return;
-	}	
-	public void setIs_promo() {
-		String str_date_end = date_product.date_to_string(this.date_sales_end);
-		dates D = new dates(str_date_end);
-		this.is_promo=D.compare_dates_sales(D);
+	public void setIs_promo(dates date_sales_end) {
+		String date_string = menu.D.calendar_to_string(date_sales_end);
+		this.is_promo = menu.D.compare_dates_sales(date_sales_end);
+		System.out.println("Promo "+this.is_promo);
 	}
 	public void setPrice_final(float price) {
 		if(this.is_promo) {
@@ -151,6 +148,7 @@ public abstract class product {
 			price = this.price;	
 		}
 		this.price_final = price;
+		System.out.println("Devolución en precio final :"+this.is_return+"\nPromo en precio final: "+this.is_promo);
 	}
 	//end getters and setters
 	@Override
