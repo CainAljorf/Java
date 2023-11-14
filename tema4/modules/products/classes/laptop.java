@@ -1,32 +1,40 @@
 package tema4.modules.products.classes;
 
 import tema4.classes.dates;
+import tema4.utils.menu;
 
-public class smartphone extends product {
+public class laptop extends product {
 	private String screen;
 	private String screen_inches;
+	private String keyboard;
 	private String RAM;
 	private String storage;
 	private String CPU;
+	private String power_supply;
+	private String graphics;
 	private String brand;
-	private String OS;
 	private String camera;
-
-	public smartphone(String ID_product, float price, float peso, int stock, String color, float dimension,dates f_compra, 
-			dates f_entrega, dates f_devolucion, dates f_recogida,dates date_sales_init, dates date_sales_end, 
-			float discont,	float price_final, String screen, String screen_inches, String RAM, String storage, String CPU,
-			String brand, String OS, String camera) {
+	
+	public laptop(String ID_product, float price, float peso, int stock, String color, float dimension, dates f_compra,
+			dates f_entrega, dates f_devolucion, dates f_recogida, 
+			dates date_sales_init, dates date_sales_end, float discont, float price_final,
+			String screen, String screen_inches, String keyboard, String RAM, String storage, String CPU,
+			String power_supply, String graphics, String brand, String camera) {
 		super(ID_product, price, peso, stock, color, dimension, f_compra, f_entrega, f_devolucion,
 				f_recogida, date_sales_init, date_sales_end, discont, price_final);
 		this.screen = screen;
 		this.screen_inches = screen_inches;
+		this.keyboard = keyboard;
 		this.RAM = RAM;
 		this.storage = storage;
 		this.CPU = CPU;
+		this.power_supply = power_supply;
+		this.graphics = graphics;
 		this.brand = brand;
-		this.OS = OS;
 		this.camera = camera;
-		super.setPrice_final(price);
+		super.setIs_promo(menu.D.compare_dates_sales());
+//		super.setF_devolucion(f_devolucion);
+//		super.setPrice_final(price);
 	}
 	public String getScreen() {
 		return screen;
@@ -39,6 +47,12 @@ public class smartphone extends product {
 	}
 	public void setScreen_inches(String screen_inches) {
 		this.screen_inches = screen_inches;
+	}
+	public String getKeyboard() {
+		return keyboard;
+	}
+	public void setKeyboard(String keyboard) {
+		this.keyboard = keyboard;
 	}
 	public String getRAM() {
 		return RAM;
@@ -58,24 +72,31 @@ public class smartphone extends product {
 	public void setCPU(String CPU) {
 		this.CPU = CPU;
 	}
+	public String getPower_supply() {
+		return power_supply;
+	}
+	public void setPower_supply(String power_supply) {
+		this.power_supply = power_supply;
+	}
+	public String getGraphics() {
+		return graphics;
+	}
+	public void setGraphics(String graphics) {
+		this.graphics = graphics;
+	}
 	public String getBrand() {
 		return brand;
 	}
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-	public String getOS() {
-		return OS;
-	}
-	public void setOS(String OS) {
-		this.OS = OS;
-	}
 	public String getCamera() {
 		return camera;
 	}
 	public void setCamera(String camera) {
 		this.camera = camera;
-	}//end getters and setters
+	}
+	//end getters and setters
 	@Override
 	public String toString() {
 		String str="";
@@ -93,14 +114,16 @@ public class smartphone extends product {
 		str += ("Precio final: " + super.getPrice_final() + ".\n");
 		str += ("Fecha de inicio de promoción: " + super.getDate_sales_init() + ".\n");
 		str += ("Fecha de fin: " + super.getDate_sales_end() + ".\n");
-		str += ("Tipo de pantalla: " + this.getScreen()+ ".\n");
-		str += ("Pulgadas de pantalla: " + this.getScreen_inches()+ ".\n");
-		str += ("Sensor de la cámara: " + this.getCamera()+ ".\n");
-		str += ("Marca: " + this.getBrand()+ ".\n");
-		str += ("Memoria Principal (RAM): " + this.getRAM()+ ".\n");
-		str += ("Almacenamiento: " + this.getStorage()+ ".\n");
+		str += ("Tipo de pantalla: " + this.getScreen() + ".\n");
+		str += ("Pulgadas de pantalla: " + this.getScreen_inches() + ".\n");
+		str += ("Idioma del teclado: " + this.getKeyboard() + ".\n");
+		str += ("Sensor de la cámara: " + this.getCamera() + ".\n");
+		str += ("Marca: " + this.getBrand() + ".\n");
+		str += ("Memoria Principal (RAM): " + this.getRAM() + ".\n");
+		str += ("Almacenamiento: " + this.getStorage() + ".\n");
 		str += ("Procesador: " + this.getCPU()+ ".\n");
-		str += ("Sistema Operativo: " + this.getOS()+ ".\n");
-		return str;
+		str += ("Fuente de alimentación: " + this.getPower_supply() + ".\n");
+		str += ("Tipo de gráficos " + this.getGraphics() + ".\n");
+	return str;
 	}//end toString
-}//end class smartphone
+}//end class laptop

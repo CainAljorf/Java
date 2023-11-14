@@ -11,7 +11,8 @@ public class dates {
 	private String date_purchase;
 	private String date_delivery;
 	private String date_return;
-	private String date_sales;
+	private String date_sales_init;
+	private String date_sales_end;
 	private int day;
 	private int month;
 	private int year;
@@ -26,7 +27,8 @@ public class dates {
 		this.date_purchase = insert_date;
 		this.date_delivery = insert_date;
 		this.date_return = insert_date;
-		this.date_sales = insert_date;
+		this.date_sales_init = insert_date;
+		this.date_sales_end = insert_date;
 
 		}//end constructor
 	public Calendar string_to_calendar(String insert_date) {
@@ -46,7 +48,7 @@ public class dates {
 	}//end calendar_to_string
     public boolean check_date() {
 		boolean correct = false;
-		if ((year > 1930) && (year < 2090)) {
+		if ((year > 1000) && (year < 3000)) {
 			if ((month >= 1) && (month <= 12)) {
 				switch (month) {
 					case 1: 
@@ -122,10 +124,10 @@ public class dates {
 			return 3;
     	}//end if
 	}
-    public boolean compare_dates_sales(dates date_sales_end) {
-		Calendar C1 = this.string_to_calendar(this.date_purchase);
-		Calendar C2 = this.string_to_calendar(this.date_sales);
-		Calendar C3 = this.string_to_calendar(date_sales_end.toString());
+    public boolean compare_dates_sales() {
+		Calendar C1 = this.string_to_calendar(this.getDate_purchase());
+		Calendar C2 = this.string_to_calendar(this.getDate_sales_init());
+		Calendar C3 = this.string_to_calendar(this.getDate_sales_end());
 		boolean res = false;
 		if (C1.after(C2) && C1.before(C3)) {
 	        res = true;;
@@ -176,21 +178,27 @@ public class dates {
         }
         return cont;
     }
+	private boolean leap_year(int year) {
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    }
 	public SimpleDateFormat getFormat() {
 		return format;
 	}
 	public void setFormat(SimpleDateFormat format) {
 		this.format = format;
 	}
-	public String getDate_sales() {
-		return date_sales;
+    public String getDate_sales_init() {
+		return date_sales_init;
 	}
-	public void setDate_sales(String date_sales) {
-		this.date_sales = date_sales;
+	public void setDate_sales_init(String date_sales_init) {
+		this.date_sales_init = date_sales_init;
 	}
-    private boolean leap_year(int year) {
-        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
-    }
+	public String getDate_sales_end() {
+		return date_sales_end;
+	}
+	public void setDate_sales_end(String date_sales_end) {
+		this.date_sales_end = date_sales_end;
+	}
 	public String getDate_delivery() {
 		return date_delivery;
 	}

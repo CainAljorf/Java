@@ -1,13 +1,37 @@
 package tema4.modules.products.utils;
 import javax.swing.JOptionPane;
 import tema4.classes.dates;
+import tema4.utils.menu;
 import tema4.utils.regex_date;
 import tema4.utils.validators;
-import java.text.SimpleDateFormat;
 
 public class date_product {
+	public static void is_return(dates f_devolucion) {
+		dates cancel =new dates("00/00/0000");
+		if(f_devolucion.equals(cancel)) {
+			menu.P.setIs_return(false);
+		}else {
+			menu.P.setIs_return(true);
+		}
+		System.out.println("Devolución "+menu.P.getIs_return());
+	}
+	public static void is_promo() {
+		menu.P.setIs_promo(menu.D.compare_dates_sales());
+		System.out.println("Promo "+menu.P.isIs_promo());
+	}
+	public static float calculate_price_final(float price) {
+		if(menu.P.isIs_promo()) {
+			if(menu.P.getIs_return()) {
+				price = price * menu.P.getDiscont();
+				price *= -1;
+			}else {
+				price = price * menu.P.getDiscont();
+			}
+		}
+		System.out.println("precio final "+price);
+		return price;
+	}
 	public static dates insert_date_purchase(String message, String title){
-		//funcion para crear fecha compra
 		boolean res = false;
 		String date_purchase = "";
 		dates D = null;
@@ -31,7 +55,6 @@ public class date_product {
 		return D;
 	}//end insert_date_purchase
 	public static dates insert_date_sales_init(String message, String title){
-		//funcion para crear fecha compra
 		boolean res = false;
 		String date_sales_init = "";
 		dates D = null;
@@ -62,7 +85,7 @@ public class date_product {
 		int compare;
 		do {
 			date_sales_end = validators.validator_string("Ingresa fecha del fin de las rebajas, debe ser mayor a la fecha de inicio de rebajas."
-					+ "\nFecha final de rebajas: "+P.getDate_sales(),"Ingresa fecha");
+					+ "\nFecha final de rebajas: "+P.getDate_sales_init(),"Ingresa fecha");
 			res = regex_date.validateDate(date_sales_end);
 			if (!res) {
 				res = false;
@@ -77,12 +100,12 @@ public class date_product {
 					switch (compare) {
 						case 1:
 							str = "La fecha de fin de rebajas no es correcta, "+ date_sales_end + "\nEs anterior respecto a la "
-									+ "fecha de inicio de rebajas.\n"+ P.getDate_sales();
+									+ "fecha de inicio de rebajas.\n"+ P.getDate_sales_init();
 							res = false;
 							break;
 						case 2:
 							str = "Fecha de fin de rebajas correcta: "+ date_sales_end + ".\nEs posterior respecto a la "
-									+ "fecha de inicio de rebajas.\n"+ P.getDate_sales();
+									+ "fecha de inicio de rebajas.\n"+ P.getDate_sales_init();
 							res=true;
 							break;
 						default:

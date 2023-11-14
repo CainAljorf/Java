@@ -18,7 +18,6 @@ public class accessory extends product {
 		this.connectivity = connectivity;
 		this.warranty = warranty;
 		this.protection = protection;
-		super.setPrice_final(price);
 	}
 	public String getType() {
 		return type;
