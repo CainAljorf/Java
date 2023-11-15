@@ -11,35 +11,38 @@ import tema4.utils.validators;
 public class CRUD {
 	public static void create(int opt) {// with dummies
 		String str = "";
-		dates date_purchase = date_product.insert_date_purchase(
-				"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
-				"Ingresar fecha compra");
-		dates date_delivery = date_product.insert_date_delivery(date_purchase);
-		dates date_return = date_product.insert_date_return(date_delivery);
-		dates collection_date = date_product.insert_collection_date(date_return);
-		dates date_sales_init = date_product.insert_date_sales_init(
-				"Ingresa la fecha de compra del inicio de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX\nRecuerda que has comprado el producto en esta fecha: "+date_purchase,
-				"Ingresar inicio de rebajas");
-		dates date_sales_end = date_product.insert_date_sales_end(date_sales_init);
-		float price = validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio");
-		float discont = validators.validator_float("Ingresa el descuento del producto.", "Ingresar descuento");
+//		dates date_purchase = date_product.insert_date_purchase(
+//				"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
+//				"Ingresar fecha compra");
+//		dates date_delivery = date_product.insert_date_delivery(date_purchase);
+//		dates date_return = date_product.insert_date_return(date_delivery);
+//		dates collection_date = date_product.insert_collection_date(date_return);
+//		dates date_sales_init = date_product.insert_date_sales_init(
+//				"Ingresa la fecha de compra del inicio de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX\nRecuerda que has comprado el producto en esta fecha: "+date_purchase,
+//				"Ingresar inicio de rebajas");
+//		dates date_sales_end = date_product.insert_date_sales_end(date_sales_init);
+//		float price = validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio");
+//		float discont = validators.validator_float("Ingresa el descuento del producto.", "Ingresar descuento");
 		switch(opt) {
 			case 0:
-				menu.L = new laptop("ASD-123", price, 150, 30, "Rojo", 5, date_purchase, date_delivery,
-						date_return, collection_date,date_sales_init, date_sales_end,discont, 7,
+//				menu.L = new laptop("ASD-123", price, 150, 30, "Rojo", 5, date_purchase, date_delivery,
+//						date_return, collection_date,date_sales_init, date_sales_end,discont, 7,
+//						"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
+				menu.L = new laptop("ASD-123", 100, 150, 30, "Rojo", 5, new dates("12/12/2000"), new dates("13/12/2000"),
+						new dates("00/00/0000"), new dates("00/00/0000"),new dates("10/12/2000"), new dates("19/12/2000"),0.5f, 7,
 						"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
 				str = "Laptop creado correctamente.";
 			break;
 			case 1:
-				menu.S=new smartphone("BDA-453",price,30,100,"Negro",5,date_purchase,date_delivery,
-						date_return,collection_date,date_sales_init,date_sales_end,discont,5,"IPS","6.8","6GB","1 TB","Snapdragon",
-						"Oppo","Android","Leica 1.5f");
+//				menu.S=new smartphone("BDA-453",price,30,100,"Negro",5,date_purchase,date_delivery,
+//						date_return,collection_date,date_sales_init,date_sales_end,discont,5,"IPS","6.8","6GB","1 TB","Snapdragon",
+//						"Oppo","Android","Leica 1.5f");
 				str="Smartphone creado correctamente.";
 				break;
 			case 2:
-				menu.A=new accessory("GJR-564",price,50,90,"Azul",5,date_purchase,date_delivery,date_return,collection_date,
-						date_sales_init,date_sales_end,discont,70,"Cargador","Cableado","5 años","Polvo");
-				str="Accessorio creado correctamente.";
+//				menu.A=new accessory("GJR-564",price,50,90,"Azul",5,date_purchase,date_delivery,date_return,collection_date,
+//						date_sales_init,date_sales_end,discont,70,"Cargador","Cableado","5 años","Polvo");
+//				str="Accessorio creado correctamente.";
 				break;
 		}
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);

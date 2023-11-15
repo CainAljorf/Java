@@ -15,22 +15,22 @@ public class date_product {
 		}
 		System.out.println("Devolución "+menu.P.getIs_return());
 	}
-	public static void is_promo() {
-		menu.P.setIs_promo(menu.D.compare_dates_sales());
-		System.out.println("Promo "+menu.P.isIs_promo());
-	}
-	public static float calculate_price_final(float price) {
-		if(menu.P.isIs_promo()) {
-			if(menu.P.getIs_return()) {
-				price = price * menu.P.getDiscont();
-				price *= -1;
-			}else {
-				price = price * menu.P.getDiscont();
-			}
-		}
-		System.out.println("precio final "+price);
-		return price;
-	}
+//	public static void is_promo() {
+//		menu.P.setIs_promo(menu.D.compare_dates_sales());
+//		System.out.println("Promo "+menu.P.getIs_promo());
+//	}
+//	public static float calculate_price_final(float price) {
+//		if(is_promo()) {
+//			if(!menu.P.getIs_return()) {
+//				price = price * menu.P.getDiscont();
+//				price *= -1;
+//			}else {
+//				price = price * menu.P.getDiscont();
+//			}
+//		}
+//		System.out.println("precio final "+price);
+//		return price;
+//	}
 	public static dates insert_date_purchase(String message, String title){
 		boolean res = false;
 		String date_purchase = "";

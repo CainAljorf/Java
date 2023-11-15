@@ -1,6 +1,7 @@
 package tema4.modules.products.classes;
 
 import tema4.classes.dates;
+import tema4.modules.products.utils.date_product;
 import tema4.utils.menu;
 
 public class laptop extends product {
@@ -32,9 +33,9 @@ public class laptop extends product {
 		this.graphics = graphics;
 		this.brand = brand;
 		this.camera = camera;
-		super.setIs_promo(menu.D.compare_dates_sales());
-//		super.setF_devolucion(f_devolucion);
-//		super.setPrice_final(price);
+		date_product.is_return(f_devolucion);
+		System.out.println();
+//		date_product.calculate_price_final(price);
 	}
 	public String getScreen() {
 		return screen;

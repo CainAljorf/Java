@@ -1,5 +1,6 @@
 package tema4.modules.products.classes;
 import tema4.classes.dates;
+import tema4.modules.products.utils.date_product;
 import tema4.utils.menu;
 
 public abstract class product {
@@ -49,6 +50,7 @@ public abstract class product {
 		return price;
 	}
 	public void setPrice(float price) {
+//		date_product.calculate_price_final(price);
 		this.price = price;
 	}
 	public float getPeso() {
@@ -112,12 +114,13 @@ public abstract class product {
 		return discont;
 	}
 	public void setDiscont(float discont) {
+//		date_product.calculate_price_final(this.price);
 		this.discont = discont;
 	}
 	public float getPrice_final() {
 		return price_final;
 	}
-    public boolean isIs_promo() {
+    public boolean getIs_promo() {
 		return is_promo;
 	}
 	public boolean getIs_return() {
