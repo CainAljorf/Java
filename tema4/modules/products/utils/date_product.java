@@ -7,15 +7,7 @@ import tema4.utils.regex_date;
 import tema4.utils.validators;
 
 public class date_product {
-	public static float calculate_price_final(float price) {
-			if(!menu.P.getIs_return()) {
-				price = price * menu.P.getDiscont();
-				price *= -1;
-			}else {
-				price = price * menu.P.getDiscont();
-			}
-		return price;
-	}
+	
 	public static boolean is_promo(int ini, int end) {
 		boolean res = false;
 		if(ini != 2 && end == 2) {

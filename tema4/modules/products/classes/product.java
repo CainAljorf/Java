@@ -50,7 +50,6 @@ public abstract class product {
 		return price;
 	}
 	public void setPrice(float price) {
-//		date_product.calculate_price_final(price);
 		this.price = price;
 	}
 	public float getPeso() {
@@ -80,14 +79,16 @@ public abstract class product {
 	public dates getF_compra() {
 		return f_compra;
 	}
-	public dates setF_compra(dates f_compra) {
-		return this.f_compra = f_compra;
+	public void setF_compra(dates f_compra) {
+		this.f_compra = f_compra;
+		this.calculate_price_final();
 	}
 	public dates getF_entrega() {
 		return f_entrega;
 	}
 	public void setF_entrega(dates date_delivery) {
 		this.f_entrega = date_delivery;
+		this.calculate_price_final();
 	}
 	public dates getF_devolucion() {
 		return f_devolucion;
@@ -97,24 +98,26 @@ public abstract class product {
 	}
 	public void setF_recogida(dates f_recogida) {
 		this.f_recogida = f_recogida;
+		this.calculate_price_final();
 	}
 	public dates getDate_sales_init() {
 		return date_sales_init;
 	}
 	public void setDate_sales_init(dates date_sales_init) {
 		this.date_sales_init = date_sales_init;
+		this.calculate_price_final();
 	}
 	public dates getDate_sales_end() {
 		return date_sales_end;
 	}
 	public void setDate_sales_end(dates date_sales_end) {
 		this.date_sales_end = date_sales_end;
+		this.calculate_price_final();
 	}
 	public float getDiscont() {
 		return discont;
 	}
 	public void setDiscont(float discont) {
-//		date_product.calculate_price_final(this.price);
 		this.discont = discont;
 	}
 	public float getPrice_final() {
@@ -131,12 +134,10 @@ public abstract class product {
 	}
 	public void setF_devolucion(dates f_devolucion) {
 		this.f_devolucion = f_devolucion;
+		this.calculate_price_final();
 	}
 	public void setIs_promo(boolean is_promo) {
 		this.is_promo = is_promo;
-	}
-	public  void setPrice_final(float price) {
-		this.price_final = price;
 	}
 	public boolean is_return() {
 		dates cancel =new dates("00/00/0000");
@@ -146,6 +147,15 @@ public abstract class product {
 			return true;
 		}
 	}
+	public void calculate_price_final() {
+		if(!(getIs_return())) {
+			this.price = this.price * this.discont;
+			this.price *= -1;
+		}else {
+			this.price = this.price * this.discont;
+		}
+		this.price_final = price;
+}
 	//end getters and setters
 	@Override
 	public abstract String toString();
