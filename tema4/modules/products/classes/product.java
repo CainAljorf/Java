@@ -135,21 +135,17 @@ public abstract class product {
 	public void setIs_promo(boolean is_promo) {
 		this.is_promo = is_promo;
 	}
-//	public static void setPrice_final(float price) {
-//		boolean promo = isIs_promo(); 
-//		if() {
-//			if(this.is_return) {
-//				price = price * this.discont;
-//				price *= -1;
-//			}else {
-//				price = price * this.discont;
-//			}
-//		}else {
-//			price = this.price;	
-//		}
-//		this.price_final = price;
-//		System.out.println("Devolución en precio final :"+this.is_return+"\nPromo en precio final: "+this.is_promo);
-//	}
+	public  void setPrice_final(float price) {
+		this.price_final = price;
+	}
+	public boolean is_return() {
+		dates cancel =new dates("00/00/0000");
+		if(this.f_devolucion.equals(cancel)) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 	//end getters and setters
 	@Override
 	public abstract String toString();

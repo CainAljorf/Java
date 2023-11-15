@@ -1,40 +1,28 @@
 package tema4.modules.products.utils;
 import javax.swing.JOptionPane;
 import tema4.classes.dates;
+import tema4.modules.products.classes.product;
 import tema4.utils.menu;
 import tema4.utils.regex_date;
 import tema4.utils.validators;
 
 public class date_product {
-	public static boolean is_return(dates f_devolucion) {
-		dates cancel =new dates("00/00/0000");
-//		if(f_devolucion.equals(cancel)) {
-//			menu.P.setIs_return(false);
-//		}else {
-//			menu.P.setIs_return(true);
-//		}
-		if(f_devolucion.equals(cancel)) {
-			return false;
-		}else {
-			return true;
-		}
+	public static float calculate_price_final(float price) {
+			if(!menu.P.getIs_return()) {
+				price = price * menu.P.getDiscont();
+				price *= -1;
+			}else {
+				price = price * menu.P.getDiscont();
+			}
+		return price;
 	}
-//	public static void is_promo() {
-//		menu.P.setIs_promo(menu.D.compare_dates_sales());
-//		System.out.println("Promo "+menu.P.getIs_promo());
-//	}
-//	public static float calculate_price_final(float price) {
-//		if(is_promo()) {
-//			if(!menu.P.getIs_return()) {
-//				price = price * menu.P.getDiscont();
-//				price *= -1;
-//			}else {
-//				price = price * menu.P.getDiscont();
-//			}
-//		}
-//		System.out.println("precio final "+price);
-//		return price;
-//	}
+	public static boolean is_promo(int ini, int end) {
+		boolean res = false;
+		if(ini != 2 && end == 2) {
+			res = true;
+		}
+		return res;
+	}
 	public static dates insert_date_purchase(String message, String title){
 		boolean res = false;
 		String date_purchase = "";
@@ -58,12 +46,12 @@ public class date_product {
 		} while ((res == false));
 		return D;
 	}//end insert_date_purchase
-	public static dates insert_date_sales_init(String message, String title){
+	public static dates insert_date_sales_init(){
 		boolean res = false;
 		String date_sales_init = "";
 		dates D = null;
 		do {
-			date_sales_init = validators.validator_string(message,title);
+			date_sales_init = validators.validator_string("Escribe la fecha de inicio de rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX","Escribe fecha");
 	    	res = regex_date.validateDate(date_sales_init);
 			if (!res) {
 				res = false;

@@ -33,9 +33,8 @@ public class laptop extends product {
 		this.graphics = graphics;
 		this.brand = brand;
 		this.camera = camera;
-		date_product.is_return(f_devolucion);
-		System.out.println();
-//		date_product.calculate_price_final(price);
+		
+//		super.setPrice_final(date_product.calculate_price_final(price));
 	}
 	public String getScreen() {
 		return screen;

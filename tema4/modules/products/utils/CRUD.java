@@ -304,6 +304,8 @@ public class CRUD {
 	public static void update() {
 		String str = "";
 		Object opt = null;
+		int sales_init=0;
+		int sales_end=0;
 		if (menu.L instanceof laptop) {
 			opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para ver:", "Selector de opciones",
 					JOptionPane.QUESTION_MESSAGE, null,
@@ -402,17 +404,19 @@ public class CRUD {
 				str = "Marca del laptop actualizada a: " + ((laptop) menu.L).getBrand();
 				break;
 			case "Inicio de Rebajas":
-				((laptop) menu.L).setDate_sales_init(date_product.insert_date_sales_init(
-						"Ingresa la fecha de compra del inicio de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX",
-						"Ingresar inicio de rebajas"));
+				((laptop) menu.L).setDate_sales_init(date_product.insert_date_sales_init());
+				sales_init=((dates) menu.D).compare_dates(((laptop) menu.L).getDate_sales_init());
 				str = "Fecha de inicio de rebajas actualizado a: "+ ((laptop) menu.L).getDate_sales_init();
 				break;
 			case "Fin de Rebajas":
 				((laptop) menu.L).setDate_sales_end(date_product.insert_date_sales_end(((laptop) menu.L).getDate_sales_init()));
+				sales_end=((dates) menu.D).compare_dates(((laptop) menu.L).getDate_sales_end());
+				((laptop)menu.L).setIs_promo(date_product.is_promo(sales_init,sales_end));
 				str = "Fecha de fin de rebajas actualizado a: "+ ((laptop) menu.L).getDate_sales_end();
 				break;
 			case "Descuento":
 				((laptop) menu.L).setDiscont(validators.validator_float("Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
+				((laptop) menu.L).setIs_return(((laptop)menu.P).is_return());
 				str = "Descuento de Rebajas actualizado a: " + ((laptop) menu.L).getDiscont();
 				break;
 			case "Precio final":
@@ -509,9 +513,7 @@ public class CRUD {
 				str = "Marca del smartphone actualizado a: " + ((smartphone) menu.S).getBrand();
 				break;
 			case "Inicio de Rebajas":
-				((smartphone) menu.S).setDate_sales_init(date_product.insert_date_sales_init(
-						"Ingresa la fecha de compra del inicio de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX",
-						"Ingresar inicio de rebajas"));
+				((smartphone) menu.S).setDate_sales_init(date_product.insert_date_sales_init());
 				str = "Fecha de inicio de rebajas actualizado a: "+ ((smartphone) menu.S).getDate_sales_init();
 				break;
 			case "Fin de Rebajas":
@@ -599,9 +601,7 @@ public class CRUD {
 				str = "Conectividad de accesorio actualizado a: "+ ((accessory) menu.A).getConnectivity();
 				break;
 			case "Inicio de Rebajas":
-				((accessory) menu.A).setDate_sales_init(date_product.insert_date_sales_init(
-						"Ingresa la fecha de compra del inicio de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX",
-						"Ingresar inicio de rebajas"));
+				((accessory) menu.A).setDate_sales_init(date_product.insert_date_sales_init());
 				str = "Fecha de inicio de rebajas actualizado a: "+ ((accessory) menu.A).getDate_sales_init();
 				break;
 			case "Fin de Rebajas":
