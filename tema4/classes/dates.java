@@ -125,7 +125,7 @@ public class dates {
     	}//end if
 	}
     public boolean compare_dates_sales() {
-		Calendar C1 = this.string_to_calendar(this.getDate_purchase());
+		Calendar C1 = this.string_to_calendar(this.date_purchase);
 		Calendar C2 = this.string_to_calendar(this.getDate_sales_init());
 		Calendar C3 = this.string_to_calendar(this.getDate_sales_end());
 		boolean res = false;

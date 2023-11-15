@@ -6,14 +6,18 @@ import tema4.utils.regex_date;
 import tema4.utils.validators;
 
 public class date_product {
-	public static void is_return(dates f_devolucion) {
+	public static boolean is_return(dates f_devolucion) {
 		dates cancel =new dates("00/00/0000");
+//		if(f_devolucion.equals(cancel)) {
+//			menu.P.setIs_return(false);
+//		}else {
+//			menu.P.setIs_return(true);
+//		}
 		if(f_devolucion.equals(cancel)) {
-			menu.P.setIs_return(false);
+			return false;
 		}else {
-			menu.P.setIs_return(true);
+			return true;
 		}
-		System.out.println("Devolución "+menu.P.getIs_return());
 	}
 //	public static void is_promo() {
 //		menu.P.setIs_promo(menu.D.compare_dates_sales());
