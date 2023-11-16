@@ -1,8 +1,6 @@
 package tema4.modules.products.classes;
 
 import tema4.classes.dates;
-import tema4.modules.products.utils.date_product;
-import tema4.utils.menu;
 
 public class laptop extends product {
 	private String screen;

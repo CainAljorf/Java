@@ -1,11 +1,9 @@
 package tema4.modules.products.utils;
-import java.util.Calendar;
 
 import javax.swing.JOptionPane;
 import tema4.classes.dates;
 import tema4.modules.products.classes.accessory;
 import tema4.modules.products.classes.laptop;
-import tema4.modules.products.classes.product;
 import tema4.modules.products.classes.smartphone;
 import tema4.utils.menu;
 import tema4.utils.validators;
@@ -13,7 +11,6 @@ import tema4.utils.validators;
 public class CRUD {
 	public static void create(int opt) {// with dummies
 		String str = "";
-		 
 //		dates date_purchase = date_product.insert_date_purchase(
 //				"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
 //				"Ingresar fecha compra");
@@ -38,12 +35,10 @@ public class CRUD {
 				int sales_init=menu.D.compare_dates(((laptop) menu.L).getDate_sales_init());
 				int sales_end=((dates) menu.D).compare_dates(((laptop) menu.L).getDate_sales_end());
 				((laptop)menu.L).setIs_promo(date_product.is_promo(sales_init,sales_end));
-//				boolean res = date_product.is_return(menu.L.getF_devolucion());
-//				((laptop)menu.L).setIs_return(res);
 				((laptop)menu.L).setIs_return(menu.L.is_return());
 				((laptop)menu.L).calculate_price_final();
-				
-				
+//				boolean res = date_product.is_return(menu.L.getF_devolucion());
+//				((laptop)menu.L).setIs_return(res);
 				str = "Laptop creado correctamente.";
 			break;
 			case 1:
@@ -362,7 +357,6 @@ public class CRUD {
 				((laptop) menu.L).setF_compra(date_product.insert_date_purchase(
 						"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
 						"Ingresar fecha compra"));
-				((laptop)menu.L).calculate_price_final();
 				str = "Fecha de compra de laptop actualizado a: " + ((laptop) menu.L).getF_compra();
 				break;
 			case "Fecha de entrega":
@@ -372,7 +366,6 @@ public class CRUD {
 			case "Fecha de devolución":
 				((laptop)menu.L).setF_devolucion(date_product.insert_date_return(((laptop) menu.L).getF_entrega()));
 				((laptop)menu.L).setIs_return(menu.L.is_return());
-				((laptop)menu.L).calculate_price_final();
 				str = "Fecha de devolución de laptop actualizado a: " + ((laptop) menu.L).getF_devolucion();
 				break;
 			case "Fecha de recogida":
@@ -423,19 +416,16 @@ public class CRUD {
 				((laptop) menu.L).setDate_sales_init(date_product.insert_date_sales_init());
 				sales_init=menu.D.compare_dates(((laptop) menu.L).getDate_sales_init());
 				((laptop)menu.L).setIs_promo(date_product.is_promo(sales_init,sales_end));
-				((laptop) menu.L).calculate_price_final();
 				str = "Fecha de inicio de rebajas actualizado a: "+ ((laptop) menu.L).getDate_sales_init();
 				break;
 			case "Fin de Rebajas":
 				((laptop) menu.L).setDate_sales_end(date_product.insert_date_sales_end(((laptop) menu.L).getDate_sales_init()));
 				sales_end=((dates) menu.D).compare_dates(((laptop) menu.L).getDate_sales_end());
 				((laptop)menu.L).setIs_promo(date_product.is_promo(sales_init,sales_end));
-				((laptop) menu.L).calculate_price_final();
 				str = "Fecha de fin de rebajas actualizado a: "+ ((laptop) menu.L).getDate_sales_end();
 				break;
 			case "Descuento":
 				((laptop) menu.L).setDiscont(validators.validator_float("Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
-				((laptop) menu.L).calculate_price_final();
 				str = "Descuento de Rebajas actualizado a: " + ((laptop) menu.L).getDiscont();
 				break;
 			case "Precio final":

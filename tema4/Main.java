@@ -1,6 +1,6 @@
 package tema4;
 import tema4.utils.menu;
-public class main{
+public class Main{
 	public static void main(String[] args){
 		menu.menu_main();
 	}//end main

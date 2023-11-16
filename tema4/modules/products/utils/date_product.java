@@ -1,7 +1,6 @@
 package tema4.modules.products.utils;
 import javax.swing.JOptionPane;
 import tema4.classes.dates;
-import tema4.modules.products.classes.product;
 import tema4.utils.menu;
 import tema4.utils.regex_date;
 import tema4.utils.validators;

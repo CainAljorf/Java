@@ -1,7 +1,5 @@
 package tema4.modules.products.classes;
 import tema4.classes.dates;
-import tema4.modules.products.utils.date_product;
-import tema4.utils.menu;
 
 public abstract class product {
 	private String ID_product;
@@ -81,14 +79,14 @@ public abstract class product {
 	}
 	public void setF_compra(dates f_compra) {
 		this.f_compra = f_compra;
-//		this.calculate_price_final();
+		this.calculate_price_final();
 	}
 	public dates getF_entrega() {
 		return f_entrega;
 	}
 	public void setF_entrega(dates date_delivery) {
 		this.f_entrega = date_delivery;
-//		this.calculate_price_final();
+		this.calculate_price_final();
 	}
 	public dates getF_devolucion() {
 		return f_devolucion;
@@ -98,27 +96,28 @@ public abstract class product {
 	}
 	public void setF_recogida(dates f_recogida) {
 		this.f_recogida = f_recogida;
-//		this.calculate_price_final();
+		this.calculate_price_final();
 	}
 	public dates getDate_sales_init() {
 		return date_sales_init;
 	}
 	public void setDate_sales_init(dates date_sales_init) {
 		this.date_sales_init = date_sales_init;
-//		this.calculate_price_final();
+		this.calculate_price_final();
 	}
 	public dates getDate_sales_end() {
 		return date_sales_end;
 	}
 	public void setDate_sales_end(dates date_sales_end) {
 		this.date_sales_end = date_sales_end;
-//		this.calculate_price_final();
+		this.calculate_price_final();
 	}
 	public float getDiscont() {
 		return discont;
 	}
 	public void setDiscont(float discont) {
 		this.discont = discont;
+		this.calculate_price_final();
 	}
 	public float getPrice_final() {
 		return price_final;
