@@ -11,7 +11,7 @@ public class menu {
 	public static laptop L;
 	public static smartphone S;
 	public static accessory A;
-	public static dates D ;
+	public static dates D;
 	public static product P;
 	
 	public static void menu_main() {

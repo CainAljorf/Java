@@ -34,7 +34,6 @@ public class laptop extends product {
 		this.brand = brand;
 		this.camera = camera;
 		
-//		super.setPrice_final(date_product.calculate_price_final(price));
 	}
 	public String getScreen() {
 		return screen;
@@ -124,6 +123,9 @@ public class laptop extends product {
 		str += ("Procesador: " + this.getCPU()+ ".\n");
 		str += ("Fuente de alimentación: " + this.getPower_supply() + ".\n");
 		str += ("Tipo de gráficos " + this.getGraphics() + ".\n");
+		str += ("Devolución " + this.getIs_return() + ".\n");
+		str += ("Promoción " + this.getIs_promo() + ".\n");
+//		str += ("Tipo de gráficos " + this.getGraphics() + ".\n");
 	return str;
 	}//end toString
 }//end class laptop
