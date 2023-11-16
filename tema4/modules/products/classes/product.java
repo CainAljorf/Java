@@ -22,8 +22,8 @@ public abstract class product {
 	private boolean is_return;
 	
 	public product(String ID_product, float price, float peso, int stock, String color, float dimension,
-			dates f_compra, dates f_entrega,  dates f_devolucion, dates f_recogida,
-			dates date_sales_init,dates date_sales_end,float discont,float price_final) {
+			dates f_compra, dates f_entrega, dates date_sales_init,dates date_sales_end,dates f_devolucion,
+			dates f_recogida,float discont,float price_final) {
 		super();
 		this.ID_product = ID_product;
 		this.price = price;
@@ -134,28 +134,30 @@ public abstract class product {
 	}
 	public void setF_devolucion(dates f_devolucion) {
 		this.f_devolucion = f_devolucion;
-//		this.calculate_price_final();
+		this.calculate_price_final();
 	}
 	public void setIs_promo(boolean is_promo) {
-		System.out.println("princi "+this.is_promo);
 		this.is_promo = is_promo;
-		System.out.println("final "+this.is_promo);
 	}
 	public boolean is_return() {
-		dates cancel = new dates("00/00/0000");
-		dates datee = this.getF_devolucion();
-		System.out.println(cancel);
-		System.out.println(datee);
-		if(!datee.equals(cancel)) {
-			this.is_return=true;
-			System.out.println("return true "+"\n"+datee);
+		System.out.println(this.f_devolucion);
+		if(this.f_devolucion.getDate_return()!="00/00/0000") {
+			System.out.println(this.f_devolucion.getDate_return());
 			return true;
-		}else{
-			this.is_return=false;
-			System.out.println("return false "+"\n"+datee);
+		}else {
 			return false;
 		}
 	}
+//	public boolean is_return() {
+//		String date = menu.D.getDate_return();
+//		if(!date.equals(cancel)) {
+//			this.is_return=true;
+//			return true;
+//		}else{
+//			this.is_return=false;
+//			return false;
+//		}
+//	} Con el equals no entra en el if cuando debe.
 	public void calculate_price_final() {
 		float i = this.getPrice();
 		if (this.is_promo) {

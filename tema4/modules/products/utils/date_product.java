@@ -43,7 +43,8 @@ public class date_product {
 		String date_sales_init = "";
 		dates D = null;
 		do {
-			date_sales_init = validators.validator_string("Escribe la fecha de inicio de rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX","Escribe fecha");
+			date_sales_init = validators.validator_string("Escribe la fecha de inicio de rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX.\n"
+					+ "Recuerda que has comprado el producto en esta fecha: "+menu.D.getDate_purchase(),"Escribe fecha");
 	    	res = regex_date.validateDate(date_sales_init);
 			if (!res) {
 				res = false;
@@ -103,17 +104,13 @@ public class date_product {
 		} while ((!res));
 		return D;
 	}//end insert_date_sales_end
-	public static boolean is_return(dates fecha1) {
-		dates cancel = new dates("00/00/0000");
-		dates datee = fecha1;
-		System.out.println(cancel);
-		System.out.println(datee);
-		if(!datee.equals(cancel)) {
-			return true;
-		}else {
-			return false;
-		}
-	}
+//	public static boolean is_return(dates date_return) {
+//		if(date_return.getDate_return()!="00/00/0000") {
+//			return true;
+//		}else {
+//			return false;
+//		}
+//	}
 	public static dates insert_date_delivery(dates P) {
 		dates D = null;
 		String date_delivery = "";
