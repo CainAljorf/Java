@@ -327,6 +327,8 @@ public class CRUD {
 				JOptionPane.showMessageDialog(null, "Cerrando el programa.", "Cerrar", JOptionPane.ERROR_MESSAGE);
 				System.exit(0);
 			} // end if
+			sales_init=menu.D.compare_dates(((laptop) menu.L).getDate_sales_init());
+			sales_end=((dates) menu.D).compare_dates(((laptop) menu.L).getDate_sales_end());
 			switch (opt.toString()) {
 			case "ID":
 				((laptop) menu.L).setID_product(insert_data.insert_ID());
@@ -357,6 +359,8 @@ public class CRUD {
 				((laptop) menu.L).setF_compra(date_product.insert_date_purchase(
 						"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
 						"Ingresar fecha compra"));
+				((laptop)menu.L).setIs_promo(date_product.is_promo(sales_init,sales_end));
+				menu.L.calculate_price_final();
 				str = "Fecha de compra de laptop actualizado a: " + ((laptop) menu.L).getF_compra();
 				break;
 			case "Fecha de entrega":
@@ -366,6 +370,7 @@ public class CRUD {
 			case "Fecha de devolución":
 				((laptop)menu.L).setF_devolucion(date_product.insert_date_return(((laptop) menu.L).getF_entrega()));
 				((laptop)menu.L).setIs_return(menu.L.is_return());
+				menu.L.calculate_price_final();
 				str = "Fecha de devolución de laptop actualizado a: " + ((laptop) menu.L).getF_devolucion();
 				break;
 			case "Fecha de recogida":
@@ -416,16 +421,20 @@ public class CRUD {
 				((laptop) menu.L).setDate_sales_init(date_product.insert_date_sales_init());
 				sales_init=menu.D.compare_dates(((laptop) menu.L).getDate_sales_init());
 				((laptop)menu.L).setIs_promo(date_product.is_promo(sales_init,sales_end));
+				menu.L.calculate_price_final();
 				str = "Fecha de inicio de rebajas actualizado a: "+ ((laptop) menu.L).getDate_sales_init();
 				break;
 			case "Fin de Rebajas":
 				((laptop) menu.L).setDate_sales_end(date_product.insert_date_sales_end(((laptop) menu.L).getDate_sales_init()));
 				sales_end=((dates) menu.D).compare_dates(((laptop) menu.L).getDate_sales_end());
 				((laptop)menu.L).setIs_promo(date_product.is_promo(sales_init,sales_end));
+				menu.L.calculate_price_final();
 				str = "Fecha de fin de rebajas actualizado a: "+ ((laptop) menu.L).getDate_sales_end();
 				break;
 			case "Descuento":
 				((laptop) menu.L).setDiscont(validators.validator_float("Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
+				((laptop)menu.L).setIs_promo(date_product.is_promo(sales_init,sales_end));
+				menu.L.calculate_price_final();
 				str = "Descuento de Rebajas actualizado a: " + ((laptop) menu.L).getDiscont();
 				break;
 			case "Precio final":

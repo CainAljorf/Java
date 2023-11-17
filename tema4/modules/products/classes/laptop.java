@@ -33,6 +33,9 @@ public class laptop extends product {
 		this.camera = camera;
 		
 	}
+	public laptop(String ID) {
+		super(ID);
+	}//constructor primary key
 	public String getScreen() {
 		return screen;
 	}
