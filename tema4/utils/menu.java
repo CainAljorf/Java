@@ -7,12 +7,13 @@ import tema4.modules.products.classes.laptop;
 import tema4.modules.products.classes.product;
 import tema4.modules.products.classes.smartphone;
 import tema4.modules.products.utils.CRUD;
+import tema4.modules.products.utils.CRUD_functions.create;
+import tema4.modules.products.utils.CRUD_functions.update;
 public class menu {
 	public static laptop L;
 	public static smartphone S;
 	public static accessory A;
 	public static dates D;
-	public static product P;
 	
 	public static void menu_main() {
 		int menu_main;
@@ -55,7 +56,7 @@ public class menu {
 								buttons_sec[0]);
 						switch(menu_sec) {
 							case 0:
-								CRUD.create(menu_main);
+								create.laptop(L);;
 								validator2=true;
 								break;
 							case 1:
@@ -76,7 +77,7 @@ public class menu {
 								break;
 							case 3:
 								if(L!=null){
-									CRUD.update();
+									update.update_laptop(L);
 								}else {
 									JOptionPane.showMessageDialog(null,"No se ha podido encontrar el laptop que quieres actualizar.","Error",JOptionPane.ERROR_MESSAGE);
 								}//end if
@@ -116,7 +117,7 @@ public class menu {
 								buttons_sec[0]);
 						switch(menu_sec) {
 							case 0:
-								CRUD.create(menu_main);
+								create.smartphone(S);
 								validator2=true;
 								break;
 							case 1:
@@ -137,7 +138,7 @@ public class menu {
 								break;
 							case 3:
 								if(S!=null){
-									CRUD.update();
+									update.update_smartphone(S);;
 								}else {
 									JOptionPane.showMessageDialog(null,"No se ha podido encontrar el smartphone que quieres actualizar.","Error",JOptionPane.ERROR_MESSAGE);
 								}//end if
@@ -177,7 +178,7 @@ public class menu {
 								buttons_sec[0]);
 						switch(menu_sec) {
 							case 0:
-								CRUD.create(menu_main);
+								create.accessory(A);
 								validator2=true;
 								break;
 							case 1:
@@ -198,7 +199,7 @@ public class menu {
 								break;
 							case 3:
 								if(A!=null){
-									CRUD.update();
+									update.update_accessory(A);
 								}else {
 									JOptionPane.showMessageDialog(null,"No se ha podido encontrar el accesorio que quieres actualizar.","Error",JOptionPane.ERROR_MESSAGE);
 								}//end if

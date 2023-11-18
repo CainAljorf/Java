@@ -19,6 +19,9 @@ public class accessory extends product {
 		this.warranty = warranty;
 		this.protection = protection;
 	}
+	public accessory(String ID) {
+		super(ID);
+	}//constructor primary key
 	public String getType() {
 		return type;
 	}

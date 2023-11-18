@@ -27,6 +27,9 @@ public class smartphone extends product {
 		this.OS = OS;
 		this.camera = camera;
 	}
+	public smartphone(String ID) {
+		super(ID);
+	}//constructor primary key
 	public String getScreen() {
 		return screen;
 	}

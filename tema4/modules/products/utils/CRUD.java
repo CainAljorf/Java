@@ -4,12 +4,14 @@ import javax.swing.JOptionPane;
 import tema4.classes.dates;
 import tema4.modules.products.classes.accessory;
 import tema4.modules.products.classes.laptop;
+import tema4.modules.products.classes.product;
+import tema4.modules.products.classes.singleton;
 import tema4.modules.products.classes.smartphone;
 import tema4.utils.menu;
 import tema4.utils.validators;
 
 public class CRUD {
-	public static void create(int opt) {// with dummies
+	public static laptop create_laptop() {// with dummies
 		String str = "";
 //		dates date_purchase = date_product.insert_date_purchase(
 //				"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
@@ -22,39 +24,87 @@ public class CRUD {
 //				"Ingresar inicio de rebajas");
 //		dates date_sales_end = date_product.insert_date_sales_end(date_sales_init);
 //		float price = validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio");
-//		float discont = validators.validator_float("Ingresa el descuento del producto.", "Ingresar descuento");
-		switch(opt) {
-			case 0:
-//				menu.L = new laptop("ASD-123", price, 150, 30, "Rojo", 5, date_purchase, date_delivery,
-//						date_return, collection_date,date_sales_init, date_sales_end,discont, 7,
-//						"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
-				menu.L = new laptop("ASD-123", 100, 150, 30, "Rojo", 5, new dates("02/12/2000"), new dates("03/12/2000"),
-						new dates("01/12/2001"), new dates("19/12/2001"),new dates("12/12/2000"), new dates("17/12/2000"),0.5f, 7,
-						"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
-				menu.D = menu.L.getF_compra();
-				int sales_init=menu.D.compare_dates(((laptop) menu.L).getDate_sales_init());
-				int sales_end=((dates) menu.D).compare_dates(((laptop) menu.L).getDate_sales_end());
-				((laptop)menu.L).setIs_promo(date_product.is_promo(sales_init,sales_end));
-				((laptop)menu.L).setIs_return(menu.L.is_return());
-				((laptop)menu.L).calculate_price_final();
-//				boolean res = date_product.is_return(menu.L.getF_devolucion());
-//				((laptop)menu.L).setIs_return(res);
-				str = "Laptop creado correctamente.";
-			break;
-			case 1:
-//				menu.S=new smartphone("BDA-453",price,30,100,"Negro",5,date_purchase,date_delivery,
-//						date_return,collection_date,date_sales_init,date_sales_end,discont,5,"IPS","6.8","6GB","1 TB","Snapdragon",
-//						"Oppo","Android","Leica 1.5f");
-				str="Smartphone creado correctamente.";
-				break;
-			case 2:
-//				menu.A=new accessory("GJR-564",price,50,90,"Azul",5,date_purchase,date_delivery,date_return,collection_date,
-//						date_sales_init,date_sales_end,discont,70,"Cargador","Cableado","5 años","Polvo");
-//				str="Accessorio creado correctamente.";
-				break;
-		}
+//		float discount = validators.validator_float("Ingresa el descuento del producto.", "Ingresar descuento");
+//		menu.L = new laptop("ASD-123", price, 150, 30, "Rojo", 5, date_purchase, date_delivery,
+//				date_return, collection_date,date_sales_init, date_sales_end,discont, 7,
+//				"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
+		menu.L = new laptop("ASD-123", 100, 150, 30, "Rojo", 5, new dates("02/12/2000"), new dates("03/12/2000"),
+				new dates("01/12/2001"), new dates("19/12/2001"),new dates("12/12/2000"), new dates("17/12/2000"),0.5f, 7,
+				"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
+		menu.D = menu.L.getF_compra();
+		int sales_init=menu.D.compare_dates(((laptop) menu.L).getDate_sales_init());
+		int sales_end=((dates) menu.D).compare_dates(((laptop) menu.L).getDate_sales_end());
+		((laptop)menu.L).setIs_promo(date_product.is_promo(sales_init,sales_end));
+		((laptop)menu.L).setIs_return(menu.L.is_return());
+		((laptop)menu.L).calculate_price_final();
+		str = "Laptop creado correctamente.";
+		
+
+		
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
-	}// end create
+		return menu.L;
+	}// end create_laptop
+	public static smartphone create_smartphone() {
+		String str = "";
+		dates date_purchase = date_product.insert_date_purchase(
+				"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
+				"Ingresar fecha compra");
+		dates date_delivery = date_product.insert_date_delivery(date_purchase);
+		dates date_return = date_product.insert_date_return(date_delivery);
+		dates collection_date = date_product.insert_collection_date(date_return);
+		dates date_sales_init = date_product.insert_date_sales_init();
+		dates date_sales_end = date_product.insert_date_sales_end(date_sales_init);
+		float price = validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio");
+		float discount = validators.validator_float("Ingresa el descuento del producto.", "Ingresar descuento");
+		menu.S=new smartphone("BDA-453",price,30,100,"Negro",5,date_purchase,date_delivery,date_return,collection_date,date_sales_init,
+				date_sales_end,discount,20,"IPS","6.8","8GB","128GB","Qualcomm","Oppo","Android","Leica 1.5f");
+		str="Smartphone creado correctamente.";
+		menu.D = menu.S.getF_compra();
+		int sales_init=menu.D.compare_dates(((smartphone) menu.S).getDate_sales_init());
+		int sales_end=((dates) menu.D).compare_dates(((smartphone) menu.S).getDate_sales_end());
+		((smartphone)menu.S).setIs_promo(date_product.is_promo(sales_init,sales_end));
+		((smartphone)menu.S).setIs_return(menu.L.is_return());
+		((smartphone)menu.S).calculate_price_final();
+		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
+		return menu.S;
+	}
+	public static accessory create_accessory() {
+		String str = "";
+		dates date_purchase = date_product.insert_date_purchase(
+				"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
+				"Ingresar fecha compra");
+		dates date_delivery = date_product.insert_date_delivery(date_purchase);
+		dates date_return = date_product.insert_date_return(date_delivery);
+		dates collection_date = date_product.insert_collection_date(date_return);
+		dates date_sales_init = date_product.insert_date_sales_init();
+		dates date_sales_end = date_product.insert_date_sales_end(date_sales_init);
+		float price = validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio");
+		float discount = validators.validator_float("Ingresa el descuento del producto.", "Ingresar descuento");
+		menu.A=new accessory("GJR-564",price,50,90,"Azul",5,date_purchase,date_delivery,date_return,collection_date,
+		date_sales_init,date_sales_end,discount,70,"Cargador","Cableado","5 años","Polvo");
+		str="Accessorio creado correctamente.";
+		menu.D = menu.S.getF_compra();
+		int sales_init=menu.D.compare_dates(((accessory) menu.A).getDate_sales_init());
+		int sales_end=((dates) menu.D).compare_dates(((accessory) menu.A).getDate_sales_end());
+		((accessory)menu.A).setIs_promo(date_product.is_promo(sales_init,sales_end));
+		((accessory)menu.A).setIs_return(menu.L.is_return());
+		((accessory)menu.A).calculate_price_final();
+		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
+		return menu.A;
+	}
+
+	public static laptop new_laptop() {
+		singleton.ID=insert_data.insert_ID();
+		return new laptop(singleton.ID);
+	}
+	public static smartphone new_smartphone() {
+		singleton.ID=insert_data.insert_ID();
+		return new smartphone(singleton.ID);
+	}
+	public static accessory new_accessory() {
+		singleton.ID=insert_data.insert_ID();
+		return new accessory(singleton.ID);
+	}
 	public static void read_all() {
 		String str = "";
 		if (menu.L instanceof laptop) {
@@ -309,12 +359,12 @@ public class CRUD {
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		} // end if
 	}// end read
-	public static void update() {
+	public static void update(product P) {
 		String str = "";
 		Object opt = null;
 		int sales_init=0;
 		int sales_end=0;
-		if (menu.L instanceof laptop) {
+		if (P instanceof laptop) {
 			opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para ver:", "Selector de opciones",
 					JOptionPane.QUESTION_MESSAGE, null,
 					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
@@ -442,7 +492,7 @@ public class CRUD {
 				break;
 			}// end switch
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
-		} else if (menu.S instanceof smartphone) {
+		} else if (P instanceof smartphone) {
 			opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para ver:", "Selector de opciones",
 					JOptionPane.QUESTION_MESSAGE, null,
 					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra","Fecha de entrega",
@@ -547,7 +597,7 @@ public class CRUD {
 				break;
 			}// end switch
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
-		} else if (menu.A instanceof accessory) {
+		} else if (P instanceof accessory) {
 			opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para ver:", "Selector de opciones",
 					JOptionPane.QUESTION_MESSAGE, null,
 					new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra","Fecha de entrega",
