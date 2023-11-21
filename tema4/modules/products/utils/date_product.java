@@ -1,7 +1,7 @@
 package tema4.modules.products.utils;
 import javax.swing.JOptionPane;
 import tema4.classes.dates;
-import tema4.utils.menu;
+import tema4.modules.products.classes.singleton;
 import tema4.utils.regex_date;
 import tema4.utils.validators;
 
@@ -24,8 +24,8 @@ public class date_product {
 				res = false;
 				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
 			} else {
-				menu.D = new dates(date_purchase);
-				res = menu.D.check_date();
+				singleton.D = new dates(date_purchase);
+				res = singleton.D.check_date();
 				if (!res) {
 					res = false;
 					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -34,7 +34,7 @@ public class date_product {
 				} // end if
 			} // end if
 		} while ((res == false));
-		return menu.D;
+		return singleton.D;
 	}//end insert_date_purchase
 	public static dates insert_date_sales_init(){
 		boolean res = false;
@@ -46,8 +46,8 @@ public class date_product {
 				res = false;
 				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
 			} else {
-				menu.D = new dates(date_sales_init);
-				res = menu.D.check_date();
+				singleton.D = new dates(date_sales_init);
+				res = singleton.D.check_date();
 				if (!res) {
 					res = false;
 					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -56,7 +56,7 @@ public class date_product {
 				} // end if
 			} // end if
 		} while ((res == false));
-		return menu.D;
+		return singleton.D;
 	}//end insert_date_sales_init
 	public static dates insert_date_sales_end(dates P){
 		String str;
@@ -71,12 +71,12 @@ public class date_product {
 				res = false;
 				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
 			} else {
-				menu.D = new dates(date_sales_end);
+				singleton.D = new dates(date_sales_end);
 				if (!res) {
 					res = false;
 					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
-					compare=P.compare_dates(menu.D);
+					compare=P.compare_dates(singleton.D);
 					switch (compare) {
 						case 1:
 							str = "La fecha de fin de rebajas no es correcta, "+ date_sales_end + "\nEs anterior respecto a la "
@@ -97,7 +97,7 @@ public class date_product {
 				}//end if
 			}//end if
 		} while ((!res));
-		return menu.D;
+		return singleton.D;
 	}//end insert_date_sales_end
 //	public static boolean is_return(dates date_return) {
 //		if(date_return.getDate_return()!="00/00/0000") {
@@ -120,12 +120,12 @@ public class date_product {
 				res = false;
 				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
 			} else {
-				menu.D = new dates(date_delivery);
+				singleton.D = new dates(date_delivery);
 				if (!res) {
 					res = false;
 					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
-					compare=P.compare_dates(menu.D);
+					compare=P.compare_dates(singleton.D);
 					switch (compare) {
 						case 1:
 							str = "La fecha de entrega no es correcta, "+ date_delivery + "\nEs anterior respecto a la "
@@ -133,9 +133,9 @@ public class date_product {
 							res = false;
 							break;
 						case 2:
-							sub=P.subtract_days(menu.D);
+							sub=P.subtract_days(singleton.D);
 							if(sub == 1) {
-								res = menu.D.check_date();
+								res = singleton.D.check_date();
 								str = "Fecha de entrega correcta: "+ date_delivery + ".\nEs "+sub+" día más respecto a la "
 										+ "fecha de compra.\n"+ P.getDate_purchase();
 							}else {
@@ -153,7 +153,7 @@ public class date_product {
 				}//end if
 			}//end if
 		} while ((!res));
-		return menu.D;
+		return singleton.D;
 	}//end insert_date_delivery
 	
 	public static dates insert_date_return(dates P) {
@@ -174,14 +174,14 @@ public class date_product {
 				if(date_return.equals(cancel)){
 					JOptionPane.showMessageDialog(null, "La devolución ha sido cancelada. ", "Devolución", JOptionPane.INFORMATION_MESSAGE);
 					res = true;
-					menu.D = new dates(cancel);
+					singleton.D = new dates(cancel);
 				}else {
-					menu.D = new dates(date_return);
+					singleton.D = new dates(date_return);
 					if (!res) {
 						res = false;
 						JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
 					} else {
-						compare=P.compare_dates(menu.D);
+						compare=P.compare_dates(singleton.D);
 						switch (compare) {
 							case 1:
 								str = "La fecha de devolución no es correcta, "+ date_return + "\nEs anterior respecto a la "
@@ -189,9 +189,9 @@ public class date_product {
 								res = false;
 								break;
 							case 2:
-								sub=P.subtract_days(menu.D);
+								sub=P.subtract_days(singleton.D);
 								if(sub >= 0 && sub <=15) {
-									res = menu.D.check_date();
+									res = singleton.D.check_date();
 									str = "Fecha de devolución correcta: "+ date_return + ".\nEstá entre 1 y 15 días posteriores respecto a la "
 											+ "fecha de entrega.\n"+ P.getDate_delivery();
 								}else {
@@ -210,7 +210,7 @@ public class date_product {
 				}//end if
 			}//end if
 		} while ((!res));
-		return menu.D;
+		return singleton.D;
 	}
 	public static dates insert_collection_date(dates P) {
 		String collection_date= "";
@@ -230,12 +230,12 @@ public class date_product {
 					res = false;
 					JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
 				} else {
-					menu.D = new dates(collection_date);
+					singleton.D = new dates(collection_date);
 					if (!res) {
 						res = false;
 						JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
 					} else {
-						compare=P.compare_dates(menu.D);
+						compare=P.compare_dates(singleton.D);
 						switch (compare) {
 							case 1:
 								str = "La fecha de recogida no es correcta, "+ collection_date + "\nEs anterior respecto a la "
@@ -243,9 +243,9 @@ public class date_product {
 								res = false;
 								break;
 							case 2:
-								sub=P.subtract_days(menu.D);
+								sub=P.subtract_days(singleton.D);
 								if(sub == 2) {
-									res = menu.D.check_date();
+									res = singleton.D.check_date();
 									str = "Fecha de recogida correcta: "+ collection_date + ".\nEs 2 días posterior respecto a la "
 											+ "fecha de devolución.\n"+ P.getDate_return();
 								}else {
@@ -264,6 +264,6 @@ public class date_product {
 				}//end if
 			} while ((!res));
 		}
-		return menu.D;
+		return singleton.D;
 	}
 }

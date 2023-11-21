@@ -5,7 +5,6 @@ import javax.swing.JOptionPane;
 import tema4.modules.products.classes.singleton;
 import tema4.modules.products.utils.CRUD;
 import tema4.modules.products.utils.find;
-import tema4.utils.menu;
 
 public class read {
 	public static void read_laptop (){
@@ -13,8 +12,8 @@ public class read {
 		boolean validator = true;
 		String str= "";
 		String[]buttons={
-				"Read One",
 				"Read All",
+				"Read One",
 				"Atrás"
 				};
 		if(singleton.productlaptop.isEmpty()){
@@ -39,12 +38,12 @@ public class read {
 						break;
 					case 1:
 						location = -1;
-						menu.L = CRUD.new_laptop("Ingresa el ID de tu laptop para leerlo."
+						singleton.L = CRUD.new_laptop("Ingresa el ID de tu laptop para leerlo."
 								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-						location = find.find_laptop(menu.L);
+						location = find.find_laptop();
 						if (location != -1) {
-							menu.L = singleton.productlaptop.get(location);
-							JOptionPane.showMessageDialog(null, menu.L.toString());
+							singleton.L = singleton.productlaptop.get(location);
+							CRUD.read();
 						}else {
 							JOptionPane.showMessageDialog(null, "El laptop que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
@@ -94,12 +93,12 @@ public class read {
 						break;
 					case 1:
 						location = -1;
-						menu.S = CRUD.new_smartphone("Ingresa el ID de tu smartphone para leerlo."
+						singleton.S = CRUD.new_smartphone("Ingresa el ID de tu smartphone para leerlo."
 								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-						location = find.find_smartphone(menu.S);
+						location = find.find_smartphone();
 						if (location != -1) {
-							menu.S = singleton.productsmartphone.get(location);
-							JOptionPane.showMessageDialog(null, menu.S.toString());
+							singleton.S = singleton.productsmartphone.get(location);
+							JOptionPane.showMessageDialog(null, singleton.S.toString());
 						}else {
 							JOptionPane.showMessageDialog(null, "El smartphone que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
@@ -149,12 +148,12 @@ public class read {
 						break;
 					case 1:
 						location = -1;
-						menu.A = CRUD.new_accessory("Ingresa el ID de tu accesorio para leerlo."
+						singleton.A = CRUD.new_accessory("Ingresa el ID de tu accesorio para leerlo."
 								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-						location = find.find_accessory(menu.A);
+						location = find.find_accessory();
 						if (location != -1) {
-							menu.A = singleton.productaccessory.get(location);
-							JOptionPane.showMessageDialog(null, menu.A.toString());
+							singleton.A = singleton.productaccessory.get(location);
+							JOptionPane.showMessageDialog(null, singleton.A.toString());
 						}else {
 							JOptionPane.showMessageDialog(null, "El accesorio que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
 						}

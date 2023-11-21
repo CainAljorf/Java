@@ -1,29 +1,51 @@
 package tema4.modules.products.utils;
 
-import tema4.modules.products.classes.accessory;
-import tema4.modules.products.classes.laptop;
 import tema4.modules.products.classes.singleton;
-import tema4.modules.products.classes.smartphone;
 
 public class find {
-	public static int find_laptop(laptop laptop) { 
+	public static int find_laptop() { 
 		for (int i = 0; i<=(singleton.productlaptop.size()-1); i++){
-			if((singleton.productlaptop.get(i)).equals(laptop) )
+			if((singleton.productlaptop.get(i)).equals(singleton.L))
 				return i;
+		}
+		for (int j = 0; j<=(singleton.productsmartphone.size()-1); j++){
+			if((singleton.productsmartphone.get(j)).equals(singleton.S) )
+				return j;
+		}
+		for (int k = 0; k<=(singleton.productaccessory.size()-1); k++){
+			if((singleton.productaccessory.get(k)).equals(singleton.A) )
+				return k;
+		}
+		
+		return -1;
+	}
+	public static int find_smartphone() { 
+		for (int j = 0; j<=(singleton.productsmartphone.size()-1); j++){
+			if((singleton.productsmartphone.get(j)).equals(singleton.S) )
+				return j;
+		}
+		for (int i = 0; i<=(singleton.productlaptop.size()-1); i++){
+			if((singleton.productlaptop.get(i)).equals(singleton.L) )
+				return i;
+		}
+		for (int k = 0; k<=(singleton.productaccessory.size()-1); k++){
+			if((singleton.productaccessory.get(k)).equals(singleton.A) )
+				return k;
 		}
 		return -1;
 	}
-	public static int find_smartphone(smartphone smartphone) { 
-		for (int i = 0; i<=(singleton.productsmartphone.size()-1); i++){
-			if((singleton.productsmartphone.get(i)).equals(smartphone) )
+	public static int find_accessory() { 
+		for (int k = 0; k<=(singleton.productaccessory.size()-1); k++){
+			if((singleton.productaccessory.get(k)).equals(singleton.A) )
+				return k;
+		}
+		for (int i = 0; i<=(singleton.productlaptop.size()-1); i++){
+			if((singleton.productlaptop.get(i)).equals(singleton.L) )
 				return i;
 		}
-		return -1;
-	}
-	public static int find_accessory(accessory accessory) { 
-		for (int i = 0; i<=(singleton.productaccessory.size()-1); i++){
-			if((singleton.productaccessory.get(i)).equals(accessory) )
-				return i;
+		for (int j = 0; j<=(singleton.productsmartphone.size()-1); j++){
+			if((singleton.productsmartphone.get(j)).equals(singleton.S) )
+				return j;
 		}
 		return -1;
 	}
