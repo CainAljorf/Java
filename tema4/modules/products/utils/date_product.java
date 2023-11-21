@@ -11,7 +11,7 @@ public class date_product {
 		boolean res = false;
 		if(ini != 2 && end == 2) {
 			res = true;
-		}System.out.println(ini+" \n"+end);
+		}
 		return res;
 	}
 	public static dates insert_date_purchase(String message, String title){
@@ -40,8 +40,7 @@ public class date_product {
 		boolean res = false;
 		String date_sales_init = "";
 		do {
-			date_sales_init = validators.validator_string("Escribe la fecha de inicio de rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX.\n"
-					+ "Recuerda que has comprado el producto en esta fecha: "+menu.D.getDate_purchase(),"Escribe fecha");
+			date_sales_init = validators.validator_string("Escribe la fecha de inicio de rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX.","Escribe fecha");
 	    	res = regex_date.validateDate(date_sales_init);
 			if (!res) {
 				res = false;
@@ -185,19 +184,18 @@ public class date_product {
 						compare=P.compare_dates(menu.D);
 						switch (compare) {
 							case 1:
-								str = "La fecha de entrega no es correcta, "+ date_return + "\nEs anterior respecto a la "
+								str = "La fecha de devolución no es correcta, "+ date_return + "\nEs anterior respecto a la "
 										+ "fecha de entrega.\n"+ P.getDate_delivery();
 								res = false;
 								break;
 							case 2:
 								sub=P.subtract_days(menu.D);
-								System.out.println(sub);
 								if(sub >= 0 && sub <=15) {
 									res = menu.D.check_date();
-									str = "Fecha de entrega correcta: "+ date_return + ".\nEstá entre 1 y 15 días respecto a la "
+									str = "Fecha de devolución correcta: "+ date_return + ".\nEstá entre 1 y 15 días posteriores respecto a la "
 											+ "fecha de entrega.\n"+ P.getDate_delivery();
 								}else {
-									str = "Fecha de entrega incorrecta: "+ date_return + ".\nDebe estar entre 1 y 15 días respecto a la "
+									str = "Fecha de devolución incorrecta: "+ date_return + ".\nDebe estar entre 1 y 15 días posteriores respecto a la "
 											+ "fecha de entrega.\n"+ P.getDate_delivery()+"\n";
 									res=false;
 								}
@@ -246,7 +244,6 @@ public class date_product {
 								break;
 							case 2:
 								sub=P.subtract_days(menu.D);
-								System.out.println(sub);
 								if(sub == 2) {
 									res = menu.D.check_date();
 									str = "Fecha de recogida correcta: "+ collection_date + ".\nEs 2 días posterior respecto a la "

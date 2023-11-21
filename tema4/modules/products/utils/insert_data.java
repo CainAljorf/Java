@@ -3,11 +3,11 @@ import javax.swing.JOptionPane;
 
 import tema4.utils.validators;
 public class insert_data {
-	public static String insert_ID() {
+	public static String insert_ID(String message, String title) {
 		boolean res = false;
 		String ID = "";
 		do {
-			ID = validators.validator_string("Ingresa un ID alfanúmerico como el siguiente ejemplo.\nABC-123", "Ingresar ID");
+			ID = validators.validator_string(message,title);
 			res = regex_product.validateProductID(ID);
 			if (res == false) {
 				JOptionPane.showMessageDialog(null, "ID ingresado incorrecto. ", "Error", JOptionPane.ERROR_MESSAGE);

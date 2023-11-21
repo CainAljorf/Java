@@ -11,26 +11,26 @@ import tema4.utils.menu;
 import tema4.utils.validators;
 
 public class CRUD {
-	public static laptop create_laptop() {// with dummies
+	public static laptop create_laptop() {
 		String str = "";
-//		dates date_purchase = date_product.insert_date_purchase(
-//				"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
-//				"Ingresar fecha compra");
-//		dates date_delivery = date_product.insert_date_delivery(date_purchase);
-//		dates date_return = date_product.insert_date_return(date_delivery);
-//		dates collection_date = date_product.insert_collection_date(date_return);
-//		dates date_sales_init = date_product.insert_date_sales_init(
-//				"Ingresa la fecha de compra del inicio de las rebajas.\nFormato: Día/Mes/Año XX/XX/XXXX\nRecuerda que has comprado el producto en esta fecha: "+date_purchase,
-//				"Ingresar inicio de rebajas");
-//		dates date_sales_end = date_product.insert_date_sales_end(date_sales_init);
-//		float price = validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio");
-//		float discount = validators.validator_float("Ingresa el descuento del producto.", "Ingresar descuento");
-//		menu.L = new laptop("ASD-123", price, 150, 30, "Rojo", 5, date_purchase, date_delivery,
-//				date_return, collection_date,date_sales_init, date_sales_end,discont, 7,
-//				"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
-		menu.L = new laptop("ASD-123", 100, 150, 30, "Rojo", 5, new dates("02/12/2000"), new dates("03/12/2000"),
-				new dates("01/12/2001"), new dates("19/12/2001"),new dates("12/12/2000"), new dates("17/12/2000"),0.5f, 7,
+//		String ID = insert_data.insert_ID("Ingresa un ID alfanúmerico como el siguiente ejemplo.\nABC-123", "Ingresar ID");
+		dates date_purchase = date_product.insert_date_purchase(
+				"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
+				"Ingresar fecha compra");
+		dates date_delivery = date_product.insert_date_delivery(date_purchase);
+		dates date_return = date_product.insert_date_return(date_delivery);
+		dates collection_date = date_product.insert_collection_date(date_return);
+		dates date_sales_init = date_product.insert_date_sales_init();
+		dates date_sales_end = date_product.insert_date_sales_end(date_sales_init);
+		float price = validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio");
+		float discount = validators.validator_float("Ingresa el descuento del producto.", "Ingresar descuento");
+		menu.L = new laptop(menu.L.getID_product(), price, 150, 30, "Rojo", 5, date_purchase, date_delivery,
+				date_sales_init, date_sales_end,date_return,collection_date,discount, 7,
 				"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
+// with dummies
+//		menu.L = new laptop("ASD-123", 100, 150, 30, "Rojo", 5, new dates("02/12/2000"), new dates("03/12/2000"),
+//				new dates("01/12/2001"), new dates("19/12/2001"),new dates("12/12/2000"), new dates("17/12/2000"),0.5f, 7,
+//				"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
 		menu.D = menu.L.getF_compra();
 		int sales_init=menu.D.compare_dates(((laptop) menu.L).getDate_sales_init());
 		int sales_end=((dates) menu.D).compare_dates(((laptop) menu.L).getDate_sales_end());
@@ -38,14 +38,13 @@ public class CRUD {
 		((laptop)menu.L).setIs_return(menu.L.is_return());
 		((laptop)menu.L).calculate_price_final();
 		str = "Laptop creado correctamente.";
-		
-
-		
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		return menu.L;
 	}// end create_laptop
 	public static smartphone create_smartphone() {
 		String str = "";
+		String ID = insert_data.insert_ID("Ingresa un ID alfanúmerico como el siguiente ejemplo.\nABC-123", "Ingresar ID");
+
 		dates date_purchase = date_product.insert_date_purchase(
 				"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
 				"Ingresar fecha compra");
@@ -56,20 +55,21 @@ public class CRUD {
 		dates date_sales_end = date_product.insert_date_sales_end(date_sales_init);
 		float price = validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio");
 		float discount = validators.validator_float("Ingresa el descuento del producto.", "Ingresar descuento");
-		menu.S=new smartphone("BDA-453",price,30,100,"Negro",5,date_purchase,date_delivery,date_return,collection_date,date_sales_init,
-				date_sales_end,discount,20,"IPS","6.8","8GB","128GB","Qualcomm","Oppo","Android","Leica 1.5f");
+		menu.S=new smartphone(ID,price,30,100,"Negro",5,date_purchase,date_delivery,date_sales_init,
+				date_sales_end,date_return,collection_date,discount,20,"IPS","6.8","8GB","128GB","Qualcomm","Oppo","Android","Leica 1.5f");
 		str="Smartphone creado correctamente.";
 		menu.D = menu.S.getF_compra();
 		int sales_init=menu.D.compare_dates(((smartphone) menu.S).getDate_sales_init());
 		int sales_end=((dates) menu.D).compare_dates(((smartphone) menu.S).getDate_sales_end());
 		((smartphone)menu.S).setIs_promo(date_product.is_promo(sales_init,sales_end));
-		((smartphone)menu.S).setIs_return(menu.L.is_return());
+		((smartphone)menu.S).setIs_return(menu.S.is_return());
 		((smartphone)menu.S).calculate_price_final();
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		return menu.S;
 	}
 	public static accessory create_accessory() {
 		String str = "";
+		String ID = insert_data.insert_ID("Ingresa un ID alfanúmerico como el siguiente ejemplo.\nABC-123", "Ingresar ID");
 		dates date_purchase = date_product.insert_date_purchase(
 				"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
 				"Ingresar fecha compra");
@@ -80,29 +80,28 @@ public class CRUD {
 		dates date_sales_end = date_product.insert_date_sales_end(date_sales_init);
 		float price = validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio");
 		float discount = validators.validator_float("Ingresa el descuento del producto.", "Ingresar descuento");
-		menu.A=new accessory("GJR-564",price,50,90,"Azul",5,date_purchase,date_delivery,date_return,collection_date,
-		date_sales_init,date_sales_end,discount,70,"Cargador","Cableado","5 años","Polvo");
+		menu.A=new accessory(ID,price,50,90,"Azul",5,date_purchase,date_delivery,
+		date_sales_init,date_sales_end,date_return,collection_date,discount,70,"Cargador","Cableado","5 años","Polvo");
 		str="Accessorio creado correctamente.";
 		menu.D = menu.S.getF_compra();
 		int sales_init=menu.D.compare_dates(((accessory) menu.A).getDate_sales_init());
 		int sales_end=((dates) menu.D).compare_dates(((accessory) menu.A).getDate_sales_end());
 		((accessory)menu.A).setIs_promo(date_product.is_promo(sales_init,sales_end));
-		((accessory)menu.A).setIs_return(menu.L.is_return());
+		((accessory)menu.A).setIs_return(menu.A.is_return());
 		((accessory)menu.A).calculate_price_final();
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		return menu.A;
 	}
-
-	public static laptop new_laptop() {
-		singleton.ID=insert_data.insert_ID();
+	public static laptop new_laptop(String message, String title) {
+		singleton.ID=insert_data.insert_ID(message,title);
 		return new laptop(singleton.ID);
 	}
-	public static smartphone new_smartphone() {
-		singleton.ID=insert_data.insert_ID();
+	public static smartphone new_smartphone(String message, String title) {
+		singleton.ID=insert_data.insert_ID(message,title);
 		return new smartphone(singleton.ID);
 	}
-	public static accessory new_accessory() {
-		singleton.ID=insert_data.insert_ID();
+	public static accessory new_accessory(String message, String title) {
+		singleton.ID=insert_data.insert_ID(message,title);
 		return new accessory(singleton.ID);
 	}
 	public static void read_all() {
@@ -381,7 +380,7 @@ public class CRUD {
 			sales_end=((dates) menu.D).compare_dates(((laptop) menu.L).getDate_sales_end());
 			switch (opt.toString()) {
 			case "ID":
-				((laptop) menu.L).setID_product(insert_data.insert_ID());
+				((laptop) menu.L).setID_product(insert_data.insert_ID("Ingresa ID de laptop.","Ingresar ID"));
 				str = "ID de laptop actualizado a: " + ((laptop) menu.L).getID_product();
 				break;
 			case "Precio":
@@ -506,7 +505,7 @@ public class CRUD {
 			} // end if
 			switch (opt.toString()) {
 			case "ID":
-				((smartphone) menu.S).setID_product(insert_data.insert_ID());
+				((smartphone) menu.S).setID_product(insert_data.insert_ID("Ingresa el ID para localizar tu smartphone.","Ingresar ID"));
 				str = "ID de smartphone actualizado a: " + ((smartphone) menu.S).getID_product();
 				break;
 			case "Precio":
@@ -610,7 +609,7 @@ public class CRUD {
 			} // end if
 			switch (opt.toString()) {
 			case "ID":
-				((accessory) menu.A).setID_product(insert_data.insert_ID());
+				((accessory) menu.A).setID_product(insert_data.insert_ID("Ingresa el ID para localizar tu accesorio.","Ingresar ID"));
 				str = "ID de accesorio actualizado a: " + ((accessory) menu.A).getID_product();
 				break;
 			case "Precio":

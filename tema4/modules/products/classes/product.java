@@ -135,9 +135,7 @@ public abstract class product {
 		this.is_promo = is_promo;
 	}
 	public boolean is_return() {
-		System.out.println(this.f_devolucion);
 		if(this.f_devolucion.getDate_return()!="00/00/0000") {
-			System.out.println(this.f_devolucion.getDate_return());
 			return true;
 		}else {
 			return false;

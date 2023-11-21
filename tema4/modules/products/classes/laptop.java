@@ -15,8 +15,7 @@ public class laptop extends product {
 	private String camera;
 	
 	public laptop(String ID_product, float price, float peso, int stock, String color, float dimension, dates f_compra,
-			dates f_entrega,  
-			dates date_sales_init, dates date_sales_end,dates f_devolucion, dates f_recogida, float discont, float price_final,
+			dates f_entrega, dates date_sales_init, dates date_sales_end,dates f_devolucion, dates f_recogida, float discont, float price_final,
 			String screen, String screen_inches, String keyboard, String RAM, String storage, String CPU,
 			String power_supply, String graphics, String brand, String camera) {
 		super(ID_product, price, peso, stock, color, dimension, f_compra, f_entrega, date_sales_init, date_sales_end, f_devolucion,
