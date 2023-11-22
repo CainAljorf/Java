@@ -11,7 +11,7 @@ public class create {
 		int location = -1;
 		singleton.L = CRUD.new_laptop("Ingresa el ID que quieras crear para tu laptop.\nSi ya existe ese ID deberás crear uno nuevo."
 				+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-		location = find.find_laptop();
+		location = find.find_product(singleton.L);
 		if (location != -1) {
 			JOptionPane.showMessageDialog(null, "No se ha podido crear porque ya existe.","Error",JOptionPane.ERROR_MESSAGE);
 		} else {
@@ -23,7 +23,7 @@ public class create {
 		int location = -1;
 		singleton.S = CRUD.new_smartphone("Ingresa el ID que quieras crear para tu smartphone.\nSi ya existe ese ID deberás crear uno nuevo."
 				+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-		location = find.find_smartphone();
+		location = find.find_product(singleton.S);
 		if (location != -1) {
 			JOptionPane.showMessageDialog(null, "No se ha podido crear porque ya existe.","Error",JOptionPane.ERROR_MESSAGE);
 		} else {
@@ -35,7 +35,7 @@ public class create {
 		int location = -1;
 		singleton.A = CRUD.new_accessory("Ingresa el ID que quieras crear para tu accesorio.\nSi ya existe ese ID deberás crear uno nuevo."
 				+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-		location = find.find_accessory();
+		location = find.find_product(singleton.A);
 		if (location != -1) {
 			JOptionPane.showMessageDialog(null, "No se ha podido crear porque ya existe.","Error",JOptionPane.ERROR_MESSAGE);
 		} else {

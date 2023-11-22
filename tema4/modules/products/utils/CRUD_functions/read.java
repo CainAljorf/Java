@@ -40,7 +40,7 @@ public class read {
 						location = -1;
 						singleton.L = CRUD.new_laptop("Ingresa el ID de tu laptop para leerlo."
 								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-						location = find.find_laptop();
+						location = find.find_product(singleton.L);
 						if (location != -1) {
 							singleton.L = singleton.productlaptop.get(location);
 							CRUD.read();
@@ -95,7 +95,7 @@ public class read {
 						location = -1;
 						singleton.S = CRUD.new_smartphone("Ingresa el ID de tu smartphone para leerlo."
 								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-						location = find.find_smartphone();
+						location = find.find_product(singleton.S);
 						if (location != -1) {
 							singleton.S = singleton.productsmartphone.get(location);
 							JOptionPane.showMessageDialog(null, singleton.S.toString());
@@ -150,7 +150,7 @@ public class read {
 						location = -1;
 						singleton.A = CRUD.new_accessory("Ingresa el ID de tu accesorio para leerlo."
 								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-						location = find.find_accessory();
+						location = find.find_product(singleton.A);
 						if (location != -1) {
 							singleton.A = singleton.productaccessory.get(location);
 							JOptionPane.showMessageDialog(null, singleton.A.toString());

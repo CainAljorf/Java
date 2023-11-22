@@ -684,8 +684,8 @@ public class CRUD {
 	public static String set_ID_laptop (){
 		int location = -1;
 		String str;
-		singleton.L = CRUD.new_laptop("Escribe el ID al que quieras actualizar.", "Actualizar ID");
-		location = find.find_laptop();
+		singleton.L_ID = CRUD.new_laptop("Escribe el ID al que quieras actualizar.", "Actualizar ID");
+		location = find.find_product(singleton.L_ID);
 		if (location != -1) {
 			str="Ya hay un producto con ese ID.";
 		}else {
@@ -696,8 +696,8 @@ public class CRUD {
 	}
 	public static void set_ID_smartphone (){
 		int location = -1;
-		singleton.S = CRUD.new_smartphone("Escribe el ID al que quieras actualizar.", "Actualizar ID");
-		location = find.find_laptop();
+		singleton.S_ID = CRUD.new_smartphone("Escribe el ID al que quieras actualizar.", "Actualizar ID");
+		location = find.find_product(singleton.S_ID);
 		if (location != -1) {
 			JOptionPane.showMessageDialog(null, "Ya hay un producto con ese ID.","Error",JOptionPane.ERROR_MESSAGE);
 		}else {
@@ -706,8 +706,8 @@ public class CRUD {
 	}
 	public static void set_ID_accessory (){
 		int location = -1;
-		singleton.A = CRUD.new_accessory("Escribe el ID al que quieras actualizar.", "Actualizar ID");
-		location = find.find_laptop();
+		singleton.A_ID = CRUD.new_accessory("Escribe el ID al que quieras actualizar.", "Actualizar ID");
+		location = find.find_product(singleton.A_ID);
 		if (location != -1) {
 			JOptionPane.showMessageDialog(null, "Ya hay un producto con ese ID.","Error",JOptionPane.ERROR_MESSAGE);
 		}else {

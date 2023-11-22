@@ -15,7 +15,7 @@ public class update {
 			location1 = -1;
 			singleton.L =  CRUD.new_laptop("Ingresa el ID del laptop que quieras actualizar."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-			location1 = find.find_laptop();
+			location1 = find.find_product(singleton.L);
 			if (location1 != -1) {
 				singleton.L = singleton.productlaptop.get(location1);
 				CRUD.update();
@@ -32,7 +32,7 @@ public class update {
 			location1 = -1;
 			singleton.S = CRUD.new_smartphone("Ingresa el ID del smartphone que quieras actualizar."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-			location1 = find.find_smartphone();
+			location1 = find.find_product(singleton.S);
 			if (location1 != -1) {
 				singleton.S = singleton.productsmartphone.get(location1);
 				CRUD.update();
@@ -49,7 +49,7 @@ public class update {
 			//location1 = -1;
 			singleton.A = CRUD.new_accessory("Ingresa el ID del accesorio que quieras actualizar."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-			location1 = find.find_accessory();
+			location1 = find.find_product(singleton.A);
 			if (location1 != -1) {
 				singleton.A = singleton.productaccessory.get(location1);
 				CRUD.update();

@@ -10,6 +10,9 @@ public class singleton {
 	public static ArrayList <accessory> productaccessory;
 	public static String ID;
 	public static laptop L;
+	public static laptop L_ID;
+	public static smartphone S_ID;
+	public static accessory A_ID;
 	public static smartphone S;
 	public static accessory A;
 	public static dates D;
