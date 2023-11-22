@@ -13,5 +13,4 @@ public class singleton {
 	public static smartphone S;
 	public static accessory A;
 	public static dates D;
-	
 }
