@@ -499,7 +499,6 @@ public class CRUD {
 			switch (opt.toString()) {
 			case "ID":
 				set_ID_smartphone();
-				str = "ID de smartphone actualizado a: " + singleton.S.getID_product();
 				break;
 			case "Precio":
 				singleton.S.setPrice(validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));
@@ -604,7 +603,6 @@ public class CRUD {
 			switch (opt.toString()) {
 			case "ID":
 				set_ID_accessory();
-				str = "ID de accesorio actualizado a: " + singleton.A.getID_product();
 				break;
 			case "Precio":
 				singleton.A.setPrice(validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));
@@ -694,25 +692,31 @@ public class CRUD {
 		}
 		return str;
 	}
-	public static void set_ID_smartphone (){
+	public static String set_ID_smartphone (){
 		int location = -1;
+		String str;
 		singleton.S_ID = CRUD.new_smartphone("Escribe el ID al que quieras actualizar.", "Actualizar ID");
 		location = find.find_product(singleton.S_ID);
 		if (location != -1) {
-			JOptionPane.showMessageDialog(null, "Ya hay un producto con ese ID.","Error",JOptionPane.ERROR_MESSAGE);
+			str="Ya hay un producto con ese ID.";
 		}else {
 			singleton.S.setID_product(singleton.ID);
+			str="ID de smartphone actualizado a: " + singleton.S.getID_product();
 		}
+		return str;
 	}
-	public static void set_ID_accessory (){
+	public static String set_ID_accessory (){
 		int location = -1;
+		String str;
 		singleton.A_ID = CRUD.new_accessory("Escribe el ID al que quieras actualizar.", "Actualizar ID");
 		location = find.find_product(singleton.A_ID);
 		if (location != -1) {
-			JOptionPane.showMessageDialog(null, "Ya hay un producto con ese ID.","Error",JOptionPane.ERROR_MESSAGE);
+			str="Ya hay un producto con ese ID.";
 		}else {
 			singleton.A.setID_product(singleton.ID);
+			str="ID de accesorio actualizado a: " + singleton.A.getID_product();
 		}
+		return str;
 	}
 //	public static void delete() {
 //		if (singleton.L instanceof laptop) {

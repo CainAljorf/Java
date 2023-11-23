@@ -7,45 +7,109 @@ import tema4.modules.products.classes.laptop;
 import tema4.modules.products.classes.singleton;
 import tema4.modules.products.classes.smartphone;
 import tema4.modules.products.utils.date_product;
+import tema4.modules.products.utils.find;
 import tema4.modules.products.classes.accessory;
 
 public class dummies {
 	public static laptop create_dummies_laptop(){
-		return new laptop("ASD-123", 100, 150, 30, "Rojo", 5, new dates("02/12/2000"), new dates("03/12/2000"),
+		return new laptop(singleton.DL.getID_product(), 100, 150, 30, "Rojo", 5, new dates("02/12/2000"), new dates("03/12/2000"),
 				new dates("01/12/2001"), new dates("19/12/2001"),new dates("12/12/2000"), new dates("17/12/2000"),0.5f, 7,
 				"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
 	}
 	public static laptop new_id_laptop() {
-		String ID="";
-		ID="ABC-123";
+		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	    String ID = "";
+	    for (int i = 0; i < 3; i++) {
+	        int randomIndex = (int) (Math.random() * letters.length());
+	        ID += letters.charAt(randomIndex);
+	    }
+	    ID += "-";
+	    for (int i = 0; i < 3; i++) {
+	        ID += (int) (Math.random() * 10);
+	    }
 		return new laptop (ID);
 	}
 	public static smartphone create_dummies_smartphone(){
-		return new smartphone("ASD-123", 100, 150, 30, "Rojo", 5, new dates("02/12/2000"), new dates("03/12/2000"),
+		return new smartphone(singleton.DS.getID_product(), 100, 150, 30, "Rojo", 5, new dates("02/12/2000"), new dates("03/12/2000"),
 				new dates("01/12/2001"), new dates("19/12/2001"),new dates("12/12/2000"), new dates("17/12/2000"),0.5f, 7,
 				"IPS","6.8","8GB","128GB","Qualcomm","Oppo","Android","Leica 1.5f");
 	}
 	public static smartphone new_id_smartphone() {
-		String ID="";
-		ID="ABC-123";
+		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	    String ID = "";
+	    for (int i = 0; i < 3; i++) {
+	        int randomIndex = (int) (Math.random() * letters.length());
+	        ID += letters.charAt(randomIndex);
+	    }
+	    ID += "-";
+	    for (int i = 0; i < 3; i++) {
+	        ID += (int) (Math.random() * 10);
+	    }
 		return new smartphone(ID);
 	}
 	public static accessory create_dummies_accessory(){
-		return new accessory("ASD-123", 100, 150, 30, "Rojo", 5, new dates("02/12/2000"), new dates("03/12/2000"),
+		return new accessory(singleton.DA.getID_product(), 100, 150, 30, "Rojo", 5, new dates("02/12/2000"), new dates("03/12/2000"),
 				new dates("01/12/2001"), new dates("19/12/2001"),new dates("12/12/2000"), new dates("17/12/2000"),0.5f, 7,
 				"Cargador","Cableado","5 años","Polvo");
 	}
 	public static accessory new_id_accessory() {
-		String ID="";
-		ID="ABC-123";
+		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	    String ID = "";
+	    for (int i = 0; i < 3; i++) {
+	        int randomIndex = (int) (Math.random() * letters.length());
+	        ID += letters.charAt(randomIndex);
+	    }
+	    ID += "-";
+	    for (int i = 0; i < 3; i++) {
+	        ID += (int) (Math.random() * 10);
+	    }
 		return new accessory (ID);
+	}
+	public static String set_dummies_ID_laptop (){
+		int location = -1;
+		String str;
+		singleton.L_ID = new_id_laptop();
+		location = find.find_product(singleton.L_ID);
+		if (location != -1) {
+			str="Ya hay un producto con ese ID.";
+		}else {
+			singleton.DL.setID_product(singleton.ID);
+			str="ID de laptop actualizado a: " + singleton.DL.getID_product();
+		}
+		return str;
+	}
+	public static String set_dummies_ID_smartphone (){
+		int location = -1;
+		String str;
+		singleton.S_ID = new_id_smartphone();
+		location = find.find_product(singleton.S_ID);
+		if (location != -1) {
+			str="Ya hay un producto con ese ID.";
+		}else {
+			singleton.DS.setID_product(singleton.ID);
+			str="ID de smartphone actualizado a: " + singleton.DS.getID_product();
+		}
+		return str;
+	}
+	public static String set_dummies_ID_accessory (){
+		int location = -1;
+		String str;
+		singleton.A_ID = new_id_accessory();
+		location = find.find_product(singleton.A_ID);
+		if (location != -1) {
+			str="Ya hay un producto con ese ID.";
+		}else {
+			singleton.DA.setID_product(singleton.ID);
+			str="ID de accesorio actualizado a: " + singleton.DA.getID_product();
+		}
+		return str;
 	}
 	public static void update_dummies() {
 	String str = "";
 	Object opt = null;
 	int sales_init=0;
 	int sales_end=0;
-	if (singleton.L instanceof laptop) {
+	if (singleton.DL instanceof laptop) {
 		opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para actualizarlo:", "Selector de opciones",
 				JOptionPane.QUESTION_MESSAGE, null,
 				new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
@@ -58,119 +122,119 @@ public class dummies {
 			JOptionPane.showMessageDialog(null, "Cerrando el programa.", "Cerrar", JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		} // end if
-		sales_init=singleton.D.compare_dates(singleton.L.getDate_sales_init());
-		sales_end=singleton.D.compare_dates(singleton.L.getDate_sales_end());
+		sales_init=singleton.D.compare_dates(singleton.DL.getDate_sales_init());
+		sales_end=singleton.D.compare_dates(singleton.DL.getDate_sales_end());
 		switch (opt.toString()) {
 		case "ID":
-			singleton.L.setID_product("ACB-123");
+			set_dummies_ID_laptop();
 			break;
 		case "Precio":
-			singleton.L.setPrice(100);
-			singleton.L.calculate_price_final();
-			str = "Precio de laptop actualizado a: " + singleton.L.getPrice();
+			singleton.DL.setPrice(100);
+			singleton.DL.calculate_price_final();
+			str = "Precio de laptop actualizado a: " + singleton.DL.getPrice();
 			break;
 		case "Peso":
-			singleton.L.setPeso(90);
-			str = "Peso de laptop actualizado a: " + singleton.L.getPeso();
+			singleton.DL.setPeso(90);
+			str = "Peso de laptop actualizado a: " + singleton.DL.getPeso();
 			break;
 		case "Stock":
-			singleton.L.setStock(99);
-			str = "Stock de laptop actualizado a: " + singleton.L.getStock();
+			singleton.DL.setStock(99);
+			str = "Stock de laptop actualizado a: " + singleton.DL.getStock();
 			break;
 		case "Color":
-			singleton.L.setColor("RED");
-			str = "Color de laptop actualizado a: " + singleton.L.getColor();
+			singleton.DL.setColor("RED");
+			str = "Color de laptop actualizado a: " + singleton.DL.getColor();
 			break;
 		case "Dimensión":
-			singleton.L.setDimension(34);
-			str = "Dimensión de laptop actualizado a: " + singleton.L.getDimension();
+			singleton.DL.setDimension(34);
+			str = "Dimensión de laptop actualizado a: " + singleton.DL.getDimension();
 			break;
 		case "Fecha de compra":
-			singleton.L.setF_compra(new dates("12/12/2000"));
-			singleton.L.setIs_promo(date_product.is_promo(sales_init,sales_end));
-			singleton.L.calculate_price_final();
-			str = "Fecha de compra de laptop actualizado a: " + singleton.L.getF_compra();
+			singleton.DL.setF_compra(new dates("12/12/2000"));
+			singleton.DL.setIs_promo(date_product.is_promo(sales_init,sales_end));
+			singleton.DL.calculate_price_final();
+			str = "Fecha de compra de laptop actualizado a: " + singleton.DL.getF_compra();
 			break;
 		case "Fecha de entrega":
-			singleton.L.setF_entrega(new dates("13/12/2000"));
-			str = "Fecha de entrega de laptop actualizado a: " + singleton.L.getF_entrega();
+			singleton.DL.setF_entrega(new dates("13/12/2000"));
+			str = "Fecha de entrega de laptop actualizado a: " + singleton.DL.getF_entrega();
 			break;
 		case "Fecha de devolución":
-			singleton.L.setF_devolucion(new dates("14/12/2000"));
-			singleton.L.setIs_return(singleton.L.is_return());
-			singleton.L.calculate_price_final();
-			str = "Fecha de devolución de laptop actualizado a: " + singleton.L.getF_devolucion();
+			singleton.DL.setF_devolucion(new dates("14/12/2000"));
+			singleton.DL.setIs_return(singleton.DL.is_return());
+			singleton.DL.calculate_price_final();
+			str = "Fecha de devolución de laptop actualizado a: " + singleton.DL.getF_devolucion();
 			break;
 		case "Fecha de recogida":
-			singleton.L.setF_recogida(new dates("15/12/2000"));
-			str = "Fecha de devolución de laptop actualizado a: " + singleton.L.getF_recogida();
+			singleton.DL.setF_recogida(new dates("15/12/2000"));
+			str = "Fecha de devolución de laptop actualizado a: " + singleton.DL.getF_recogida();
 			break;
 		case "Pantalla":
-			singleton.L.setScreen("QLED");
-			str = "Pantalla de laptop actualizado a: " + singleton.L.getScreen();
+			singleton.DL.setScreen("QLED");
+			str = "Pantalla de laptop actualizado a: " + singleton.DL.getScreen();
 			break;
 		case "Pulgadas de pantalla":
-			singleton.L.setScreen_inches("21'");
-			str = "Pulgadas de pantalla del laptop actualizadas a: " + singleton.L.getScreen_inches();
+			singleton.DL.setScreen_inches("21'");
+			str = "Pulgadas de pantalla del laptop actualizadas a: " + singleton.DL.getScreen_inches();
 			break;
 		case "Tipo de teclado":
-			singleton.L.setKeyboard("QWERTY RU");
-			str = "Tipo de teclado de laptop actualizado a: " + singleton.L.getKeyboard();
+			singleton.DL.setKeyboard("QWERTY RU");
+			str = "Tipo de teclado de laptop actualizado a: " + singleton.DL.getKeyboard();
 			break;
 		case "Memoria RAM":
-			singleton.L.setRAM("64GB");
-			str = "Memoria RAM de laptop actualizada a: " + singleton.L.getRAM();
+			singleton.DL.setRAM("64GB");
+			str = "Memoria RAM de laptop actualizada a: " + singleton.DL.getRAM();
 			break;
 		case "Almacenamiento":
-			singleton.L.setStorage("2TB");
-			str = "Almacenamiento de laptop actualizado a: " + singleton.L.getStorage();
+			singleton.DL.setStorage("2TB");
+			str = "Almacenamiento de laptop actualizado a: " + singleton.DL.getStorage();
 			break;
 		case "Procesador":
-			singleton.L.setCPU("AMD Ryzen 7");
-			str = "Procesador del laptop actualizado a: " + singleton.L.getCPU();
+			singleton.DL.setCPU("AMD Ryzen 7");
+			str = "Procesador del laptop actualizado a: " + singleton.DL.getCPU();
 			break;
 		case "Fuente de Alimentación":
-			singleton.L.setPower_supply("80 plus Gold");
-			str = "Fuente de alimentación de laptop actualizada a: " + singleton.L.getPower_supply();
+			singleton.DL.setPower_supply("80 plus Gold");
+			str = "Fuente de alimentación de laptop actualizada a: " + singleton.DL.getPower_supply();
 			break;
 		case "Gráficos":
-			singleton.L.setGraphics("Nvidia GeForce");
-			str = "Gráficos del laptop actualizados a: " + singleton.L.getGraphics();
+			singleton.DL.setGraphics("Nvidia GeForce");
+			str = "Gráficos del laptop actualizados a: " + singleton.DL.getGraphics();
 			break;
 		case "Cámara":
-			singleton.L.setCamera("Sony XLe 1.5f");
-			str = "Cámara del laptop actualizada a: " + singleton.L.getCamera();
+			singleton.DL.setCamera("Sony XLe 1.5f");
+			str = "Cámara del laptop actualizada a: " + singleton.DL.getCamera();
 			break;
 		case "Marca":
-			singleton.L.setBrand("Lenovo");
-			str = "Marca del laptop actualizada a: " + singleton.L.getBrand();
+			singleton.DL.setBrand("Lenovo");
+			str = "Marca del laptop actualizada a: " + singleton.DL.getBrand();
 			break;
 		case "Inicio de Rebajas":
-			singleton.L.setDate_sales_init(new dates("10/12/2000"));
-			sales_init=singleton.D.compare_dates(singleton.L.getDate_sales_init());
-			singleton.L.setIs_promo(date_product.is_promo(sales_init,sales_end));
-			singleton.L.calculate_price_final();
-			str = "Fecha de inicio de rebajas actualizado a: "+ singleton.L.getDate_sales_init();
+			singleton.DL.setDate_sales_init(new dates("10/12/2000"));
+			sales_init=singleton.D.compare_dates(singleton.DL.getDate_sales_init());
+			singleton.DL.setIs_promo(date_product.is_promo(sales_init,sales_end));
+			singleton.DL.calculate_price_final();
+			str = "Fecha de inicio de rebajas actualizado a: "+ singleton.DL.getDate_sales_init();
 			break;
 		case "Fin de Rebajas":
-			singleton.L.setDate_sales_end(new dates("22/12/2000"));
-			sales_end=singleton.D.compare_dates(singleton.L.getDate_sales_end());
-			singleton.L.setIs_promo(date_product.is_promo(sales_init,sales_end));
-			singleton.L.calculate_price_final();
-			str = "Fecha de fin de rebajas actualizado a: "+ singleton.L.getDate_sales_end();
+			singleton.DL.setDate_sales_end(new dates("22/12/2000"));
+			sales_end=singleton.D.compare_dates(singleton.DL.getDate_sales_end());
+			singleton.DL.setIs_promo(date_product.is_promo(sales_init,sales_end));
+			singleton.DL.calculate_price_final();
+			str = "Fecha de fin de rebajas actualizado a: "+ singleton.DL.getDate_sales_end();
 			break;
 		case "Descuento":
-			singleton.L.setDiscont(0.5f);
-			singleton.L.setIs_promo(date_product.is_promo(sales_init,sales_end));
-			singleton.L.calculate_price_final();
-			str = "Descuento de Rebajas actualizado a: " + singleton.L.getDiscont();
+			singleton.DL.setDiscont(0.5f);
+			singleton.DL.setIs_promo(date_product.is_promo(sales_init,sales_end));
+			singleton.DL.calculate_price_final();
+			str = "Descuento de Rebajas actualizado a: " + singleton.DL.getDiscont();
 			break;
 		case "Precio final":
-			str = "El precio final del producto es "+singleton.L.getPrice_final()+" y se calcula automáticamente, por lo que no se puede modificar.";
+			str = "El precio final del producto es "+singleton.DL.getPrice_final()+" y se calcula automáticamente, por lo que no se puede modificar.";
 			break;
 		}// end switch
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
-	} else if (singleton.S instanceof smartphone) {
+	} else if (singleton.DS instanceof smartphone) {
 		opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para actualizarlo:", "Selector de opciones",
 				JOptionPane.QUESTION_MESSAGE, null,
 				new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra","Fecha de entrega",
@@ -184,96 +248,95 @@ public class dummies {
 		} // end if
 		switch (opt.toString()) {
 		case "ID":
-			singleton.S.setID_product("QWE-123");
-			str = "ID de smartphone actualizado a: " + singleton.S.getID_product();
+			set_dummies_ID_smartphone();
 			break;
 		case "Precio":
-			singleton.S.setPrice(66);
-			singleton.S.calculate_price_final();
-			str = "Precio de smartphone actualizado a: " + singleton.S.getPrice();
+			singleton.DS.setPrice(66);
+			singleton.DS.calculate_price_final();
+			str = "Precio de smartphone actualizado a: " + singleton.DS.getPrice();
 			break;
 		case "Peso":
-			singleton.S.setPeso(30);
-			str = "Peso de smartphone actualizado a: " + singleton.S.getPeso();
+			singleton.DS.setPeso(30);
+			str = "Peso de smartphone actualizado a: " + singleton.DS.getPeso();
 			break;
 		case "Stock":
-			singleton.S.setStock(200);
-			str = "Stock de smartphone actualizado a: " + singleton.S.getStock();
+			singleton.DS.setStock(200);
+			str = "Stock de smartphone actualizado a: " + singleton.DS.getStock();
 			break;
 		case "Color":
-			singleton.S.setColor("Black");
-			str = "Color de smartphone actualizado a: " + singleton.S.getColor();
+			singleton.DS.setColor("Black");
+			str = "Color de smartphone actualizado a: " + singleton.DS.getColor();
 			break;
 		case "Dimensión":
-			singleton.S.setDimension(40);
-			str = "Dimensión de smartphone actualizado a: " + singleton.S.getDimension();
+			singleton.DS.setDimension(40);
+			str = "Dimensión de smartphone actualizado a: " + singleton.DS.getDimension();
 			break;
 		case "Fecha de compra":
-			singleton.S.setF_compra(new dates("12/12/2000"));
-			str = "Fecha de compra de smartphone actualizado a: " + singleton.S.getF_compra();
+			singleton.DS.setF_compra(new dates("12/12/2000"));
+			str = "Fecha de compra de smartphone actualizado a: " + singleton.DS.getF_compra();
 			break;
 		case "Fecha de entrega":
-			singleton.S.setF_entrega(new dates("13/12/2000"));
-			str = "Fecha de entrega de smartphone actualizado a: " + singleton.S.getF_entrega();
+			singleton.DS.setF_entrega(new dates("13/12/2000"));
+			str = "Fecha de entrega de smartphone actualizado a: " + singleton.DS.getF_entrega();
 			break;
 		case "Fecha de devolución":
-			singleton.S.setF_devolucion(new dates("00/00/0000"));
-			str = "Fecha de devolución de smartphone actualizado a: " + singleton.S.getF_devolucion();
+			singleton.DS.setF_devolucion(new dates("00/00/0000"));
+			str = "Fecha de devolución de smartphone actualizado a: " + singleton.DS.getF_devolucion();
 			break;
 		case "Fecha de recogida":
-			singleton.S.setF_recogida(new dates("00/00/0000"));
-			str = "Fecha de devolución de smartphone actualizado a: " + singleton.S.getF_recogida();
+			singleton.DS.setF_recogida(new dates("00/00/0000"));
+			str = "Fecha de devolución de smartphone actualizado a: " + singleton.DS.getF_recogida();
 			break;
 		case "Pantalla": 
-			singleton.S.setScreen("Micro-LED");
-			str = "Tipo de pantalla de smartphone actualizado a: " + singleton.S.getScreen();
+			singleton.DS.setScreen("Micro-LED");
+			str = "Tipo de pantalla de smartphone actualizado a: " + singleton.DS.getScreen();
 			break;
 		case "Pulgadas de pantalla":
-			singleton.S.setScreen_inches("7.1");
-			str = "Pulgadas de la pantalla de smartphone actualizado a: " + singleton.S.getScreen_inches();
+			singleton.DS.setScreen_inches("7.1");
+			str = "Pulgadas de la pantalla de smartphone actualizado a: " + singleton.DS.getScreen_inches();
 			break;
 		case "Memoria RAM":
-			singleton.S.setRAM("16GB");
-			str = "Memoria RAM de smartphone actualizada a: " + singleton.S.getRAM();
+			singleton.DS.setRAM("16GB");
+			str = "Memoria RAM de smartphone actualizada a: " + singleton.DS.getRAM();
 			break;
 		case "Almacenamiento":
-			singleton.S.setStorage("128GB");
-			str = "Almacenamiento del smartphone actualizado a: " + singleton.S.getStorage();
+			singleton.DS.setStorage("128GB");
+			str = "Almacenamiento del smartphone actualizado a: " + singleton.DS.getStorage();
 			break;
 		case "Procesador":
-			singleton.S.setCPU("MediaTek");
-			str = "Procesador del smartphone actualizado a: " + singleton.S.getCPU();
+			singleton.DS.setCPU("MediaTek");
+			str = "Procesador del smartphone actualizado a: " + singleton.DS.getCPU();
 			break;
 		case "Sistema Operativo":
-			singleton.S.setOS("Android 12 with MIUI");
-			str = "Sistema Operativo del smartphone actualizado a: " + singleton.S.getOS();
+			singleton.DS.setOS("Android 12 with MIUI");
+			str = "Sistema Operativo del smartphone actualizado a: " + singleton.DS.getOS();
 			break;
 		case "Cámara":
-			singleton.S.setCamera("Leica 1.4f");
-			str = "Cámara del smartphone actualizado a: " + singleton.S.getCamera();
+			singleton.DS.setCamera("Leica 1.4f");
+			str = "Cámara del smartphone actualizado a: " + singleton.DS.getCamera();
 			break;
 		case "Marca":
-			singleton.S.setBrand("Xiaomi");
-			str = "Marca del smartphone actualizado a: " + singleton.S.getBrand();
+			singleton.DS.setBrand("Xiaomi");
+			str = "Marca del smartphone actualizado a: " + singleton.DS.getBrand();
 			break;
 		case "Inicio de Rebajas":
-			singleton.S.setDate_sales_init(new dates("21/12/2000"));
-			str = "Fecha de inicio de rebajas actualizado a: "+ singleton.S.getDate_sales_init();
+			singleton.DS.setDate_sales_init(new dates("21/12/2000"));
+			str = "Fecha de inicio de rebajas actualizado a: "+ singleton.DS.getDate_sales_init();
 			break;
 		case "Fin de Rebajas":
-			singleton.S.setDate_sales_end(new dates("22/12/2000"));
-			str = "Fecha de fin de rebajas actualizado a: "+ singleton.S.getDate_sales_end();
+			singleton.DS.setDate_sales_end(new dates("22/12/2000"));
+			str = "Fecha de fin de rebajas actualizado a: "+ singleton.DS.getDate_sales_end();
 			break;
 		case "Descuento":
-			singleton.S.setDiscont(0.5f);
-			str = "Descuento de Rebajas actualizado a: " + singleton.S.getDiscont();
+			singleton.DS.setDiscont(0.5f);
+			str = "Descuento de Rebajas actualizado a: " + singleton.DS.getDiscont();
 			break;
 		case "Precio final":
-			str = "El precio final del producto es "+ singleton.S.getPrice_final()+" y se calcula automáticamente, por lo que no se puede modificar.";
+			str = "El precio final del producto es "+ singleton.DS.getPrice_final()+" y se calcula automáticamente, por lo que no se puede modificar.";
 			break;
 		}// end switch
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
-	} else if (singleton.A instanceof accessory) {
+	} else if (singleton.DA instanceof accessory) {
 		opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para actualizarlo:", "Selector de opciones",
 				JOptionPane.QUESTION_MESSAGE, null,
 				new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra","Fecha de entrega",
@@ -286,76 +349,75 @@ public class dummies {
 		} // end if
 		switch (opt.toString()) {
 		case "ID":
-			singleton.A.setID_product("ASD-123");
-			str = "ID de accesorio actualizado a: " + singleton.A.getID_product();
+			set_dummies_ID_accessory();
 			break;
 		case "Precio":
-			singleton.A.setPrice(300);
-			singleton.A.calculate_price_final();
-			str = "Precio de accessorio actualizado a: " + singleton.A.getPrice();
+			singleton.DA.setPrice(300);
+			singleton.DA.calculate_price_final();
+			str = "Precio de accessorio actualizado a: " + singleton.DA.getPrice();
 			break;
 		case "Peso":
-			singleton.A.setPeso(333);
-			str = "Peso de accessorio actualizado a: " + singleton.A.getPeso();
+			singleton.DA.setPeso(333);
+			str = "Peso de accessorio actualizado a: " + singleton.DA.getPeso();
 			break;
 		case "Stock":
-			singleton.A.setStock(999);
-			str = "Stock de accessorio actualizado a: " + singleton.A.getStock();
+			singleton.DA.setStock(999);
+			str = "Stock de accessorio actualizado a: " + singleton.DA.getStock();
 			break;
 		case "Color":
-			singleton.A.setColor("Yellow");
-			str = "Color de accessorio actualizado a: " + singleton.A.getColor();
+			singleton.DA.setColor("Yellow");
+			str = "Color de accessorio actualizado a: " + singleton.DA.getColor();
 			break;
 		case "Dimensión":
-			singleton.A.setDimension(30);
-			str = "Dimensión de accesorio actualizado a: " + singleton.A.getDimension();
+			singleton.DA.setDimension(30);
+			str = "Dimensión de accesorio actualizado a: " + singleton.DA.getDimension();
 			break;
 		case "Fecha de compra":
-			singleton.A.setF_compra(new dates("12/12/2000"));
-			str = "Fecha de compra de accesorio actualizado a: " + singleton.A.getF_compra();
+			singleton.DA.setF_compra(new dates("12/12/2000"));
+			str = "Fecha de compra de accesorio actualizado a: " + singleton.DA.getF_compra();
 			break;
 		case "Fecha de entrega":
-			singleton.A.setF_entrega(new dates("13/12/2000"));
-			str = "Fecha de entrega de accesorio actualizado a: " + singleton.A.getF_entrega();
+			singleton.DA.setF_entrega(new dates("13/12/2000"));
+			str = "Fecha de entrega de accesorio actualizado a: " + singleton.DA.getF_entrega();
 			break;
 		case "Fecha de devolución":
-			singleton.A.setF_devolucion(new dates("14/12/2000"));
-			str = "Fecha de devolución de accesorio actualizado a: " + singleton.A.getF_devolucion();
+			singleton.DA.setF_devolucion(new dates("14/12/2000"));
+			str = "Fecha de devolución de accesorio actualizado a: " + singleton.DA.getF_devolucion();
 			break;
 		case "Fecha de recogida":
-			singleton.A.setF_recogida(new dates("15/12/2000"));
-			str = "Fecha de devolución de accesorio actualizado a: " + singleton.A.getF_recogida();
+			singleton.DA.setF_recogida(new dates("15/12/2000"));
+			str = "Fecha de devolución de accesorio actualizado a: " + singleton.DA.getF_recogida();
 			break;
 		case "Tipo de accesorio":
-			singleton.A.setType("Funda Rugerizada");
-			str = "Tipo de accesorio actualizado a: "+ singleton.A.getType();
+			singleton.DA.setType("Funda Rugerizada");
+			str = "Tipo de accesorio actualizado a: "+ singleton.DA.getType();
 			break;
 		case "Garantía":
-			singleton.A.setWarranty("6 meses");
-			str = "Garantía del producto actualizada a: "+ singleton.A.getWarranty();
+			singleton.DA.setWarranty("6 meses");
+			str = "Garantía del producto actualizada a: "+ singleton.DA.getWarranty();
 			break;
 		case "Protección":
-			singleton.A.setProtection("Ultravioleta");
-			str = "Tipo de protección del producto actualizado a: "+ singleton.A.getProtection();
+			singleton.DA.setProtection("Ultravioleta");
+			str = "Tipo de protección del producto actualizado a: "+ singleton.DA.getProtection();
 			break;
 		case "Conectividad":
-			singleton.A.setConnectivity("Manual");
-			str = "Conectividad de accesorio actualizado a: "+ singleton.A.getConnectivity();
+			singleton.DA.setConnectivity("Manual");
+			str = "Conectividad de accesorio actualizado a: "+ singleton.DA.getConnectivity();
 			break;
 		case "Inicio de Rebajas":
-			singleton.A.setDate_sales_init(new dates("01/12/2000"));
-			str = "Fecha de inicio de rebajas actualizado a: "+ singleton.A.getDate_sales_init();
+			singleton.DA.setDate_sales_init(new dates("01/12/2000"));
+			str = "Fecha de inicio de rebajas actualizado a: "+ singleton.DA.getDate_sales_init();
 			break;
 		case "Fin de Rebajas":
-			singleton.A.setDate_sales_end(new dates("22/12/2000"));
-			str = "Fecha de fin de rebajas actualizado a: "+ singleton.A.getDate_sales_end();
+			singleton.DA.setDate_sales_end(new dates("22/12/2000"));
+			str = "Fecha de fin de rebajas actualizado a: "+ singleton.DA.getDate_sales_end();
 			break;
 		case "Descuento":
-			singleton.A.setDiscont(0.6f);
-			str = "Descuento de Rebajas actualizado a: " + singleton.A.getDiscont();
+			singleton.DA.setDiscont(0.6f);
+			str = "Descuento de Rebajas actualizado a: " + singleton.DA.getDiscont();
 			break;
 		case "Precio final":
-			str = "El precio final del producto es "+ singleton.A.getPrice_final()+" y se calcula automáticamente, por lo que no se puede modificar.";
+			str = "El precio final del producto es "+ singleton.DA.getPrice_final()+" y se calcula automáticamente, por lo que no se puede modificar.";
 			break;
 		}// end switch
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);

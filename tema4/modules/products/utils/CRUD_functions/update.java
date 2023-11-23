@@ -13,7 +13,7 @@ public class update {
 			JOptionPane.showMessageDialog(null, "No se ha podido acceder al array de laptop porque está vacía.","Error",JOptionPane.ERROR_MESSAGE);
 		}else{
 			location1 = -1;
-			singleton.L =  CRUD.new_laptop("Ingresa el ID del laptop que quieras actualizar."
+			singleton.L =  CRUD.new_laptop("Ingresa el ID del laptop que quieras actualizar. Esto solo buscará tu artículo no lo modificará."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 			location1 = find.find_product(singleton.L);
 			if (location1 != -1) {
@@ -30,7 +30,7 @@ public class update {
 		if(singleton.productsmartphone.isEmpty()){
 			JOptionPane.showMessageDialog(null, "No se ha podido acceder al array de smartphone porque está vacía.","Error",JOptionPane.ERROR_MESSAGE);		}else{
 			location1 = -1;
-			singleton.S = CRUD.new_smartphone("Ingresa el ID del smartphone que quieras actualizar."
+			singleton.S = CRUD.new_smartphone("Ingresa el ID del smartphone que quieras actualizar. Esto solo buscará tu artículo no lo modificará."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 			location1 = find.find_product(singleton.S);
 			if (location1 != -1) {
@@ -47,7 +47,7 @@ public class update {
 		if(singleton.productaccessory.isEmpty()){
 			JOptionPane.showMessageDialog(null, "No se ha podido acceder al array de accesorio porque está vacía.","Error",JOptionPane.ERROR_MESSAGE);		}else{
 			//location1 = -1;
-			singleton.A = CRUD.new_accessory("Ingresa el ID del accesorio que quieras actualizar."
+			singleton.A = CRUD.new_accessory("Ingresa el ID del accesorio que quieras actualizar. Esto solo buscará tu artículo no lo modificará."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 			location1 = find.find_product(singleton.A);
 			if (location1 != -1) {
