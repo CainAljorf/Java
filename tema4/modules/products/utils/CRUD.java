@@ -37,7 +37,7 @@ public class CRUD {
 	}// end create_laptop
 	public static smartphone create_smartphone() {
 		String str = "";
-		String ID = insert_data.insert_ID("Ingresa un ID alfanúmerico como el siguiente ejemplo.\nABC-123", "Ingresar ID");
+//		String ID = insert_data.insert_ID("Ingresa un ID alfanúmerico como el siguiente ejemplo.\nABC-123", "Ingresar ID");
 		dates date_purchase = date_product.insert_date_purchase(
 				"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
 				"Ingresar fecha compra");
@@ -48,7 +48,7 @@ public class CRUD {
 		dates date_sales_end = date_product.insert_date_sales_end(date_sales_init);
 		float price = validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio");
 		float discount = validators.validator_float("Ingresa el descuento del producto.", "Ingresar descuento");
-		singleton.S=new smartphone(ID,price,30,100,"Negro",5,date_purchase,date_delivery,date_sales_init,
+		singleton.S=new smartphone(singleton.S.getID_product(),price,30,100,"Negro",5,date_purchase,date_delivery,date_sales_init,
 				date_sales_end,date_return,collection_date,discount,20,"IPS","6.8","8GB","128GB","Qualcomm","Oppo","Android","Leica 1.5f");
 		str="Smartphone creado correctamente.";
 		singleton.D = singleton.S.getF_compra();
@@ -62,7 +62,7 @@ public class CRUD {
 	}
 	public static accessory create_accessory() {
 		String str = "";
-		String ID = insert_data.insert_ID("Ingresa un ID alfanúmerico como el siguiente ejemplo.\nABC-123", "Ingresar ID");
+//		String ID = insert_data.insert_ID("Ingresa un ID alfanúmerico como el siguiente ejemplo.\nABC-123", "Ingresar ID");
 		dates date_purchase = date_product.insert_date_purchase(
 				"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
 				"Ingresar fecha compra");
@@ -73,10 +73,10 @@ public class CRUD {
 		dates date_sales_end = date_product.insert_date_sales_end(date_sales_init);
 		float price = validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio");
 		float discount = validators.validator_float("Ingresa el descuento del producto.", "Ingresar descuento");
-		singleton.A=new accessory(ID,price,50,90,"Azul",5,date_purchase,date_delivery,
+		singleton.A=new accessory(singleton.A.getID_product(),price,50,90,"Azul",5,date_purchase,date_delivery,
 		date_sales_init,date_sales_end,date_return,collection_date,discount,70,"Cargador","Cableado","5 años","Polvo");
 		str="Accessorio creado correctamente.";
-		singleton.D = singleton.S.getF_compra();
+		singleton.D = singleton.A.getF_compra();
 		int sales_init=singleton.D.compare_dates(singleton.A.getDate_sales_init());
 		int sales_end=((dates) singleton.D).compare_dates(singleton.A.getDate_sales_end());
 		singleton.A.setIs_promo(date_product.is_promo(sales_init,sales_end));
@@ -498,7 +498,7 @@ public class CRUD {
 			} // end if
 			switch (opt.toString()) {
 			case "ID":
-				set_ID_smartphone();
+				str=set_ID_smartphone();
 				break;
 			case "Precio":
 				singleton.S.setPrice(validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));
@@ -602,7 +602,7 @@ public class CRUD {
 			} // end if
 			switch (opt.toString()) {
 			case "ID":
-				set_ID_accessory();
+				str=set_ID_accessory();
 				break;
 			case "Precio":
 				singleton.A.setPrice(validators.validator_float("Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));

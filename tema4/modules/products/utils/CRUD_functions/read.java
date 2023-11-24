@@ -67,8 +67,8 @@ public class read {
 		boolean validator = true;
 		String str= "";
 		String[]buttons={
-				"Read One",
 				"Read All",
+				"Read One",
 				"Atrás"
 				};
 		if(singleton.productsmartphone.isEmpty()){
@@ -98,7 +98,7 @@ public class read {
 						location = find.find_product(singleton.S);
 						if (location != -1) {
 							singleton.S = singleton.productsmartphone.get(location);
-							JOptionPane.showMessageDialog(null, singleton.S.toString());
+							CRUD.read();
 						}else {
 							JOptionPane.showMessageDialog(null, "El smartphone que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
@@ -122,8 +122,8 @@ public class read {
 		boolean validator = true;
 		String str= "";
 		String[]buttons={
-				"Read One",
 				"Read All",
+				"Read One",
 				"Atrás"
 				};
 		if(singleton.productaccessory.isEmpty()){
@@ -153,7 +153,7 @@ public class read {
 						location = find.find_product(singleton.A);
 						if (location != -1) {
 							singleton.A = singleton.productaccessory.get(location);
-							JOptionPane.showMessageDialog(null, singleton.A.toString());
+							CRUD.read();
 						}else {
 							JOptionPane.showMessageDialog(null, "El accesorio que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
 						}

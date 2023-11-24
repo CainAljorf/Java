@@ -1,26 +1,21 @@
 package tema4.modules.products.dummies;
 
+import tema4.modules.products.classes.product;
 import tema4.modules.products.classes.singleton;
 
 public class find_dummies {
-	public static int find__dummies_laptop() {
-		for (int i = 0; i<=(singleton.productlaptop.size()-1); i++){
-			if((singleton.productlaptop.get(i)).equals(singleton.L))
+	public static int find_product_dummies(product P){
+		for (int i = 0; i<=(singleton.dummieslaptop.size()-1); i++){
+			if((singleton.dummieslaptop.get(i)).equals(P))
 				return i;
 		}
-		return -1;
-	}
-	public static int find_dummies_smartphone() {
-		for (int i = 0; i<=(singleton.productsmartphone.size()-1); i++){
-			if((singleton.productsmartphone.get(i)).equals(singleton.S))
-				return i;
+		for (int j = 0; j<=(singleton.dummiessmartphone.size()-1); j++){
+			if((singleton.dummiessmartphone.get(j)).equals(P))
+				return j;
 		}
-		return -1;
-	}
-	public static int find_dummies_accessory() {
-		for (int i = 0; i<=(singleton.productaccessory.size()-1); i++){
-			if((singleton.productaccessory.get(i)).equals(singleton.A))
-				return i;
+		for (int k = 0; k<=(singleton.dummiesaccessory.size()-1); k++){
+			if((singleton.dummiesaccessory.get(k)).equals(P))
+				return k;
 		}
 		return -1;
 	}

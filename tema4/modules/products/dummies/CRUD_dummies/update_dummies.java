@@ -3,23 +3,25 @@ package tema4.modules.products.dummies.CRUD_dummies;
 import javax.swing.JOptionPane;
 
 import tema4.modules.products.classes.singleton;
-import tema4.modules.products.dummies.dummies;
+import tema4.modules.products.dummies.dummies_CRUD;
+import tema4.modules.products.dummies.find_dummies;
 import tema4.modules.products.utils.CRUD;
-import tema4.modules.products.utils.find;
 
 public class update_dummies {
 	public static void laptop () {
 		int location1 = -1;
-		if(singleton.productlaptop.isEmpty()){
+		if(singleton.dummieslaptop.isEmpty()){
 			JOptionPane.showMessageDialog(null, "No se ha podido acceder al array de laptop porque está vacía.","Error",JOptionPane.ERROR_MESSAGE);
 		}else{
 			location1 = -1;
-			singleton.DL =  dummies.new_id_laptop();
-			location1 = find.find_product(singleton.DL);
+			singleton.DL = CRUD.new_laptop("Ingresa el ID de tu accesorio para ver si existe."
+					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
+//			singleton.DL =  dummies_CRUD.new_id_laptop();
+			location1 = find_dummies.find_product_dummies(singleton.DL);
 			if (location1 != -1) {
-				singleton.DL = singleton.productlaptop.get(location1);
-				CRUD.update();
-				singleton.productlaptop.set(location1, singleton.DL);
+				singleton.DL = singleton.dummieslaptop.get(location1);
+				dummies_CRUD.update_dummies();
+				singleton.dummieslaptop.set(location1, singleton.DL);
 			}else {
 				JOptionPane.showMessageDialog(null, "No se ha encontrado el laptop.","Error",JOptionPane.ERROR_MESSAGE);
 			}
@@ -27,16 +29,18 @@ public class update_dummies {
 	}
 	public static void smartphone () {
 		int location1 = -1;
-		if(singleton.productsmartphone.isEmpty()){
+		if(singleton.dummiessmartphone.isEmpty()){
 			JOptionPane.showMessageDialog(null, "No se ha podido acceder al array de smartphone porque está vacía.","Error",JOptionPane.ERROR_MESSAGE);	
 		}else{
 			location1 = -1;
-			singleton.DS=  dummies.new_id_smartphone();
-			location1 = find.find_product(singleton.DS);
+			singleton.DS = CRUD.new_smartphone("Ingresa el ID de tu accesorio para ver si existe."
+					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
+//			singleton.DS=  dummies_CRUD.new_id_smartphone();
+			location1 = find_dummies.find_product_dummies(singleton.DS);
 			if (location1 != -1) {
-				singleton.DS = singleton.productsmartphone.get(location1);
-				CRUD.update();
-				singleton.productsmartphone.set(location1, singleton.DS);
+				singleton.DS = singleton.dummiessmartphone.get(location1);
+				dummies_CRUD.update_dummies();	
+				singleton.dummiessmartphone.set(location1, singleton.DS);
 			}else {
 				JOptionPane.showMessageDialog(null, "No se ha encontrado el smartphone.","Error",JOptionPane.ERROR_MESSAGE);
 			}
@@ -44,16 +48,18 @@ public class update_dummies {
 	}
 	public static void accessory () {
 		int location1 = -1;
-		if(singleton.productaccessory.isEmpty()){
+		if(singleton.dummiesaccessory.isEmpty()){
 			JOptionPane.showMessageDialog(null, "No se ha podido acceder al array de accesorio porque está vacía.","Error",JOptionPane.ERROR_MESSAGE);		
 		}else{
 			location1 = -1;
-			singleton.DA =  dummies.new_id_accessory();
-			location1 = find.find_product(singleton.A);
+			singleton.DA = CRUD.new_accessory("Ingresa el ID de tu accesorio para ver si existe."
+					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
+//			singleton.DA =  dummies_CRUD.new_id_accessory();
+			location1 = find_dummies.find_product_dummies(singleton.DA);
 			if (location1 != -1) {
-				singleton.DA = singleton.productaccessory.get(location1);
-				CRUD.update();
-				singleton.productaccessory.set(location1, singleton.DA);
+				singleton.DA = singleton.dummiesaccessory.get(location1);
+				dummies_CRUD.update_dummies();
+				singleton.dummiesaccessory.set(location1, singleton.DA);
 			}else {
 				JOptionPane.showMessageDialog(null, "No se ha encontrado el accesorio.","Error",JOptionPane.ERROR_MESSAGE);	
 			}

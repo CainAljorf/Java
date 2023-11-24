@@ -123,9 +123,6 @@ public class laptop extends product {
 		str += ("Procesador: " + this.getCPU()+ ".\n");
 		str += ("Fuente de alimentación: " + this.getPower_supply() + ".\n");
 		str += ("Tipo de gráficos " + this.getGraphics() + ".\n");
-		str += ("Devolución " + this.getIs_return() + ".\n");
-		str += ("Promoción " + this.getIs_promo() + ".\n");
-//		str += ("Tipo de gráficos " + this.getGraphics() + ".\n");
 	return str;
 	}//end toString
 }//end class laptop

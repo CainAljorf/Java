@@ -348,7 +348,9 @@ public class menu {
 											buttons_sec[0]);
 									switch(menu_sec) {
 										case 0:
-											create_dummies.smartphone();
+											for (int i = 0; i < 5; i++) {
+												create_dummies.smartphone();
+									        }
 											validator2=true;
 											break;
 //										case 1:
@@ -408,7 +410,9 @@ public class menu {
 											buttons_sec[0]);
 									switch(menu_sec) {
 										case 0:
-											create_dummies.accessory();
+											for (int i = 0; i < 5; i++) {
+												create_dummies.accessory();
+									        }
 											validator2=true;
 											break;
 //										case 1:

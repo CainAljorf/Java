@@ -3,8 +3,9 @@ package tema4.modules.products.dummies.CRUD_dummies;
 import javax.swing.JOptionPane;
 
 import tema4.modules.products.classes.singleton;
+import tema4.modules.products.dummies.dummies_CRUD;
+import tema4.modules.products.dummies.find_dummies;
 import tema4.modules.products.utils.CRUD;
-import tema4.modules.products.utils.find;
 
 public class read_dummies {
 	public static void laptop (){
@@ -16,7 +17,7 @@ public class read_dummies {
 				"Read One",
 				"Atrás"
 				};
-		if(singleton.productlaptop.isEmpty()){
+		if(singleton.dummieslaptop.isEmpty()){
 			JOptionPane.showMessageDialog(null,"No hay datos, por favor crea un laptop.", "Error", JOptionPane.ERROR_MESSAGE);
 		}else{
 			do {
@@ -31,17 +32,20 @@ public class read_dummies {
 						buttons[0]);
 				switch (opt){
 					case 0:
-						for (int i = 0; i <singleton.productlaptop.size();i++){
-							str = singleton.productlaptop.get(i).toString();
+						for (int i = 0; i <singleton.dummieslaptop.size();i++){
+							str = singleton.dummieslaptop.get(i).toString();
 							JOptionPane.showMessageDialog(null, str,"Información",JOptionPane.INFORMATION_MESSAGE);
 						}
 						break;
 					case 1:
 						location = -1;
-						location = find.find_product(singleton.L);
+						singleton.DL = CRUD.new_laptop("Ingresa el ID de tu accesorio para leerlo."
+								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
+						location = find_dummies.find_product_dummies(singleton.DL);
+						System.out.println(location);
 						if (location != -1) {
-							singleton.L = singleton.productlaptop.get(location);
-							CRUD.read();
+							singleton.DL = singleton.dummieslaptop.get(location);
+							dummies_CRUD.read_one();
 						}else {
 							JOptionPane.showMessageDialog(null, "El laptop que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
@@ -65,11 +69,11 @@ public class read_dummies {
 		boolean validator = true;
 		String str= "";
 		String[]buttons={
-				"Read One",
 				"Read All",
+				"Read One",
 				"Atrás"
 				};
-		if(singleton.productsmartphone.isEmpty()){
+		if(singleton.dummiessmartphone.isEmpty()){
 			JOptionPane.showMessageDialog(null,"No hay datos, por favor crea un smartphone.", "Error", JOptionPane.ERROR_MESSAGE);
 		}else{
 			do {
@@ -84,17 +88,19 @@ public class read_dummies {
 						buttons[0]);
 				switch (opt){
 					case 0:
-						for (int i = 0; i <singleton.productsmartphone.size();i++){
-							str = str + (singleton.productsmartphone.get(i).toString());
+						for (int i = 0; i <singleton.dummiessmartphone.size();i++){
+							str = singleton.dummiessmartphone.get(i).toString();
 							JOptionPane.showMessageDialog(null, str,"Información",JOptionPane.INFORMATION_MESSAGE);
 						}
 						break;
 					case 1:
 						location = -1;
-						location = find.find_product(singleton.S);
+						singleton.DS = CRUD.new_smartphone("Ingresa el ID de tu accesorio para leerlo."
+								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
+						location = find_dummies.find_product_dummies(singleton.DS);
 						if (location != -1) {
-							singleton.S = singleton.productsmartphone.get(location);
-							JOptionPane.showMessageDialog(null, singleton.S.toString());
+							singleton.DS = singleton.dummiessmartphone.get(location);
+							dummies_CRUD.read_one();
 						}else {
 							JOptionPane.showMessageDialog(null, "El smartphone que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
@@ -118,11 +124,11 @@ public class read_dummies {
 		boolean validator = true;
 		String str= "";
 		String[]buttons={
-				"Read One",
 				"Read All",
+				"Read One",
 				"Atrás"
 				};
-		if(singleton.productaccessory.isEmpty()){
+		if(singleton.dummiesaccessory.isEmpty()){
 			JOptionPane.showMessageDialog(null,"No hay datos, por favor crea un accesorio.", "Error", JOptionPane.ERROR_MESSAGE);
 		}else{
 			do {
@@ -137,17 +143,19 @@ public class read_dummies {
 						buttons[0]);
 				switch (opt){
 					case 0:
-						for (int i = 0; i <singleton.productaccessory.size();i++){
-							str = str + (singleton.productaccessory.get(i).toString());
+						for (int i = 0; i <singleton.dummiesaccessory.size();i++){
+							str = singleton.dummiesaccessory.get(i).toString();
 							JOptionPane.showMessageDialog(null, str,"Información",JOptionPane.INFORMATION_MESSAGE);
 						}
 						break;
 					case 1:
 						location = -1;
-						location = find.find_product(singleton.A);
+						singleton.DA = CRUD.new_accessory("Ingresa el ID de tu accesorio para leerlo."
+								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
+						location = find_dummies.find_product_dummies(singleton.DA);
 						if (location != -1) {
-							singleton.A = singleton.productaccessory.get(location);
-							JOptionPane.showMessageDialog(null, singleton.A.toString());
+							singleton.DA = singleton.productaccessory.get(location);
+							dummies_CRUD.read_one();
 						}else {
 							JOptionPane.showMessageDialog(null, "El accesorio que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
