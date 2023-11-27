@@ -6,6 +6,7 @@ import tema4.modules.products.classes.accessory;
 import tema4.modules.products.classes.laptop;
 import tema4.modules.products.classes.singleton;
 import tema4.modules.products.classes.smartphone;
+import tema4.modules.products.dummies.dummies_CRUD;
 import tema4.modules.products.dummies.CRUD_dummies.create_dummies;
 import tema4.modules.products.dummies.CRUD_dummies.delete_dummies;
 import tema4.modules.products.dummies.CRUD_dummies.read_dummies;
@@ -16,7 +17,6 @@ import tema4.modules.products.utils.CRUD_functions.read;
 import tema4.modules.products.utils.CRUD_functions.update;
 
 public class menu {
-
 	public static void menu_main() {
 		singleton.productlaptop = new ArrayList <laptop> ();
 		singleton.productsmartphone = new ArrayList <smartphone> ();
@@ -24,6 +24,7 @@ public class menu {
 		singleton.dummieslaptop = new ArrayList <laptop> ();
 		singleton.dummiessmartphone = new ArrayList <smartphone> ();
 		singleton.dummiesaccessory = new ArrayList <accessory> ();
+		singleton.array_ID = new ArrayList <String> ();
 		int menu_dummies=0;
 		int menu_main=0;
 		int menu_sec=0;
@@ -263,6 +264,13 @@ public class menu {
 					break;
 				case 1:
 					do {
+						int num = validators.validator_int("Cuantos objetos quieres crear en el array?","Introduce un número");
+						for (int i = 0; i < num; i++) {
+							create_dummies.laptop_null();
+							dummies_CRUD.new_laptop(singleton.DL);
+							create_dummies.smartphone_null();
+							create_dummies.accessory_null();
+				        }
 						menu_main=JOptionPane.showOptionDialog(
 								null,
 								"¿Con cuál producto quieres trabajar?",
@@ -275,6 +283,7 @@ public class menu {
 						switch(menu_main){
 							case 0:
 								do {
+									create_dummies.array_laptop();
 									menu_sec=JOptionPane.showOptionDialog(
 											null,
 											"Elige la opción que quieras usar.",
@@ -286,9 +295,7 @@ public class menu {
 											buttons_sec[0]);
 									switch(menu_sec) {
 										case 0:
-											for (int i = 0; i < 5; i++) {
-												create_dummies.laptop();
-									        }
+											create_dummies.laptop();
 											validator2=true;
 											break;
 //										case 1:
@@ -348,7 +355,7 @@ public class menu {
 											buttons_sec[0]);
 									switch(menu_sec) {
 										case 0:
-											for (int i = 0; i < 5; i++) {
+											for (int i = 0; i < num; i++) {
 												create_dummies.smartphone();
 									        }
 											validator2=true;
@@ -410,7 +417,7 @@ public class menu {
 											buttons_sec[0]);
 									switch(menu_sec) {
 										case 0:
-											for (int i = 0; i < 5; i++) {
+											for (int i = 0; i < num; i++) {
 												create_dummies.accessory();
 									        }
 											validator2=true;

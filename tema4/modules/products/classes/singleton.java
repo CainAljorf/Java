@@ -22,4 +22,5 @@ public class singleton {
 	public static laptop DL;
 	public static smartphone DS;
 	public static accessory DA;
+	public static ArrayList <String>array_ID;
 }
