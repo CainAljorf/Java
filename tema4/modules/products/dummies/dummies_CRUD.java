@@ -15,10 +15,6 @@ public class dummies_CRUD {
 				singleton.D=new dates("01/12/2001"), singleton.D=new dates("19/12/2001"),singleton.D=new dates("12/12/2000"), singleton.D=new dates("17/12/2000"),0.5f, 7,
 				"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
 	}
-	public static laptop new_laptop(laptop laptop) {
-		singleton.ID=laptop.getID_product();
-		return new laptop(singleton.ID);
-	}
 	public static laptop new_id_laptop() {
 		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		String ID = "";

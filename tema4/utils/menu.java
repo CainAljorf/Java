@@ -6,7 +6,6 @@ import tema4.modules.products.classes.accessory;
 import tema4.modules.products.classes.laptop;
 import tema4.modules.products.classes.singleton;
 import tema4.modules.products.classes.smartphone;
-import tema4.modules.products.dummies.dummies_CRUD;
 import tema4.modules.products.dummies.CRUD_dummies.create_dummies;
 import tema4.modules.products.dummies.CRUD_dummies.delete_dummies;
 import tema4.modules.products.dummies.CRUD_dummies.read_dummies;
@@ -263,14 +262,8 @@ public class menu {
 					}while(validator==true);
 					break;
 				case 1:
+				int num = validators.validator_int("Cuantos objetos quieres crear en el array?","Introduce un número");
 					do {
-						int num = validators.validator_int("Cuantos objetos quieres crear en el array?","Introduce un número");
-						for (int i = 0; i < num; i++) {
-							create_dummies.laptop_null();
-							dummies_CRUD.new_laptop(singleton.DL);
-							create_dummies.smartphone_null();
-							create_dummies.accessory_null();
-				        }
 						menu_main=JOptionPane.showOptionDialog(
 								null,
 								"¿Con cuál producto quieres trabajar?",
@@ -283,7 +276,7 @@ public class menu {
 						switch(menu_main){
 							case 0:
 								do {
-									create_dummies.array_laptop();
+									// create_dummies.array_laptop();
 									menu_sec=JOptionPane.showOptionDialog(
 											null,
 											"Elige la opción que quieras usar.",
@@ -295,8 +288,10 @@ public class menu {
 											buttons_sec[0]);
 									switch(menu_sec) {
 										case 0:
+										for (int i = 0; i < num; i++) {
 											create_dummies.laptop();
-											validator2=true;
+										}											
+										validator2=true;
 											break;
 //										case 1:
 //											if(singleton.L!=null) {
