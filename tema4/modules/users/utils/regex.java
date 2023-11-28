@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class regex {
 	private static final String UsernamePattern = "^[A-Za-z0-9]+$";
-	private static final String PasswordPattern = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+	private static final String PasswordPattern = "^[A-Za-z0-9]+$";
 	private static final String EmailPattern = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}$";
 
     public static boolean validate_username(String username) {

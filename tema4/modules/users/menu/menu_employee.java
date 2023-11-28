@@ -1,5 +1,10 @@
 package tema4.modules.users.menu;
 
-public class menu_employee {
+import javax.swing.JOptionPane;
 
+public class menu_employee {
+	public static void employee() {
+		JOptionPane.showMessageDialog(null, "Eres empleado.","Error",JOptionPane.INFORMATION_MESSAGE);
+
+	}
 }

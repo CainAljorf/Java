@@ -1,6 +1,6 @@
 package tema4.modules.users.classes;
 
-public abstract class user {
+public class user {
 	private String username;
 	private String email;
 	private String password;
@@ -25,11 +25,7 @@ public abstract class user {
 		return getUsername().equals(((user)param).getUsername());
 	}
 	public boolean equals2(Object param){
-		boolean res = false;
-		if (getUsername().equals(((user)param).getUsername())&& getPassword().equals(((user)param).getPassword())) {
-			res = true;
-		}
-		return res;
+		return getUsername().equals(((user)param).getUsername()) && getPassword().equals(((user)param).getPassword());
 	}
 	public String getUsername() {
 		return username;
@@ -62,6 +58,8 @@ public abstract class user {
 		this.type = type;
 	}
 	@Override
-	public abstract String toString();
+	public String toString() {
+		return null;
+	}
 	
 }

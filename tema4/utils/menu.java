@@ -34,8 +34,12 @@ public class menu {
 		singleton_users.userclient = new ArrayList <client> ();
 		singleton_users.useremployee = new ArrayList <employee> ();
 		singleton.array_ID = new ArrayList <String> ();
+		
 		CRUD.create_admin();
+		singleton_users.useradmin.add((admin) singleton_users.A);
 		CRUD.create_employee();
+		singleton_users.useremployee.add((employee) singleton_users.E);
+
 		int menu_dummies=0;
 		int menu_main=0;
 		int menu_sec=0;
@@ -44,6 +48,7 @@ public class menu {
 		boolean validator2=true;
 		boolean validator3=true;
 		boolean validator4=true;
+		
 		String[]buttons_user={
 				"Register",
 				"Login",
@@ -81,20 +86,10 @@ public class menu {
 					validator4=true;
 					break;
 				case 1:
-					if(singleton_users.C == null && singleton_users.A == null && singleton_users.E == null) {
+					if(singleton_users.U == null && singleton_users.E == null && singleton_users.A == null && singleton_users.D == null ) {
 						JOptionPane.showMessageDialog(null,"No se ha podido encontrar el usuario.","Error",JOptionPane.ERROR_MESSAGE);
 					}else {
 						login.login_user();
-						if(singleton_users.C.getType()=="Cliente") {
-							JOptionPane.showMessageDialog(null,"Eres cliente.","Error",JOptionPane.ERROR_MESSAGE);
-
-						}else if(singleton_users.A.getType()=="Admin") {
-							JOptionPane.showMessageDialog(null,"Eres administrador.","Error",JOptionPane.ERROR_MESSAGE);
-
-						}else if(singleton_users.E.getType()=="Empleado") {
-							JOptionPane.showMessageDialog(null,"Eres empleado","Error",JOptionPane.ERROR_MESSAGE);
-
-						}
 					}
 					validator4=true;
 					break;

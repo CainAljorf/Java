@@ -1,5 +1,10 @@
 package tema4.modules.users.menu;
 
-public class menu_admin {
+import javax.swing.JOptionPane;
 
+public class menu_admin {
+	public static void admin() {
+		JOptionPane.showMessageDialog(null, "Eres administrador.","Error",JOptionPane.INFORMATION_MESSAGE);
+
+	}
 }
