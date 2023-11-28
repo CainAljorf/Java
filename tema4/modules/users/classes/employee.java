@@ -5,17 +5,25 @@ import tema4.classes.dates;
 public class employee extends user{
 	private dates born_date;
 	private dates hire_date;
+	private float salary;
 	public employee(String username, String email, String password, boolean active, String type, dates born_date,
-			dates hire_date) {
+			dates hire_date, float salary) {
 		super(username, email, password, active, type);
 		this.born_date = born_date;
 		this.hire_date = hire_date;
+		this.salary = salary;
 	}
 	public employee(String username, String email) {
 		super(username, email);
 	}
 	public employee(String username) {
 		super(username);
+	}
+	public float getSalary() {
+		return salary;
+	}
+	public void setSalary(float salary) {
+		this.salary = salary;
 	}
 	public dates getBorn_date() {
 		return born_date;

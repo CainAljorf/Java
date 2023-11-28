@@ -13,7 +13,6 @@ public class admin extends user {
 	}
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

@@ -18,6 +18,7 @@ import tema4.modules.users.classes.admin;
 import tema4.modules.users.classes.client;
 import tema4.modules.users.classes.employee;
 import tema4.modules.users.classes.singleton_users;
+import tema4.modules.users.utils.CRUD;
 import tema4.modules.users.utils_array.login;
 import tema4.modules.users.utils_array.register;
 
@@ -33,6 +34,8 @@ public class menu {
 		singleton_users.userclient = new ArrayList <client> ();
 		singleton_users.useremployee = new ArrayList <employee> ();
 		singleton.array_ID = new ArrayList <String> ();
+		CRUD.create_admin();
+		CRUD.create_employee();
 		int menu_dummies=0;
 		int menu_main=0;
 		int menu_sec=0;
@@ -72,13 +75,27 @@ public class menu {
 					null,
 					buttons_user,
 					buttons_user[0]);
-			switch(menu_user) {
+			switch(menu_user){
 				case 0:
 					register.client();
 					validator4=true;
 					break;
 				case 1:
-					login.login_user();
+					if(singleton_users.C == null && singleton_users.A == null && singleton_users.E == null) {
+						JOptionPane.showMessageDialog(null,"No se ha podido encontrar el usuario.","Error",JOptionPane.ERROR_MESSAGE);
+					}else {
+						login.login_user();
+						if(singleton_users.C.getType()=="Cliente") {
+							JOptionPane.showMessageDialog(null,"Eres cliente.","Error",JOptionPane.ERROR_MESSAGE);
+
+						}else if(singleton_users.A.getType()=="Admin") {
+							JOptionPane.showMessageDialog(null,"Eres administrador.","Error",JOptionPane.ERROR_MESSAGE);
+
+						}else if(singleton_users.E.getType()=="Empleado") {
+							JOptionPane.showMessageDialog(null,"Eres empleado","Error",JOptionPane.ERROR_MESSAGE);
+
+						}
+					}
 					validator4=true;
 					break;
 				case 2:

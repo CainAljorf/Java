@@ -9,12 +9,11 @@ import tema4.modules.users.utils.find;
 public class login {
 	public static void login_user (){
 		int location = -1;
-		
 		if(singleton_users.userclient.isEmpty()&& singleton_users.useradmin.isEmpty()&&singleton_users.useremployee.isEmpty()){
-			JOptionPane.showMessageDialog(null,"No hay ninguna cuenta con estos datos, regístrese previamente.", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null,"No se encuentran cuentas, regístrese previamente.", "Error", JOptionPane.ERROR_MESSAGE);
 		}else{
 			location = -1;
-			singleton_users.C = CRUD.new_client_pass("Ingresa el nombre de usuario para tu cuenta.","Ingresar Nombre de usuario");
+			singleton_users.C = CRUD.new_client_pass("Ingresa el nombre de usuario para tu cuenta.","Ingresar Nombre de usuario","Ingresa la contraseña de tu cuente","Ingresa Contraseña");
 			location = find.find_login_user(singleton_users.C);
 			if (location != -1) {
 				singleton_users.C = singleton_users.userclient.get(location);

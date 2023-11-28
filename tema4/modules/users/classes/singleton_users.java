@@ -13,5 +13,6 @@ public class singleton_users {
 	public static user A;
 	public static user E;
 	public static user C;
+	public static user U;
 	public static dates D;
 }

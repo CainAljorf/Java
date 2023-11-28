@@ -9,6 +9,3 @@ public class dates_functions {
         return currently_date.format(formatter);
     }
 }
-
-
-   

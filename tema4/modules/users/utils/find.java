@@ -21,15 +21,15 @@ public class find {
 	}
 	public static int find_login_user(user U){
 		for (int i = 0; i<=(singleton_users.useradmin.size()-1); i++){
-			if((singleton_users.useradmin.get(i)).equals(U)&&(singleton_users.useradmin.get(i)).equals(U))
+			if((singleton_users.useradmin.get(i)).equals2(U))
 				return i;
 		}
 		for (int j = 0; j<=(singleton_users.useremployee.size()-1); j++){
-			if((singleton_users.useremployee.get(j)).equals(U)&&(singleton_users.useremployee.get(j)).equals(U))
+			if((singleton_users.useremployee.get(j)).equals2(U))
 				return j;
 		}
 		for (int k = 0; k<=(singleton_users.userclient.size()-1); k++){
-			if((singleton_users.userclient.get(k)).equals(U)&&(singleton_users.userclient.get(k)).equals(U))
+			if((singleton_users.userclient.get(k)).equals2(U))
 				return k;
 		}
 		return -1;
