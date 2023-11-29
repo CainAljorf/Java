@@ -1,20 +1,18 @@
 package tema4.modules.users.classes;
 
-import tema4.classes.dates;
-
 public class employee extends user{
-	private dates born_date;
-	private dates hire_date;
+	private String born_date;
+	private String hire_date;
 	private float salary;
-	public employee(String username, String email, String password, boolean active, String type, dates born_date,
-			dates hire_date, float salary) {
+	public employee(String username, String password,String email,  boolean active, String type, String born_date,
+			String hire_date, float salary) {
 		super(username, email, password, active, type);
 		this.born_date = born_date;
 		this.hire_date = hire_date;
 		this.salary = salary;
 	}
-	public employee(String username, String email) {
-		super(username, email);
+	public employee(String username, String password) {
+		super(username, password);
 	}
 	public employee(String username) {
 		super(username);
@@ -25,16 +23,16 @@ public class employee extends user{
 	public void setSalary(float salary) {
 		this.salary = salary;
 	}
-	public dates getBorn_date() {
+	public String getBorn_date() {
 		return born_date;
 	}
-	public void setBorn_date(dates born_date) {
+	public void setBorn_date(String born_date) {
 		this.born_date = born_date;
 	}
-	public dates getHire_date() {
+	public String getHire_date() {
 		return hire_date;
 	}
-	public void setHire_date(dates hire_date) {
+	public void setHire_date(String hire_date) {
 		this.hire_date = hire_date;
 	}
 	@Override

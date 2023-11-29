@@ -3,13 +3,13 @@ package tema4.modules.users.classes;
 public class client extends user {
 	private boolean premium;
 	private String register_date;
-	public client(String username, String email, String password, boolean active, String type, boolean premium,	String register_date) {
+	public client(String username,  String password,String email, boolean active, String type, boolean premium,	String register_date) {
 		super(username, email, password, active, type);
 		this.premium = premium;
 		this.register_date = register_date;
 	}
-	public client(String username, String email) {
-		super(username, email);
+	public client(String username, String password) {
+		super(username, password);
 	}
 	public client(String username) {
 		super(username);

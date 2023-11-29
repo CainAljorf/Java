@@ -1,7 +1,6 @@
 package tema4.modules.users.utils;
 import javax.swing.JOptionPane;
 
-import tema4.classes.dates;
 import tema4.modules.users.classes.admin;
 import tema4.modules.users.classes.client;
 import tema4.modules.users.classes.employee;
@@ -15,26 +14,28 @@ public class CRUD {
 		String password= insert_data.insert_password("Ingresa la contraseña para tu usuario.\nDebe contener como mínimo 8 carácteres "
 				+ "y contener alguno de estos símbolos especiales: @$!%*?&.","Ingresar contraseña");
 		String email= insert_data.insert_email("Ingresa el correo electrónico.","Ingresar Email");
-		singleton_users.C = new client(singleton_users.C.getUsername(),password,email,false,"Cliente",((client) singleton_users.C).isPremium(),register_date);
+		singleton_users.C = new client(singleton_users.C.getUsername(),email,password,false,"Cliente",singleton_users.C.isPremium(),register_date);
 		str = "Usuario registrado correctamente.";
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
-		return (client) singleton_users.C;
+		return singleton_users.C;
 	}// end create_laptop
 	public static admin create_admin() {
 		String username = "admin";
 		String password = "admin";
 		String email = "cain@cain.com";
-		singleton_users.A = new admin(username,password,email,false,"Admin");
-		return (admin) singleton_users.A;
+		singleton_users.A = new admin(username,email,password,false,"Admin");
+		singleton_users.useradmin.add(singleton_users.A);
+		return singleton_users.A;
 	}// end create_laptop
 	public static employee create_employee() {
 		String username = "pepe";
 		String password= "pepe";
 		String email= "pepe@pepe.com";
-		dates hire_date = new dates("28/11/2010");
-		dates born_date = new dates("04/01/1992");
-		singleton_users.E = new employee(username,password,email,false,"Empleado",hire_date,born_date,1400);
-		return (employee) singleton_users.E;
+		String hire_date = "28/11/2010";
+		String born_date = "04/01/1992";
+		singleton_users.E = new employee(username,email,password,false,"Empleado",hire_date,born_date,1400);
+		singleton_users.useremployee.add(singleton_users.E);
+		return singleton_users.E;
 	}// end create_laptop
 	public static client new_client(String message, String title) {
 		singleton_users.username=insert_data.insert_username(message,title);

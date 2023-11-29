@@ -36,10 +36,8 @@ public class menu {
 		singleton.array_ID = new ArrayList <String> ();
 		
 		CRUD.create_admin();
-		singleton_users.useradmin.add((admin) singleton_users.A);
+		
 		CRUD.create_employee();
-		singleton_users.useremployee.add((employee) singleton_users.E);
-
 		int menu_dummies=0;
 		int menu_main=0;
 		int menu_sec=0;

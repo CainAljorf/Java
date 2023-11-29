@@ -6,7 +6,7 @@ public class user {
 	private String password;
 	private boolean active;
 	private String type;
-	public user(String username, String email, String password, boolean active, String type) {
+	public user(String username, String password,String email, boolean active, String type) {
 		super();
 		this.username = username;
 		this.email = email;
@@ -17,15 +17,12 @@ public class user {
 	public user(String username) {
 		this.username = username;
 	}
-	public user(String username,String email) {
+	public user(String username,String password) {
 		this.username = username;
-		this.email = email;
+		this.password = password;
 	}
 	public boolean equals(Object param){
 		return getUsername().equals(((user)param).getUsername());
-	}
-	public boolean equals2(Object param){
-		return getUsername().equals(((user)param).getUsername()) && getPassword().equals(((user)param).getPassword());
 	}
 	public String getUsername() {
 		return username;

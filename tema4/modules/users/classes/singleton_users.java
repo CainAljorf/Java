@@ -10,9 +10,9 @@ public class singleton_users {
 	public static ArrayList <employee> useremployee;
 	public static String username;
 	public static String password;
-	public static user A;
-	public static user E;
-	public static user C;
+	public static admin A;
+	public static employee E;
+	public static client C;
 	public static user U;
 	public static dates D;
 }
