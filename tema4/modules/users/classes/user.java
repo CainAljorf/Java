@@ -58,5 +58,4 @@ public class user {
 	public String toString() {
 		return null;
 	}
-	
 }

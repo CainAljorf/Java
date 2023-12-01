@@ -1,7 +1,6 @@
 package tema4.modules.users.classes;
 
 public class admin extends user {
-
 	public admin(String username,String password, String email,  boolean active, String type) {
 		super(username, email, password, active, type);
 	}

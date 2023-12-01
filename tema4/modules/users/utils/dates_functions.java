@@ -8,5 +8,4 @@ public class dates_functions {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return currently_date.format(formatter);
     }
-	
 }

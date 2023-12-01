@@ -34,5 +34,4 @@ public class client extends user {
 	public String toString() {
 		return null;
 	}
-	
 }
