@@ -41,7 +41,7 @@ public class menu {
 			menu_user=JOptionPane.showOptionDialog(
 					null,
 					"Que quieres hacer?",
-					"CRUD",
+					"Menú Principal",
 					0,
 					JOptionPane.QUESTION_MESSAGE,
 					null,
@@ -62,6 +62,7 @@ public class menu {
 					break;
 				default:
 					validator4=false;
+					JOptionPane.showMessageDialog(null,"Cerrando el programa.","Información",JOptionPane.INFORMATION_MESSAGE);
 					System.exit(0);
 					break;
 			}

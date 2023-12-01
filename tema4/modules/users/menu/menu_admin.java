@@ -15,7 +15,7 @@ import tema4.utils.validators;
 
 public class menu_admin {
 	public static void admin() {
-		JOptionPane.showMessageDialog(null, "Eres administrador.","Error",JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Eres administrador.","Acceso Correcto",JOptionPane.INFORMATION_MESSAGE);
 		String[]buttons_main_menu={
 				"Users",
 				"Products",
@@ -74,18 +74,23 @@ public class menu_admin {
 								buttons_users[0]);
 						switch(menu_users) {
 						case 0:
+//							CRUD Cliente
 							validator=true;
 							break;
 						case 1:
+//							CRUD Admin
 							validator=true;
 							break;
 						case 2:
+//							CRUD Employee
 							validator=true;
 							break;
 						case 3:
+							JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Información",JOptionPane.INFORMATION_MESSAGE);
 							validator=false;
 							break;
 						default:
+							JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
 							System.exit(0);
 							break;
 						}
