@@ -40,6 +40,7 @@ public class CRUD {
 		}else {
 			str="La edad de tu empleado debe de tener más de 18 años";
 		}//end if
+		singleton_users.E.increaseSalary();
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		return singleton_users.E;
 	}// end create_laptop
@@ -58,6 +59,7 @@ public class CRUD {
 		String hire_date = "28/11/2010";
 		dates born_date = new dates("04/01/1992");
 		singleton_users.E = new employee(username,email,password,false,"Empleado",born_date,hire_date,1400);
+		singleton_users.E.increaseSalary();
 		singleton_users.useremployee.add(singleton_users.E);
 		return singleton_users.E;
 	}// end create_laptop

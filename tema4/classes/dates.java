@@ -125,16 +125,16 @@ public class dates {
 			return 3;
     	}//end if
 	}
-	public LocalDate toLocalDate() {
+	public LocalDate toLocalDate() {//Método para convertir a LocalDate la fecha introducida
 		return LocalDate.of(this.year, this.month, this.day);
 	}
-	public boolean isAdult(dates birthDate) {
+	public boolean isAdult(dates birthDate) {//Método para comprobar si es mayor de edad
 		LocalDate now = LocalDate.now();
 		LocalDate eighteenYearsAgo = now.minusYears(18);
-		LocalDate birthDateLocal = birthDate.toLocalDate(); // Necesitas implementar este método en tu clase `dates`
+		LocalDate birthDateLocal = birthDate.toLocalDate();
 		return birthDateLocal.isBefore(eighteenYearsAgo) || birthDateLocal.isEqual(eighteenYearsAgo);
 	}
-    public int subtract_days(dates insert_date) {
+    public int subtract_days(dates insert_date) {//Método para calcular los días entre dos fechas
 		int day_1;
 		int day_2;
 		int year_1;
@@ -169,7 +169,7 @@ public class dates {
     	}
     	return res;
 	}
-    private int count_leap_years(int year_init, int year_end) {
+    private int count_leap_years(int year_init, int year_end) {//Método para calcular los años bisiestos
         int cont = 0;
         for (int year = year_init; year <= year_end; year++) {
             if (leap_year(year)) {
@@ -178,7 +178,7 @@ public class dates {
         }
         return cont;
     }
-	private boolean leap_year(int year) {
+	private boolean leap_year(int year) {//Método para calcular si es bisiesto
         return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
     }
 	public SimpleDateFormat getFormat() {

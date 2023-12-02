@@ -41,7 +41,7 @@ public class employee extends user{
 	public void setHire_date(String hire_date) {
 		this.hire_date = hire_date;
 	}
-	public void increaseSalary() {
+	public void increaseSalary() {//Método para aumentar 100€ por cada 5 años trabajados
 		LocalDate now = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate hireDate = LocalDate.parse(this.hire_date, formatter);

@@ -14,6 +14,7 @@ import tema4.modules.products.utils.CRUD_functions.update;
 import tema4.modules.users.classes.singleton_users;
 import tema4.modules.users.utils.CRUD;
 import tema4.modules.users.utils.find;
+import tema4.modules.users.utils_array.register;
 import tema4.utils.validators;
 
 public class menu_admin {
@@ -78,10 +79,80 @@ public class menu_admin {
 						switch(menu_users) {
 						case 0:
 //							CRUD Cliente
+							do {
+								menu_sec=JOptionPane.showOptionDialog(
+										null,
+										"Elige una opción",
+										"Cliente",
+										0,
+										JOptionPane.QUESTION_MESSAGE,
+										null,
+										buttons_sec,
+										buttons_sec[0]);
+								switch(menu_sec) {
+								case 0:
+									register.client();
+									validator2=true;
+									break;
+								case 1:
+									validator2=true;
+									break;
+								case 2:
+									validator2=true;
+									break;
+								case 3:
+									JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Información",JOptionPane.INFORMATION_MESSAGE);
+									validator2=false;
+									break;
+								default:
+									JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
+									System.exit(0);
+									break;
+								}
+							}while(validator2==true);
 							validator=true;
 							break;
 						case 1:
 //							CRUD Admin
+							do {
+								menu_sec=JOptionPane.showOptionDialog(
+										null,
+										"Elige una opción",
+										"Administrador",
+										0,
+										JOptionPane.QUESTION_MESSAGE,
+										null,
+										buttons_sec,
+										buttons_sec[0]);
+								switch(menu_sec) {
+								case 0:
+									int location = -1;
+									singleton_users.A = CRUD.new_admin("Ingresa el nombre de usuario para la cuenta.","Ingresar Nombre de usuario");
+									location = find.find_username(singleton_users.A);
+									if (location != -1) {
+										JOptionPane.showMessageDialog(null, "Ese nombre de usuario ya está en uso. Por favor elige otro.","Error",JOptionPane.ERROR_MESSAGE);
+									} else {
+										singleton_users.A = CRUD.create_admin_panel();
+										singleton_users.useradmin.add(singleton_users.A);
+									}
+									validator2=true;
+									break;
+								case 1:
+									validator2=true;
+									break;
+								case 2:
+									validator2=true;
+									break;
+								case 3:
+									JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Información",JOptionPane.INFORMATION_MESSAGE);
+									validator2=false;
+									break;
+								default:
+									JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
+									System.exit(0);
+									break;
+								}
+							}while(validator2==true);
 							validator=true;
 							break;
 						case 2:
@@ -99,7 +170,7 @@ public class menu_admin {
 								switch(menu_sec) {
 								case 0:
 									int location = -1;
-									singleton_users.E = CRUD.new_employee("Ingresa el nombre de usuario para tu cuenta.","Ingresar Nombre de usuario");
+									singleton_users.E = CRUD.new_employee("Ingresa el nombre de usuario para la cuenta.","Ingresar Nombre de usuario");
 									location = find.find_username(singleton_users.E);
 									if (location != -1) {
 										JOptionPane.showMessageDialog(null, "Ese nombre de usuario ya está en uso. Por favor elige otro.","Error",JOptionPane.ERROR_MESSAGE);
@@ -110,8 +181,10 @@ public class menu_admin {
 									validator2=true;
 									break;
 								case 1:
+									validator2=true;
 									break;
 								case 2:
+									validator2=true;
 									break;
 								case 3:
 									JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Información",JOptionPane.INFORMATION_MESSAGE);
