@@ -16,7 +16,7 @@ public class register {
 			JOptionPane.showMessageDialog(null, "Ese nombre de usuario ya está en uso. Por favor elige otro.","Error",JOptionPane.ERROR_MESSAGE);
 		} else {
 			singleton_users.C = CRUD.create_client();
-			singleton_users.userclient.add((client) singleton_users.C);
+			singleton_users.userclient.add(singleton_users.C);
 		}
 	}
 }

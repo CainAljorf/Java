@@ -1,5 +1,10 @@
 package tema4.modules.users.classes;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class user {
 	private String username;
 	private String email;
@@ -37,11 +42,25 @@ public class user {
 		this.email = email;
 	}
 	public String getPassword() {
-		return password;
+		return getEncryptedPassword(password);
 	}
 	public void setPassword(String password) {
-		this.password = password;
+    this.password = password;
 	}
+	private String getEncryptedPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
+            BigInteger number = new BigInteger(1, hashedPassword);
+            StringBuilder hexString = new StringBuilder(number.toString(16));
+            while (hexString.length() < 32) {
+                hexString.insert(0, '0');
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
 	public boolean isActive() {
 		return active;
 	}

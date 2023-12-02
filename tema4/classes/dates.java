@@ -1,6 +1,7 @@
 package tema4.classes;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -123,6 +124,15 @@ public class dates {
     	}else {
 			return 3;
     	}//end if
+	}
+	public LocalDate toLocalDate() {
+		return LocalDate.of(this.year, this.month, this.day);
+	}
+	public boolean isAdult(dates birthDate) {
+		LocalDate now = LocalDate.now();
+		LocalDate eighteenYearsAgo = now.minusYears(18);
+		LocalDate birthDateLocal = birthDate.toLocalDate(); // Necesitas implementar este método en tu clase `dates`
+		return birthDateLocal.isBefore(eighteenYearsAgo) || birthDateLocal.isEqual(eighteenYearsAgo);
 	}
     public int subtract_days(dates insert_date) {
 		int day_1;

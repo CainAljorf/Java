@@ -28,9 +28,11 @@ public class menu {
 		singleton.array_ID = new ArrayList <String> ();
 		
 		CRUD.create_admin();
-		
 		CRUD.create_employee();
+		System.out.println(singleton_users.A.getPassword());
+		System.out.println(singleton_users.E.getSalary());	
 	
+
 		boolean validator4=true;
 		int menu_user=0;
 		String[]buttons_user={
