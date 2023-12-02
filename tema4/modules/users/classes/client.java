@@ -1,5 +1,9 @@
 package tema4.modules.users.classes;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
 public class client extends user {
 	private boolean premium;
 	private String register_date;
@@ -15,17 +19,22 @@ public class client extends user {
 		super(username);
 	}
 	public boolean isPremium() {
-		return premium;
+		return this.premium;
 	}
 	public void setPremium() {
-		if(this.getRegister_date().equals("31/11/2023")) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate registerDate = LocalDate.parse(this.getRegister_date(), formatter);
+		LocalDate now = LocalDate.now();
+		long years = ChronoUnit.YEARS.between(registerDate, now);
+		
+		if(years > 1) {
 			this.premium = true;
-		}else {
+		} else {
 			this.premium = false;
 		}
 	}
 	public String getRegister_date() {
-		return register_date;
+		return this.register_date;
 	}
 	public void setRegister_date(String register_date) {
 		this.register_date = register_date;

@@ -47,8 +47,8 @@ public class user {
 	public void setPassword(String password) {
     this.password = password;
 	}
-//Método para encriptar la contraseña. Esta no se almacena encriptada, 
-//sino que se encripta cuando alguien quiere extraerla de GetPassword.
+	//Método para encriptar la contraseña. Esta no se almacena encriptada, 
+	//sino que se encripta cuando alguien quiere extraerla de GetPassword.
 	private String getEncryptedPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
