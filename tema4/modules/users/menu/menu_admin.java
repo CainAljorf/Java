@@ -11,9 +11,6 @@ import tema4.modules.products.utils.CRUD_functions.create;
 import tema4.modules.products.utils.CRUD_functions.delete;
 import tema4.modules.products.utils.CRUD_functions.read;
 import tema4.modules.products.utils.CRUD_functions.update;
-import tema4.modules.users.classes.singleton_users;
-import tema4.modules.users.utils.CRUD;
-import tema4.modules.users.utils.find;
 import tema4.modules.users.utils_array.readUsers;
 import tema4.modules.users.utils_array.register;
 import tema4.utils.validators;
@@ -96,7 +93,7 @@ public class menu_admin {
 									validator2=true;
 									break;
 								case 1:
-									readUsers.read_users();
+									readUsers.read_client();
 									validator2=true;
 									break;
 								case 2:
@@ -135,7 +132,7 @@ public class menu_admin {
 									validator2=true;
 									break;
 								case 1:
-									readUsers.read_users();
+									readUsers.read_admin();
 									validator2=true;
 									break;
 								case 2:
@@ -174,7 +171,7 @@ public class menu_admin {
 									validator2=true;
 									break;
 								case 1:
-									readUsers.read_users();
+									readUsers.read_employee();
 									validator2=true;
 									break;
 								case 2:

@@ -18,7 +18,7 @@ public class update {
 			location1 = find.find_product(singleton.L);
 			if (location1 != -1) {
 				singleton.L = singleton.productlaptop.get(location1);
-				CRUD.update();
+				CRUD.update_laptop();
 				singleton.productlaptop.set(location1, singleton.L);
 			}else {
 				JOptionPane.showMessageDialog(null, "No se ha encontrado el laptop.","Error",JOptionPane.ERROR_MESSAGE);
@@ -35,7 +35,7 @@ public class update {
 			location1 = find.find_product(singleton.S);
 			if (location1 != -1) {
 				singleton.S = singleton.productsmartphone.get(location1);
-				CRUD.update();
+				CRUD.update_smartphone();
 				singleton.productsmartphone.set(location1, singleton.S);
 			}else {
 				JOptionPane.showMessageDialog(null, "No se ha encontrado el smartphone.","Error",JOptionPane.ERROR_MESSAGE);
@@ -52,7 +52,7 @@ public class update {
 			location1 = find.find_product(singleton.A);
 			if (location1 != -1) {
 				singleton.A = singleton.productaccessory.get(location1);
-				CRUD.update();
+				CRUD.update_accessory();
 				singleton.productaccessory.set(location1, singleton.A);
 			}else {
 				JOptionPane.showMessageDialog(null, "No se ha encontrado el accesorio.","Error",JOptionPane.ERROR_MESSAGE);	

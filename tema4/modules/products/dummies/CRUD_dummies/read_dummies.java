@@ -1,7 +1,6 @@
 package tema4.modules.products.dummies.CRUD_dummies;
 
 import javax.swing.JOptionPane;
-
 import tema4.modules.products.classes.singleton;
 import tema4.modules.products.dummies.dummies_CRUD;
 import tema4.modules.products.dummies.find_dummies;
@@ -45,7 +44,7 @@ public class read_dummies {
 						System.out.println(location);
 						if (location != -1) {
 							singleton.DL = singleton.dummieslaptop.get(location);
-							dummies_CRUD.read_one();
+							dummies_CRUD.read_laptop();
 						}else {
 							JOptionPane.showMessageDialog(null, "El laptop que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
@@ -59,11 +58,10 @@ public class read_dummies {
 						JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.ERROR_MESSAGE);
 						System.exit(0);
 						break;
-				}
+				}//end switch
 			}while(validator==true);
-		}
-	}
-	
+		}//end if
+	}//end laptop
 	public static void smartphone (){
 		int opt = 0, location = -1;
 		boolean validator = true;
@@ -100,7 +98,7 @@ public class read_dummies {
 						location = find_dummies.find_product_dummies(singleton.DS);
 						if (location != -1) {
 							singleton.DS = singleton.dummiessmartphone.get(location);
-							dummies_CRUD.read_one();
+							dummies_CRUD.read_smartphone();
 						}else {
 							JOptionPane.showMessageDialog(null, "El smartphone que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
@@ -118,7 +116,6 @@ public class read_dummies {
 			}while(validator==true);
 		}
 	}
-	
 	public static void accessory (){
 		int opt = 0, location = -1;
 		boolean validator = true;
@@ -154,8 +151,8 @@ public class read_dummies {
 								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 						location = find_dummies.find_product_dummies(singleton.DA);
 						if (location != -1) {
-							singleton.DA = singleton.productaccessory.get(location);
-							dummies_CRUD.read_one();
+							singleton.DA = singleton.dummiesaccessory.get(location);
+							dummies_CRUD.read_accessory();					
 						}else {
 							JOptionPane.showMessageDialog(null, "El accesorio que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
 						}

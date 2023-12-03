@@ -16,11 +16,10 @@ public class update_dummies {
 			location1 = -1;
 			singleton.DL = CRUD.new_laptop("Ingresa el ID de tu accesorio para ver si existe."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-//			singleton.DL =  dummies_CRUD.new_id_laptop();
 			location1 = find_dummies.find_product_dummies(singleton.DL);
 			if (location1 != -1) {
 				singleton.DL = singleton.dummieslaptop.get(location1);
-				dummies_CRUD.update_dummies();
+				dummies_CRUD.update_laptop();
 				singleton.dummieslaptop.set(location1, singleton.DL);
 			}else {
 				JOptionPane.showMessageDialog(null, "No se ha encontrado el laptop.","Error",JOptionPane.ERROR_MESSAGE);
@@ -35,11 +34,10 @@ public class update_dummies {
 			location1 = -1;
 			singleton.DS = CRUD.new_smartphone("Ingresa el ID de tu accesorio para ver si existe."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-//			singleton.DS=  dummies_CRUD.new_id_smartphone();
 			location1 = find_dummies.find_product_dummies(singleton.DS);
 			if (location1 != -1) {
 				singleton.DS = singleton.dummiessmartphone.get(location1);
-				dummies_CRUD.update_dummies();	
+				dummies_CRUD.update_smartphone();
 				singleton.dummiessmartphone.set(location1, singleton.DS);
 			}else {
 				JOptionPane.showMessageDialog(null, "No se ha encontrado el smartphone.","Error",JOptionPane.ERROR_MESSAGE);
@@ -54,11 +52,10 @@ public class update_dummies {
 			location1 = -1;
 			singleton.DA = CRUD.new_accessory("Ingresa el ID de tu accesorio para ver si existe."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-//			singleton.DA =  dummies_CRUD.new_id_accessory();
 			location1 = find_dummies.find_product_dummies(singleton.DA);
 			if (location1 != -1) {
 				singleton.DA = singleton.dummiesaccessory.get(location1);
-				dummies_CRUD.update_dummies();
+				dummies_CRUD.update_accessory();
 				singleton.dummiesaccessory.set(location1, singleton.DA);
 			}else {
 				JOptionPane.showMessageDialog(null, "No se ha encontrado el accesorio.","Error",JOptionPane.ERROR_MESSAGE);	
