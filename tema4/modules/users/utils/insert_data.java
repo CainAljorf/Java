@@ -72,27 +72,20 @@ public class insert_data {
 		} while ((res == false));
 		return singleton_users.D;
 	}//end insert_date_born
-	public static dates insert_date_hire(String message, String title){
+	public static String insert_date_hire(String message, String title){
 		boolean res = false;
-		String date_purchase = "";
+		String date = "";
 		do {
-			date_purchase = validators.validator_string(message,title);
-	    	res = regex_date.validateDate(date_purchase);
+			date = validators.validator_string(message,title);
+	    	res = regex_date.validateDate(date);
 			if (!res) {
 				res = false;
 				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
 			} else {
-				singleton_users.D = new dates(date_purchase);
-				res = singleton_users.D.check_date();
-				if (!res) {
-					res = false;
-					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
-				} else {
-					res = true;
-				} // end if
+				res = true;
 			} // end if
 		} while ((res == false));
-		return singleton_users.D;
+		return date;
 	}//end insert_date_hire
 	public static String insert_date_register(){
 		boolean res = false;

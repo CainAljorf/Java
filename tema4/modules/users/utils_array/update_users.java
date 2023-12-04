@@ -7,13 +7,16 @@ import tema4.modules.users.utils.CRUD;
 import tema4.modules.users.utils.find;
 
 public class update_users {
+
     public static void update_admin (){
+     	int location = -1;
         singleton_users.A = CRUD.new_admin("Ingresa el usuario.","Ingresar usuario");
-        int location = find.find_username(singleton_users.A);
+        location = find.find_username(singleton_users.A);
         String type = find.find_type(singleton_users.A);
         if (location != -1 && type.equals("Admin")) {
             singleton_users.A = singleton_users.useradmin.get(location);
             update.updates_admin();
+            singleton_users.useradmin.set(location, singleton_users.A);
         }else {
             JOptionPane.showMessageDialog(null, "El usuario que quieres actualizar debe ser administrador.", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -48,7 +51,7 @@ public class update_users {
         String type = find.find_type(singleton_users.A_name);
 		if (location == -1 && type.equals("Admin")) {
             singleton_users.A.setUsername(singleton_users.username);
-			str = "Usuario de administrador actualizado a: " + singleton_users.A.getUsername();
+            str = "Usuario de administrador actualizado a: " + singleton_users.A.getUsername();
 		} else {
 			str = "Ya hay un administrador con ese nombre.";
 		}

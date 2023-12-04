@@ -47,28 +47,27 @@ public class update {
 			} else{
 				switch (opt.toString()) {
 					case "Username":
-						update_users.set_name_employee();
-                        str = "Nombre de usuario actualizado a: " + singleton_users.E.getUsername();
+						str = update_users.set_name_employee();
 						break; 
 					case "Password":
-						insert_data.insert_password("Ingresa la contraseña de usuario.\nDebe contener como mínimo 8 carácteres "
-                    + "y contener alguno de estos símbolos especiales: @$!%*?&.","Ingresar contraseña");
+						singleton_users.E.setPassword(validators.validator_string("Ingresa la contraseña de usuario.\nDebe contener como mínimo 8 carácteres "
+                    + "y contener alguno de estos símbolos especiales: @$!%*?&.","Ingresar contraseña"));
                         str = "Contraseña actualizada a: " + singleton_users.E.getPassword();
 						break;
 					case "Email":
-						insert_data.insert_email("Ingresa el correo electrónico.","Ingresar Email");
+						singleton_users.E.setEmail(insert_data.insert_email("Ingresa el correo electrónico.","Ingresar Email"));
                         str = "Correo electrónico actualizado a: " + singleton_users.E.getEmail();
 						break;
 					case "Fecha Nacimiento":
-						insert_data.insert_date_born("Ingresa la fecha de nacimiento.","Ingresar Fecha de nacimiento");
+						singleton_users.E.setBorn_date(insert_data.insert_date_born("Ingresa la fecha de nacimiento.","Ingresar Fecha de nacimiento"));
                         str = "Fecha de nacimiento actualizada a: " + singleton_users.E.getBorn_date();
 						break; 
 					case "Fecha contratación":
-                        insert_data.insert_date_hire("Ingresa la fecha de contratación.","Ingresar Fecha de contratación");
+                        singleton_users.E.setHire_date(insert_data.insert_date_hire("Ingresa la fecha de contratación.","Ingresar Fecha de contratación"));
                         str = "Fecha de contratación actualizada a: " + singleton_users.E.getHire_date();
 						break;
 					case "Sueldo":
-                        validators.validator_float("Ingresa el sueldo del empleado.","Ingresar Sueldo");
+                        singleton_users.E.setSalary(validators.validator_float("Ingresa el sueldo del empleado.","Ingresar Sueldo"));
                         str = "Sueldo actualizado a: " + singleton_users.E.getSalary();
 						break;
 				}// end_switch
