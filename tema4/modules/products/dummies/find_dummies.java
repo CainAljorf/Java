@@ -19,4 +19,19 @@ public class find_dummies {
 		}
 		return -1;
 	}
+	public static String find_product_type(product P){
+		for (int i = 0; i<=(singleton.dummieslaptop.size()-1); i++){
+			if((singleton.dummieslaptop.get(i)).equals(P))
+				return "Laptop";
+		}
+		for (int j = 0; j<=(singleton.dummiessmartphone.size()-1); j++){
+			if((singleton.dummiessmartphone.get(j)).equals(P))
+				return "Smartphone";
+		}
+		for (int k = 0; k<=(singleton.dummiesaccessory.size()-1); k++){
+			if((singleton.dummiesaccessory.get(k)).equals(P))
+				return "Accessory";
+		}
+		return "null";
+	}
 }

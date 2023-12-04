@@ -7,8 +7,8 @@ import java.time.temporal.ChronoUnit;
 public class client extends user {
 	private boolean premium;
 	private String register_date;
-	public client(String username,  String password,String email, boolean active, String type, boolean premium,	String register_date) {
-		super(username, email, password, active, type);
+	public client(String username,  String password,String email, boolean active, boolean premium,	String register_date) {
+		super(username, email, password, active);
 		this.premium = premium;
 		this.register_date = register_date;
 	}
@@ -41,6 +41,12 @@ public class client extends user {
 	}
 	@Override
 	public String toString() {
-		return null;
+		String str = "";
+		str = str + "Username: " + getUsername() + "\n";
+		str = str + "Email: " + getEmail() + "\n";
+		str = str + "Password: " + getPassword() + "\n";
+		str = str + "Premium: " + isPremium() + "\n";
+		str = str + "Register date: " + getRegister_date() + "\n";
+		return str;
 	}
 }

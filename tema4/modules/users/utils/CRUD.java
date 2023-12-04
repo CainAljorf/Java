@@ -14,7 +14,7 @@ public class CRUD {
 		String password= insert_data.insert_password("Ingresa la contraseña de usuario.\nDebe contener como mínimo 8 carácteres "
 				+ "y contener alguno de estos símbolos especiales: @$!%*?&.","Ingresar contraseña");
 		String email= insert_data.insert_email("Ingresa el correo electrónico.","Ingresar Email");
-		singleton_users.C = new client(singleton_users.C.getUsername(),email,password,false,"Cliente",singleton_users.C.isPremium(),register_date);
+		singleton_users.C = new client(singleton_users.C.getUsername(),email,password,false,singleton_users.C.isPremium(),register_date);
 		JOptionPane.showMessageDialog(null, "Usuario registrado correctamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
 		return singleton_users.C;
 	}// end create_laptop
@@ -22,7 +22,7 @@ public class CRUD {
 		String password= insert_data.insert_password("Ingresa la contraseña de usuario.\nDebe contener como mínimo 8 carácteres "
 				+ "y contener alguno de estos símbolos especiales: @$!%*?&.","Ingresar contraseña");
 		String email= insert_data.insert_email("Ingresa el correo electrónico.","Ingresar Email");
-		singleton_users.A = new admin(singleton_users.A.getUsername(),email,password,false,"Admin");
+		singleton_users.A = new admin(singleton_users.A.getUsername(),email,password,false);
 		JOptionPane.showMessageDialog(null, "Usuario registrado correctamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
 		singleton_users.useradmin.add(singleton_users.A);
 		return singleton_users.A;
@@ -35,7 +35,7 @@ public class CRUD {
 		dates birth_date= insert_data.insert_date_born("Ingresa la fecha de nacimiento.","Ingresar Email");
 		String hire_date = dates_functions.date_system();
 		if(singleton_users.D.isAdult(birth_date)) {
-			singleton_users.E = new employee(singleton_users.E.getUsername(),email,password,false,"Empleado",birth_date,hire_date,2);
+			singleton_users.E = new employee(singleton_users.E.getUsername(),email,password,false,birth_date,hire_date,2);
 			str= "Usuario registrado correctamente.";
 		}else {
 			str="La edad de tu empleado debe de tener más de 18 años";
@@ -48,7 +48,7 @@ public class CRUD {
 		String username = "admin";
 		String password = "admin";
 		String email = "cain@cain.com";
-		singleton_users.A = new admin(username,email,password,false,"Admin");
+		singleton_users.A = new admin(username,email,password,false);
 		singleton_users.useradmin.add(singleton_users.A);
 		return singleton_users.A;
 	}// end create_laptop
@@ -58,7 +58,7 @@ public class CRUD {
 		String email= "pepe@pepe.com";
 		String hire_date = "28/11/2010";
 		dates born_date = new dates("04/01/1992");
-		singleton_users.E = new employee(username,email,password,false,"Empleado",born_date,hire_date,1400);
+		singleton_users.E = new employee(username,email,password,false,born_date,hire_date,1400);
 		singleton_users.E.increaseSalary();
 		singleton_users.useremployee.add(singleton_users.E);
 		return singleton_users.E;

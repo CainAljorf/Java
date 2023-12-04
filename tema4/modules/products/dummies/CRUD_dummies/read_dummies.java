@@ -41,12 +41,12 @@ public class read_dummies {
 						singleton.DL = CRUD.new_laptop("Ingresa el ID de tu accesorio para leerlo."
 								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 						location = find_dummies.find_product_dummies(singleton.DL);
-						System.out.println(location);
-						if (location != -1) {
+						String type = find_dummies.find_product_type(singleton.DL);
+						if (location != -1 && type.equals("Laptop")) {
 							singleton.DL = singleton.dummieslaptop.get(location);
 							dummies_CRUD.read_laptop();
 						}else {
-							JOptionPane.showMessageDialog(null, "El laptop que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un laptop.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
 						break;
 					case 2:
@@ -96,11 +96,12 @@ public class read_dummies {
 						singleton.DS = CRUD.new_smartphone("Ingresa el ID de tu accesorio para leerlo."
 								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 						location = find_dummies.find_product_dummies(singleton.DS);
-						if (location != -1) {
+						String type = find_dummies.find_product_type(singleton.DS);
+						if (location != -1 && type.equals("Smartphone")) {
 							singleton.DS = singleton.dummiessmartphone.get(location);
 							dummies_CRUD.read_smartphone();
 						}else {
-							JOptionPane.showMessageDialog(null, "El smartphone que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un smartphone.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
 						break;
 					case 2:
@@ -150,11 +151,12 @@ public class read_dummies {
 						singleton.DA = CRUD.new_accessory("Ingresa el ID de tu accesorio para leerlo."
 								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 						location = find_dummies.find_product_dummies(singleton.DA);
-						if (location != -1) {
+						String type = find_dummies.find_product_type(singleton.DA);
+						if (location != -1 && type.equals("Accessory")) {
 							singleton.DA = singleton.dummiesaccessory.get(location);
 							dummies_CRUD.read_accessory();					
 						}else {
-							JOptionPane.showMessageDialog(null, "El accesorio que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un accesorio.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
 						break;
 					case 2:

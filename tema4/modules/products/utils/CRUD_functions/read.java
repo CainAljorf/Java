@@ -41,11 +41,12 @@ public class read {
 						singleton.L = CRUD.new_laptop("Ingresa el ID de tu laptop para leerlo."
 								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 						location = find.find_product(singleton.L);
-						if (location != -1) {
+						String type = find.find_product_type(singleton.L);
+						if (location != -1 && type.equals("Laptop")) {
 							singleton.L = singleton.productlaptop.get(location);
 							CRUD.read_laptop();
 						}else {
-							JOptionPane.showMessageDialog(null, "El laptop que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un laptop.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
 						break;
 					case 2:
@@ -96,11 +97,12 @@ public class read {
 						singleton.S = CRUD.new_smartphone("Ingresa el ID de tu smartphone para leerlo."
 								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 						location = find.find_product(singleton.S);
-						if (location != -1) {
+						String type = find.find_product_type(singleton.S);
+						if (location != -1 && type.equals("Smartphone")) {
 							singleton.S = singleton.productsmartphone.get(location);
 							CRUD.read_smartphone();
 						}else {
-							JOptionPane.showMessageDialog(null, "El smartphone que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un smartphone.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
 						break;
 					case 2:
@@ -151,11 +153,12 @@ public class read {
 						singleton.A = CRUD.new_accessory("Ingresa el ID de tu accesorio para leerlo."
 								+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 						location = find.find_product(singleton.A);
-						if (location != -1) {
+						String type = find.find_product_type(singleton.A);
+						if (location != -1 && type.equals("Accessory")) {
 							singleton.A = singleton.productaccessory.get(location);
 							CRUD.read_accessory();
 						}else {
-							JOptionPane.showMessageDialog(null, "El accesorio que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un accesorio.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
 						break;
 					case 2:

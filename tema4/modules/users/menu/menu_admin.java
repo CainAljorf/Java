@@ -11,8 +11,10 @@ import tema4.modules.products.utils.CRUD_functions.create;
 import tema4.modules.products.utils.CRUD_functions.delete;
 import tema4.modules.products.utils.CRUD_functions.read;
 import tema4.modules.products.utils.CRUD_functions.update;
+import tema4.modules.users.classes.singleton_users;
 import tema4.modules.users.utils_array.readUsers;
 import tema4.modules.users.utils_array.register;
+import tema4.modules.users.utils_array.update_users;
 import tema4.utils.validators;
 
 public class menu_admin {
@@ -38,7 +40,6 @@ public class menu_admin {
 				"Atrás"};
 		String[]buttons_sec={
 				"Create",
-//				"Read All",
 				"Read",
 				"Update",
 				"Delete",
@@ -76,7 +77,7 @@ public class menu_admin {
 								buttons_users[0]);
 						switch(menu_users) {
 						case 0:
-//							CRUD Cliente
+//							Read Cliente
 							do {
 								menu_sec=JOptionPane.showOptionDialog(
 										null,
@@ -97,10 +98,13 @@ public class menu_admin {
 									validator2=true;
 									break;
 								case 2:
+									update_users.update_client();
 									validator2=true;
 									break;
 								case 3:
-									validator2=true;
+									singleton_users.C.setActive(false);
+									JOptionPane.showMessageDialog(null, "Cliente desactivado.","Información",JOptionPane.INFORMATION_MESSAGE);
+									validator2=false;
 									break;
 								case 4:
 									JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Información",JOptionPane.INFORMATION_MESSAGE);
@@ -136,10 +140,13 @@ public class menu_admin {
 									validator2=true;
 									break;
 								case 2:
+									update_users.update_admin();
 									validator2=true;
 									break;
 								case 3:
-									validator2=true;
+									singleton_users.A.setActive(false);
+									JOptionPane.showMessageDialog(null, "Administrador desactivado.","Información",JOptionPane.INFORMATION_MESSAGE);
+									validator2=false;
 									break;
 								case 4:
 									JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Información",JOptionPane.INFORMATION_MESSAGE);
@@ -154,7 +161,7 @@ public class menu_admin {
 							validator=true;
 							break;
 						case 2:
-//							CRUD Employee
+//							Read Update Employee
 							do {
 								menu_sec=JOptionPane.showOptionDialog(
 										null,
@@ -175,10 +182,13 @@ public class menu_admin {
 									validator2=true;
 									break;
 								case 2:
+									update_users.update_employee();
 									validator2=true;
 									break;
 								case 3:
-									validator2=true;
+									singleton_users.E.setActive(false);
+									JOptionPane.showMessageDialog(null, "Empleado desactivado.","Información",JOptionPane.INFORMATION_MESSAGE);
+									validator2=false;
 									break;
 								case 4:
 									JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Información",JOptionPane.INFORMATION_MESSAGE);
@@ -244,14 +254,6 @@ public class menu_admin {
 														create.laptop();;
 														validator2=true;
 														break;
-			//										case 1:
-			//											if(singleton.L!=null) {
-			//												CRUD.read_all();
-			//											}else {
-			//												JOptionPane.showMessageDialog(null,"No se ha podido encontrar el laptop.","Error",JOptionPane.ERROR_MESSAGE);
-			//											}//end if
-			//											validator2=true;
-			//											break;
 													case 1:
 														if(singleton.L!=null) {
 															read.read_laptop();;
@@ -304,14 +306,6 @@ public class menu_admin {
 														create.smartphone();
 														validator2=true;
 														break;
-			//										case 1:
-			//											if(S!=null) {
-			//												CRUD.read_all();
-			//											}else {
-			//												JOptionPane.showMessageDialog(null,"No se ha podido encontrar el smartphone.","Error",JOptionPane.ERROR_MESSAGE);
-			//											}//end if
-			//											validator2=true;
-			//											break;
 													case 1:
 														if(singleton.S!=null) {
 															read.read_smartphone();
@@ -364,14 +358,6 @@ public class menu_admin {
 														create.accessory();
 														validator2=true;
 														break;
-			//										case 1:
-			//											if(A!=null) {
-			//												CRUD.read_all();
-			//											}else {
-			//												JOptionPane.showMessageDialog(null,"No se ha podido encontrar el accesorio.","Error",JOptionPane.ERROR_MESSAGE);
-			//											}//end if
-			//											validator2=true;
-			//											break;
 													case 1:
 														if(singleton.A!=null) {
 															read.read_accessory();
@@ -421,7 +407,7 @@ public class menu_admin {
 								}while(validator==true);
 								break;
 						case 1:
-						int num = validators.validator_int("Cuantos objetos quieres crear en el array?","Introduce un número");
+							int num = validators.validator_int("Cuantos objetos quieres crear en el array?","Introduce un número");
 							do {
 								menu_main=JOptionPane.showOptionDialog(
 										null,
@@ -435,7 +421,6 @@ public class menu_admin {
 								switch(menu_main){
 									case 0:
 										do {
-											// create_dummies.array_laptop();
 											menu_sec=JOptionPane.showOptionDialog(
 													null,
 													"Elige la opción que quieras usar.",
@@ -447,19 +432,11 @@ public class menu_admin {
 													buttons_sec[0]);
 											switch(menu_sec) {
 												case 0:
-												for (int i = 0; i < num; i++) {
-													create_dummies.laptop();
-												}											
-												validator2=true;
+													for (int i = 0; i < num; i++) {
+														create_dummies.laptop();
+													}											
+													validator2=true;
 													break;
-		//										case 1:
-		//											if(singleton.L!=null) {
-		//												CRUD.read_all();
-		//											}else {
-		//												JOptionPane.showMessageDialog(null,"No se ha podido encontrar el laptop.","Error",JOptionPane.ERROR_MESSAGE);
-		//											}//end if
-		//											validator2=true;
-		//											break;
 												case 1:
 													if(singleton.DL!=null) {
 														read_dummies.laptop();;
@@ -486,6 +463,7 @@ public class menu_admin {
 													break;
 												case 4:
 													validator2=false;
+													validator=true;
 													JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Información",JOptionPane.INFORMATION_MESSAGE);
 													break;
 												default:
@@ -514,14 +492,6 @@ public class menu_admin {
 											        }
 													validator2=true;
 													break;
-		//										case 1:
-		//											if(S!=null) {
-		//												CRUD.read_all();
-		//											}else {
-		//												JOptionPane.showMessageDialog(null,"No se ha podido encontrar el smartphone.","Error",JOptionPane.ERROR_MESSAGE);
-		//											}//end if
-		//											validator2=true;
-		//											break;
 												case 1:
 													if(singleton.DS!=null) {
 														read_dummies.smartphone();
@@ -548,6 +518,7 @@ public class menu_admin {
 													break;
 												case 4:
 													validator2=false;
+													validator=true;
 													JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Información",JOptionPane.INFORMATION_MESSAGE);
 													break;
 												default:
@@ -576,14 +547,6 @@ public class menu_admin {
 											        }
 													validator2=true;
 													break;
-		//										case 1:
-		//											if(A!=null) {
-		//												CRUD.read_all();
-		//											}else {
-		//												JOptionPane.showMessageDialog(null,"No se ha podido encontrar el accesorio.","Error",JOptionPane.ERROR_MESSAGE);
-		//											}//end if
-		//											validator2=true;
-		//											break;
 												case 1:
 													if(singleton.DA!=null) {
 														read_dummies.accessory();
@@ -610,6 +573,7 @@ public class menu_admin {
 													break;
 												case 4:
 													validator2=false;
+													validator=true;
 													JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Información",JOptionPane.INFORMATION_MESSAGE);
 													break;
 												default:

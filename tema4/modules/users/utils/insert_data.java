@@ -94,4 +94,26 @@ public class insert_data {
 		} while ((res == false));
 		return singleton_users.D;
 	}//end insert_date_hire
+	public static String insert_date_register(){
+		boolean res = false;
+		String date_register = "";
+		do {
+			date_register = validators.validator_string("Ingresa la fecha de registro.","Ingresar Fecha de registro");
+	    	res = regex_date.validateDate(date_register);
+			if (!res) {
+				res = false;
+				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
+			} else {
+				singleton_users.D = new dates(date_register);
+				res = singleton_users.D.check_date();
+				if (!res) {
+					res = false;
+					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+					res = true;
+				} // end if
+			} // end if
+		} while ((res == false));
+		return date_register;
+	}//end insert_date_register
 }

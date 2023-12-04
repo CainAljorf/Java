@@ -17,12 +17,13 @@ public class update_dummies {
 			singleton.DL = CRUD.new_laptop("Ingresa el ID de tu accesorio para ver si existe."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 			location1 = find_dummies.find_product_dummies(singleton.DL);
-			if (location1 != -1) {
+			String type = find_dummies.find_product_type(singleton.DL);
+			if (location1 != -1 && type.equals("Laptop")) {
 				singleton.DL = singleton.dummieslaptop.get(location1);
 				dummies_CRUD.update_laptop();
 				singleton.dummieslaptop.set(location1, singleton.DL);
 			}else {
-				JOptionPane.showMessageDialog(null, "No se ha encontrado el laptop.","Error",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un laptop.","Error",JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
@@ -35,12 +36,13 @@ public class update_dummies {
 			singleton.DS = CRUD.new_smartphone("Ingresa el ID de tu accesorio para ver si existe."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 			location1 = find_dummies.find_product_dummies(singleton.DS);
-			if (location1 != -1) {
+			String type = find_dummies.find_product_type(singleton.DS);
+			if (location1 != -1 && type.equals("Smartphone")) {
 				singleton.DS = singleton.dummiessmartphone.get(location1);
 				dummies_CRUD.update_smartphone();
 				singleton.dummiessmartphone.set(location1, singleton.DS);
 			}else {
-				JOptionPane.showMessageDialog(null, "No se ha encontrado el smartphone.","Error",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un smartphone.","Error",JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
@@ -53,12 +55,13 @@ public class update_dummies {
 			singleton.DA = CRUD.new_accessory("Ingresa el ID de tu accesorio para ver si existe."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 			location1 = find_dummies.find_product_dummies(singleton.DA);
-			if (location1 != -1) {
+			String type = find_dummies.find_product_type(singleton.DA);
+			if (location1 != -1 && type.equals("Accessory")) {
 				singleton.DA = singleton.dummiesaccessory.get(location1);
 				dummies_CRUD.update_accessory();
 				singleton.dummiesaccessory.set(location1, singleton.DA);
 			}else {
-				JOptionPane.showMessageDialog(null, "No se ha encontrado el accesorio.","Error",JOptionPane.ERROR_MESSAGE);	
+				JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un accesorio.","Error",JOptionPane.ERROR_MESSAGE);	
 			}
 		}
 	}

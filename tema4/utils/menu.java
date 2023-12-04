@@ -29,11 +29,7 @@ public class menu {
 		
 		CRUD.create_admin();
 		CRUD.create_employee();
-		System.out.println(singleton_users.A.getPassword());
-		System.out.println(singleton_users.E.getSalary());	
-	
-
-		boolean validator4=true;
+		boolean validator=true;
 		int menu_user=0;
 		String[]buttons_user={
 				"Register",
@@ -52,7 +48,7 @@ public class menu {
 			switch(menu_user){
 				case 0:
 					register.client();
-					validator4=true;
+					validator=true;
 					break;
 				case 1:
 					if(singleton_users.U == null && singleton_users.E == null && singleton_users.A == null && singleton_users.D == null ) {
@@ -60,14 +56,14 @@ public class menu {
 					}else {
 						login.login_user();
 					}
-					validator4=true;
+					validator=true;
 					break;
 				default:
-					validator4=false;
+					validator=false;
 					JOptionPane.showMessageDialog(null,"Cerrando el programa.","Información",JOptionPane.INFORMATION_MESSAGE);
 					System.exit(0);
 					break;
 			}
-		}while(validator4==true);
+		}while(validator==true);
 	}//end menu_main
 }//end class menu

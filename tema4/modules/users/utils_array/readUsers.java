@@ -8,7 +8,9 @@ import tema4.modules.users.classes.singleton_users;
 
 public class readUsers {
     public static void read_admin (){
-		int opt = 0, location = -1;
+		int opt = 0;
+		int location = -1;
+		String type = "";
 		boolean validator = true;
 		String str= "";
 		String[]buttons={
@@ -38,13 +40,15 @@ public class readUsers {
 						break;
 					case 1:
 						location = -1;
-						singleton_users.A = CRUD.new_admin("Ingresa el usuario.","Ingresar ID");
+						type = "null";
+						singleton_users.A = CRUD.new_admin("Ingresa el usuario.","Ingresar usuario");
 						location = find.find_username(singleton_users.A);
-						if (location != -1) {
+						type = find.find_type(singleton_users.A);
+						if (location != -1 && type.equals("Admin")) {
 							singleton_users.A = singleton_users.useradmin.get(location);
 							Read_one.read_one_admin();;
 						}else {
-							JOptionPane.showMessageDialog(null, "El usuario que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "El usuario que quieres leer debe ser administrador.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
 						break;
 					case 2:
@@ -91,13 +95,14 @@ public class readUsers {
 						break;
 					case 1:
 						location = -1;
-						singleton_users.E = CRUD.new_employee("Ingresa el usuario.","Ingresar ID");
+						singleton_users.E = CRUD.new_employee("Ingresa el usuario.","Ingresar usuario");
 						location = find.find_username(singleton_users.E);
-						if (location != -1) {
+						String type = find.find_type(singleton_users.E);
+						if (location != -1 && type.equals("Empleado")) {
 							singleton_users.E = singleton_users.useremployee.get(location);
-							Read_one.read_one_admin();;
+							Read_one.read_one_employee();
 						}else {
-							JOptionPane.showMessageDialog(null, "El usuario que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "El usuario que quieres leer debe ser empleado.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
 						break;
 					case 2:
@@ -144,13 +149,14 @@ public class readUsers {
 						break;
 					case 1:
 						location = -1;
-						singleton_users.C = CRUD.new_client("Ingresa el usuario.","Ingresar ID");
+						singleton_users.C = CRUD.new_client("Ingresa el usuario.","Ingresar usuario");
 						location = find.find_username(singleton_users.C);
-						if (location != -1) {
+						String type = find.find_type(singleton_users.C);
+						if (location != -1 && type.equals("Cliente")) {	
 							singleton_users.C = singleton_users.userclient.get(location);
-							Read_one.read_one_admin();;
+							Read_one.read_one_client();
 						}else {
-							JOptionPane.showMessageDialog(null, "El usuario que quieres leer no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "El usuario que quieres leer debe ser cliente.", "Error", JOptionPane.ERROR_MESSAGE);
 						}
 						break;
 					case 2:

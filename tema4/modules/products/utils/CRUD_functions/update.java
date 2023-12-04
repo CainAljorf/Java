@@ -16,12 +16,13 @@ public class update {
 			singleton.L =  CRUD.new_laptop("Ingresa el ID del laptop que quieras actualizar. Esto solo buscará tu artículo no lo modificará."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 			location1 = find.find_product(singleton.L);
-			if (location1 != -1) {
+			String type = find.find_product_type(singleton.L);
+			if (location1 != -1 && type.equals("Laptop")) {
 				singleton.L = singleton.productlaptop.get(location1);
 				CRUD.update_laptop();
 				singleton.productlaptop.set(location1, singleton.L);
 			}else {
-				JOptionPane.showMessageDialog(null, "No se ha encontrado el laptop.","Error",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un laptop.","Error",JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
@@ -33,12 +34,13 @@ public class update {
 			singleton.S = CRUD.new_smartphone("Ingresa el ID del smartphone que quieras actualizar. Esto solo buscará tu artículo no lo modificará."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 			location1 = find.find_product(singleton.S);
-			if (location1 != -1) {
+			String type = find.find_product_type(singleton.S);
+			if (location1 != -1 && type.equals("Smartphone")) {
 				singleton.S = singleton.productsmartphone.get(location1);
 				CRUD.update_smartphone();
 				singleton.productsmartphone.set(location1, singleton.S);
 			}else {
-				JOptionPane.showMessageDialog(null, "No se ha encontrado el smartphone.","Error",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un smartphone.","Error",JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
@@ -50,12 +52,13 @@ public class update {
 			singleton.A = CRUD.new_accessory("Ingresa el ID del accesorio que quieras actualizar. Esto solo buscará tu artículo no lo modificará."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
 			location1 = find.find_product(singleton.A);
-			if (location1 != -1) {
+			String type = find.find_product_type(singleton.A);
+			if (location1 != -1 && type.equals("Accessory")) {
 				singleton.A = singleton.productaccessory.get(location1);
 				CRUD.update_accessory();
 				singleton.productaccessory.set(location1, singleton.A);
 			}else {
-				JOptionPane.showMessageDialog(null, "No se ha encontrado el accesorio.","Error",JOptionPane.ERROR_MESSAGE);	
+				JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un accesorio.","Error",JOptionPane.ERROR_MESSAGE);	
 			}
 		}
 	}

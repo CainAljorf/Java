@@ -9,9 +9,9 @@ public class employee extends user{
 	private dates born_date;
 	private String hire_date;
 	private float salary;
-	public employee(String username, String password,String email,  boolean active, String type, dates born_date,
+	public employee(String username, String password,String email,  boolean active, dates born_date,
 			String hire_date, float salary) {
-		super(username, email, password, active, type);
+		super(username, email, password, active);
 		this.born_date = born_date;
 		this.hire_date = hire_date;
 		this.salary = salary;
@@ -52,6 +52,13 @@ public class employee extends user{
 	}
 	@Override
 	public String toString() {
-		return null;
+		String str = "";
+		str = str + "Username: " + getUsername() + "\n";
+		str = str + "Email: " + getEmail() + "\n";
+		str = str + "Password: " + getPassword() + "\n";
+		str = str + "Date of birth: " + getBorn_date() + "\n";
+		str = str + "Date of contraction: " + getHire_date() + "\n";
+		str = str + "Salary: " + getSalary() + "\n";
+		return str;
 	}
 }
