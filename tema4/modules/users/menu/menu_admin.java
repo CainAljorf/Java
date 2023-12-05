@@ -35,6 +35,7 @@ public class menu_admin {
 				"Laptop",
 				"Smartphone",
 				"Accesorio",
+				"PCGaming",
 				"Atrás"};
 		String[]buttons_users={
 				"Client",
@@ -418,6 +419,58 @@ public class menu_admin {
 											}while(validator2==true);
 											break;
 										case 3:
+											do {
+												menu_sec=JOptionPane.showOptionDialog(
+														null,
+														"Elige la opción que quieras usar.",
+														"CRUD",
+														0,
+														JOptionPane.QUESTION_MESSAGE,
+														null,
+														buttons_sec,
+														buttons_sec[0]);
+												switch(menu_sec) {
+													case 0:
+														create.pcgaming();
+														validator2=true;
+														break;
+													case 1:
+														if(singleton.PC!=null) {
+															read.read_pcgaming();
+														}else {
+															JOptionPane.showMessageDialog(null,"No se ha podido encontrar el pcgaming.","Error",JOptionPane.ERROR_MESSAGE);
+														}//end if
+														validator2=true;
+														break;
+													case 2:
+														if(singleton.PC!=null){
+															update.update_pcgaming();
+														}else {
+															JOptionPane.showMessageDialog(null,"No se ha podido encontrar el pcgaming que quieres actualizar.","Error",JOptionPane.ERROR_MESSAGE);
+														}//end if
+														validator2=true;
+														break;
+													case 3:
+														if(singleton.PC!=null){
+															delete.delete_pcgaming();
+														}else {
+															JOptionPane.showMessageDialog(null,"No se ha podido encontrar el pcgaming que quieres eliminar.","Error",JOptionPane.ERROR_MESSAGE);
+														}//end if
+														validator2=true;
+														break;
+													case 4:
+														validator2=false;
+														JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Información",JOptionPane.INFORMATION_MESSAGE);
+														break;
+													default:
+														validator2=false;
+														JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
+														System.exit(0);
+														break;
+												}//end switch
+											}while(validator2==true);
+											break;
+										case 4:
 											validator=false;
 											JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
 											break;
@@ -608,6 +661,61 @@ public class menu_admin {
 										}while(validator2==true);
 										break;
 									case 3:
+										do {
+											menu_sec=JOptionPane.showOptionDialog(
+													null,
+													"Elige la opción que quieras usar.",
+													"CRUD",
+													0,
+													JOptionPane.QUESTION_MESSAGE,
+													null,
+													buttons_sec,
+													buttons_sec[0]);
+											switch(menu_sec) {
+												case 0:
+													for (int i = 0; i < num; i++) {
+														create_dummies.pcgaming();
+													}
+													validator2=true;
+													break;
+												case 1:
+													if(singleton.PC!=null) {
+														read_dummies.pcgaming();
+													}else {
+														JOptionPane.showMessageDialog(null,"No se ha podido encontrar el pcgaming.","Error",JOptionPane.ERROR_MESSAGE);
+													}//end if
+													validator2=true;
+													break;
+												case 2:
+													if(singleton.PC!=null){
+														update_dummies.pcgaming();
+													}else {
+														JOptionPane.showMessageDialog(null,"No se ha podido encontrar el pcgaming que quieres actualizar.","Error",JOptionPane.ERROR_MESSAGE);
+													}//end if
+													validator2=true;
+													break;
+												case 3:
+													if(singleton.PC!=null){
+														delete_dummies.delete_dummies_pcgaming();
+													}else {
+														JOptionPane.showMessageDialog(null,"No se ha podido encontrar el pcgaming que quieres eliminar.","Error",JOptionPane.ERROR_MESSAGE);
+													}//end if
+													validator2=true;
+													break;
+												case 4:
+													validator2=false;
+													validator=true;
+													JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Información",JOptionPane.INFORMATION_MESSAGE);
+													break;
+												default:
+													validator2=false;
+													JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.INFORMATION_MESSAGE);
+													System.exit(0);
+													break;
+											}//end switch
+										}while(validator2==true);
+										break;
+									case 4:
 										validator=false;
 										JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Información",JOptionPane.INFORMATION_MESSAGE);
 										break;

@@ -27,6 +27,25 @@ public class update_dummies {
 			}
 		}
 	}
+	public static void pcgaming () {
+		int location1 = -1;
+		if(singleton.productpcgaming.isEmpty()){
+			JOptionPane.showMessageDialog(null, "No se ha podido acceder al array de pcgaming porque está vacía.","Error",JOptionPane.ERROR_MESSAGE);
+		}else{
+			location1 = -1;
+			singleton.PC = CRUD.new_pcgaming("Ingresa el ID de tu accesorio para ver si existe."
+					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
+			location1 = find_dummies.find_product_dummies(singleton.PC);
+			String type = find_dummies.find_product_type(singleton.PC);
+			if (location1 != -1 && type.equals("PcGaming")) {
+				singleton.PC = singleton.productpcgaming.get(location1);
+				dummies_CRUD.update_pcgaming();
+				singleton.productpcgaming.set(location1, singleton.PC);
+			}else {
+				JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un pcgaming.","Error",JOptionPane.ERROR_MESSAGE);
+			}
+		}
+	}
 	public static void smartphone () {
 		int location1 = -1;
 		if(singleton.productsmartphone.isEmpty()){

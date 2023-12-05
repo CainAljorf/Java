@@ -19,6 +19,18 @@ public class create {
 			singleton.productlaptop.add(singleton.L);
 		}
 	}
+	public static void pcgaming() {
+		int location = -1;
+		singleton.PC = CRUD.new_pcgaming("Ingresa el ID que quieras crear para tu pcgaming.\nSi ya existe ese ID deberás crear uno nuevo."
+				+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
+		location = find.find_product(singleton.PC);
+		if (location != -1) {
+			JOptionPane.showMessageDialog(null, "No se ha podido crear porque ya existe.","Error",JOptionPane.ERROR_MESSAGE);
+		} else {
+			singleton.PC = CRUD.create_pcgaming();
+			singleton.productpcgaming.add(singleton.PC);
+		}
+	}
 	public static void smartphone() {
 		int location = -1;
 		singleton.S = CRUD.new_smartphone("Ingresa el ID que quieras crear para tu smartphone.\nSi ya existe ese ID deberás crear uno nuevo."

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import tema4.modules.products.classes.accessory;
 import tema4.modules.products.classes.laptop;
+import tema4.modules.products.classes.pcgaming;
 import tema4.modules.products.classes.singleton;
 import tema4.modules.products.classes.smartphone;
 import tema4.modules.users.classes.admin;
@@ -19,6 +20,7 @@ public class menu {
 		singleton.productlaptop = new ArrayList <laptop> ();
 		singleton.productsmartphone = new ArrayList <smartphone> ();
 		singleton.productaccessory = new ArrayList <accessory> ();
+		singleton.productpcgaming = new ArrayList <pcgaming> ();
 		singleton_users.useradmin = new ArrayList <admin> ();
 		singleton_users.userclient = new ArrayList <client> ();
 		singleton_users.useremployee = new ArrayList <employee> ();
@@ -26,6 +28,7 @@ public class menu {
 		
 		CRUD.create_admin();
 		CRUD.create_employee();
+		CRUD.create_client_dummies();
 		boolean validator=true;
 		int menu_user=0;
 		String[]buttons_user={

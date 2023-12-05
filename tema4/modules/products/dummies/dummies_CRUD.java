@@ -5,6 +5,7 @@ import tema4.classes.dates;
 import tema4.modules.products.classes.laptop;
 import tema4.modules.products.classes.singleton;
 import tema4.modules.products.classes.smartphone;
+import tema4.modules.products.classes.pcgaming;
 import tema4.modules.products.utils.date_product;
 import tema4.modules.products.utils.insert_data;
 import tema4.utils.validators;
@@ -15,6 +16,44 @@ public class dummies_CRUD {
 		return new laptop(singleton.L.getID_product(), 100, 150, 30, "Rojo", 5, singleton.D=new dates("02/12/2000"), singleton.D=new dates("03/12/2000"),
 				singleton.D=new dates("01/12/2001"), singleton.D=new dates("19/12/2001"),singleton.D=new dates("12/12/2000"), singleton.D=new dates("17/12/2000"),0.5f, 7,
 				"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
+	}
+	public static pcgaming create_dummies_pcgaming(){
+		return new pcgaming(singleton.PC.getID_product(), // ID_product
+        100, // price
+        150, // peso
+        30, // stock
+        "Rojo", // color
+        5, // dimension
+        singleton.D=new dates("02/12/2000"), // f_compra
+        singleton.D=new dates("03/12/2000"), // f_entrega
+        singleton.D=new dates("01/12/1999"), // date_sales_init
+        singleton.D=new dates("19/12/1999"), // date_sales_end
+        singleton.D=new dates("00/00/0000"), // f_devolucion
+        singleton.D=new dates("00/00/0000"), // f_recogida
+        0.5f, // discont
+        7, // price_final
+        singleton.D=new dates("01/12/2000"), // f_ini_sales_nadal
+        singleton.D=new dates("07/01/2001"), // f_fin_sales_nadal
+        false, // sales_nadal
+        7, // num_dies_nadal
+        "ATX", // disseny_caixa
+        "Líquida", // refrigeracio
+        3, // num_ventiladors
+        0.5f);// discount_nadal);
+	}
+	public static pcgaming new_id_pcgaming() {
+		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String ID = "";
+	    for (int i = 0; i < 3; i++) {
+	        int randomIndex = (int) (Math.random() * letters.length());
+	        ID += letters.charAt(randomIndex);
+	    }
+	    ID += "-";
+	    for (int i = 0; i < 3; i++) {
+	    	ID += (int) (Math.random() * 10);
+	    }
+	    singleton.ID = ID;
+		return new pcgaming (singleton.ID);
 	}
 	public static laptop new_id_laptop() {
 		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -91,6 +130,19 @@ public class dummies_CRUD {
 		}else {
 			singleton.S.setID_product(singleton.ID);
 			str="ID de smartphone actualizado a: " + singleton.S.getID_product();
+		}
+		return str;
+	}
+	public static String set_dummies_pcgaming(){
+		int location = -1;
+		String str;
+		singleton.PC_ID = new_id_pcgaming();
+		location = find_dummies.find_product_dummies(singleton.PC_ID);
+		if (location != -1) {
+			str="Ya hay un producto con ese ID.";
+		}else {
+			singleton.PC.setID_product(singleton.ID);
+			str="ID de pcgaming actualizado a: " + singleton.PC.getID_product();
 		}
 		return str;
 	}
@@ -198,6 +250,78 @@ public class dummies_CRUD {
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		} // end if
 	}// end read_laptop
+	public static void read_pcgaming(){
+		String str = "";
+		Object opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para ver:", "Selector de opciones",
+				JOptionPane.QUESTION_MESSAGE, null,
+				new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
+						"Fecha de entrega", "Fecha de devolución", "Fecha de recogida","Inicio de Rebajas de navidad",
+						"Fin de Rebajas de navidad", "Descuento", "Precio final", "Diseño de la caja", "Refrigeración",
+						"Número de ventiladores", "Descuento de Navidad" },
+				"ID");
+		if (opt == null) {
+			JOptionPane.showMessageDialog(null, "Cerrando el programa.", "Cerrar", JOptionPane.ERROR_MESSAGE);
+			System.exit(0);
+		} else {
+			switch (opt.toString()) {
+				case "ID":
+					str = "ID: " + singleton.PC.getID_product();
+					break;
+				case "Precio":
+					str = "Precio: " + singleton.PC.getPrice();
+					break;
+				case "Peso":
+					str = "Peso: " + singleton.PC.getPeso();
+					break;
+				case "Stock":
+					str = "Stock: " + singleton.PC.getStock();
+					break;
+				case "Color":
+					str = "Color: " + singleton.PC.getColor();
+					break;
+				case "Dimensión":
+					str = "Dimensión: " + singleton.PC.getDimension();
+					break;
+				case "Fecha de compra":
+					str = "Fecha de Compra: " + singleton.PC.getF_compra();
+					break;
+				case "Fecha de entrega":
+					str = "Fecha de entrega: " + singleton.PC.getF_entrega();
+					break;
+				case "Fecha de devolución":
+					str = "Fecha de devolución: " + singleton.PC.getF_devolucion();
+					break;
+				case "Fecha de recogida":
+					str = "Fecha de recogida: " + singleton.PC.getF_recogida();
+					break;
+				case "Inicio de Rebajas de navidad":
+					str = "Fecha de inicio de rebajas de navidad: " + singleton.PC.getF_ini_sales_nadal();
+					break;
+				case "Fin de Rebajas de navidad":
+					str = "Fecha de fin de rebajas de navidad: " + singleton.PC.getF_fin_sales_nadal();
+					break;
+				case "Descuento":
+					str = "Descuento de Rebajas: " + singleton.PC.getDiscont();
+					break;
+				case "Precio final":
+					str = "Precio final: " + singleton.PC.getPrice_final();
+					break;
+				case "Diseño de la caja":
+					str = "Diseño de la caja: " + singleton.PC.getDisseny_caixa();
+					break;
+				case "Refrigeración":
+					str = "Refrigeración: " + singleton.PC.getRefrigeracio();
+					break;
+				case "Número de ventiladores":
+					str = "Número de ventiladores: " + singleton.PC.getNum_ventiladors();
+					break;
+				case "Descuento de Navidad":
+					str = "Descuento de Navidad: " + singleton.PC.getDiscount_nadal();
+					break;
+			}// end_switch
+			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
+		} // end if
+	}// end read_pcgaming
 	public static void read_smartphone() {
 		String str = "";
 		Object opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para ver:", "Selector de opciones",
@@ -491,6 +615,120 @@ public class dummies_CRUD {
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		} // end if
 	}// end update_laptop
+	public static void update_pcgaming() {
+		String str = "";
+		int sales_init = 0;
+		int sales_end = 0;
+		Object opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para actualizarlo:",
+				"Selector de opciones",
+				JOptionPane.QUESTION_MESSAGE, null,
+				new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
+						"Fecha de entrega", "Fecha de devolución", "Fecha de recogida","Inicio de Rebajas de navidad",
+						"Fin de Rebajas de navidad", "Descuento", "Precio final", "Diseño de la caja", "Refrigeración",
+						"Número de ventiladores", "Descuento de Navidad" },
+				"ID");
+		if (opt == null) {
+			JOptionPane.showMessageDialog(null, "Cerrando el programa.", "Cerrar", JOptionPane.ERROR_MESSAGE);
+			System.exit(0);
+		} else {
+			sales_init = singleton.D.compare_dates(singleton.PC.getDate_sales_init());
+			sales_end = singleton.D.compare_dates(singleton.PC.getDate_sales_end());
+			switch (opt.toString()) {
+				case "ID":
+					str = set_dummies_pcgaming();
+					break;
+				case "Precio":
+					singleton.PC.setPrice(validators.validator_float(
+							"Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));
+					singleton.PC.calculate_price_final();
+					str = "Precio de pcgaming actualizado a: " + singleton.PC.getPrice();
+					break;
+				case "Peso":
+					singleton.PC.setPeso(validators.validator_float("Ingresa el peso del producto.", "Ingresar peso"));
+					str = "Peso de pcgaming actualizado a: " + singleton.PC.getPeso();
+					break;
+				case "Stock":
+					singleton.PC.setStock(validators.validator_int("Ingresa el stock del producto.", "Ingresar stock"));
+					str = "Stock de pcgaming actualizado a: " + singleton.PC.getStock();
+					break;
+				case "Color":
+					singleton.PC.setColor(insert_data.insert_color());
+					str = "Color de pcgaming actualizado a: " + singleton.PC.getColor();
+					break;
+				case "Dimensión":
+					singleton.PC.setDimension(
+							validators.validator_float("Ingresa la dimension del producto.", "Ingresar dimension"));
+					str = "Dimensión de pcgaming actualizado a: " + singleton.PC.getDimension();
+					break;
+				case "Fecha de compra":
+					singleton.PC.setF_compra(date_product.insert_date_purchase(
+							"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
+							"Ingresar fecha compra"));
+					singleton.PC.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.PC.calculate_price_final();
+					str = "Fecha de compra de pcgaming actualizado a: " + singleton.PC.getF_compra();
+					break;
+				case "Fecha de entrega":
+					singleton.PC.setF_entrega(date_product.insert_date_delivery(singleton.PC.getF_compra()));
+					str = "Fecha de entrega de pcgaming actualizado a: " + singleton.PC.getF_entrega();
+					break;
+				case "Fecha de devolución":
+					singleton.PC.setF_devolucion(date_product.insert_date_return(singleton.PC.getF_entrega()));
+					singleton.PC.setIs_return(singleton.PC.is_return());
+					singleton.PC.calculate_price_final();
+					str = "Fecha de devolución de pcgaming actualizado a: " + singleton.PC.getF_devolucion();
+					break;
+				case "Fecha de recogida":
+					singleton.PC.setF_recogida(date_product.insert_collection_date(singleton.PC.getF_devolucion()));
+					str = "Fecha de devolución de pcgaming actualizado a: " + singleton.PC.getF_recogida();
+					break;
+				case "Inicio de Rebajas de navidad":
+					singleton.PC.setF_ini_sales_nadal(date_product.insert_date_sales_init());
+					sales_init = singleton.D.compare_dates(singleton.PC.getF_ini_sales_nadal());
+					singleton.PC.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.PC.calculate_price_final();
+					str = "Fecha de inicio de rebajas de navidad actualizado a: " + singleton.PC.getF_ini_sales_nadal();
+					break;
+				case "Fin de Rebajas de navidad":
+					singleton.PC.setF_fin_sales_nadal(date_product.insert_date_sales_end(singleton.PC.getF_ini_sales_nadal()));
+					sales_end = singleton.D.compare_dates(singleton.PC.getF_fin_sales_nadal());
+					singleton.PC.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.PC.calculate_price_final();
+					str = "Fecha de fin de rebajas de navidad actualizado a: " + singleton.PC.getF_fin_sales_nadal();
+					break;
+				case "Descuento":
+					singleton.PC.setDiscont(validators.validator_float(
+							"Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
+					singleton.PC.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.PC.calculate_price_final();
+					str = "Descuento de Rebajas actualizado a: " + singleton.PC.getDiscont();
+					break;
+				case "Precio final":
+					str = "El precio final del producto es " + singleton.PC.getPrice_final()
+							+ " y se calcula automáticamente, por lo que no se puede modificar.";
+					break;
+				case "Diseño de la caja":
+					singleton.PC.setDisseny_caixa(insert_data.insert_disseny_caixa());
+					str = "Diseño de la caja de pcgaming actualizado a: " + singleton.PC.getDisseny_caixa();
+					break;
+				case "Refrigeración":
+					singleton.PC.setRefrigeracio(insert_data.insert_refrigeracio());
+					str = "Refrigeración de pcgaming actualizado a: " + singleton.PC.getRefrigeracio();
+					break;
+				case "Número de ventiladores":
+					singleton.PC.setNum_ventiladors(validators.validator_int(
+							"Ingresa el número de ventiladores del producto.", "Ingresar número de ventiladores"));
+					str = "Número de ventiladores de pcgaming actualizado a: " + singleton.PC.getNum_ventiladors();
+					break;
+				case "Descuento de Navidad":
+					singleton.PC.setDiscount_nadal(validators.validator_float(
+							"Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
+					str = "Descuento de Navidad actualizado a: " + singleton.PC.getDiscount_nadal();
+					break;
+			}// end switch
+			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
+		} // end if
+	}// end update_pcgaming
 	public static void update_smartphone() {
 		String str = "";
 		int sales_init = 0;

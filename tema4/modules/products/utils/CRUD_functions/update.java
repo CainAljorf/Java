@@ -7,6 +7,25 @@ import tema4.modules.products.utils.CRUD;
 import tema4.modules.products.utils.find;
 
 public class update {
+	public static void update_pcgaming(){
+		int location1 = -1;
+		if(singleton.productpcgaming.isEmpty()){
+			JOptionPane.showMessageDialog(null, "No se ha podido acceder al array de pcgaming porque está vacía.","Error",JOptionPane.ERROR_MESSAGE);
+		}else{
+			location1 = -1;
+			singleton.PC =  CRUD.new_pcgaming("Ingresa el ID del pcgaming que quieras actualizar. Esto solo buscará tu artículo no lo modificará."
+					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
+			location1 = find.find_product(singleton.PC);
+			String type = find.find_product_type(singleton.PC);
+			if (location1 != -1 && type.equals("PcGaming")) {
+				singleton.PC = singleton.productpcgaming.get(location1);
+				CRUD.update_pcgaming();
+				singleton.productpcgaming.set(location1, singleton.PC);
+			}else {
+				JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un pcgaming.","Error",JOptionPane.ERROR_MESSAGE);
+			}
+		}
+	}
 	public static void update_laptop () {
 		int location1 = -1;
 		if(singleton.productlaptop.isEmpty()){

@@ -4,11 +4,38 @@ import javax.swing.JOptionPane;
 import tema4.classes.dates;
 import tema4.modules.products.classes.accessory;
 import tema4.modules.products.classes.laptop;
+import tema4.modules.products.classes.pcgaming;
 import tema4.modules.products.classes.singleton;
 import tema4.modules.products.classes.smartphone;
 import tema4.utils.validators;
 
 public class CRUD {
+	public static pcgaming create_pcgaming(){
+		dates date_purchase = date_product.insert_date_purchase("Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX","Ingresar fecha compra");
+		dates date_delivery = date_product.insert_date_delivery(date_purchase);
+		dates date_return = date_product.insert_date_return(date_delivery);
+		dates collection_date = date_product.insert_collection_date(date_return);
+		dates date_sales_init = date_product.insert_date_sales_init();
+		dates date_sales_end = date_product.insert_date_sales_end(date_sales_init);
+		dates f_ini_sales_nadal = date_product.insert_f_ini_sales_nadal();
+		dates f_fin_sales_nadal = date_product.insert_f_fin_sales_nadal(f_ini_sales_nadal);
+		float price = validators.validator_float("Ingresa el precio del producto para calcular el precio final.","Ingresar precio");
+		float discount = validators.validator_float("Ingresa el descuento del producto.","Ingresar descuento");
+		float discount_nadal = validators.validator_float("Ingresa el descuento del producto para navidad.","Ingresar descuento");
+		String disseny_caixa = insert_data.insert_disseny_caixa();
+		String refrigeracio = insert_data.insert_refrigeracio();
+		int num_ventiladors = validators.validator_int("Ingresa el número de ventiladores del producto.","Ingresar número de ventiladores");
+		singleton.PC = new pcgaming(singleton.PC.getID_product(),price, 150, 30, "Rojo", 5, date_purchase, date_delivery, date_sales_init, date_sales_end, date_return, collection_date, discount, 6,f_ini_sales_nadal, f_fin_sales_nadal, true, 1, disseny_caixa, refrigeracio, num_ventiladors, discount_nadal );
+		singleton.D = singleton.PC.getF_compra();
+		int sales_init = singleton.D.compare_dates(singleton.PC.getDate_sales_init());
+		int sales_end = singleton.D.compare_dates(singleton.PC.getDate_sales_end());
+		singleton.PC.setIs_promo(date_product.is_promo(sales_init, sales_end));
+		singleton.PC.setIs_return(singleton.PC.is_return());
+		singleton.PC.calculate_price_final();
+		// singleton.PC.calculate_price_final_nadal();
+		JOptionPane.showMessageDialog(null, "PcGaming creado correctamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+		return singleton.PC;
+	}//end create_pcgaming
 	public static laptop create_laptop() {
 		String str = "";
 		// String ID = insert_data.insert_ID("Ingresa un ID alfanúmerico como el
@@ -101,6 +128,10 @@ public class CRUD {
 	public static laptop new_laptop(String message, String title) {
 		singleton.ID = insert_data.insert_ID(message, title);
 		return new laptop(singleton.ID);
+	}
+	public static pcgaming new_pcgaming(String message, String title) {
+		singleton.ID = insert_data.insert_ID(message, title);
+		return new pcgaming(singleton.ID);
 	}
 
 	public static smartphone new_smartphone(String message, String title) {
@@ -372,6 +403,135 @@ public class CRUD {
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		} // end if
 	}// end read_accessory
+	public static void update_pcgaming(){
+		String str = "";
+		int sales_init = 0;
+		int sales_end = 0;
+		Object opt = JOptionPane.showInputDialog(null, "Seleccione un atributo para actualizarlo:",
+				"Selector de opciones",
+				JOptionPane.QUESTION_MESSAGE, null,
+				new Object[] { "ID", "Precio", "Peso", "Stock", "Color", "Dimensión", "Fecha de compra",
+						"Fecha de entrega", "Fecha de devolución", "Fecha de recogida", "Inicio de Rebajas",
+						"Fin de Rebajas", "Descuento", "Precio final", "Inicio de rebajas de navidad", "Fin de rebajas de navidad", "Descuento de rebajas de navidad",  "Diseño de la caja", "Refrigeración", "Número de ventiladores", "Descuento de navidad"},
+				"ID");
+		if (opt == null) {
+			JOptionPane.showMessageDialog(null, "Cerrando el programa.", "Cerrar", JOptionPane.ERROR_MESSAGE);
+			System.exit(0);
+		} else {
+			sales_init = singleton.D.compare_dates(singleton.PC.getDate_sales_init());
+			sales_end = singleton.D.compare_dates(singleton.PC.getDate_sales_end());
+			switch (opt.toString()) {
+				case "ID":
+					str = set_ID_pcgaming();
+					break;
+				case "Precio":
+					singleton.PC.setPrice(validators.validator_float(
+							"Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));
+					singleton.PC.calculate_price_final();
+					str = "Precio de pcgaming actualizado a: " + singleton.PC.getPrice();
+					break;
+				case "Peso":
+					singleton.PC.setPeso(validators.validator_float("Ingresa el peso del producto.", "Ingresar peso"));
+					str = "Peso de pcgaming actualizado a: " + singleton.PC.getPeso();
+					break;
+				case "Stock":
+					singleton.PC.setStock(validators.validator_int("Ingresa el stock del producto.", "Ingresar stock"));
+					str = "Stock de pcgaming actualizado a: " + singleton.PC.getStock();
+					break;
+				case "Color":
+					singleton.PC.setColor(insert_data.insert_color());
+					str = "Color de pcgaming actualizado a: " + singleton.PC.getColor();
+					break;
+				case "Dimensión":
+					singleton.PC.setDimension(
+							validators.validator_float("Ingresa la dimension del producto.", "Ingresar dimension"));
+					str = "Dimensión de pcgaming actualizado a: " + singleton.PC.getDimension();
+					break;
+				case "Fecha de compra":
+					singleton.PC.setF_compra(date_product.insert_date_purchase(
+							"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
+							"Ingresar fecha compra"));
+					singleton.PC.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.PC.calculate_price_final();
+					str = "Fecha de compra de pcgaming actualizado a: " + singleton.PC.getF_compra();
+					break;
+				case "Fecha de entrega":
+					singleton.PC.setF_entrega(date_product.insert_date_delivery(singleton.PC.getF_compra()));
+					str = "Fecha de entrega de pcgaming actualizado a: " + singleton.PC.getF_entrega();
+					break;
+				case "Fecha de devolución":
+					singleton.PC.setF_devolucion(date_product.insert_date_return(singleton.PC.getF_entrega()));
+					singleton.PC.setIs_return(singleton.PC.is_return());
+					singleton.PC.calculate_price_final();
+					str = "Fecha de devolución de pcgaming actualizado a: " + singleton.PC.getF_devolucion();
+					break;
+				case "Fecha de recogida":
+					singleton.PC.setF_recogida(date_product.insert_collection_date(singleton.PC.getF_devolucion()));
+					str = "Fecha de devolución de pcgaming actualizado a: " + singleton.PC.getF_recogida();
+					break;
+				case "Inicio de Rebajas":
+					singleton.PC.setDate_sales_init(date_product.insert_date_sales_init());
+					sales_init = singleton.D.compare_dates(singleton.PC.getDate_sales_init());
+					singleton.PC.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.PC.calculate_price_final();
+					str = "Fecha de inicio de rebajas actualizado a: " + singleton.PC.getDate_sales_init();
+					break;
+				case "Fin de Rebajas":
+					singleton.PC.setDate_sales_end(date_product.insert_date_sales_end(singleton.PC.getDate_sales_init()));
+					sales_end = singleton.D.compare_dates(singleton.PC.getDate_sales_end());
+					singleton.PC.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.PC.calculate_price_final();
+					str = "Fecha de fin de rebajas actualizado a: " + singleton.PC.getDate_sales_end();
+					break;
+				case "Descuento":
+					singleton.PC.setDiscont(validators.validator_float("Ingresa el descuento del producto.",
+							"Ingresar descuento"));
+					singleton.PC.calculate_price_final();
+					str = "Descuento de pcgaming actualizado a: " + singleton.PC.getDiscont();
+					break;
+				case "Precio final":
+					str = "El precio final del producto es " + singleton.L.getPrice_final()
+							+ " y se calcula automáticamente, por lo que no se puede modificar.";
+					break;
+				case "Inicio de rebajas de navidad":
+					singleton.PC.setF_ini_sales_nadal(date_product.insert_date_sales_init());
+					singleton.PC.calculate_price_final();
+					str = "Fecha de inicio de rebajas de navidad actualizado a: " + singleton.PC.getF_ini_sales_nadal();
+					break;
+				case "Fin de rebajas de navidad":
+					singleton.PC.setF_fin_sales_nadal(date_product.insert_date_sales_end(singleton.PC.getF_ini_sales_nadal()));
+					singleton.PC.calculate_price_final();
+					str = "Fecha de fin de rebajas de navidad actualizado a: " + singleton.PC.getF_fin_sales_nadal();
+					break;
+				case "Descuento de rebajas de navidad":
+					singleton.PC.setDiscount_nadal(validators.validator_float("Ingresa el descuento del producto para navidad.",
+							"Ingresar descuento"));
+					singleton.PC.calculate_price_final();
+					str = "Descuento de rebajas de navidad actualizado a: " + singleton.PC.getDiscount_nadal();
+					break;
+				case "Diseño de la caja":
+					singleton.PC.setDisseny_caixa(insert_data.insert_disseny_caixa());
+					str = "Diseño de la caja actualizado a: " + singleton.PC.getDisseny_caixa();
+					break;
+				case "Refrigeración":
+					singleton.PC.setRefrigeracio(insert_data.insert_refrigeracio());
+					str = "Refrigeración actualizada a: " + singleton.PC.getRefrigeracio();
+					break;
+				case "Número de ventiladores":
+					singleton.PC.setNum_ventiladors(validators.validator_int("Ingresa el número de ventiladores del producto.",
+							"Ingresar número de ventiladores"));
+					str = "Número de ventiladores actualizado a: " + singleton.PC.getNum_ventiladors();
+					break;
+				case "Descuento de navidad":
+					singleton.PC.setDiscount_nadal(validators.validator_float("Ingresa el descuento del producto para navidad.",
+							"Ingresar descuento"));
+					singleton.PC.calculate_price_final();
+					str = "Descuento de navidad actualizado a: " + singleton.PC.getDiscount_nadal();
+					break;
+			}// end_switch
+			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
+		} // end if
+	}// end update_pcgaming	
 	public static void update_laptop() {
 		String str = "";
 		int sales_init = 0;
@@ -753,7 +913,19 @@ public class CRUD {
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		} // end if
 	}// end update
-
+	public static String set_ID_pcgaming(){
+		int location = -1;
+		String str;
+		singleton.PC_ID = CRUD.new_pcgaming("Escribe el ID al que quieras actualizar.", "Actualizar ID");
+		location = find.find_product(singleton.PC_ID);
+		if (location != -1) {
+			str = "Ya hay un producto con ese ID.";
+		} else {
+			singleton.PC.setID_product(singleton.ID);
+			str = "ID de laptop actualizado a: " + singleton.PC.getID_product();
+		}
+		return str;
+	}
 	public static String set_ID_laptop() {
 		int location = -1;
 		String str;

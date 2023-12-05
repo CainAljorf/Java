@@ -17,6 +17,10 @@ public class find_dummies {
 			if((singleton.productaccessory.get(k)).equals(P))
 				return k;
 		}
+		for (int l = 0; l<=(singleton.productpcgaming.size()-1); l++){
+			if((singleton.productpcgaming.get(l)).equals(P))
+				return l;
+		}
 		return -1;
 	}
 	public static String find_product_type(product P){
@@ -31,6 +35,10 @@ public class find_dummies {
 		for (int k = 0; k<=(singleton.productaccessory.size()-1); k++){
 			if((singleton.productaccessory.get(k)).equals(P))
 				return "Accessory";
+		}
+		for (int l = 0; l<=(singleton.productpcgaming.size()-1); l++){
+			if((singleton.productpcgaming.get(l)).equals(P))
+				return "PcGaming";
 		}
 		return "null";
 	}

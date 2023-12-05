@@ -22,6 +22,18 @@ public class create_dummies {
 			JOptionPane.showMessageDialog(null, "Laptop creado correctamente con el ID: "+singleton.L.getID_product(),"Información",JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
+	public static void pcgaming(){
+		int location = -1;
+		singleton.PC = dummies_CRUD.new_id_pcgaming();
+		location = find_dummies.find_product_dummies(singleton.PC);
+		if (location != -1) {
+			JOptionPane.showMessageDialog(null, "No se ha podido crear porque ya existe.","Error",JOptionPane.ERROR_MESSAGE);
+		} else {
+			singleton.PC = dummies_CRUD.create_dummies_pcgaming();
+			singleton.productpcgaming.add(singleton.PC);
+			JOptionPane.showMessageDialog(null, "PcGaming creado correctamente con el ID: "+singleton.PC.getID_product(),"Información",JOptionPane.INFORMATION_MESSAGE);
+		}
+	}
 	//Sin uso por el momento
 	public static void array_laptop() {//Función para mostrar el menú de botones de los array de ID.
 		int size = singleton.productlaptop.size();

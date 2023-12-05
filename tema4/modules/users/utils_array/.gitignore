@@ -1,3 +1,7 @@
 /register.class
 /login.class
 /logout.class
+/Read_one.class
+/readUsers.class
+/update.class
+/update_users.class

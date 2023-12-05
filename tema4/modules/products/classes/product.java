@@ -36,10 +36,12 @@ public abstract class product {
 		this.date_sales_init =  date_sales_init;
 		this.date_sales_end = date_sales_end;
 		this.discont = discont;
-		 
 	}//end constructor
 	public product(String ID) {
 		this.ID_product = ID;
+	}
+	public void setPrice_final(float price_final) {
+		this.price_final = price_final;
 	}
 	public String getID_product() {
 		return ID_product;
@@ -64,6 +66,9 @@ public abstract class product {
 	}
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+	public void setPrice_final(int price_final) {
+		this.price_final = price_final;
 	}
 	public String getColor() {
 		return color;

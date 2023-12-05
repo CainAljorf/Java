@@ -14,6 +14,13 @@ public class date_product {
 		}
 		return res;
 	}
+	public static boolean is_promo_nadal(int ini, int end) {
+		boolean res = false;
+		if(ini != 2 && end == 2) {
+			res = true;
+		}
+		return res;
+	}
 	public static dates insert_date_purchase(String message, String title){
 		boolean res = false;
 		String date_purchase = "";
@@ -36,6 +43,28 @@ public class date_product {
 		} while ((res == false));
 		return singleton.D;
 	}//end insert_date_purchase
+	public static dates insert_f_ini_sales_nadal(){
+		boolean res = false;
+		String date_sales_init = "";
+		do {
+			date_sales_init = validators.validator_string("Escribe la fecha de inicio de rebajas de navidad.\nFormato: Día/Mes/Año XX/XX/XXXX.","Escribe fecha");
+	    	res = regex_date.validateDate(date_sales_init);
+			if (!res) {
+				res = false;
+				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
+			} else {
+				singleton.D = new dates(date_sales_init);
+				res = singleton.D.check_date();
+				if (!res) {
+					res = false;
+					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+					res = true;
+				} // end if
+			} // end if
+		} while ((res == false));
+		return singleton.D;
+	}//end insert_f_ini_sales_nadal
 	public static dates insert_date_sales_init(){
 		boolean res = false;
 		String date_sales_init = "";
@@ -58,6 +87,47 @@ public class date_product {
 		} while ((res == false));
 		return singleton.D;
 	}//end insert_date_sales_init
+	public static dates insert_f_fin_sales_nadal(dates P){
+		String str;
+		String date_sales_end = "";
+		boolean res = false;
+		int compare;
+		do {
+			date_sales_end = validators.validator_string("Ingresa fecha del fin de las rebajas de navidad, debe ser mayor a la fecha de inicio de rebajas de navidad."
+					+ "\nFecha final de rebajas: ","Ingresa fecha");
+			res = regex_date.validateDate(date_sales_end);
+			if (!res) {
+				res = false;
+				JOptionPane.showMessageDialog(null, "Formato de fecha incorrecta, inténtelo de nuevo. ", "Formato", JOptionPane.WARNING_MESSAGE);
+			} else {
+				singleton.D = new dates(date_sales_end);
+				if (!res) {
+					res = false;
+					JOptionPane.showMessageDialog(null, "Fecha no válida.", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+					compare=P.compare_dates(singleton.D);
+					switch (compare) {
+						case 1:
+							str = "La fecha de fin de rebajas de navidad no es correcta, "+ date_sales_end + "\nEs anterior respecto a la "
+									+ "fecha de inicio de rebajas.\n"+ P.getDate_sales_init();
+							res = false;
+							break;
+						case 2:
+							str = "Fecha de fin de rebajas de navidad correcta: "+ date_sales_end + ".\nEs posterior respecto a la "
+									+ "fecha de inicio de rebajas.\n"+ P.getDate_sales_init();
+							res=true;
+							break;
+						default:
+							str = "La fecha no es correcta, inténtelo de nuevo.\n"+ P.getDate_purchase();
+							res = false;
+							break;
+					} // end switch
+					JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
+				}//end if
+			}//end if
+		} while ((!res));
+		return singleton.D;
+	}//end insert_f_fin_sales_nadal	}
 	public static dates insert_date_sales_end(dates P){
 		String str;
 		String date_sales_end = "";

@@ -3,6 +3,80 @@ import javax.swing.JOptionPane;
 
 import tema4.utils.validators;
 public class insert_data {
+	public static String insert_disseny_caixa(){
+		String str="";
+		int type=0;
+		String[]buttons={
+				"ATX",
+				"Micro ATX",
+				"Mini ATX",
+				"Nano ATX",
+				"Nano ITX",
+				"Mini ITX"};
+		type=JOptionPane.showOptionDialog(
+				null,
+				"Elige el diseño de la caja.",
+				"CRUD",
+				0,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				buttons,
+				buttons[0]);
+		switch (type) {
+			case 0: 
+				str="ATX";
+				break;
+			case 1: 
+				str="Micro ATX";
+				break;
+			case 2: 
+				str="Mini ATX";
+				break;
+			case 3: 
+				str="Nano ATX";
+				break;
+			case 4: 
+				str="Nano ITX";
+				break;
+			case 5: 
+				str="Mini ITX";
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.ERROR_MESSAGE);
+				System.exit(0);
+				break;	
+		}//end switch
+		return str;
+	}
+	public static String insert_refrigeracio(){
+		String str="";
+		int type=0;
+		String[]buttons={
+				"Líquida",
+				"Disipación cobre"};
+		type=JOptionPane.showOptionDialog(
+				null,
+				"Elige el tipo de refrigeración.",
+				"CRUD",
+				0,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				buttons,
+				buttons[0]);
+		switch (type) {
+			case 0: 
+				str="Líquida";
+				break;
+			case 1: 
+				str="Disipación cobre";
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Cerrando el programa.","Cerrar",JOptionPane.ERROR_MESSAGE);
+				System.exit(0);
+				break;	
+		}//end switch
+		return str;
+	}
 	public static String insert_ID(String message, String title) {
 		boolean res = false;
 		String ID = "";

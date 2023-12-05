@@ -30,6 +30,7 @@ public class menu_employee {
 			"Laptop",
 			"Smartphone",
 			"Accesorio",
+			"PCGaming",
 			"Atrás"};
 		do {
 			menu_main_p=JOptionPane.showOptionDialog(
@@ -169,7 +170,50 @@ public class menu_employee {
 								}while(validator3==true);
 								break;
 							case 3:
+								do {
+									menu_crud=JOptionPane.showOptionDialog(
+										null,
+										"Elige una opción",
+										"CRUD",
+										0,
+										JOptionPane.QUESTION_MESSAGE,
+										null,
+										buttons_sec,
+										buttons_sec[0]);
+									switch (menu_crud) {
+										case 0:
+											if(singleton.PC!=null) {
+												read.read_pcgaming();
+											}else {
+												JOptionPane.showMessageDialog(null,"No se ha podido encontrar el pcgaming.","Error",JOptionPane.ERROR_MESSAGE);
+											}//end if
+											validator3=true;							
+											break;
+										case 1:
+											if(singleton.PC!=null){
+												update.update_pcgaming();
+											}else {
+												JOptionPane.showMessageDialog(null,"No se ha podido encontrar el pcgaming que quieres actualizar.","Error",JOptionPane.ERROR_MESSAGE);
+											}//end if
+											validator3=true;
+											break;
+										case 2:
+											validator3=false;
+											break;
+										default:
+											validator3=false;
+											System.exit(0);
+											break;
+									}
+								}while(validator3==true);
+								break;
+							case 4:
 								validator2=false;
+								JOptionPane.showMessageDialog(null, "Volviendo al menú anterior.","Información",JOptionPane.INFORMATION_MESSAGE);
+								break;
+							default:
+								validator2=false;
+								System.exit(0);
 								break;
 						}//end switch
 					}while(validator2==true);

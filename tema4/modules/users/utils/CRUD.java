@@ -45,7 +45,7 @@ public class CRUD {
 		
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		return singleton_users.E;
-	}// end create_laptop
+	}
 	public static admin create_admin() {
 		String username = "admin";
 		String password = "admin";
@@ -53,7 +53,16 @@ public class CRUD {
 		singleton_users.A = new admin(username,email,password,false);
 		singleton_users.useradmin.add(singleton_users.A);
 		return singleton_users.A;
-	}// end create_laptop
+	}
+	public static client create_client_dummies() {
+		String username = "cain";
+		String password = "cain";
+		String email = "cain@cain.com";
+		String register_date = "28/11/2010";
+		singleton_users.C = new client(username,email,password,false,true,register_date);
+		singleton_users.userclient.add(singleton_users.C);
+		return singleton_users.C;
+	}
 	public static employee create_employee() {
 		String username = "pepe";
 		String password= "pepe";

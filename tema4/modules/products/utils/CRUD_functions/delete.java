@@ -7,6 +7,25 @@ import tema4.modules.products.utils.CRUD;
 import tema4.modules.products.utils.find;
 
 public class delete {
+	public static void delete_pcgaming () {
+		int location = -1;
+		
+		if(singleton.productpcgaming.isEmpty()){
+			JOptionPane.showMessageDialog(null,"No hay datos, por favor crea un pcgaming.", "Error", JOptionPane.ERROR_MESSAGE);
+		}else{
+			location = -1;
+			singleton.PC =  CRUD.new_pcgaming("Ingresa el ID del pcgaming que quieras eliminar."
+					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
+			location = find.find_product(singleton.PC);
+			String type = find.find_product_type(singleton.PC);
+			if (location != -1 && type.equals("PcGaming")) {
+				singleton.productpcgaming.remove(location);
+				JOptionPane.showMessageDialog(null, "PcGaming borrado correctamente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+			}else {
+				JOptionPane.showMessageDialog(null, "El pcgaming que quieres borrar no se ha encontrado.", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+	}
 	public static void delete_laptop () {
 		int location = -1;
 		
