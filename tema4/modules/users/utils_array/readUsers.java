@@ -46,7 +46,7 @@ public class readUsers {
 						type = find.find_type(singleton_users.A);
 						if (location != -1 && type.equals("Admin")) {
 							singleton_users.A = singleton_users.useradmin.get(location);
-							Read_one.read_one_admin();;
+							Read_one.read_one_admin();
 						}else {
 							JOptionPane.showMessageDialog(null, "El usuario que quieres leer debe ser administrador.", "Error", JOptionPane.ERROR_MESSAGE);
 						}

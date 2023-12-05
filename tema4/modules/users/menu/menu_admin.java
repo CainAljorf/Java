@@ -438,7 +438,7 @@ public class menu_admin {
 													validator2=true;
 													break;
 												case 1:
-													if(singleton.DL!=null) {
+													if(singleton.L!=null) {
 														read_dummies.laptop();;
 													}else {
 														JOptionPane.showMessageDialog(null,"No se ha podido encontrar el laptop.","Error",JOptionPane.ERROR_MESSAGE);
@@ -446,7 +446,7 @@ public class menu_admin {
 													validator2=true;
 													break;
 												case 2:
-													if(singleton.DL!=null){
+													if(singleton.L!=null){
 														update_dummies.laptop();
 													}else {
 														JOptionPane.showMessageDialog(null,"No se ha podido encontrar el laptop que quieres actualizar.","Error",JOptionPane.ERROR_MESSAGE);
@@ -454,7 +454,7 @@ public class menu_admin {
 													validator2=true;
 													break;
 												case 3:
-													if(singleton.DL!=null){
+													if(singleton.L!=null){
 														delete_dummies.delete_dummies_laptop();;
 													}else {
 														JOptionPane.showMessageDialog(null,"No se ha podido encontrar el laptop que quieres eliminar.","Error",JOptionPane.ERROR_MESSAGE);
@@ -493,7 +493,7 @@ public class menu_admin {
 													validator2=true;
 													break;
 												case 1:
-													if(singleton.DS!=null) {
+													if(singleton.S!=null) {
 														read_dummies.smartphone();
 													}else {
 														JOptionPane.showMessageDialog(null,"No se ha podido encontrar el smartphone.","Error",JOptionPane.ERROR_MESSAGE);
@@ -501,7 +501,7 @@ public class menu_admin {
 													validator2=true;
 													break;
 												case 2:
-													if(singleton.DS!=null){
+													if(singleton.S!=null){
 														update_dummies.smartphone();;
 													}else {
 														JOptionPane.showMessageDialog(null,"No se ha podido encontrar el smartphone que quieres actualizar.","Error",JOptionPane.ERROR_MESSAGE);
@@ -509,7 +509,7 @@ public class menu_admin {
 													validator2=true;
 													break;
 												case 3:
-													if(singleton.DS!=null){
+													if(singleton.S!=null){
 														delete_dummies.delete_dummies_smartphone();
 													}else {
 														JOptionPane.showMessageDialog(null,"No se ha podido encontrar el smartphone que quieres eliminar.","Error",JOptionPane.ERROR_MESSAGE);
@@ -548,7 +548,7 @@ public class menu_admin {
 													validator2=true;
 													break;
 												case 1:
-													if(singleton.DA!=null) {
+													if(singleton.A!=null) {
 														read_dummies.accessory();
 													}else {
 														JOptionPane.showMessageDialog(null,"No se ha podido encontrar el accesorio.","Error",JOptionPane.ERROR_MESSAGE);
@@ -556,7 +556,7 @@ public class menu_admin {
 													validator2=true;
 													break;
 												case 2:
-													if(singleton.DA!=null){
+													if(singleton.A!=null){
 														update_dummies.accessory();
 													}else {
 														JOptionPane.showMessageDialog(null,"No se ha podido encontrar el accesorio que quieres actualizar.","Error",JOptionPane.ERROR_MESSAGE);
@@ -564,7 +564,7 @@ public class menu_admin {
 													validator2=true;
 													break;
 												case 3:
-													if(singleton.DA!=null){
+													if(singleton.A!=null){
 														delete_dummies.delete_dummies_accessory();
 													}else {
 														JOptionPane.showMessageDialog(null,"No se ha podido encontrar el Accesorio que quieres eliminar.","Error",JOptionPane.ERROR_MESSAGE);

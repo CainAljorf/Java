@@ -12,22 +12,22 @@ import tema4.modules.products.dummies.find_dummies;
 public class create_dummies {
 	public static void laptop() {
 		int location = -1;
-		singleton.DL = dummies_CRUD.new_id_laptop();
-		location = find_dummies.find_product_dummies(singleton.DL);
+		singleton.L = dummies_CRUD.new_id_laptop();
+		location = find_dummies.find_product_dummies(singleton.L);
 		if (location != -1) {
 			JOptionPane.showMessageDialog(null, "No se ha podido crear porque ya existe.","Error",JOptionPane.ERROR_MESSAGE);
 		} else {
-			singleton.DL = dummies_CRUD.create_dummies_laptop();
-			singleton.dummieslaptop.add(singleton.DL);
-			JOptionPane.showMessageDialog(null, "Laptop creado correctamente con el ID: "+singleton.DL.getID_product(),"Información",JOptionPane.INFORMATION_MESSAGE);
+			singleton.L = dummies_CRUD.create_dummies_laptop();
+			singleton.productlaptop.add(singleton.L);
+			JOptionPane.showMessageDialog(null, "Laptop creado correctamente con el ID: "+singleton.L.getID_product(),"Información",JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	//Sin uso por el momento
 	public static void array_laptop() {//Función para mostrar el menú de botones de los array de ID.
-		int size = singleton.dummieslaptop.size();
+		int size = singleton.productlaptop.size();
         ArrayList<String> temporal_array = new ArrayList<>();
 		for (int i=0;i < size;i++) {
-			String ID = singleton.dummieslaptop.get(i).getID_product();
+			String ID = singleton.productlaptop.get(i).getID_product();
 			if(!temporal_array.contains(ID)) {
 				temporal_array.add(ID);
 			}
@@ -49,57 +49,57 @@ public class create_dummies {
 	}
 	// public static void laptop_null() {
 	// 	int location = -1;
-	// 	singleton.DL = dummies_CRUD.new_id_laptop();
-	// 	location = find_dummies.find_product_dummies(singleton.DL);
+	// 	singleton.L = dummies_CRUD.new_id_laptop();
+	// 	location = find_dummies.find_product_dummies(singleton.L);
 	// 	if (location != -1) {
 	// 		JOptionPane.showMessageDialog(null, "No se ha podido crear porque ya existe.","Error",JOptionPane.ERROR_MESSAGE);
 	// 	} else {
-	// 		singleton.dummieslaptop.add(singleton.DL);
+	// 		singleton.productlaptop.add(singleton.L);
 			
 	// 	}
 	// }
 	public static void smartphone() {
 		int location = -1;
-		singleton.DS = dummies_CRUD.new_id_smartphone();
-		location = find_dummies.find_product_dummies(singleton.DS);
+		singleton.S = dummies_CRUD.new_id_smartphone();
+		location = find_dummies.find_product_dummies(singleton.S);
 		if (location != -1) {
 			JOptionPane.showMessageDialog(null, "No se ha podido crear porque ya existe.","Error",JOptionPane.ERROR_MESSAGE);
 		} else {
-			singleton.DS = dummies_CRUD.create_dummies_smartphone();
-			singleton.dummiessmartphone.add(singleton.DS);
-			JOptionPane.showMessageDialog(null, "Smartphone creado correctamente con el ID: "+singleton.DS.getID_product(),"Información",JOptionPane.INFORMATION_MESSAGE);
+			singleton.S = dummies_CRUD.create_dummies_smartphone();
+			singleton.productsmartphone.add(singleton.S);
+			JOptionPane.showMessageDialog(null, "Smartphone creado correctamente con el ID: "+singleton.S.getID_product(),"Información",JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	// public static void smartphone_null() {
 	// 	int location = -1;
-	// 	singleton.DS = dummies_CRUD.new_id_smartphone();
-	// 	location = find_dummies.find_product_dummies(singleton.DS);
+	// 	singleton.S = dummies_CRUD.new_id_smartphone();
+	// 	location = find_dummies.find_product_dummies(singleton.S);
 	// 	if (location != -1) {
 	// 		JOptionPane.showMessageDialog(null, "No se ha podido crear porque ya existe.","Error",JOptionPane.ERROR_MESSAGE);
 	// 	} else {
-	// 		singleton.dummiessmartphone.add(singleton.DS);
+	// 		singleton.productsmartphone.add(singleton.S);
 	// 	}
 	// }
 	public static void accessory() {
 		int location = -1;
-		singleton.DA = dummies_CRUD.new_id_accessory();
-		location = find_dummies.find_product_dummies(singleton.DA);
+		singleton.A = dummies_CRUD.new_id_accessory();
+		location = find_dummies.find_product_dummies(singleton.A);
 		if (location != -1) {
 			JOptionPane.showMessageDialog(null, "No se ha podido crear porque ya existe.","Error",JOptionPane.ERROR_MESSAGE);
 		} else {
-			singleton.DA = dummies_CRUD.create_dummies_accessory();
-			singleton.dummiesaccessory.add(singleton.DA);
-			JOptionPane.showMessageDialog(null, "Accesorio creado correctamente con el ID: "+singleton.DA.getID_product(),"Información",JOptionPane.INFORMATION_MESSAGE);
+			singleton.A = dummies_CRUD.create_dummies_accessory();
+			singleton.productaccessory.add(singleton.A);
+			JOptionPane.showMessageDialog(null, "Accesorio creado correctamente con el ID: "+singleton.A.getID_product(),"Información",JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	// public static void accessory_null() {
 	// 	int location = -1;
-	// 	singleton.DA = dummies_CRUD.new_id_accessory();
-	// 	location = find_dummies.find_product_dummies(singleton.DA);
+	// 	singleton.A = dummies_CRUD.new_id_accessory();
+	// 	location = find_dummies.find_product_dummies(singleton.A);
 	// 	if (location != -1) {
 	// 		JOptionPane.showMessageDialog(null, "No se ha podido crear porque ya existe.","Error",JOptionPane.ERROR_MESSAGE);
 	// 	} else {
-	// 		singleton.dummiesaccessory.add(singleton.DA);
+	// 		singleton.productaccessory.add(singleton.A);
 	// 	}
 	// }
 }

@@ -19,9 +19,6 @@ public class menu {
 		singleton.productlaptop = new ArrayList <laptop> ();
 		singleton.productsmartphone = new ArrayList <smartphone> ();
 		singleton.productaccessory = new ArrayList <accessory> ();
-		singleton.dummieslaptop = new ArrayList <laptop> ();
-		singleton.dummiessmartphone = new ArrayList <smartphone> ();
-		singleton.dummiesaccessory = new ArrayList <accessory> ();
 		singleton_users.useradmin = new ArrayList <admin> ();
 		singleton_users.userclient = new ArrayList <client> ();
 		singleton_users.useremployee = new ArrayList <employee> ();

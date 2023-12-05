@@ -5,6 +5,7 @@ import tema4.modules.users.classes.user;
 
 public class find {
 	public static String find_type(user U){
+		System.out.println();
 		for (int i = 0; i<=(singleton_users.useradmin.size()-1); i++){
 			if((singleton_users.useradmin.get(i)).equals(U)) {
 				return "Admin";

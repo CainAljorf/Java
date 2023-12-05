@@ -14,7 +14,7 @@ public class login {
 		if(singleton_users.userclient.isEmpty() && singleton_users.useradmin.isEmpty() && singleton_users.useremployee.isEmpty()){
 			JOptionPane.showMessageDialog(null,"No se encuentran cuentas, regístrese previamente.", "Error", JOptionPane.ERROR_MESSAGE);
 		}else{
-			singleton_users.U = CRUD.new_client_pass("Ingresa el nombre de usuario para tu cuenta.","Ingresar Nombre de usuario","Ingresa la contraseña de tu cuente","Ingresa Contraseña");
+			singleton_users.U = CRUD.new_client_pass("Ingresa el nombre de usuario para tu cuenta.","Ingresar Nombre de usuario","Ingresa la contraseña de tu cuenta","Ingresa Contraseña");
 			String type = find.find_login_user(singleton_users.U);
 			switch(type) {
 				case "Admin":

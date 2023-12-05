@@ -10,18 +10,18 @@ import tema4.modules.products.utils.CRUD;
 public class update_dummies {
 	public static void laptop () {
 		int location1 = -1;
-		if(singleton.dummieslaptop.isEmpty()){
+		if(singleton.productlaptop.isEmpty()){
 			JOptionPane.showMessageDialog(null, "No se ha podido acceder al array de laptop porque está vacía.","Error",JOptionPane.ERROR_MESSAGE);
 		}else{
 			location1 = -1;
-			singleton.DL = CRUD.new_laptop("Ingresa el ID de tu accesorio para ver si existe."
+			singleton.L = CRUD.new_laptop("Ingresa el ID de tu accesorio para ver si existe."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-			location1 = find_dummies.find_product_dummies(singleton.DL);
-			String type = find_dummies.find_product_type(singleton.DL);
+			location1 = find_dummies.find_product_dummies(singleton.L);
+			String type = find_dummies.find_product_type(singleton.L);
 			if (location1 != -1 && type.equals("Laptop")) {
-				singleton.DL = singleton.dummieslaptop.get(location1);
+				singleton.L = singleton.productlaptop.get(location1);
 				dummies_CRUD.update_laptop();
-				singleton.dummieslaptop.set(location1, singleton.DL);
+				singleton.productlaptop.set(location1, singleton.L);
 			}else {
 				JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un laptop.","Error",JOptionPane.ERROR_MESSAGE);
 			}
@@ -29,18 +29,18 @@ public class update_dummies {
 	}
 	public static void smartphone () {
 		int location1 = -1;
-		if(singleton.dummiessmartphone.isEmpty()){
+		if(singleton.productsmartphone.isEmpty()){
 			JOptionPane.showMessageDialog(null, "No se ha podido acceder al array de smartphone porque está vacía.","Error",JOptionPane.ERROR_MESSAGE);	
 		}else{
 			location1 = -1;
-			singleton.DS = CRUD.new_smartphone("Ingresa el ID de tu accesorio para ver si existe."
+			singleton.S = CRUD.new_smartphone("Ingresa el ID de tu accesorio para ver si existe."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-			location1 = find_dummies.find_product_dummies(singleton.DS);
-			String type = find_dummies.find_product_type(singleton.DS);
+			location1 = find_dummies.find_product_dummies(singleton.S);
+			String type = find_dummies.find_product_type(singleton.S);
 			if (location1 != -1 && type.equals("Smartphone")) {
-				singleton.DS = singleton.dummiessmartphone.get(location1);
+				singleton.S = singleton.productsmartphone.get(location1);
 				dummies_CRUD.update_smartphone();
-				singleton.dummiessmartphone.set(location1, singleton.DS);
+				singleton.productsmartphone.set(location1, singleton.S);
 			}else {
 				JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un smartphone.","Error",JOptionPane.ERROR_MESSAGE);
 			}
@@ -48,18 +48,18 @@ public class update_dummies {
 	}
 	public static void accessory () {
 		int location1 = -1;
-		if(singleton.dummiesaccessory.isEmpty()){
+		if(singleton.productaccessory.isEmpty()){
 			JOptionPane.showMessageDialog(null, "No se ha podido acceder al array de accesorio porque está vacía.","Error",JOptionPane.ERROR_MESSAGE);		
 		}else{
 			location1 = -1;
-			singleton.DA = CRUD.new_accessory("Ingresa el ID de tu accesorio para ver si existe."
+			singleton.A = CRUD.new_accessory("Ingresa el ID de tu accesorio para ver si existe."
 					+ "\nRecuerda que debe usar la siguiente nomenclatura: ABC-123","Ingresar ID");
-			location1 = find_dummies.find_product_dummies(singleton.DA);
-			String type = find_dummies.find_product_type(singleton.DA);
+			location1 = find_dummies.find_product_dummies(singleton.A);
+			String type = find_dummies.find_product_type(singleton.A);
 			if (location1 != -1 && type.equals("Accessory")) {
-				singleton.DA = singleton.dummiesaccessory.get(location1);
+				singleton.A = singleton.productaccessory.get(location1);
 				dummies_CRUD.update_accessory();
-				singleton.dummiesaccessory.set(location1, singleton.DA);
+				singleton.productaccessory.set(location1, singleton.A);
 			}else {
 				JOptionPane.showMessageDialog(null, "El ID ingresado debe ser de un accesorio.","Error",JOptionPane.ERROR_MESSAGE);	
 			}

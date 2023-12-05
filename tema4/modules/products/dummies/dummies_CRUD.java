@@ -12,7 +12,7 @@ import tema4.modules.products.classes.accessory;
 
 public class dummies_CRUD {
 	public static laptop create_dummies_laptop(){
-		return new laptop(singleton.DL.getID_product(), 100, 150, 30, "Rojo", 5, singleton.D=new dates("02/12/2000"), singleton.D=new dates("03/12/2000"),
+		return new laptop(singleton.L.getID_product(), 100, 150, 30, "Rojo", 5, singleton.D=new dates("02/12/2000"), singleton.D=new dates("03/12/2000"),
 				singleton.D=new dates("01/12/2001"), singleton.D=new dates("19/12/2001"),singleton.D=new dates("12/12/2000"), singleton.D=new dates("17/12/2000"),0.5f, 7,
 				"IPS", "15.1", "QWERTY", "16 GB", "1 TB","Ryzen 7 5700X", "80 Plus Silver", "AMD Radeon", "HP Omen", "Sony XM 1.8f");
 	}
@@ -31,7 +31,7 @@ public class dummies_CRUD {
 		return new laptop (singleton.ID);
 	}
 	public static smartphone create_dummies_smartphone(){
-		return new smartphone(singleton.DS.getID_product(), 100, 150, 30, "Rojo", 5, singleton.D=new dates("02/12/2000"), singleton.D=new dates("03/12/2000"),
+		return new smartphone(singleton.S.getID_product(), 100, 150, 30, "Rojo", 5, singleton.D=new dates("02/12/2000"), singleton.D=new dates("03/12/2000"),
 				singleton.D=new dates("01/12/2001"), singleton.D=new dates("19/12/2001"),singleton.D=new dates("12/12/2000"), singleton.D=new dates("17/12/2000"),0.5f, 7,
 				"IPS","6.8","8GB","128GB","Qualcomm","Oppo","Android","Leica 1.5f");
 	}
@@ -50,7 +50,7 @@ public class dummies_CRUD {
 		return new smartphone(singleton.ID);
 	}
 	public static accessory create_dummies_accessory(){
-		return new accessory(singleton.DA.getID_product(), 100, 150, 30, "Rojo", 5, singleton.D=new dates("02/12/2000"), singleton.D=new dates("03/12/2000"),
+		return new accessory(singleton.A.getID_product(), 100, 150, 30, "Rojo", 5, singleton.D=new dates("02/12/2000"), singleton.D=new dates("03/12/2000"),
 				singleton.D=new dates("01/12/2001"), singleton.D=new dates("19/12/2001"),singleton.D=new dates("12/12/2000"), singleton.D=new dates("17/12/2000"),0.5f, 7,
 				"Cargador","Cableado","5 años","Polvo");
 	}
@@ -76,8 +76,8 @@ public class dummies_CRUD {
 		if (location != -1) {
 			str="Ya hay un producto con ese ID.";
 		}else {
-			singleton.DL.setID_product(singleton.ID);
-			str="ID de laptop actualizado a: " + singleton.DL.getID_product();
+			singleton.L.setID_product(singleton.ID);
+			str="ID de laptop actualizado a: " + singleton.L.getID_product();
 		}
 		return str;
 	}
@@ -89,8 +89,8 @@ public class dummies_CRUD {
 		if (location != -1) {
 			str="Ya hay un producto con ese ID.";
 		}else {
-			singleton.DS.setID_product(singleton.ID);
-			str="ID de smartphone actualizado a: " + singleton.DS.getID_product();
+			singleton.S.setID_product(singleton.ID);
+			str="ID de smartphone actualizado a: " + singleton.S.getID_product();
 		}
 		return str;
 	}
@@ -102,8 +102,8 @@ public class dummies_CRUD {
 		if (location != -1) {
 			str="Ya hay un producto con ese ID.";
 		}else {
-			singleton.DA.setID_product(singleton.ID);
-			str="ID de accesorio actualizado a: " + singleton.DA.getID_product();
+			singleton.A.setID_product(singleton.ID);
+			str="ID de accesorio actualizado a: " + singleton.A.getID_product();
 		}//end if
 		return str;
 	}
@@ -123,76 +123,76 @@ public class dummies_CRUD {
 		} else {
 			switch (opt.toString()) {
 				case "ID":
-					str = "ID: " + singleton.DL.getID_product();
+					str = "ID: " + singleton.L.getID_product();
 					break;
 				case "Precio":
-					str = "Precio: " + singleton.DL.getPrice();
+					str = "Precio: " + singleton.L.getPrice();
 					break;
 				case "Peso":
-					str = "Peso: " + singleton.DL.getPeso();
+					str = "Peso: " + singleton.L.getPeso();
 					break;
 				case "Stock":
-					str = "Stock: " + singleton.DL.getStock();
+					str = "Stock: " + singleton.L.getStock();
 					break;
 				case "Color":
-					str = "Color: " + singleton.DL.getColor();
+					str = "Color: " + singleton.L.getColor();
 					break;
 				case "Dimensión":
-					str = "Dimensión: " + singleton.DL.getDimension();
+					str = "Dimensión: " + singleton.L.getDimension();
 					break;
 				case "Fecha de compra":
-					str = "Fecha de Compra: " + singleton.DL.getF_compra();
+					str = "Fecha de Compra: " + singleton.L.getF_compra();
 					break;
 				case "Fecha de entrega":
-					str = "Fecha de entrega: " + singleton.DL.getF_entrega();
+					str = "Fecha de entrega: " + singleton.L.getF_entrega();
 					break;
 				case "Fecha de devolución":
-					str = "Fecha de devolución: " + singleton.DL.getF_devolucion();
+					str = "Fecha de devolución: " + singleton.L.getF_devolucion();
 					break;
 				case "Fecha de recogida":
-					str = "Fecha de recogida: " + singleton.DL.getF_recogida();
+					str = "Fecha de recogida: " + singleton.L.getF_recogida();
 					break;
 				case "Pantalla":
-					str = "Pantalla: " + singleton.DL.getScreen();
+					str = "Pantalla: " + singleton.L.getScreen();
 					break;
 				case "Pulgadas de pantalla":
-					str = "Pulgadas de pantalla: " + singleton.DL.getScreen_inches();
+					str = "Pulgadas de pantalla: " + singleton.L.getScreen_inches();
 					break;
 				case "Tipo de teclado":
-					str = "Tipo de teclado: " + singleton.DL.getKeyboard();
+					str = "Tipo de teclado: " + singleton.L.getKeyboard();
 					break;
 				case "Memoria RAM":
-					str = "Memoria RAM: " + singleton.DL.getRAM();
+					str = "Memoria RAM: " + singleton.L.getRAM();
 					break;
 				case "Almacenamiento":
-					str = "Almacenamiento: " + singleton.DL.getStorage();
+					str = "Almacenamiento: " + singleton.L.getStorage();
 					break;
 				case "Procesador":
-					str = "Procesador: " + singleton.DL.getCPU();
+					str = "Procesador: " + singleton.L.getCPU();
 					break;
 				case "Fuente de Alimentación":
-					str = "Fuente de Alimentación: " + singleton.DL.getPower_supply();
+					str = "Fuente de Alimentación: " + singleton.L.getPower_supply();
 					break;
 				case "Gráficos":
-					str = "Gráficos: " + singleton.DL.getGraphics();
+					str = "Gráficos: " + singleton.L.getGraphics();
 					break;
 				case "Cámara":
-					str = "Cámara: " + singleton.DL.getCamera();
+					str = "Cámara: " + singleton.L.getCamera();
 					break;
 				case "Marca":
-					str = "Marca: " + singleton.DL.getBrand();
+					str = "Marca: " + singleton.L.getBrand();
 					break;
 				case "Inicio de Rebajas":
-					str = "Inicio de rebajas: " + singleton.DL.getDate_sales_init();
+					str = "Inicio de rebajas: " + singleton.L.getDate_sales_init();
 					break;
 				case "Fin de Rebajas":
-					str = "Fin de Rebajas: " + singleton.DL.getDate_sales_end();
+					str = "Fin de Rebajas: " + singleton.L.getDate_sales_end();
 					break;
 				case "Descuento":
-					str = "Descuento de Rebajas: " + singleton.DL.getDiscont();
+					str = "Descuento de Rebajas: " + singleton.L.getDiscont();
 					break;
 				case "Precio final":
-					str = "Precio final: " + singleton.DL.getPrice_final();
+					str = "Precio final: " + singleton.L.getPrice_final();
 					break;
 			}// end_switch
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -213,70 +213,70 @@ public class dummies_CRUD {
 		} else {
 			switch (opt.toString()) {
 				case "ID":
-					str = "ID: " + singleton.DS.getID_product();
+					str = "ID: " + singleton.S.getID_product();
 					break;
 				case "Precio":
-					str = "Precio: " + singleton.DS.getPrice();
+					str = "Precio: " + singleton.S.getPrice();
 					break;
 				case "Peso":
-					str = "Peso: " + singleton.DS.getPeso();
+					str = "Peso: " + singleton.S.getPeso();
 					break;
 				case "Stock":
-					str = "Stock: " + singleton.DS.getStock();
+					str = "Stock: " + singleton.S.getStock();
 					break;
 				case "Color":
-					str = "Color: " + singleton.DS.getColor();
+					str = "Color: " + singleton.S.getColor();
 					break;
 				case "Dimensión":
-					str = "Dimensión: " + singleton.DS.getDimension();
+					str = "Dimensión: " + singleton.S.getDimension();
 					break;
 				case "Fecha de compra":
-					str = "Fecha de Compra: " + singleton.DS.getF_compra();
+					str = "Fecha de Compra: " + singleton.S.getF_compra();
 					break;
 				case "Fecha de entrega":
-					str = "Fecha de entrega: " + singleton.DS.getF_entrega();
+					str = "Fecha de entrega: " + singleton.S.getF_entrega();
 					break;
 				case "Fecha de devolución":
-					str = "Fecha de devolución: " + singleton.DS.getF_devolucion();
+					str = "Fecha de devolución: " + singleton.S.getF_devolucion();
 					break;
 				case "Fecha de recogida":
-					str = "Fecha de recogida: " + singleton.DS.getF_recogida();
+					str = "Fecha de recogida: " + singleton.S.getF_recogida();
 					break;
 				case "Pantalla":
-					str = "Pantalla: " + singleton.DS.getScreen();
+					str = "Pantalla: " + singleton.S.getScreen();
 					break;
 				case "Pulgadas de pantalla":
-					str = "Pulgadas de pantalla: " + singleton.DS.getScreen_inches();
+					str = "Pulgadas de pantalla: " + singleton.S.getScreen_inches();
 					break;
 				case "Memoria RAM":
-					str = "Memoria RAM: " + singleton.DS.getRAM();
+					str = "Memoria RAM: " + singleton.S.getRAM();
 					break;
 				case "Almacenamiento":
-					str = "Almacenamiento: " + singleton.DS.getStorage();
+					str = "Almacenamiento: " + singleton.S.getStorage();
 					break;
 				case "Procesador":
-					str = "Procesador: " + singleton.DS.getCPU();
+					str = "Procesador: " + singleton.S.getCPU();
 					break;
 				case "Sistema Operativo":
-					str = "Sistema Operativo: " + singleton.DS.getOS();
+					str = "Sistema Operativo: " + singleton.S.getOS();
 					break;
 				case "Cámara":
-					str = "Cámara: " + singleton.DS.getCamera();
+					str = "Cámara: " + singleton.S.getCamera();
 					break;
 				case "Marca":
-					str = "Marca: " + singleton.DS.getBrand();
+					str = "Marca: " + singleton.S.getBrand();
 					break;
 				case "Inicio de Rebajas":
-					str = "Inicio de rebajas: " + singleton.DS.getDate_sales_init();
+					str = "Inicio de rebajas: " + singleton.S.getDate_sales_init();
 					break;
 				case "Fin de Rebajas":
-					str = "Fin de Rebajas: " + singleton.DS.getDate_sales_end();
+					str = "Fin de Rebajas: " + singleton.S.getDate_sales_end();
 					break;
 				case "Descuento":
-					str = "Descuento de Rebajas: " + singleton.DS.getDiscont();
+					str = "Descuento de Rebajas: " + singleton.S.getDiscont();
 					break;
 				case "Precio final":
-					str = "Precio final: " + singleton.DS.getPrice_final();
+					str = "Precio final: " + singleton.S.getPrice_final();
 					break;
 			}// end_switch
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -297,58 +297,58 @@ public class dummies_CRUD {
 		} else {
 			switch (opt.toString()) {
 				case "ID":
-					str = "ID: " + singleton.DA.getID_product();
+					str = "ID: " + singleton.A.getID_product();
 					break;
 				case "Precio":
-					str = "Precio: " + singleton.DA.getPrice();
+					str = "Precio: " + singleton.A.getPrice();
 					break;
 				case "Peso":
-					str = "Peso: " + singleton.DA.getPeso();
+					str = "Peso: " + singleton.A.getPeso();
 					break;
 				case "Stock":
-					str = "Stock: " + singleton.DA.getStock();
+					str = "Stock: " + singleton.A.getStock();
 					break;
 				case "Color":
-					str = "Color: " + singleton.DA.getColor();
+					str = "Color: " + singleton.A.getColor();
 					break;
 				case "Dimensión":
-					str = "Dimensión: " + singleton.DA.getDimension();
+					str = "Dimensión: " + singleton.A.getDimension();
 					break;
 				case "Fecha de compra":
-					str = "Fecha de Compra: " + singleton.DA.getF_compra();
+					str = "Fecha de Compra: " + singleton.A.getF_compra();
 					break;
 				case "Fecha de entrega":
-					str = "Fecha de entrega: " + singleton.DA.getF_entrega();
+					str = "Fecha de entrega: " + singleton.A.getF_entrega();
 					break;
 				case "Fecha de devolución":
-					str = "Fecha de devolución: " + singleton.DA.getF_devolucion();
+					str = "Fecha de devolución: " + singleton.A.getF_devolucion();
 					break;
 				case "Fecha de recogida":
-					str = "Fecha de recogida: " + singleton.DA.getF_recogida();
+					str = "Fecha de recogida: " + singleton.A.getF_recogida();
 					break;
 				case "Tipo de accesorio":
-					str = "Tipo de accesorio: " + singleton.DA.getType();
+					str = "Tipo de accesorio: " + singleton.A.getType();
 					break;
 				case "Garantía":
-					str = "Garantía: " + singleton.DA.getWarranty();
+					str = "Garantía: " + singleton.A.getWarranty();
 					break;
 				case "Protección":
-					str = "Protección: " + singleton.DA.getProtection();
+					str = "Protección: " + singleton.A.getProtection();
 					break;
 				case "Conectividad":
-					str = "Conectividad: " + singleton.DA.getConnectivity();
+					str = "Conectividad: " + singleton.A.getConnectivity();
 					break;
 				case "Inicio de Rebajas":
-					str = "Inicio de rebajas: " + singleton.DA.getDate_sales_init();
+					str = "Inicio de rebajas: " + singleton.A.getDate_sales_init();
 					break;
 				case "Fin de Rebajas":
-					str = "Número de días de Rebajas: " + singleton.DA.getDate_sales_end();
+					str = "Número de días de Rebajas: " + singleton.A.getDate_sales_end();
 					break;
 				case "Descuento":
-					str = "Descuento de Rebajas: " + singleton.DA.getDiscont();
+					str = "Descuento de Rebajas: " + singleton.A.getDiscont();
 					break;
 				case "Precio final":
-					str = "Precio final: " + singleton.DA.getPrice_final();
+					str = "Precio final: " + singleton.A.getPrice_final();
 					break;
 			}// end_switch
 			JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
@@ -371,120 +371,120 @@ public class dummies_CRUD {
 			JOptionPane.showMessageDialog(null, "Cerrando el programa.", "Cerrar", JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		} else {
-			sales_init = singleton.D.compare_dates(singleton.DL.getDate_sales_init());
-			sales_end = singleton.D.compare_dates(singleton.DL.getDate_sales_end());
+			sales_init = singleton.D.compare_dates(singleton.L.getDate_sales_init());
+			sales_end = singleton.D.compare_dates(singleton.L.getDate_sales_end());
 			switch (opt.toString()) {
 				case "ID":
 					str = set_dummies_ID_laptop();
 					break;
 				case "Precio":
-					singleton.DL.setPrice(validators.validator_float(
+					singleton.L.setPrice(validators.validator_float(
 							"Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));
-					singleton.DL.calculate_price_final();
-					str = "Precio de laptop actualizado a: " + singleton.DL.getPrice();
+					singleton.L.calculate_price_final();
+					str = "Precio de laptop actualizado a: " + singleton.L.getPrice();
 					break;
 				case "Peso":
-					singleton.DL.setPeso(validators.validator_float("Ingresa el peso del producto.", "Ingresar peso"));
-					str = "Peso de laptop actualizado a: " + singleton.DL.getPeso();
+					singleton.L.setPeso(validators.validator_float("Ingresa el peso del producto.", "Ingresar peso"));
+					str = "Peso de laptop actualizado a: " + singleton.L.getPeso();
 					break;
 				case "Stock":
-					singleton.DL.setStock(validators.validator_int("Ingresa el stock del producto.", "Ingresar stock"));
-					str = "Stock de laptop actualizado a: " + singleton.DL.getStock();
+					singleton.L.setStock(validators.validator_int("Ingresa el stock del producto.", "Ingresar stock"));
+					str = "Stock de laptop actualizado a: " + singleton.L.getStock();
 					break;
 				case "Color":
-					singleton.DL.setColor(insert_data.insert_color());
-					str = "Color de laptop actualizado a: " + singleton.DL.getColor();
+					singleton.L.setColor(insert_data.insert_color());
+					str = "Color de laptop actualizado a: " + singleton.L.getColor();
 					break;
 				case "Dimensión":
-					singleton.DL.setDimension(
+					singleton.L.setDimension(
 							validators.validator_float("Ingresa la dimension del producto.", "Ingresar dimension"));
-					str = "Dimensión de laptop actualizado a: " + singleton.DL.getDimension();
+					str = "Dimensión de laptop actualizado a: " + singleton.L.getDimension();
 					break;
 				case "Fecha de compra":
-					singleton.DL.setF_compra(date_product.insert_date_purchase(
+					singleton.L.setF_compra(date_product.insert_date_purchase(
 							"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
 							"Ingresar fecha compra"));
-					singleton.DL.setIs_promo(date_product.is_promo(sales_init, sales_end));
-					singleton.DL.calculate_price_final();
-					str = "Fecha de compra de laptop actualizado a: " + singleton.DL.getF_compra();
+					singleton.L.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.L.calculate_price_final();
+					str = "Fecha de compra de laptop actualizado a: " + singleton.L.getF_compra();
 					break;
 				case "Fecha de entrega":
-					singleton.DL.setF_entrega(date_product.insert_date_delivery(singleton.DL.getF_compra()));
-					str = "Fecha de entrega de laptop actualizado a: " + singleton.DL.getF_entrega();
+					singleton.L.setF_entrega(date_product.insert_date_delivery(singleton.L.getF_compra()));
+					str = "Fecha de entrega de laptop actualizado a: " + singleton.L.getF_entrega();
 					break;
 				case "Fecha de devolución":
-					singleton.DL.setF_devolucion(date_product.insert_date_return(singleton.DL.getF_entrega()));
-					singleton.DL.setIs_return(singleton.DL.is_return());
-					singleton.DL.calculate_price_final();
-					str = "Fecha de devolución de laptop actualizado a: " + singleton.DL.getF_devolucion();
+					singleton.L.setF_devolucion(date_product.insert_date_return(singleton.L.getF_entrega()));
+					singleton.L.setIs_return(singleton.L.is_return());
+					singleton.L.calculate_price_final();
+					str = "Fecha de devolución de laptop actualizado a: " + singleton.L.getF_devolucion();
 					break;
 				case "Fecha de recogida":
-					singleton.DL.setF_recogida(date_product.insert_collection_date(singleton.DL.getF_devolucion()));
-					str = "Fecha de devolución de laptop actualizado a: " + singleton.DL.getF_recogida();
+					singleton.L.setF_recogida(date_product.insert_collection_date(singleton.L.getF_devolucion()));
+					str = "Fecha de devolución de laptop actualizado a: " + singleton.L.getF_recogida();
 					break;
 				case "Pantalla":
-					singleton.DL.setScreen(insert_data.insert_screen());
-					str = "Pantalla de laptop actualizado a: " + singleton.DL.getScreen();
+					singleton.L.setScreen(insert_data.insert_screen());
+					str = "Pantalla de laptop actualizado a: " + singleton.L.getScreen();
 					break;
 				case "Pulgadas de pantalla":
-					singleton.DL.setScreen_inches(insert_data.insert_screen_inches("laptop"));
-					str = "Pulgadas de pantalla del laptop actualizadas a: " + singleton.DL.getScreen_inches();
+					singleton.L.setScreen_inches(insert_data.insert_screen_inches("laptop"));
+					str = "Pulgadas de pantalla del laptop actualizadas a: " + singleton.L.getScreen_inches();
 					break;
 				case "Tipo de teclado":
-					singleton.DL.setKeyboard(insert_data.insert_keyboard());
-					str = "Tipo de teclado de laptop actualizado a: " + singleton.DL.getKeyboard();
+					singleton.L.setKeyboard(insert_data.insert_keyboard());
+					str = "Tipo de teclado de laptop actualizado a: " + singleton.L.getKeyboard();
 					break;
 				case "Memoria RAM":
-					singleton.DL.setRAM(insert_data.insert_RAM("laptop"));
-					str = "Memoria RAM de laptop actualizada a: " + singleton.DL.getRAM();
+					singleton.L.setRAM(insert_data.insert_RAM("laptop"));
+					str = "Memoria RAM de laptop actualizada a: " + singleton.L.getRAM();
 					break;
 				case "Almacenamiento":
-					singleton.DL.setStorage(insert_data.insert_storage());
-					str = "Almacenamiento de laptop actualizado a: " + singleton.DL.getStorage();
+					singleton.L.setStorage(insert_data.insert_storage());
+					str = "Almacenamiento de laptop actualizado a: " + singleton.L.getStorage();
 					break;
 				case "Procesador":
-					singleton.DL.setCPU(insert_data.insert_CPU("laptop"));
-					str = "Procesador del laptop actualizado a: " + singleton.DL.getCPU();
+					singleton.L.setCPU(insert_data.insert_CPU("laptop"));
+					str = "Procesador del laptop actualizado a: " + singleton.L.getCPU();
 					break;
 				case "Fuente de Alimentación":
-					singleton.DL.setPower_supply(insert_data.insert_power_supply());
-					str = "Fuente de alimentación de laptop actualizada a: " + singleton.DL.getPower_supply();
+					singleton.L.setPower_supply(insert_data.insert_power_supply());
+					str = "Fuente de alimentación de laptop actualizada a: " + singleton.L.getPower_supply();
 					break;
 				case "Gráficos":
-					singleton.DL.setGraphics(insert_data.insert_graphics());
-					str = "Gráficos del laptop actualizados a: " + singleton.DL.getGraphics();
+					singleton.L.setGraphics(insert_data.insert_graphics());
+					str = "Gráficos del laptop actualizados a: " + singleton.L.getGraphics();
 					break;
 				case "Cámara":
-					singleton.DL.setCamera(insert_data.insert_camera());
-					str = "Cámara del laptop actualizada a: " + singleton.DL.getCamera();
+					singleton.L.setCamera(insert_data.insert_camera());
+					str = "Cámara del laptop actualizada a: " + singleton.L.getCamera();
 					break;
 				case "Marca":
-					singleton.DL.setBrand(insert_data.insert_brand("laptop"));
-					str = "Marca del laptop actualizada a: " + singleton.DL.getBrand();
+					singleton.L.setBrand(insert_data.insert_brand("laptop"));
+					str = "Marca del laptop actualizada a: " + singleton.L.getBrand();
 					break;
 				case "Inicio de Rebajas":
-					singleton.DL.setDate_sales_init(date_product.insert_date_sales_init());
-					sales_init = singleton.D.compare_dates(singleton.DL.getDate_sales_init());
-					singleton.DL.setIs_promo(date_product.is_promo(sales_init, sales_end));
-					singleton.DL.calculate_price_final();
-					str = "Fecha de inicio de rebajas actualizado a: " + singleton.DL.getDate_sales_init();
+					singleton.L.setDate_sales_init(date_product.insert_date_sales_init());
+					sales_init = singleton.D.compare_dates(singleton.L.getDate_sales_init());
+					singleton.L.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.L.calculate_price_final();
+					str = "Fecha de inicio de rebajas actualizado a: " + singleton.L.getDate_sales_init();
 					break;
 				case "Fin de Rebajas":
-					singleton.DL.setDate_sales_end(date_product.insert_date_sales_end(singleton.DL.getDate_sales_init()));
-					sales_end = singleton.D.compare_dates(singleton.DL.getDate_sales_end());
-					singleton.DL.setIs_promo(date_product.is_promo(sales_init, sales_end));
-					singleton.DL.calculate_price_final();
-					str = "Fecha de fin de rebajas actualizado a: " + singleton.DL.getDate_sales_end();
+					singleton.L.setDate_sales_end(date_product.insert_date_sales_end(singleton.L.getDate_sales_init()));
+					sales_end = singleton.D.compare_dates(singleton.L.getDate_sales_end());
+					singleton.L.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.L.calculate_price_final();
+					str = "Fecha de fin de rebajas actualizado a: " + singleton.L.getDate_sales_end();
 					break;
 				case "Descuento":
-					singleton.DL.setDiscont(validators.validator_float(
+					singleton.L.setDiscont(validators.validator_float(
 							"Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
-					singleton.DL.setIs_promo(date_product.is_promo(sales_init, sales_end));
-					singleton.DL.calculate_price_final();
-					str = "Descuento de Rebajas actualizado a: " + singleton.DL.getDiscont();
+					singleton.L.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.L.calculate_price_final();
+					str = "Descuento de Rebajas actualizado a: " + singleton.L.getDiscont();
 					break;
 				case "Precio final":
-					str = "El precio final del producto es " + singleton.DL.getPrice_final()
+					str = "El precio final del producto es " + singleton.L.getPrice_final()
 							+ " y se calcula automáticamente, por lo que no se puede modificar.";
 					break;
 			}// end switch
@@ -508,112 +508,112 @@ public class dummies_CRUD {
 			JOptionPane.showMessageDialog(null, "Cerrando el programa.", "Cerrar", JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		} else {
-			sales_init = singleton.D.compare_dates(singleton.DS.getDate_sales_init());
-			sales_end = singleton.D.compare_dates(singleton.DS.getDate_sales_end());
+			sales_init = singleton.D.compare_dates(singleton.S.getDate_sales_init());
+			sales_end = singleton.D.compare_dates(singleton.S.getDate_sales_end());
 			switch (opt.toString()) {
 				case "ID":
 					str = set_dummies_ID_smartphone();
 					break;
 				case "Precio":
-					singleton.DS.setPrice(validators.validator_float(
+					singleton.S.setPrice(validators.validator_float(
 							"Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));
-					singleton.DS.calculate_price_final();
-					str = "Precio de smartphone actualizado a: " + singleton.DS.getPrice();
+					singleton.S.calculate_price_final();
+					str = "Precio de smartphone actualizado a: " + singleton.S.getPrice();
 					break;
 				case "Peso":
-					singleton.DS.setPeso(validators.validator_float("Ingresa el peso del producto.", "Ingresar peso"));
-					str = "Peso de smartphone actualizado a: " + singleton.DS.getPeso();
+					singleton.S.setPeso(validators.validator_float("Ingresa el peso del producto.", "Ingresar peso"));
+					str = "Peso de smartphone actualizado a: " + singleton.S.getPeso();
 					break;
 				case "Stock":
-					singleton.DS.setStock(validators.validator_int("Ingresa el stock del producto.", "Ingresar stock"));
-					str = "Stock de smartphone actualizado a: " + singleton.DS.getStock();
+					singleton.S.setStock(validators.validator_int("Ingresa el stock del producto.", "Ingresar stock"));
+					str = "Stock de smartphone actualizado a: " + singleton.S.getStock();
 					break;
 				case "Color":
-					singleton.DS.setColor(insert_data.insert_color());
-					str = "Color de smartphone actualizado a: " + singleton.DS.getColor();
+					singleton.S.setColor(insert_data.insert_color());
+					str = "Color de smartphone actualizado a: " + singleton.S.getColor();
 					break;
 				case "Dimensión":
-					singleton.DS.setDimension(
+					singleton.S.setDimension(
 							validators.validator_float("Ingresa la dimension del producto.", "Ingresar dimension"));
-					str = "Dimensión de smartphone actualizado a: " + singleton.DS.getDimension();
+					str = "Dimensión de smartphone actualizado a: " + singleton.S.getDimension();
 					break;
 				case "Fecha de compra":
-					singleton.DS.setF_compra(date_product.insert_date_purchase(
+					singleton.S.setF_compra(date_product.insert_date_purchase(
 							"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
 							"Ingresar fecha compra"));
-					singleton.DS.setIs_promo(date_product.is_promo(sales_init, sales_end));
-					singleton.DS.calculate_price_final();
-					str = "Fecha de compra de smartphone actualizado a: " + singleton.DS.getF_compra();
+					singleton.S.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.S.calculate_price_final();
+					str = "Fecha de compra de smartphone actualizado a: " + singleton.S.getF_compra();
 					break;
 				case "Fecha de entrega":
-					singleton.DS.setF_entrega(date_product.insert_date_delivery(singleton.DS.getF_compra()));
-					str = "Fecha de entrega de smartphone actualizado a: " + singleton.DS.getF_entrega();
+					singleton.S.setF_entrega(date_product.insert_date_delivery(singleton.S.getF_compra()));
+					str = "Fecha de entrega de smartphone actualizado a: " + singleton.S.getF_entrega();
 					break;
 				case "Fecha de devolución":
-					singleton.DS.setF_devolucion(date_product.insert_date_return(singleton.DS.getF_entrega()));
-					singleton.DS.setIs_return(singleton.DS.is_return());
-					singleton.DS.calculate_price_final();
-					str = "Fecha de devolución de smartphone actualizado a: " + singleton.DS.getF_devolucion();
+					singleton.S.setF_devolucion(date_product.insert_date_return(singleton.S.getF_entrega()));
+					singleton.S.setIs_return(singleton.S.is_return());
+					singleton.S.calculate_price_final();
+					str = "Fecha de devolución de smartphone actualizado a: " + singleton.S.getF_devolucion();
 					break;
 				case "Fecha de recogida":
-					singleton.DS.setF_recogida(date_product.insert_collection_date(singleton.DS.getF_devolucion()));
-					str = "Fecha de devolución de smartphone actualizado a: " + singleton.DS.getF_recogida();
+					singleton.S.setF_recogida(date_product.insert_collection_date(singleton.S.getF_devolucion()));
+					str = "Fecha de devolución de smartphone actualizado a: " + singleton.S.getF_recogida();
 					break;
 				case "Pantalla":
-					singleton.DS.setScreen(insert_data.insert_screen());
-					str = "Tipo de pantalla de smartphone actualizado a: " + singleton.DS.getScreen();
+					singleton.S.setScreen(insert_data.insert_screen());
+					str = "Tipo de pantalla de smartphone actualizado a: " + singleton.S.getScreen();
 					break;
 				case "Pulgadas de pantalla":
-					singleton.DS.setScreen_inches(insert_data.insert_screen_inches("smartphone"));
-					str = "Pulgadas de la pantalla de smartphone actualizado a: " + singleton.DS.getScreen_inches();
+					singleton.S.setScreen_inches(insert_data.insert_screen_inches("smartphone"));
+					str = "Pulgadas de la pantalla de smartphone actualizado a: " + singleton.S.getScreen_inches();
 					break;
 				case "Memoria RAM":
-					singleton.DS.setRAM(insert_data.insert_RAM("smartphone"));
-					str = "Memoria RAM de smartphone actualizada a: " + singleton.DS.getRAM();
+					singleton.S.setRAM(insert_data.insert_RAM("smartphone"));
+					str = "Memoria RAM de smartphone actualizada a: " + singleton.S.getRAM();
 					break;
 				case "Almacenamiento":
-					singleton.DS.setStorage(insert_data.insert_storage());
-					str = "Almacenamiento del smartphone actualizado a: " + singleton.DS.getStorage();
+					singleton.S.setStorage(insert_data.insert_storage());
+					str = "Almacenamiento del smartphone actualizado a: " + singleton.S.getStorage();
 					break;
 				case "Procesador":
-					singleton.DS.setCPU(insert_data.insert_CPU("smartphone"));
-					str = "Procesador del smartphone actualizado a: " + singleton.DS.getCPU();
+					singleton.S.setCPU(insert_data.insert_CPU("smartphone"));
+					str = "Procesador del smartphone actualizado a: " + singleton.S.getCPU();
 					break;
 				case "Sistema Operativo":
-					singleton.DS.setOS(insert_data.insert_OS());
-					str = "Sistema Operativo del smartphone actualizado a: " + singleton.DS.getOS();
+					singleton.S.setOS(insert_data.insert_OS());
+					str = "Sistema Operativo del smartphone actualizado a: " + singleton.S.getOS();
 					break;
 				case "Cámara":
-					singleton.DS.setCamera(insert_data.insert_camera());
-					str = "Cámara del smartphone actualizado a: " + singleton.DS.getCamera();
+					singleton.S.setCamera(insert_data.insert_camera());
+					str = "Cámara del smartphone actualizado a: " + singleton.S.getCamera();
 					break;
 				case "Marca":
-					singleton.DS.setBrand(insert_data.insert_brand("smartphone"));
-					str = "Marca del smartphone actualizado a: " + singleton.DS.getBrand();
+					singleton.S.setBrand(insert_data.insert_brand("smartphone"));
+					str = "Marca del smartphone actualizado a: " + singleton.S.getBrand();
 					break;
 				case "Inicio de Rebajas":
-					singleton.DS.setDate_sales_init(date_product.insert_date_sales_init());
-					sales_init = singleton.D.compare_dates(singleton.DS.getDate_sales_init());
-					singleton.DS.setIs_promo(date_product.is_promo(sales_init, sales_end));
-					singleton.DS.calculate_price_final();
-					str = "Fecha de inicio de rebajas actualizado a: " + singleton.DS.getDate_sales_init();
+					singleton.S.setDate_sales_init(date_product.insert_date_sales_init());
+					sales_init = singleton.D.compare_dates(singleton.S.getDate_sales_init());
+					singleton.S.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.S.calculate_price_final();
+					str = "Fecha de inicio de rebajas actualizado a: " + singleton.S.getDate_sales_init();
 					break;
 				case "Fin de Rebajas":
-					singleton.DS.setDate_sales_end(date_product.insert_date_sales_end(singleton.DS.getDate_sales_init()));
-					sales_end = singleton.D.compare_dates(singleton.DS.getDate_sales_end());
-					singleton.DS.setIs_promo(date_product.is_promo(sales_init, sales_end));
-					singleton.DS.calculate_price_final();
-					str = "Fecha de fin de rebajas actualizado a: " + singleton.DS.getDate_sales_end();
+					singleton.S.setDate_sales_end(date_product.insert_date_sales_end(singleton.S.getDate_sales_init()));
+					sales_end = singleton.D.compare_dates(singleton.S.getDate_sales_end());
+					singleton.S.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.S.calculate_price_final();
+					str = "Fecha de fin de rebajas actualizado a: " + singleton.S.getDate_sales_end();
 					break;
 				case "Descuento":
-					singleton.DS.setDiscont(validators.validator_float(
+					singleton.S.setDiscont(validators.validator_float(
 							"Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
-					singleton.DS.setIs_promo(date_product.is_promo(sales_init, sales_end));
-					singleton.DS.calculate_price_final();
-					str = "Descuento de Rebajas actualizado a: " + singleton.DS.getDiscont();
+					singleton.S.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.S.calculate_price_final();
+					str = "Descuento de Rebajas actualizado a: " + singleton.S.getDiscont();
 					break;
 				case "Precio final":
-					str = "El precio final del producto es " + singleton.DS.getPrice_final()
+					str = "El precio final del producto es " + singleton.S.getPrice_final()
 							+ " y se calcula automáticamente, por lo que no se puede modificar.";
 					break;
 			}// end switch
@@ -638,97 +638,97 @@ public class dummies_CRUD {
 			JOptionPane.showMessageDialog(null, "Cerrando el programa.", "Cerrar", JOptionPane.ERROR_MESSAGE);
 			System.exit(0);
 		} else {
-			sales_init = singleton.D.compare_dates(singleton.DA.getDate_sales_init());
-			sales_end = singleton.D.compare_dates(singleton.DA.getDate_sales_end());
+			sales_init = singleton.D.compare_dates(singleton.A.getDate_sales_init());
+			sales_end = singleton.D.compare_dates(singleton.A.getDate_sales_end());
 			switch (opt.toString()) {
 				case "ID":
 					str = set_dummies_ID_accessory();
 					break;
 				case "Precio":
-					singleton.DA.setPrice(validators.validator_float(
+					singleton.A.setPrice(validators.validator_float(
 							"Ingresa el precio del producto para calcular el precio final.", "Ingresar precio"));
-					singleton.DA.calculate_price_final();
-					str = "Precio de accessorio actualizado a: " + singleton.DA.getPrice();
+					singleton.A.calculate_price_final();
+					str = "Precio de accessorio actualizado a: " + singleton.A.getPrice();
 					break;
 				case "Peso":
-					singleton.DA.setPeso(validators.validator_float("Ingresa el peso del producto.", "Ingresar peso"));
-					str = "Peso de accessorio actualizado a: " + singleton.DA.getPeso();
+					singleton.A.setPeso(validators.validator_float("Ingresa el peso del producto.", "Ingresar peso"));
+					str = "Peso de accessorio actualizado a: " + singleton.A.getPeso();
 					break;
 				case "Stock":
-					singleton.DA.setStock(validators.validator_int("Ingresa el stock del producto.", "Ingresar stock"));
-					str = "Stock de accessorio actualizado a: " + singleton.DA.getStock();
+					singleton.A.setStock(validators.validator_int("Ingresa el stock del producto.", "Ingresar stock"));
+					str = "Stock de accessorio actualizado a: " + singleton.A.getStock();
 					break;
 				case "Color":
-					singleton.DA.setColor(insert_data.insert_color());
-					str = "Color de accessorio actualizado a: " + singleton.DA.getColor();
+					singleton.A.setColor(insert_data.insert_color());
+					str = "Color de accessorio actualizado a: " + singleton.A.getColor();
 					break;
 				case "Dimensión":
-					singleton.DA.setDimension(
+					singleton.A.setDimension(
 							validators.validator_float("Ingresa la dimension del producto.", "Ingresar dimension"));
-					str = "Dimensión de accesorio actualizado a: " + singleton.DA.getDimension();
+					str = "Dimensión de accesorio actualizado a: " + singleton.A.getDimension();
 					break;
 				case "Fecha de compra":
-					singleton.DA.setF_compra(date_product.insert_date_purchase(
+					singleton.A.setF_compra(date_product.insert_date_purchase(
 							"Ingresa la fecha de compra del producto.\nFormato: Día/Mes/Año XX/XX/XXXX",
 							"Ingresar fecha compra"));
-					singleton.DA.setIs_promo(date_product.is_promo(sales_init, sales_end));
-					singleton.DA.calculate_price_final();
-					str = "Fecha de compra de accesorio actualizado a: " + singleton.DA.getF_compra();
+					singleton.A.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.A.calculate_price_final();
+					str = "Fecha de compra de accesorio actualizado a: " + singleton.A.getF_compra();
 					break;
 				case "Fecha de entrega":
-					singleton.DA.setF_entrega(date_product.insert_date_delivery(singleton.DA.getF_compra()));
-					str = "Fecha de entrega de accesorio actualizado a: " + singleton.DA.getF_entrega();
+					singleton.A.setF_entrega(date_product.insert_date_delivery(singleton.A.getF_compra()));
+					str = "Fecha de entrega de accesorio actualizado a: " + singleton.A.getF_entrega();
 					break;
 				case "Fecha de devolución":
-					singleton.DA.setF_devolucion(date_product.insert_date_return(singleton.DA.getF_entrega()));
-					singleton.DA.setIs_return(singleton.DA.is_return());
-					singleton.DA.calculate_price_final();
-					str = "Fecha de devolución de accesorio actualizado a: " + singleton.DA.getF_devolucion();
+					singleton.A.setF_devolucion(date_product.insert_date_return(singleton.A.getF_entrega()));
+					singleton.A.setIs_return(singleton.A.is_return());
+					singleton.A.calculate_price_final();
+					str = "Fecha de devolución de accesorio actualizado a: " + singleton.A.getF_devolucion();
 					break;
 				case "Fecha de recogida":
-					singleton.DA.setF_recogida(date_product.insert_collection_date(singleton.DA.getF_devolucion()));
-					str = "Fecha de devolución de accesorio actualizado a: " + singleton.DA.getF_recogida();
+					singleton.A.setF_recogida(date_product.insert_collection_date(singleton.A.getF_devolucion()));
+					str = "Fecha de devolución de accesorio actualizado a: " + singleton.A.getF_recogida();
 					break;
 				case "Tipo de accesorio":
-					singleton.DA.setType(insert_data.insert_type_accessory());
-					str = "Tipo de accesorio actualizado a: " + singleton.DA.getType();
+					singleton.A.setType(insert_data.insert_type_accessory());
+					str = "Tipo de accesorio actualizado a: " + singleton.A.getType();
 					break;
 				case "Garantía":
-					singleton.DA.setWarranty(
+					singleton.A.setWarranty(
 							validators.validator_string("Ingresa la garantía producto.", "Ingresar Garantía"));
-					str = "Garantía del producto actualizada a: " + singleton.DA.getWarranty();
+					str = "Garantía del producto actualizada a: " + singleton.A.getWarranty();
 					break;
 				case "Protección":
-					singleton.DA.setProtection(insert_data.insert_protection());
-					str = "Tipo de protección del producto actualizado a: " + singleton.DA.getProtection();
+					singleton.A.setProtection(insert_data.insert_protection());
+					str = "Tipo de protección del producto actualizado a: " + singleton.A.getProtection();
 					break;
 				case "Conectividad":
-					singleton.DA.setConnectivity(insert_data.insert_connectivity());
-					str = "Conectividad de accesorio actualizado a: " + singleton.DA.getConnectivity();
+					singleton.A.setConnectivity(insert_data.insert_connectivity());
+					str = "Conectividad de accesorio actualizado a: " + singleton.A.getConnectivity();
 					break;
 				case "Inicio de Rebajas":
-					singleton.DA.setDate_sales_init(date_product.insert_date_sales_init());
-					sales_init = singleton.D.compare_dates(singleton.DA.getDate_sales_init());
-					singleton.DA.setIs_promo(date_product.is_promo(sales_init, sales_end));
-					singleton.DA.calculate_price_final();
-					str = "Fecha de inicio de rebajas actualizado a: " + singleton.DA.getDate_sales_init();
+					singleton.A.setDate_sales_init(date_product.insert_date_sales_init());
+					sales_init = singleton.D.compare_dates(singleton.A.getDate_sales_init());
+					singleton.A.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.A.calculate_price_final();
+					str = "Fecha de inicio de rebajas actualizado a: " + singleton.A.getDate_sales_init();
 					break;
 				case "Fin de Rebajas":
-					singleton.DA.setDate_sales_end(date_product.insert_date_sales_end(singleton.DA.getDate_sales_init()));
-					sales_end = singleton.D.compare_dates(singleton.DA.getDate_sales_end());
-					singleton.DA.setIs_promo(date_product.is_promo(sales_init, sales_end));
-					singleton.DA.calculate_price_final();
-					str = "Fecha de fin de rebajas actualizado a: " + singleton.DA.getDate_sales_end();
+					singleton.A.setDate_sales_end(date_product.insert_date_sales_end(singleton.A.getDate_sales_init()));
+					sales_end = singleton.D.compare_dates(singleton.A.getDate_sales_end());
+					singleton.A.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.A.calculate_price_final();
+					str = "Fecha de fin de rebajas actualizado a: " + singleton.A.getDate_sales_end();
 					break;
 				case "Descuento":
-					singleton.DA.setDiscont(validators.validator_float(
+					singleton.A.setDiscont(validators.validator_float(
 							"Ingresa el descuento que quieras aplicar al producto.", "Ingresar descuento"));
-					singleton.DA.setIs_promo(date_product.is_promo(sales_init, sales_end));
-					singleton.DA.calculate_price_final();
-					str = "Descuento de Rebajas actualizado a: " + singleton.DA.getDiscont();
+					singleton.A.setIs_promo(date_product.is_promo(sales_init, sales_end));
+					singleton.A.calculate_price_final();
+					str = "Descuento de Rebajas actualizado a: " + singleton.A.getDiscont();
 					break;
 				case "Precio final":
-					str = "El precio final del producto es " + singleton.DA.getPrice_final()
+					str = "El precio final del producto es " + singleton.A.getPrice_final()
 							+ " y se calcula automáticamente, por lo que no se puede modificar.";
 					break;
 			}// end switch

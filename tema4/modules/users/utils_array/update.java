@@ -19,16 +19,15 @@ public class update {
 			} else{
 				switch (opt.toString()) {
 					case "Username":
-                        update_users.set_name_admin();
-                        str = "Nombre de usuario actualizado a: " + singleton_users.A.getUsername();
-						break;
+                        str = update_users.set_name_admin();
+                        break;
 					case "Password":
-                        insert_data.insert_password("Ingresa la contraseña de usuario.\nDebe contener como mínimo 8 carácteres "
-                    + "y contener alguno de estos símbolos especiales: @$!%*?&.","Ingresar contraseña");
+                        singleton_users.A.setPassword(insert_data.insert_password("Ingresa la contraseña de usuario.\nDebe contener como mínimo 8 carácteres "
+                    + "y contener alguno de estos símbolos especiales: @$!%*?&.","Ingresar contraseña"));
                         str = "Contraseña actualizada a: " + singleton_users.A.getPassword();
 						break;
 					case "Email":
-						insert_data.insert_email("Ingresa el correo electrónico.","Ingresar Email");
+						singleton_users.A.setEmail(insert_data.insert_email("Ingresa el correo electrónico.","Ingresar Email"));
                         str = "Correo electrónico actualizado a: " + singleton_users.A.getEmail();
 						break;
 				}// end_switch

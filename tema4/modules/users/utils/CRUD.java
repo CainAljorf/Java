@@ -7,6 +7,7 @@ import tema4.modules.users.classes.client;
 import tema4.modules.users.classes.employee;
 import tema4.modules.users.classes.singleton_users;
 import tema4.modules.users.classes.user;
+import tema4.utils.validators;
 
 public class CRUD {
 	public static client create_client() {
@@ -34,13 +35,14 @@ public class CRUD {
 		String email= insert_data.insert_email("Ingresa el correo electrónico.","Ingresar Email");
 		dates birth_date= insert_data.insert_date_born("Ingresa la fecha de nacimiento.","Ingresar Email");
 		String hire_date = dates_functions.date_system();
+		float salary = validators.validator_float("Ingresa el sueldo del empleado.","Ingresar sueldo");
 		if(singleton_users.D.isAdult(birth_date)) {
-			singleton_users.E = new employee(singleton_users.E.getUsername(),email,password,false,birth_date,hire_date,2);
+			singleton_users.E = new employee(singleton_users.E.getUsername(),email,password,false,birth_date,hire_date,salary);
 			str= "Usuario registrado correctamente.";
 		}else {
 			str="La edad de tu empleado debe de tener más de 18 años";
 		}//end if
-		singleton_users.E.increaseSalary();
+		
 		JOptionPane.showMessageDialog(null, str, "Información", JOptionPane.INFORMATION_MESSAGE);
 		return singleton_users.E;
 	}// end create_laptop
