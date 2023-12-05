@@ -5,10 +5,12 @@ import javax.swing.JOptionPane;
 import tema4.modules.products.classes.singleton;
 import tema4.modules.products.utils.CRUD_functions.read;
 import tema4.modules.products.utils.CRUD_functions.update;
+import tema4.modules.users.classes.singleton_users;
 import tema4.modules.users.utils_array.readUsers;
 
 public class menu_employee {
 	public static void employee() {
+		singleton_users.E.setActive(true);
 		JOptionPane.showMessageDialog(null, "Eres empleado.","Acceso Correcto",JOptionPane.INFORMATION_MESSAGE);
 		String[]buttons_main_menu={
 			"Products",

@@ -4,9 +4,11 @@ import javax.swing.JOptionPane;
 
 import tema4.modules.products.classes.singleton;
 import tema4.modules.products.utils.CRUD_functions.read;
+import tema4.modules.users.classes.singleton_users;
 
 public class menu_client {
 	public static void client() {
+		singleton_users.C.setActive(true);
 		JOptionPane.showMessageDialog(null, "Eres cliente.","Acceso Correcto",JOptionPane.INFORMATION_MESSAGE);
 		String[]buttons_main={
 			"Laptop",

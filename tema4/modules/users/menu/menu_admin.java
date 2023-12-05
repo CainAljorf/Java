@@ -12,6 +12,8 @@ import tema4.modules.products.utils.CRUD_functions.delete;
 import tema4.modules.products.utils.CRUD_functions.read;
 import tema4.modules.products.utils.CRUD_functions.update;
 import tema4.modules.users.classes.singleton_users;
+import tema4.modules.users.utils.CRUD;
+import tema4.modules.users.utils.find;
 import tema4.modules.users.utils_array.readUsers;
 import tema4.modules.users.utils_array.register;
 import tema4.modules.users.utils_array.update_users;
@@ -19,6 +21,7 @@ import tema4.utils.validators;
 
 public class menu_admin {
 	public static void admin() {
+		singleton_users.A.setActive(true);
 		JOptionPane.showMessageDialog(null, "Eres administrador.","Acceso Correcto",JOptionPane.INFORMATION_MESSAGE);
 		String[]buttons_main_menu={
 				"Users",
@@ -102,8 +105,15 @@ public class menu_admin {
 									validator2=true;
 									break;
 								case 3:
-									singleton_users.C.setActive(false);
-									JOptionPane.showMessageDialog(null, "Cliente desactivado.","Información",JOptionPane.INFORMATION_MESSAGE);
+									int location = -1;
+									singleton_users.C = CRUD.new_client("Ingresa el nombre de usuario que quieras borrar.","Ingresar Nombre de usuario");
+									location = find.find_username(singleton_users.C);
+									if (location != -1) {
+										singleton_users.C.setActive(false);
+										JOptionPane.showMessageDialog(null, "Cliente desactivado.","Información",JOptionPane.INFORMATION_MESSAGE);
+									} else {
+										JOptionPane.showMessageDialog(null, "No se ha encontrado al usuario.","Error",JOptionPane.ERROR_MESSAGE);
+									}
 									validator2=false;
 									break;
 								case 4:
@@ -144,8 +154,15 @@ public class menu_admin {
 									validator2=true;
 									break;
 								case 3:
-									singleton_users.A.setActive(false);
-									JOptionPane.showMessageDialog(null, "Administrador desactivado.","Información",JOptionPane.INFORMATION_MESSAGE);
+									int location = -1;
+									singleton_users.A = CRUD.new_admin("Ingresa el nombre de usuario que quieras borrar.","Ingresar Nombre de usuario");
+									location = find.find_username(singleton_users.A);
+									if (location != -1) {
+										singleton_users.A.setActive(false);
+										JOptionPane.showMessageDialog(null, "Administrador desactivado.","Información",JOptionPane.INFORMATION_MESSAGE);
+									} else {
+										JOptionPane.showMessageDialog(null, "No se ha encontrado al usuario.","Error",JOptionPane.ERROR_MESSAGE);
+									}
 									validator2=false;
 									break;
 								case 4:
@@ -186,8 +203,15 @@ public class menu_admin {
 									validator2=true;
 									break;
 								case 3:
-									singleton_users.E.setActive(false);
-									JOptionPane.showMessageDialog(null, "Empleado desactivado.","Información",JOptionPane.INFORMATION_MESSAGE);
+									int location = -1;
+									singleton_users.E = CRUD.new_employee("Ingresa el nombre de usuario que quieras borrar.","Ingresar Nombre de usuario");
+									location = find.find_username(singleton_users.E);
+									if (location != -1) {
+										singleton_users.E.setActive(false);
+										JOptionPane.showMessageDialog(null, "Empleado desactivado.","Información",JOptionPane.INFORMATION_MESSAGE);
+									} else {
+										JOptionPane.showMessageDialog(null, "No se ha encontrado al usuario.","Error",JOptionPane.ERROR_MESSAGE);
+									}
 									validator2=false;
 									break;
 								case 4:
@@ -200,7 +224,6 @@ public class menu_admin {
 									break;
 								}
 							}while(validator2==true);
-							
 							validator=true;
 							break;
 						case 3:
